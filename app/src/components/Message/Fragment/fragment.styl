@@ -1,0 +1,94 @@
+/*
+ * Import
+ */
+
+
+$raw-light = rgba(#fffdd8, .9)
+$olms-background-light = lighten(#1e2124, 20%)
+$olms-background = lighten(#1e2124, 10%)
+$white-light = #FFF
+$high-color = #abb2bf
+
+
+/*
+ * Classes
+ */
+.course-chat-content-fragment
+	&
+	&-before
+	&-value
+	&-after
+		display: inline
+
+	&-value
+		/*
+		 * Emphasis
+		 */
+		&&--code
+		&&--preformatted
+		&--mention--myself
+		&--mention--question
+			background: rgba($olms-background, .5)
+			border: $olms-background
+			border-radius: .2em
+			color: $high-color
+			margin: 0 .15em
+
+		/*
+		 * Format
+		 */
+		&--bold
+			font-weight: 700
+
+		&--italic
+			font-style: italic
+
+		&--strike
+			background-underline: #FFF, 55%, 100%, 2px
+
+
+		/*
+		 * Code
+		 */
+		&--code
+		&--preformatted
+			font-family: Menlo
+
+		&&--code
+			padding: .1em .3em
+			font-size: 1.4rem
+
+		&&--preformatted
+			display: block
+			font-size: 1.5rem
+			margin: .2em 0
+			padding: .4em .8em
+			overflow: auto
+
+		/*
+		 * Quote
+		 */
+		&--quote
+			display: block
+			border-left: 3px solid rgba(#FFF, .2)
+			font-style: italic
+			padding-left: .7em
+
+		/*
+		 * Underline
+		 */
+		&&--mention
+			color: #0ac3a7
+			&--myself
+			&--question
+				padding: 0 .25em
+
+		&--link
+			background-underline: $white-light, 90%
+			jamb: $olms-background-light
+			.course-chat-message--teacher &
+				background-underline-color: $raw-light
+
+	&--quote
+		&:last-of-type
+			margin-bottom: .2em
