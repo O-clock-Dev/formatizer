@@ -1,0 +1,17 @@
+# Externals scripts
+/vendor
+
+# Mac Thumbs Files
+.DS_Store
+
+# Dependencies NPM / Yarn
+node_modules
+
+# Debug log NPM
+npm-debug.log
+
+# Files compiled
+public
+
+# Config Server
+server/config/index.js
