@@ -47,6 +47,22 @@ export default [
     after: 2,
   },
   {
+    className: 'mention',
+    pattern: /(@[a-z0-9_]+)($|\s|[.,?!:;)])/gi,
+    value: 1,
+    after: 2,
+    callback() {
+    // callback(mention) {
+      // if (mention.slice(1) === user.username) {
+      //   return { className: 'mention--myself' };
+      // }
+      // if (isNotStudent && mention === '@question') {
+      //   return { className: 'mention--question' };
+      // }
+      return false;
+    },
+  },
+  {
     tag: 'blockquote',
     className: 'quote',
     pattern: /(?:^|\n)>\s?([^\n]+)\n?/mg,

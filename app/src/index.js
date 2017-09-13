@@ -9,6 +9,7 @@ import { render } from 'react-dom';
  * Local Import
  */
 import Message from './components/Message';
+import { Textarea } from './style';
 
 
 /*
@@ -24,7 +25,8 @@ class App extends React.Component {
    * State
    */
   state = {
-    message: '',
+    // eslint-disable-next-line
+    message: ":star: `test`\n\n@test\n@t_e_s_t\n\n\n```js\n\nconst a = 1;\nconst b = 'test';\n\nreturn a + b;\n\n```\n\n*test*\n_test_\n~test~\n\n>Test\n",
   };
 
 
@@ -49,7 +51,7 @@ class App extends React.Component {
      */
     return (
       <div>
-        <textarea onChange={this.onChange} />
+        <Textarea onChange={this.onChange} value={message} />
         <Message message={message} />
       </div>
     );

@@ -9,6 +9,7 @@ import classNames from 'classnames';
 /*
  * Local Import
  */
+import { Before, After, FragmentValue } from './style';
 
 
 /*
@@ -23,7 +24,7 @@ const Fragment = ({ replacement, values }) => {
   const afterValue = values[after] || '';
 
   // Fragment
-  const Tag = tag || 'span';
+  const Tag = tag || FragmentValue;
   const attrsValue = {};
   let fragmentValue = '';
 
@@ -63,23 +64,23 @@ const Fragment = ({ replacement, values }) => {
   return (
     <span
       className={classNames([
-        'course-chat-content-fragment',
-        { [`course-chat-content-fragment--${className}`]: className },
-        { [`course-chat-content-fragment--${hooks.className}`]: hooks.className },
+        'fragment',
+        { [`fragment--${className}`]: className },
+        { [`fragment--${hooks.className}`]: hooks.className },
       ])}
     >
-      <span className="course-chat-content-fragment-before">{beforeValue}</span>
+      <Before>{beforeValue}</Before>
       <Tag
         className={classNames([
-          'course-chat-content-fragment-value',
-          { [`course-chat-content-fragment-value--${className}`]: className },
-          { [`course-chat-content-fragment-value--${hooks.className}`]: hooks.className },
+          // 'fragment-value',
+          { [`fragment-value--${className}`]: className },
+          { [`fragment-value--${hooks.className}`]: hooks.className },
         ])}
         {...attrsValue}
       >
         {hooks.value || fragmentValue}
       </Tag>
-      <span className="course-chat-content-fragment-after">{afterValue}</span>
+      <After>{afterValue}</After>
     </span>
   );
 };

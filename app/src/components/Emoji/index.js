@@ -27,7 +27,7 @@ export const shortnameToImage = emoji =>
 
 const EmojioneContainer = ({ className, emoji }) => (
   <span
-    className={className || 'emojione-container'}
+    className={className}
     dangerouslySetInnerHTML={{ __html: shortnameToImage(emoji) }}
   />
 );

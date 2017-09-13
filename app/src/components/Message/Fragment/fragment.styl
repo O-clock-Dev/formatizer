@@ -13,13 +13,7 @@ $high-color = #abb2bf
 /*
  * Classes
  */
-.course-chat-content-fragment
-	&
-	&-before
-	&-value
-	&-after
-		display: inline
-
+.fragment
 	&-value
 		/*
 		 * Emphasis
@@ -33,18 +27,6 @@ $high-color = #abb2bf
 			border-radius: .2em
 			color: $high-color
 			margin: 0 .15em
-
-		/*
-		 * Format
-		 */
-		&--bold
-			font-weight: 700
-
-		&--italic
-			font-style: italic
-
-		&--strike
-			background-underline: #FFF, 55%, 100%, 2px
 
 
 		/*
@@ -74,14 +56,6 @@ $high-color = #abb2bf
 			font-style: italic
 			padding-left: .7em
 
-		/*
-		 * Underline
-		 */
-		&&--mention
-			color: #0ac3a7
-			&--myself
-			&--question
-				padding: 0 .25em
 
 		&--link
 			background-underline: $white-light, 90%

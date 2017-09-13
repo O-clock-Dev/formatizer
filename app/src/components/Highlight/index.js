@@ -1,14 +1,16 @@
 /*
- * Npm import
+ * Package Import
  */
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import hljs from 'highlight.js';
+// import hljs from 'highlight.js';
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import { agate } from 'react-syntax-highlighter/dist/styles';
 import classNames from 'classnames';
 
 
 /*
- * Local import
+ * Local Import
  */
 
 
@@ -70,10 +72,6 @@ export default class Highlight extends React.Component {
   /*
    * Lifecycles
    */
-  componentDidMount() {
-    hljs.configure({ languages });
-    hljs.highlightBlock(this.node);
-  }
 
 
   /*
@@ -94,18 +92,18 @@ export default class Highlight extends React.Component {
     delete attrs.children;
 
     // Language
-    if (attrs.language) {
-      attrs.className = classNames([
-        { [attrs.className]: attrs.className },
-        attrs.language,
-      ]);
-    }
-    delete attrs.language;
+    // if (attrs.language) {
+    //   attrs.className = classNames([
+    //     { [attrs.className]: attrs.className },
+    //     attrs.language,
+    //   ]);
+    // }
+    // delete attrs.language;
 
     return (
-      <pre ref={this.saveNode} {...attrs}>
+      <SyntaxHighlighter style={agate} language={attrs.language} ref={this.saveNode} {...attrs}>
         {this.props.children}
-      </pre>
+      </SyntaxHighlighter>
     );
   }
 }
