@@ -70,14 +70,7 @@ const Fragment = ({ replacement, values }) => {
       ])}
     >
       <Before>{beforeValue}</Before>
-      <Tag
-        className={classNames([
-          // 'fragment-value',
-          { [`fragment-value--${className}`]: className },
-          { [`fragment-value--${hooks.className}`]: hooks.className },
-        ])}
-        {...attrsValue}
-      >
+      <Tag className={className || hooks.className} {...attrsValue}>
         {hooks.value || fragmentValue}
       </Tag>
       <After>{afterValue}</After>

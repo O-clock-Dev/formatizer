@@ -1,7 +1,7 @@
 /*
  * Package Import
  */
-import { span } from 'glamorous';
+import { span, code, blockquote } from 'glamorous';
 
 /*
  * Local Import
@@ -24,33 +24,61 @@ export const FragmentValue = span({
 }, ({ className }) => {
   const styles = [];
 
-  // console.log(className);
+  console.log(className);
 
   switch (className) {
-    case 'fragment-value--bold':
+    case 'bold':
       styles.push({ fontWeight: 700 });
       break;
 
-    case 'fragment-value--italic':
+    case 'italic':
       styles.push({ fontStyle: 'italic' });
       break;
 
-    case 'fragment-value--strike':
+    case 'strike':
       // eslint-disable-next-line max-len
       styles.push({ background: 'linear-gradient(to bottom, transparent 50%, #000 50%) no-repeat content-box 100% 55% / 100% 4px' });
       break;
 
-    case 'fragment-value--mention':
+    case 'mention':
       styles.push({ color: '#0ac3a7' });
       break;
 
-    case 'fragment-value--mention--myself':
-    case 'fragment-value--mention--question':
-      styles.push({ color: '#0ac3a7', padding: '0 .25em' });
+    case 'mention--myself':
+    case 'mention--question':
+      styles.push({
+        background: 'rgba(30, 33, 36, 0.2)',
+        border: 'rgba(30, 33, 36, 0.8)',
+        borderRadius: '.2em',
+        color: '#0ac3a7',
+        margin: '0 .15em',
+        padding: '0 .25em',
+      });
       break;
 
     default:
   }
 
   return styles;
+});
+
+export const Code = code({
+  background: 'rgba(30, 33, 36, 0.2)',
+  border: 'rgba(30, 33, 36, 0.8)',
+  borderRadius: '.2em',
+  color: '#abb2bf',
+  fontFamily: 'Menlo',
+  margin: '0 .15em',
+  padding: '.1em .3em',
+  fontSize: '1.4rem',
+});
+
+export const Blockquote = blockquote({
+  display: 'block',
+  borderLeft: '3px solid rgba(#FFF, .2)',
+  fontStyle: 'italic',
+  paddingLeft: '.7em',
+  '&:last-of-type': {
+    marginBottom: '.2em',
+  },
 });

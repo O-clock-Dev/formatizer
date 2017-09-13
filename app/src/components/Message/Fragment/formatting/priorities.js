@@ -8,6 +8,7 @@ import React from 'react';
  * Local import
  */
 import Highlight from 'src/components/Highlight';
+import { Code, Blockquote } from '../style';
 
 
 /*
@@ -28,7 +29,7 @@ export default [
     callback: value => ({ value: value.trim() }),
   },
   {
-    tag: 'code',
+    tag: Code,
     className: 'code',
     pattern: /`(.+?)`/g,
     value: 1,
@@ -63,7 +64,7 @@ export default [
     },
   },
   {
-    tag: 'blockquote',
+    tag: Blockquote,
     className: 'quote',
     pattern: /(?:^|\n)>\s?([^\n]+)\n?/mg,
     value: 1,

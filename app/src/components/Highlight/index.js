@@ -3,10 +3,8 @@
  */
 import React from 'react';
 import { PropTypes } from 'prop-types';
-// import hljs from 'highlight.js';
 import SyntaxHighlighter from 'react-syntax-highlighter';
-import { agate } from 'react-syntax-highlighter/dist/styles';
-import classNames from 'classnames';
+import { atomOneDark } from 'react-syntax-highlighter/dist/styles';
 
 
 /*
@@ -101,7 +99,13 @@ export default class Highlight extends React.Component {
     // delete attrs.language;
 
     return (
-      <SyntaxHighlighter style={agate} language={attrs.language} ref={this.saveNode} {...attrs}>
+      <SyntaxHighlighter
+        style={atomOneDark}
+        customStyle={{ borderRadius: '.2em', margin: '0 .15em' }}
+        language={attrs.language}
+        ref={this.saveNode}
+        {...attrs}
+      >
         {this.props.children}
       </SyntaxHighlighter>
     );

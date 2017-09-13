@@ -18,27 +18,13 @@ $high-color = #abb2bf
 		/*
 		 * Emphasis
 		 */
-		&&--code
 		&&--preformatted
-		&--mention--myself
-		&--mention--question
 			background: rgba($olms-background, .5)
 			border: $olms-background
 			border-radius: .2em
 			color: $high-color
 			margin: 0 .15em
 
-
-		/*
-		 * Code
-		 */
-		&--code
-		&--preformatted
-			font-family: Menlo
-
-		&&--code
-			padding: .1em .3em
-			font-size: 1.4rem
 
 		&&--preformatted
 			display: block
@@ -47,22 +33,9 @@ $high-color = #abb2bf
 			padding: .4em .8em
 			overflow: auto
 
-		/*
-		 * Quote
-		 */
-		&--quote
-			display: block
-			border-left: 3px solid rgba(#FFF, .2)
-			font-style: italic
-			padding-left: .7em
-
 
 		&--link
 			background-underline: $white-light, 90%
 			jamb: $olms-background-light
 			.course-chat-message--teacher &
 				background-underline-color: $raw-light
-
-	&--quote
-		&:last-of-type
-			margin-bottom: .2em

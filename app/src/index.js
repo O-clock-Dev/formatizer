@@ -26,7 +26,7 @@ class App extends React.Component {
    */
   state = {
     // eslint-disable-next-line
-    message: ":star: `test`\n\n@test\n@t_e_s_t\n\n\n```js\n\nconst a = 1;\nconst b = 'test';\n\nreturn a + b;\n\n```\n\n*test*\n_test_\n~test~\n\n>Test\n",
+    message: ":star: `test`\n@test\n@t_e_s_t\n```js\nconst a = 123;\nconst b = 'abc';\nreturn a + b; // test\n```\n*test*\n_test_\n~test~\n>Test\n"
   };
 
 
@@ -50,7 +50,7 @@ class App extends React.Component {
      * View
      */
     return (
-      <div>
+      <div style={{ display: 'flex', justifyContent: 'space-around' }}>
         <Textarea onChange={this.onChange} value={message} />
         <Message message={message} />
       </div>
