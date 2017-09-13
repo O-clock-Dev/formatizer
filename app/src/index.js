@@ -14,15 +14,47 @@ import Message from './components/Message';
 /*
  * Code
  */
-const message = ':star: :nerd_face: Bonjour je suis un *test* _test_ ~test~ ```js const test = ""; ``` `test`';
 
 
 /*
  * Component
  */
-const App = () => (
-  <div> <Message message={message} /> </div>
-);
+class App extends React.Component {
+  /*
+   * State
+   */
+  state = {
+    message: '',
+  };
+
+
+  /*
+   * Actions
+   */
+  onChange = (evt) => {
+    const { value } = evt.target;
+    this.setState({ message: value });
+  }
+
+
+  /*
+   * Render
+   */
+  render() {
+    const { message } = this.state;
+
+
+    /*
+     * View
+     */
+    return (
+      <div>
+        <textarea onChange={this.onChange} />
+        <Message message={message} />
+      </div>
+    );
+  }
+}
 
 
 /*

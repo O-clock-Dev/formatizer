@@ -1,7 +1,8 @@
 /*
  * Package Import
  */
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 
 /*
@@ -18,7 +19,7 @@ import { displayHtml } from 'src/components/Message/Fragment/display';
 /*
  * Component
  */
-const ContentMessage = ({ message }) => (
+const Message = ({ message }) => (
   <div className="course-chat-content course-chat-content--message">
     {displayHtml(message)}
   </div>
@@ -28,7 +29,7 @@ const ContentMessage = ({ message }) => (
 /*
  * PropTypes
  */
-ContentMessage.propTypes = {
+Message.propTypes = {
   message: PropTypes.string.isRequired,
 };
 
@@ -36,4 +37,4 @@ ContentMessage.propTypes = {
 /*
  * Export default
  */
-export default ContentMessage;
+export default Message;
