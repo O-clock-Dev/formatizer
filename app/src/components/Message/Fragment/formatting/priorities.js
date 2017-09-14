@@ -8,7 +8,7 @@ import React from 'react';
  * Local import
  */
 import Highlight from 'src/components/Highlight';
-import { Code, Blockquote } from '../style';
+import { Code, Blockquote, Link } from '../style';
 
 
 /*
@@ -35,7 +35,7 @@ export default [
     value: 1,
   },
   {
-    tag: 'a',
+    tag: Link,
     attrs: [
       {
         attr: 'href',

@@ -20,7 +20,7 @@ import { displayHtml } from 'src/components/Message/Fragment/display';
  * Component
  */
 const Message = ({ message }) => (
-  <div className="course-chat-content course-chat-content--message">
+  <div>
     {displayHtml(message)}
   </div>
 );

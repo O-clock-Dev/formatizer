@@ -10,6 +10,7 @@ import { atomOneDark } from 'react-syntax-highlighter/dist/styles';
 /*
  * Local Import
  */
+import { PreFormatted } from './style';
 
 
 /*
@@ -68,11 +69,6 @@ export default class Highlight extends React.Component {
 
 
   /*
-   * Lifecycles
-   */
-
-
-  /*
    * Ref
    */
   saveNode = (node) => {
@@ -86,26 +82,23 @@ export default class Highlight extends React.Component {
   render() {
     const attrs = { ...this.props };
 
-    // Children
+    // Delete Children
     delete attrs.children;
 
-    // Language
-    // if (attrs.language) {
-    //   attrs.className = classNames([
-    //     { [attrs.className]: attrs.className },
-    //     attrs.language,
-    //   ]);
-    // }
-    // delete attrs.language;
+    // Attribute Options
+    const options = {
+      style: atomOneDark,
+      showLineNumbers: true,
+      customStyle: PreFormatted,
+      language: attrs.language,
+    };
 
+
+    /*
+     * View
+     */
     return (
-      <SyntaxHighlighter
-        style={atomOneDark}
-        customStyle={{ borderRadius: '.2em', margin: '0 .15em' }}
-        language={attrs.language}
-        ref={this.saveNode}
-        {...attrs}
-      >
+      <SyntaxHighlighter {...options} ref={this.saveNode} {...attrs}>
         {this.props.children}
       </SyntaxHighlighter>
     );

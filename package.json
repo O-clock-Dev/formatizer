@@ -8,7 +8,7 @@
   "scripts": {
     "start": "brunch watch -s",
     "build": "brunch build --production",
-    "lint": "eslint --fix app test"
+    "lint": "eslint --fix app"
   },
   "dependencies": {
     "classnames": "^2.2.5",
@@ -36,7 +36,6 @@
     "eslint-import-resolver-node": "^0.3.0",
     "eslint-plugin-import": "^2.3.0",
     "eslint-plugin-jsx-a11y": "^5.0.3",
-    "eslint-plugin-react": "^7.1.0",
-    "stylus-brunch": "^2.10.0"
+    "eslint-plugin-react": "^7.1.0"
   }
 }

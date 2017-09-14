@@ -1,7 +1,10 @@
+/* eslint-disable max-len */
+
 /*
  * Package Import
  */
-import { span, code, blockquote } from 'glamorous';
+import { span, code, blockquote, a } from 'glamorous';
+
 
 /*
  * Local Import
@@ -19,12 +22,17 @@ export const After = span({
   display: 'inline',
 });
 
+const Style = {
+  background: 'rgba(30, 33, 36, 0.9)',
+  border: 'rgba(30, 33, 36, 0.8)',
+  borderRadius: '.2em',
+  margin: '0 .15em',
+};
+
 export const FragmentValue = span({
   display: 'inline',
 }, ({ className }) => {
   const styles = [];
-
-  console.log(className);
 
   switch (className) {
     case 'bold':
@@ -36,7 +44,6 @@ export const FragmentValue = span({
       break;
 
     case 'strike':
-      // eslint-disable-next-line max-len
       styles.push({ background: 'linear-gradient(to bottom, transparent 50%, #000 50%) no-repeat content-box 100% 55% / 100% 4px' });
       break;
 
@@ -46,14 +53,7 @@ export const FragmentValue = span({
 
     case 'mention--myself':
     case 'mention--question':
-      styles.push({
-        background: 'rgba(30, 33, 36, 0.2)',
-        border: 'rgba(30, 33, 36, 0.8)',
-        borderRadius: '.2em',
-        color: '#0ac3a7',
-        margin: '0 .15em',
-        padding: '0 .25em',
-      });
+      styles.push({ ...Style, color: '#0ac3a7', padding: '0 .25em' });
       break;
 
     default:
@@ -63,12 +63,9 @@ export const FragmentValue = span({
 });
 
 export const Code = code({
-  background: 'rgba(30, 33, 36, 0.2)',
-  border: 'rgba(30, 33, 36, 0.8)',
-  borderRadius: '.2em',
+  ...Style,
   color: '#abb2bf',
   fontFamily: 'Menlo',
-  margin: '0 .15em',
   padding: '.1em .3em',
   fontSize: '1.4rem',
 });
@@ -81,4 +78,11 @@ export const Blockquote = blockquote({
   '&:last-of-type': {
     marginBottom: '.2em',
   },
+});
+
+export const Link = a({
+  background: 'linear-gradient(to bottom, transparent 50%, #000 50%) no-repeat content-box 0% 90% / 100% 2px',
+  textShadow: '-2px -1px #FFF, -2px 0 #FFF, -2px 1px #FFF, -1px -1px #FFF, -1px 0 #FFF, -1px 1px #FFF, 0 -1px #FFF, 0 1px #FFF, 1px -1px #FFF, 1px 0 #FFF, 1px 1px #FFF, 2px -1px #FFF, 2px 0 #FFF, 2px 1px #FFF',
+  // .course-chat-message--teacher &
+  //   background-underline-color: $raw-light
 });

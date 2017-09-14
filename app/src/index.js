@@ -50,7 +50,7 @@ class App extends React.Component {
      * View
      */
     return (
-      <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+      <div>
         <Textarea onChange={this.onChange} value={message} />
         <Message message={message} />
       </div>
