@@ -1,12 +1,12 @@
-# O'Format
+# Formatizer
+
+## Installation
 
 ## Synopsis
 
 ## Code Example
 
 ## Motivation
-
-## Installation
 
 ## API Reference
 
