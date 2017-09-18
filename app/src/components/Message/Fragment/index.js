@@ -3,7 +3,6 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 
 
 /*
@@ -62,13 +61,7 @@ const Fragment = ({ replacement, values }) => {
    * View
    */
   return (
-    <span
-      className={classNames([
-        'fragment',
-        { [`fragment--${className}`]: className },
-        { [`fragment--${hooks.className}`]: hooks.className },
-      ])}
-    >
+    <span className={className || hooks.className}>
       <Before>{beforeValue}</Before>
       <Tag className={className || hooks.className} {...attrsValue}>
         {hooks.value || fragmentValue}
