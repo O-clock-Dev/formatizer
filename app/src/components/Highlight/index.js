@@ -88,7 +88,6 @@ export default class Highlight extends React.Component {
     // Attribute Options
     const options = {
       style: atomOneDark,
-      showLineNumbers: true,
       customStyle: PreFormatted,
       language: attrs.language,
     };

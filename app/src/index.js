@@ -12,47 +12,23 @@ import { displayHtml } from './components/Fragment/display';
 
 
 /*
- * Code
+ * Component
  */
+const Format = ({ message }) => (
+  <div>{displayHtml(message)}</div>
+);
 
 
 /*
- * Component
+ * PropTypes
  */
-class Format extends React.Component {
-  static propTypes = {
-    message: PropTypes.any.isRequired,
-  }
+Format.propTypes = {
+  message: PropTypes.string,
+};
 
-
-  /*
-   * defaultProps
-   */
-  static get defaultProps() {
-    return {
-      message: '',
-    };
-  }
-
-
-  /*
-   * State
-   */
-  state = {}
-
-
-  /*
-   * Render
-   */
-  render() {
-    const { message } = this.props;
-
-
-    return (
-      <div>{displayHtml(message)}</div>
-    );
-  }
-}
+Format.defaultProps = {
+  message: '',
+};
 
 
 /*
