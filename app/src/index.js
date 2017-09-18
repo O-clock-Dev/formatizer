@@ -2,28 +2,60 @@
  * Package Import
  */
 import React from 'react';
-import { render } from 'react-dom';
+import PropTypes from 'prop-types';
 
 
 /*
  * Local Import
  */
-import Message from './components/Message';
+import { displayHtml } from './components/Fragment/display';
 
 
 /*
  * Code
  */
-const message = '';
 
 
 /*
  * Component
  */
-const App = () => <div> <Message message={message} /> </div>;
+class Format extends React.Component {
+  static propTypes = {
+    message: PropTypes.any.isRequired,
+  }
+
+
+  /*
+   * defaultProps
+   */
+  static get defaultProps() {
+    return {
+      message: '',
+    };
+  }
+
+
+  /*
+   * State
+   */
+  state = {}
+
+
+  /*
+   * Render
+   */
+  render() {
+    const { message } = this.props;
+
+
+    return (
+      <div>{displayHtml(message)}</div>
+    );
+  }
+}
 
 
 /*
- * Render
+ * Export
  */
-render(<App />, document.getElementById('root'));
+export default Format;

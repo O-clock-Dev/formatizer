@@ -12,6 +12,8 @@ npm-debug.log
 
 # Files compiled
 public
+dist
+build
 
 # Config Server
 server/config/index.js

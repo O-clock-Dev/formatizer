@@ -7,8 +7,8 @@ import React from 'react';
 /*
  * Local import
  */
-import Highlight from 'src/components/Highlight';
-import { Code, Blockquote, Link } from '../style';
+import Highlight from '../..//Highlight';
+import { Code, Blockquote, Link } from './style';
 
 
 /*

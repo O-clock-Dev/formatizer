@@ -20,24 +20,24 @@ exports.config =
   ###
   files:
     stylesheets:
-      joinTo: 'css/app.css'
+      joinTo: 'app.css'
       order:
         before: 'app/styles/reset.styl'
 
     javascripts:
-      joinTo: 'js/app.js'
+      joinTo: 'app.js'
 
   paths:
     watched: ['app']
 
   modules:
     autoRequire:
-      'js/app.js': ['src/index']
+      'app.js': ['src/index']
 
   ###
   # Production
   ###
-  overrides:
-    production:
-      paths:
-        public: '../../public/' + pkg.name
+  # overrides:
+  #   production:
+  #     paths:
+  #       public: 'dist'

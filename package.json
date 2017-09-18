@@ -1,15 +1,15 @@
 {
-  "name": "o_format",
+  "name": "formatizer",
   "version": "0.1.0",
-  "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/O-clock/Onapastrouvedenom.git"
+    "url": "git+ssh://git@github.com/O-clock/Formatizer.git"
   },
   "author": "AlexandreBourdeaudhui <alexandre.bourdeaudhui@gmail.com>",
   "license": "MIT",
   "scripts": {
     "start": "brunch watch -s",
+    "babel": "babel app -d build",
     "build": "brunch build --production",
     "test": "mocha --reporter spec test/.setup.js test/**/*.test.js",
     "test:watch": "mocha --recursive --reporter spec -w test/.setup.js test/**/*.test.js",
@@ -27,8 +27,8 @@
     "sanitize-html": "^1.14.1"
   },
   "devDependencies": {
-    "auto-reload-brunch": "^2.7.1",
     "babel-brunch": "git+https://github.com/webdif/babel-brunch.git",
+    "babel-cli": "^6.26.0",
     "babel-eslint": "^7.2.3",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
@@ -45,10 +45,15 @@
     "jsdom": "^11.2.0",
     "mocha": "^3.5.3"
   },
+  "main": "build/src/index.js",
+  "files": [
+    "README.md",
+    "build"
+  ],
   "bugs": {
-    "url": "https://github.com/O-clock/Onapastrouvedenom/issues"
+    "url": "https://github.com/O-clock/Formatizer/issues"
   },
-  "description": "",
-  "homepage": "https://github.com/O-clock/Onapastrouvedenom#readme",
+  "description": "Format nicely your Chat",
+  "homepage": "https://github.com/O-clock/Formatizer#readme",
   "keywords": []
 }

@@ -9,7 +9,7 @@ import sanitizeHtml from 'sanitize-html';
  * Local import
  */
 // Display
-import { shortnameToImage } from 'src/components/Emoji';
+import { shortnameToImage } from '../Emoji';
 import Fragment from './index';
 
 // Formatting
