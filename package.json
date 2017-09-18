@@ -1,9 +1,9 @@
 {
   "name": "formatizer",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/O-clock/Formatizer.git"
+    "url": "git+ssh://git@github.com/O-clock/formatizer.git"
   },
   "author": "AlexandreBourdeaudhui <alexandre.bourdeaudhui@gmail.com>",
   "license": "MIT",
@@ -51,9 +51,9 @@
     "build"
   ],
   "bugs": {
-    "url": "https://github.com/O-clock/Formatizer/issues"
+    "url": "https://github.com/O-clock/formatizer/issues"
   },
   "description": "Format nicely your Chat",
-  "homepage": "https://github.com/O-clock/Formatizer#readme",
+  "homepage": "https://github.com/O-clock/formatizer#readme",
   "keywords": []
 }
