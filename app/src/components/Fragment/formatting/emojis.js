@@ -7,7 +7,7 @@ import React from 'react';
 /*
  * Local import
  */
-import Emoji from '../..//Emoji';
+import Emoji from '../../Emoji';
 
 
 /*
@@ -47,6 +47,10 @@ const emojis = [
     replace: ':open_mouth:',
   },
   {
+    pattern: /(^|\s)(:-?x)($|\s)/ig,
+    replace: ':no_mouth:',
+  },
+  {
     pattern: /(^|\s)(>:-?\()($|\s)/g,
     replace: ':angry:',
   },
@@ -73,6 +77,10 @@ const emojis = [
   {
     pattern: /(^|\s)(:'\()($|\s)/ig,
     replace: ':cry:',
+  },
+  {
+    pattern: /(^|\s)(D:)($|\s)/g,
+    replace: ':fearful:',
   },
 ];
 
