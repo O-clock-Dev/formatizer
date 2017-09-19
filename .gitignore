@@ -6,6 +6,7 @@
 
 # Dependencies NPM / Yarn
 node_modules
+package-lock.json
 
 # Debug log NPM
 npm-debug.log
