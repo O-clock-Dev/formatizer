@@ -8,23 +8,24 @@
   "author": "AlexandreBourdeaudhui <alexandre.bourdeaudhui@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "brunch watch -s",
-    "build:babel": "babel app -d build",
-    "build:brunch": "brunch build --production",
+    "start": "brunch watch --server",
+    "build": "babel src -d build",
     "test": "mocha --reporter spec test/.setup.js test/**/*.test.js",
     "test:watch": "mocha --recursive --reporter spec -w test/.setup.js test/**/*.test.js",
     "lint": "eslint app test"
   },
   "dependencies": {
-    "emojione": "^3.1.2",
-    "glamor": "^2.20.40",
-    "glamorous": "^4.9.1",
-    "prop-types": "^15.5.10",
-    "react": "^15.6.1",
     "react-syntax-highlighter": "^5.7.0",
     "sanitize-html": "^1.14.1"
   },
+  "peerDependencies": {
+    "emojione": "^3.1.2",
+    "glamor": "^2.20.40",
+    "glamorous": "^4.9.1",
+    "react": "^15.6.1"
+  },
   "devDependencies": {
+    "auto-reload-brunch": "^2.7.1",
     "babel-brunch": "git+https://github.com/webdif/babel-brunch.git",
     "babel-cli": "^6.26.0",
     "babel-eslint": "^7.2.3",
@@ -34,14 +35,20 @@
     "babel-preset-react": "^6.24.1",
     "brunch": "^2.10.9",
     "chai": "^4.1.2",
+    "emojione": "^3.1.2",
     "eslint": "^4.4.1",
     "eslint-config-airbnb": "^15.1.0",
     "eslint-import-resolver-node": "^0.3.0",
     "eslint-plugin-import": "^2.3.0",
     "eslint-plugin-jsx-a11y": "^5.0.3",
     "eslint-plugin-react": "^7.1.0",
+    "glamor": "^2.20.40",
+    "glamorous": "^4.9.1",
     "jsdom": "^11.2.0",
-    "mocha": "^3.5.3"
+    "mocha": "^3.5.3",
+    "prop-types": "^15.5.10",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1"
   },
   "main": "build/src/index.js",
   "files": [
@@ -51,7 +58,10 @@
   "bugs": {
     "url": "https://github.com/O-clock/formatizer/issues"
   },
-  "description": "Format nicely your Chat",
+  "description": "Format easily your message.",
   "homepage": "https://github.com/O-clock/formatizer#readme",
-  "keywords": []
+  "keywords": [
+    "format",
+    "message"
+  ]
 }

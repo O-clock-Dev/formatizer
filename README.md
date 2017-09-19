@@ -1,9 +1,18 @@
 # Formatizer
 
+## :muscle: Peer dependencies
+You need these packages for install **Formatizer**.
+  * React
+  * Glamor & Glamorous
+  * Emojione
+
+If you don't have these, please install `yarn add react glamor glamorous emojione`
+
+
 ## :rocket: Installation
 To install `formatizer` :
-  - With **Yarn**, `yarn add formatizer`
-  - Or, with **NPM**, `npm install formatizer`
+  * With **Yarn**, `yarn add formatizer`
+  * Or, with **NPM**, `npm install formatizer`
 
 
 ## :sunny: Synopsis
@@ -11,7 +20,8 @@ With this module, you can format your text more easily. For example, you can **b
 
 
 ## :gear: Options
-Formatizer just need **one** parameter : **message**. It's a string and **Formatizer** _will format it_.
+Formatizer need just **one** parameter : **message**.   
+You should pass a string and **Formatizer** _will format it_.
 
 
 ## :eyes: Code Example
@@ -40,36 +50,46 @@ const App = () => (
 ```
 
 
+## :eyes: Example
+
+You can also try this example in live :
+  * Download [here (SSH)](git@github.com:O-clock/formatizer.git) or [here (HTTPS)](https://github.com/O-clock/formatizer.git)
+  * Install package via `yarn` or `npm install`
+  * Launch watcher via `yarn start` or `npm start`
+  * Go http://localhost:3333/
+  * Test it ! :tada:
+
+
 ## :pick: API Reference
-- Message **bold** :   
+* Message **bold** :   
 ```js
 const message = '*message*';
 <Formatizer message={message} />
 // Output: message in BOLD
 ```
 
-- Message _italic_ :   
+* Message _italic_ :   
 ```js
 const message = '_message_';
 <Formatizer message={message} />
 // Output: message in ITALIC
 ```
 
-- Message ~~strike~~ :   
+* Message ~~strike~~ :   
 ```js
 const message = '~message~';
 <Formatizer message={message} />
 // Output: message in STRIKE
 ```
 
-- Smiley :sunglasses: | :star: | :heart:, or other... :
+* Smiley :sunglasses: | :star: | :heart:, or other... :
 ```js
 const message = ':sunglasses: | :star: | :heart: ';
 <Formatizer message={message} />
 // Output: Smiley !
 ```
 
-- Snippet Code :
+* Snippet Code :
 ```js
 const message = '```js const a = "string"```';   
 // You can use : 'apache', 'apacheconf', 'bash', 'sh', 'zsh', 'css', 'xml', 'html', 'xhtml', 'rss', 'atom', 'xjb', 'xsd', 'xsl', 'plist', 'ini', 'json', 'javascript', 'js', 'jsx', 'less', 'markdown', 'md', 'mkdown', 'mkd', 'php', 'scss', 'sql', 'stylus', 'styl' or 'twig',
@@ -77,23 +97,23 @@ const message = '```js const a = "string"```';
 // Output: Code Snipper like here !
 ```
 
-- `Code` :
+* `Code` :
 ```js
 const message = '`const a = "string"`'
 <Formatizer message={message} />
 // Output: Code
 ```
 
-- > Message Blockquote :   
+* > Message Blockquote :   
 ```js
 const message = '> Message';
 <Formatizer message={message} />
 // Output: message in Blockquote
 ```
 
-- We can format links too.
+* We can format links too.
 ```js
-const message = 'https://github.com/o-clock/formatizer';
+const message = 'https://github.com/o*clock/formatizer';
 <Formatizer message={message} />
 // Output: Link formatted
 ```

@@ -16,7 +16,8 @@ import Emojione from 'emojione';
  */
 Emojione.imageType = 'svg';
 Emojione.sprites = true;
-Emojione.imagePathSVGSprites = 'images/common/emojione.svg';
+Emojione.ascii = true;
+Emojione.imagePathSVGSprites = './emojione.svg';
 
 
 /*
@@ -26,10 +27,7 @@ export const shortnameToImage = emoji =>
   Emojione.shortnameToImage(emoji);
 
 const EmojioneContainer = ({ className, emoji }) => (
-  <span
-    className={className}
-    dangerouslySetInnerHTML={{ __html: shortnameToImage(emoji) }}
-  />
+  <span className={className} dangerouslySetInnerHTML={{ __html: shortnameToImage(emoji) }} />
 );
 
 

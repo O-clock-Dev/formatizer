@@ -4,6 +4,7 @@
   "rules": {
     "brace-style": ["error", "stroustrup", { "allowSingleLine": true }],
     "class-methods-use-this": "off",
+    "import/no-extraneous-dependencies": "off",
     "jsx-a11y/no-static-element-interactions": "off",
     "max-len": ["error", { "ignoreUrls": true }, { "ignoreStrings": false }, { "code": 100 }],
     "no-console": "off",

@@ -5,12 +5,6 @@ exports.config =
   # Plugins options
   ###
   plugins:
-    # Js
-    uglify:
-      compress:
-        drop_console: true
-        drop_debugger: true
-
     # Server
     autoReload:
       enabled: true
@@ -19,20 +13,15 @@ exports.config =
   # Builds
   ###
   files:
-    stylesheets:
-      joinTo: 'app.css'
-      order:
-        before: 'app/styles/reset.styl'
-
     javascripts:
       joinTo: 'app.js'
 
   paths:
-    watched: ['app']
+    watched: ['example']
 
   modules:
     autoRequire:
-      'app.js': ['src/index']
+      'app.js': ['example/index']
 
   ###
   # Production
