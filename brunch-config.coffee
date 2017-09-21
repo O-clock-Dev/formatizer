@@ -17,7 +17,7 @@ exports.config =
       joinTo: 'app.js'
 
   paths:
-    watched: ['example']
+    watched: ['example', 'src']
 
   modules:
     autoRequire:
