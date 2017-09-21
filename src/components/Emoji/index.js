@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
-import Emojione from 'emojione';
+import { Emoji } from 'emoji-mart';
 
 
 /*
@@ -12,39 +12,33 @@ import Emojione from 'emojione';
 
 
 /*
- * Parameters
+ * Component
  */
-Emojione.imageType = 'svg';
-Emojione.sprites = true;
-Emojione.ascii = true;
-Emojione.imagePathSVGSprites = './emojione.svg';
+const EmojiContainer = ({ emoji }) => (
+  <Emoji
+    emoji={emoji}
+    size={32}
+    set={'apple'}
+    sheetSize={32}
+    // Local
+    // backgroundImageFn={(set, sheetSize) => `/images/sheet_${set}_${sheetSize}.png`}
 
-
-/*
- * Code
- */
-export const shortnameToImage = emoji =>
-  Emojione.shortnameToImage(emoji);
-
-const EmojioneContainer = ({ className, emoji }) => (
-  <span className={className} dangerouslySetInnerHTML={{ __html: shortnameToImage(emoji) }} />
+    // Remote
+    backgroundImageFn={((set, sheetSize) =>
+      `https://unpkg.com/emoji-datasource-${set}@3.0.0/img/${set}/sheets/${sheetSize}.png`)}
+  />
 );
 
 
 /*
  * PropTypes
  */
-EmojioneContainer.propTypes = {
-  className: PropTypes.string,
+EmojiContainer.propTypes = {
   emoji: PropTypes.string.isRequired,
-};
-
-EmojioneContainer.defaultProps = {
-  className: 'emojione-container',
 };
 
 
 /*
- * Export default
+ * Export
  */
-export default EmojioneContainer;
+export default EmojiContainer;
