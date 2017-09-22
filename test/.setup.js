@@ -4,7 +4,6 @@
 var path = require('path');
 var babelRegister = require('babel-register');
 var babelResolver = require('babel-resolver');
-var LocalStorage = require('node-localstorage').LocalStorage;
 var JSDOM = require('jsdom').JSDOM;
 
 
@@ -30,6 +29,3 @@ Object.keys(document.defaultView).forEach((property) => {
     global[property] = document.defaultView[property];
   }
 });
-global.navigator = { userAgent: 'node.js' };
-global.localStorage = new LocalStorage('./temp');
-documentRef = document;
