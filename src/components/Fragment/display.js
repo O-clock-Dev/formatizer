@@ -113,6 +113,7 @@ const displayFragments = fragments => (
       arr.forEach((str) => {
         if (str.match(regex)) {
           const emoji = <Emoji emoji={str} />;
+
           const strId = arr.indexOf(str);
           arr.splice(strId, 1, emoji);
         }
