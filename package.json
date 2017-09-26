@@ -10,9 +10,11 @@
   "scripts": {
     "start": "brunch watch --server",
     "build": "babel src -d build",
-    "test": "mocha --reporter spec test/.setup.js test/**/*.test.js",
-    "test:watch": "mocha --recursive --reporter spec -w test/.setup.js test/**/*.test.js",
-    "lint": "eslint app test"
+    "test": "mocha --reporter spec tests/.setup.js tests/**/*.test.js",
+    "test:watch": "mocha --recursive --reporter spec -w tests/.setup.js tests/**/*.test.js",
+    "lint": "eslint app tests",
+    "precommit": "yarn test",
+    "prepush": "yarn test"
   },
   "dependencies": {
     "react-syntax-highlighter": "^5.7.0",
@@ -46,6 +48,7 @@
     "eslint-plugin-react": "^7.1.0",
     "glamor": "^2.20.40",
     "glamorous": "^4.9.1",
+    "husky": "^0.14.3",
     "jsdom": "^11.2.0",
     "mocha": "^3.5.3",
     "prop-types": "^15.5.10",
