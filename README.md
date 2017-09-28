@@ -129,9 +129,10 @@ const message = 'https://github.com/o*clock/formatizer';
 
 ## Want to contribute ?
  * All contributions are welcome !
-  * Download this package.
+  * Download this.
   * Please install dependencies.
   * Run `yarn start`
+  * Let's go http://localhost:3333/
   * Let's go edit `src` folder
   * Have fun :smirk:.
   * Let's MR !

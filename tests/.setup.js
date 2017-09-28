@@ -4,6 +4,8 @@
 var path = require('path');
 var babelRegister = require('babel-register');
 var babelResolver = require('babel-resolver');
+var Enzyme = require('enzyme');
+var Adapter = require('enzyme-adapter-react-16');
 var JSDOM = require('jsdom').JSDOM;
 
 
@@ -13,6 +15,12 @@ var JSDOM = require('jsdom').JSDOM;
 const app = path.join(__dirname, '..', 'app');
 const resolveModuleSource = babelResolver(app);
 babelRegister({ resolveModuleSource });
+
+
+/*
+ * Enzyme
+ */
+Enzyme.configure({ adapter: new Adapter() });
 
 
 /*

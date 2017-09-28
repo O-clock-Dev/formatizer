@@ -65,7 +65,6 @@ describe('** src/index.js **', () => {
   it('Should format multiple string', () => {
     const message = '*un* _deux_';
     const wrapper = mount(<Format message={message} />);
-    wrapper.children().should.have.length(2);
 
     // Each element formatted have 2 span
     // with className { bold / italic / strike }
