@@ -55,19 +55,16 @@ const languages = [
  * Component
  */
 const Highlight = ({ className, language, children }) => {
-  const languageExist = languages.some(lang => lang === language);
-
   // Attribute Options
   const options = {
     style: atomOneDark,
     customStyle: PreFormatted,
-    language: languageExist ? language : null,
+    language: languages.find(lang => lang === language),
   };
 
-
-    /*
-     * View
-     */
+  /*
+   * View
+   */
   return (
     <SyntaxHighlighter className={className} {...options}>
       {children}
