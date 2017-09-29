@@ -54,52 +54,39 @@ const languages = [
 /*
  * Component
  */
-export default class Highlight extends React.Component {
-  /*
-   * PropTypes
-   */
-  static propTypes = {
-    children: PropTypes.string.isRequired,
-    language: PropTypes.oneOf(languages),
-  }
+const Highlight = ({ className, language, children }) => {
+  const languageExist = languages.filter(lang => lang === language)[0];
 
-  static defaultProps = {
-    language: '',
-  }
-
-
-  /*
-   * Ref
-   */
-  saveNode = (node) => {
-    this.node = node;
-  }
-
-
-  /*
-   * Render
-   */
-  render() {
-    const attrs = { ...this.props };
-
-    // Delete Children
-    delete attrs.children;
-
-    // Attribute Options
-    const options = {
-      style: atomOneDark,
-      customStyle: PreFormatted,
-      language: attrs.language,
-    };
+  // Attribute Options
+  const options = {
+    style: atomOneDark,
+    customStyle: PreFormatted,
+    language: !languageExist ? '' : languageExist,
+  };
 
 
     /*
      * View
      */
-    return (
-      <SyntaxHighlighter {...options} ref={this.saveNode} {...attrs}>
-        {this.props.children}
-      </SyntaxHighlighter>
-    );
-  }
-}
+  return (
+    <SyntaxHighlighter className={className} {...options}>
+      {children}
+    </SyntaxHighlighter>
+  );
+};
+
+
+/*
+ * PropTypes
+ */
+Highlight.propTypes = {
+  className: PropTypes.string.isRequired,
+  children: PropTypes.string.isRequired,
+  language: PropTypes.string.isRequired,
+};
+
+
+/*
+ * Export
+ */
+export default Highlight;

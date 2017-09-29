@@ -4,9 +4,9 @@
 You need these packages for install **Formatizer**.
   * React
   * Glamor & Glamorous
-  * Emojione
+  * Emoji-Mart
 
-If you don't have these, please install `yarn add react glamor glamorous emojione`
+If you don't have these, please install `yarn add react glamor glamorous emoji-mart`
 
 
 ## :rocket: Installation
@@ -16,7 +16,7 @@ To install `formatizer` :
 
 
 ## :sunny: Synopsis
-With this module, you can format your text more easily. For example, you can **bold**, _italic_ or ~~strike~~ an message, send a smiley, a Snippet Code or a Blockquote... Let's see API Reference for more details. :smile:
+With this module, you can format your text more easily. For example, you can **bold**, _italic_ or ~~strike~~ an message, send a smiley, a Snippet Code or a Blockquote... Let's see [API Reference](https://github.com/O-clock/formatizer#pick-api-reference) for more details. :smile:
 
 
 ## :gear: Options
@@ -125,6 +125,17 @@ const message = 'https://github.com/o*clock/formatizer';
 ## :busts_in_silhouette: Contributors
 * [Maxime Vasse](https://github.com/webdif)
 * [Alexandre Bourdeaud'hui](https://github.com/alexandrebourdeaudhui)
+
+
+## Want to contribute ?
+ * All contributions are welcome !
+  * Download this.
+  * Please install dependencies.
+  * Run `yarn start`
+  * Let's go http://localhost:3333/
+  * Let's go edit `src` folder
+  * Have fun :smirk:.
+  * Let's MR !
 
 
 ## License

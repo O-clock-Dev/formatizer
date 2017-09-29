@@ -1,15 +1,17 @@
+/* eslint-disable react/no-array-index-key */
+
 /*
  * Npm import
  */
 import React from 'react';
 import sanitizeHtml from 'sanitize-html';
+import Emoji from '../Emoji';
 
 
 /*
  * Local import
  */
 // Display
-import { shortnameToImage } from '../Emoji';
 import Fragment from './index';
 
 // Formatting
@@ -103,17 +105,33 @@ const displayFragments = fragments => (
     if (typeof Frag === 'string') {
       // Get rid of html or XSS
       const text = sanitizeHtml(Frag, sanitizeOptions);
+      // eslint-disable-next-line
+      const regex = /(\:\w+\:)/ig;
 
-      // Add emoji
-      const html = { __html: shortnameToImage(text) };
+      const arr = text.split(regex);
 
-      // Insert into HTML
-      return (
-        <span
-          key={index}
-          dangerouslySetInnerHTML={html}
-        />
-      );
+      arr.forEach((str) => {
+        if (str.match(regex)) {
+          const emoji = <Emoji emoji={str} />;
+          const strId = arr.indexOf(str);
+          arr.splice(strId, 1, emoji);
+        }
+      });
+
+      return arr.map((element, elementId) => {
+        const key = elementId + index;
+
+        // If element is an object
+        // Element is a smiley.
+        if (typeof element === 'object') {
+          return React.cloneElement(element, { key });
+        }
+
+        // Otherwise, element is a simple string
+        // Display it.
+        const html = { __html: element };
+        return <span key={key} dangerouslySetInnerHTML={html} />;
+      });
     }
     return React.cloneElement(Frag, { key: index });
   })
