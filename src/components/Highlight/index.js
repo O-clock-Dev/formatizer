@@ -55,13 +55,13 @@ const languages = [
  * Component
  */
 const Highlight = ({ className, language, children }) => {
-  const languageExist = languages.filter(lang => lang === language)[0];
+  const languageExist = languages.some(lang => lang === language);
 
   // Attribute Options
   const options = {
     style: atomOneDark,
     customStyle: PreFormatted,
-    language: !languageExist ? '' : languageExist,
+    language: languageExist ? language : null,
   };
 
 
@@ -82,7 +82,11 @@ const Highlight = ({ className, language, children }) => {
 Highlight.propTypes = {
   className: PropTypes.string.isRequired,
   children: PropTypes.string.isRequired,
-  language: PropTypes.string.isRequired,
+  language: PropTypes.string,
+};
+
+Highlight.defaultProps = {
+  language: '',
 };
 
 
