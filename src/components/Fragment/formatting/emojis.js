@@ -56,7 +56,7 @@ const emojis = [
   },
   {
     pattern: /(^|\s)(:-?\))($|\s)/g,
-    replace: ':slight_smile:',
+    replace: ':slightly_smiling_face:',
   },
   {
     pattern: /(^|\s)(:-?\()($|\s)/g,
