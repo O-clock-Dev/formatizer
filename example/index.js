@@ -24,8 +24,8 @@ class App extends React.Component {
    */
   state = {
     // eslint-disable-next-line
-    // message: "test *test* _test_ ~test~\n\n> test test\n\n\n:star: test :sunglasses: :heart: test :scream: :smile: :D :) 8-)\n\n```js\nconst abc = \"test\";\nconst def = 123;\n\nreturn abc + def;\n```\n\n test `test`\n\nhttps://github.com/O-clock/formatizer\n\n@test_mention",
-    message: 'test :sunglasses: :nimportequoi: D:',
+    message: "test *test* _test_ ~test~\n\n> test test\n\n\n:star: test :sunglasses: :heart: test :scream: :smile: :D :) 8-)\n\n```js\nconst abc = \"test\";\nconst def = 123;\n\nreturn abc + def;\n```\n\n test `test`\n\nhttps://github.com/O-clock/formatizer\n\n@test_mention",
+    // message: 'test :sunglasses: :nimportequoi: D:',
   }
 
 
