@@ -53,29 +53,29 @@ const App = () => (
 ## :eyes: Example
 
 You can also try this example in live :
-  * Download [here (SSH)](git@github.com:O-clock/formatizer.git) or [here (HTTPS)](https://github.com/O-clock/formatizer.git)
-  * Install package via `yarn` or `npm install`
+  * Download it.
+  * Install packages via `yarn` or `npm install`
   * Launch watcher via `yarn start` or `npm start`
   * Go http://localhost:3333/
   * Test it ! :tada:
 
 
 ## :pick: API Reference
-* Message **bold** :   
+* **bold** :   
 ```js
 const message = '*message*';
 <Formatizer message={message} />
 // Output: message in BOLD
 ```
 
-* Message _italic_ :   
+* _italic_ :   
 ```js
 const message = '_message_';
 <Formatizer message={message} />
 // Output: message in ITALIC
 ```
 
-* Message ~~strike~~ :   
+* ~~strike~~ :   
 ```js
 const message = '~message~';
 <Formatizer message={message} />
@@ -104,7 +104,7 @@ const message = '`const a = "string"`'
 // Output: Code
 ```
 
-* > Message Blockquote :   
+* > Blockquote :   
 ```js
 const message = '> Message';
 <Formatizer message={message} />
@@ -113,13 +113,24 @@ const message = '> Message';
 
 * We can format links too.
 ```js
-const message = 'https://github.com/o*clock/formatizer';
+const message = 'https://github.com/o-clock/formatizer';
 <Formatizer message={message} />
 // Output: Link formatted
 ```
 
 
 ## :construction: Tests
+You can run tests with:
+
+  * `yarn test`: Execute all tests, one time.
+
+  * `yarn test:one  $1`: Execute one test,
+    * For example, if we're doing `yarn test:one tests/components/Machin.test.js`
+    * $1 is `tests/components/Format.test.js`
+
+
+  * `yarn test:watch`: same `yarn test`, but here it's watching for change and auto-reload
+
 
 
 ## :busts_in_silhouette: Contributors
@@ -129,13 +140,16 @@ const message = 'https://github.com/o*clock/formatizer';
 
 ## Want to contribute ?
  * All contributions are welcome !
-  * Download this.
+  * Download it.
   * Please install dependencies.
   * Run `yarn start`
   * Let's go http://localhost:3333/
   * Let's go edit `src` folder
-  * Have fun :smirk:.
+  * Have fun :smirk:
   * Let's MR !
+
+
+This project have a little [Husky](https://github.com/typicode/husky) :dog:.
 
 
 ## License
