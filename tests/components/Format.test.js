@@ -109,6 +109,12 @@ describe('** src/index.js **', () => {
     wrapper.find(Highlight).should.have.length(1);
   });
 
+  it('Should add <Highlight /> for a Snippet withou language', () => {
+    const message = 'Bonjour, ``` coucou ```';
+    const wrapper = mount(<Format message={message} />);
+    wrapper.find(Highlight).should.have.length(1);
+  });
+
   it('Should add <blockquote> for a Quote', () => {
     const message = '> Bonjour, Je suis une quote';
     const wrapper = mount(<Format message={message} />);
