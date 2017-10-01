@@ -1,7 +1,7 @@
 # Formatizer
 
 ## :muscle: Peer dependencies
-You need these packages for install **Formatizer**.
+You need these packages to install **Formatizer**.
   * React
   * Glamor & Glamorous
   * Emoji-Mart
@@ -16,12 +16,11 @@ To install `formatizer` :
 
 
 ## :sunny: Synopsis
-With this module, you can format your text more easily. For example, you can **bold**, _italic_ or ~~strike~~ an message, send a smiley, a Snippet Code or a Blockquote... Let's see [API Reference](https://github.com/O-clock/formatizer#pick-api-reference) for more details. :smile:
+With this module, you can format your text more easily. For example, you can format into **bold**, _italic_ or ~~strike~~ a message, send a smiley, a code snippet or a blockquote... Let's see [API Reference](https://github.com/O-clock/formatizer#pick-api-reference) for more details. :smile:
 
 
 ## :gear: Options
-Formatizer need just **one** parameter : **message**.   
-You should pass a string and **Formatizer** _will format it_.
+`<Formatizer />` just need a `message` prop: _the string you want format._
 
 
 ## :eyes: Code Example
@@ -149,7 +148,9 @@ You can run tests with:
   * Let's MR !
 
 
-This project have a little [Husky](https://github.com/typicode/husky) :dog:.
+This project has a little [Husky](https://github.com/typicode/husky) :dog:.
 
 
 ## License
+
+MIT License.
