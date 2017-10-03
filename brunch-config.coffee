@@ -22,11 +22,3 @@ exports.config =
   modules:
     autoRequire:
       'app.js': ['example/index']
-
-  ###
-  # Production
-  ###
-  # overrides:
-  #   production:
-  #     paths:
-  #       public: 'dist'
