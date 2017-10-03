@@ -1567,11 +1567,9 @@ elliptic@^6.0.0:
     minimalistic-assert "^1.0.0"
     minimalistic-crypto-utils "^1.0.0"
 
-emoji-mart@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/emoji-mart/-/emoji-mart-1.0.1.tgz#0ef2fd2bf4b6762aab7486c26c574387f034e392"
-  dependencies:
-    measure-scrollbar "^0.1.0"
+emoji-mart@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/emoji-mart/-/emoji-mart-2.0.1.tgz#b76ea33f2dabc82d8c1d4b6463c8a07fbce23682"
 
 emoji-regex@^6.1.0:
   version "6.5.1"
@@ -2145,9 +2143,9 @@ glamor@^2.20.40:
     prop-types "^15.5.10"
     through "^2.3.8"
 
-glamorous@^4.9.1:
-  version "4.9.1"
-  resolved "https://registry.yarnpkg.com/glamorous/-/glamorous-4.9.1.tgz#41cc6cbafe917e52966dad98101f2ef9344ec118"
+glamorous@^4.9.7:
+  version "4.9.7"
+  resolved "https://registry.yarnpkg.com/glamorous/-/glamorous-4.9.7.tgz#78bb008d1404b5bd91ad4d043ec0dc6430ad2653"
   dependencies:
     brcast "^3.0.0"
     fast-memoize "^2.2.7"
@@ -2935,10 +2933,6 @@ md5.js@^1.3.4:
   dependencies:
     hash-base "^3.0.0"
     inherits "^2.0.1"
-
-measure-scrollbar@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/measure-scrollbar/-/measure-scrollbar-0.1.0.tgz#2bbfac6773bcbb98d814e6890554c0b92846fe6f"
 
 media-typer@0.3.0:
   version "0.3.0"
