@@ -144,8 +144,8 @@ You can run tests with:
   * Run `yarn start`
   * Let's go http://localhost:3333/
   * Let's go edit `src` folder
-  * Have fun :smirk:
-  * Let's MR !
+  * Have fun
+  * Go Pull Requests
 
 
 This project has a little [Husky](https://github.com/typicode/husky) :dog:.
