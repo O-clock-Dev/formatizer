@@ -1,6 +1,6 @@
 {
   "name": "formatizer",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/O-clock/formatizer.git"
@@ -10,6 +10,7 @@
   "scripts": {
     "start": "brunch watch --server",
     "build": "babel src -d build",
+    "publish": "rm -rf build/ && yarn run build && npm publish",
     "test": "mocha --reporter spec tests/.setup.js tests/**/*.test.js",
     "test:one": "mocha --watch --reporter spec tests/.setup.js $1",
     "test:watch": "mocha --recursive --reporter spec -w tests/.setup.js tests/**/*.test.js",
