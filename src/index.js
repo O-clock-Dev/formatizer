@@ -14,8 +14,10 @@ import { displayHtml } from './components/Fragment/display';
 /*
  * Component
  */
-const Format = ({ message }) => (
-  <div>{displayHtml(message)}</div>
+const Format = ({ className, message }) => (
+  <div className={className}>
+    {displayHtml(message)}
+  </div>
 );
 
 
@@ -24,10 +26,12 @@ const Format = ({ message }) => (
  */
 Format.propTypes = {
   message: PropTypes.string,
+  className: PropTypes.string,
 };
 
 Format.defaultProps = {
   message: '',
+  className: '',
 };
 
 

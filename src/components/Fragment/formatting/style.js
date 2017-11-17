@@ -40,8 +40,6 @@ export const Blockquote = blockquote({
 });
 
 export const Link = a({
-  background: 'linear-gradient(to bottom, transparent 50%, #000 50%) no-repeat content-box 0% 90% / 100% 2px',
-  textShadow: '-2px -1px #FFF, -2px 0 #FFF, -2px 1px #FFF, -1px -1px #FFF, -1px 0 #FFF, -1px 1px #FFF, 0 -1px #FFF, 0 1px #FFF, 1px -1px #FFF, 1px 0 #FFF, 1px 1px #FFF, 2px -1px #FFF, 2px 0 #FFF, 2px 1px #FFF',
-  // .course-chat-message--teacher &
-  //   background-underline-color: $raw-light
+  textDecoration: 'underline',
+  textDecorationSkip: 'ink',
 });

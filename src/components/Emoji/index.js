@@ -44,11 +44,12 @@ const EmojiContainer = ({ emoji }) => {
       // Otherwise, display Emoji
       : <Emoji
         emoji={emoji}
-        size={32}
-        set={'apple'}
+        size={24}
+        set={'emojione'}
         sheetSize={32}
         // Local
-        // backgroundImageFn={(set, sheetSize) => `/images/sheet_${set}_${sheetSize}.png`}
+        // backgroundImageFn={(set, sheetSize) =>
+        //  `../../oAssets/images/sheet_${set}_${sheetSize}.png`}
 
         // Remote
         backgroundImageFn={((set, sheetSize) =>
@@ -64,7 +65,6 @@ const EmojiContainer = ({ emoji }) => {
 EmojiContainer.propTypes = {
   emoji: PropTypes.string.isRequired,
 };
-
 
 /*
  * Export
