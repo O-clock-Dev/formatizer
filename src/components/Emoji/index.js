@@ -44,9 +44,9 @@ const EmojiContainer = ({ emoji }) => {
       // Otherwise, display Emoji
       : <Emoji
         emoji={emoji}
-        size={24}
+        size={21}
         set={'emojione'}
-        sheetSize={32}
+        sheetSize={64}
         // Local
         // backgroundImageFn={(set, sheetSize) =>
         //  `../../oAssets/images/sheet_${set}_${sheetSize}.png`}
