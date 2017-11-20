@@ -6,12 +6,10 @@ import { PropTypes } from 'prop-types';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { atomOneDark } from 'react-syntax-highlighter/dist/styles';
 
-
 /*
  * Local Import
  */
 import { PreFormatted } from './style';
-
 
 /*
  * Code
@@ -50,7 +48,6 @@ const languages = [
   'twig',
 ];
 
-
 /*
  * Component
  */
@@ -72,7 +69,6 @@ const Highlight = ({ className, language, children }) => {
   );
 };
 
-
 /*
  * PropTypes
  */
@@ -85,7 +81,6 @@ Highlight.propTypes = {
 Highlight.defaultProps = {
   language: '',
 };
-
 
 /*
  * Export

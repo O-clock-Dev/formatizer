@@ -3,12 +3,10 @@
  */
 import React from 'react';
 
-
 /*
  * Local import
  */
 import Emoji from '../../Emoji';
-
 
 /*
  * Code
@@ -31,7 +29,7 @@ const emojis = [
     replace: ':grinning:',
   },
   {
-    pattern: /(^|\s)(:-?d)($|\s)/ig,
+    pattern: /(^|\s)(:-?d)($|\s)/gi,
     replace: ':grin:',
   },
   {
@@ -43,11 +41,11 @@ const emojis = [
     replace: ':laughing:',
   },
   {
-    pattern: /(^|\s)(:-?o)($|\s)/ig,
+    pattern: /(^|\s)(:-?o)($|\s)/gi,
     replace: ':open_mouth:',
   },
   {
-    pattern: /(^|\s)(:-?x)($|\s)/ig,
+    pattern: /(^|\s)(:-?x)($|\s)/gi,
     replace: ':no_mouth:',
   },
   {
@@ -67,15 +65,15 @@ const emojis = [
     replace: ':confused:',
   },
   {
-    pattern: /(^|\s)(:-?p)($|\s)/ig,
+    pattern: /(^|\s)(:-?p)($|\s)/gi,
     replace: ':yum:',
   },
   {
-    pattern: /(^|\s)(:-?\*)($|\s)/ig,
+    pattern: /(^|\s)(:-?\*)($|\s)/gi,
     replace: ':kiss:',
   },
   {
-    pattern: /(^|\s)(:'\()($|\s)/ig,
+    pattern: /(^|\s)(:'\()($|\s)/gi,
     replace: ':cry:',
   },
   {
@@ -95,7 +93,6 @@ const emojiFormatting = emojis.map(emoji => ({
   ...emojiDefault,
   ...emoji,
 }));
-
 
 /*
  * Export default

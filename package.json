@@ -14,9 +14,16 @@
     "test": "mocha --reporter spec tests/.setup.js tests/**/*.test.js",
     "test:one": "mocha --watch --reporter spec tests/.setup.js $1",
     "test:watch": "mocha --recursive --reporter spec -w tests/.setup.js tests/**/*.test.js",
-    "lint": "eslint app tests",
-    "precommit": "yarn test",
-    "prepush": "yarn test"
+    "lint": "eslint --fix src tests",
+    "pretty": "prettier --write --single-quote --trailing-comma all \"{src,tests}/**/*.js\"",
+    "precommit": "lint-staged && yarn test"
+  },
+  "lint-staged": {
+    "*.js": [
+      "yarn pretty",
+      "yarn lint",
+      "git add"
+    ]
   },
   "dependencies": {
     "react-syntax-highlighter": "^5.7.0",
@@ -53,7 +60,9 @@
     "glamorous": "^4.9.7",
     "husky": "^0.14.3",
     "jsdom": "^11.2.0",
+    "lint-staged": "^5.0.0",
     "mocha": "^3.5.3",
+    "prettier": "^1.8.2",
     "prop-types": "^15.6.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",

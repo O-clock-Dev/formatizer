@@ -4,19 +4,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-
 /*
  * Local Import
  */
 import { Before, After, FragmentValue } from './style';
-
 
 /*
  * Code
  */
 const Fragment = ({ replacement, values }) => {
   // eslint-disable-next-line max-len
-  const { replace, className, before, after, tag, attrs, callback } = replacement;
+  const {
+    replace,
+    className,
+    before,
+    after,
+    tag,
+    attrs,
+    callback,
+  } = replacement;
 
   // Before & after
   const beforeValue = values[before] || '';
@@ -31,9 +37,8 @@ const Fragment = ({ replacement, values }) => {
   if (replace) {
     fragmentValue = replace;
   }
-
-  // Parens
   else if (className) {
+    // Parens
     const value = typeof replacement.value === 'number' ? replacement.value : 0;
     if (attrs) {
       attrs.forEach((attribute) => {
@@ -46,9 +51,8 @@ const Fragment = ({ replacement, values }) => {
     }
     fragmentValue = values[value];
   }
-
-  // What else?
   else {
+    // What else?
     console.error('Must use `replace` or `className`', replacement);
     return false;
   }
@@ -71,7 +75,6 @@ const Fragment = ({ replacement, values }) => {
   );
 };
 
-
 /*
  * PropTypes
  */
@@ -79,7 +82,6 @@ Fragment.propTypes = {
   replacement: PropTypes.object.isRequired,
   values: PropTypes.array.isRequired,
 };
-
 
 /*
  * Export default

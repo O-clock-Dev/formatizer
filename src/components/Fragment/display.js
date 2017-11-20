@@ -7,7 +7,6 @@ import React from 'react';
 import sanitizeHtml from 'sanitize-html';
 import Emoji from '../Emoji';
 
-
 /*
  * Local import
  */
@@ -29,7 +28,6 @@ const sanitizeOptions = {
   allowedTags: [],
   allowedAttributes: [],
 };
-
 
 /*
  * Code
@@ -72,7 +70,9 @@ const getFragments = (replacements, message) => {
             const values = Array.from(result);
 
             // Fragment
-            subFragments.push(<Fragment replacement={replacement} values={values} />);
+            subFragments.push(
+              <Fragment replacement={replacement} values={values} />,
+            );
 
             // End
             msgFragment = messageEnd;
@@ -84,9 +84,8 @@ const getFragments = (replacements, message) => {
           subFragments.push(msgFragment);
         }
       }
-
-      // If this not a string, this is a already a fragment. Nothing to do.
       else {
+        // If this not a string, this is a already a fragment. Nothing to do.
         subFragments.push(messageFragment);
       }
     });
@@ -99,14 +98,13 @@ const getFragments = (replacements, message) => {
   return messageFragments;
 };
 
-
-const displayFragments = fragments => (
+const displayFragments = fragments =>
   fragments.map((Frag, index) => {
     if (typeof Frag === 'string') {
       // Get rid of html or XSS
       const text = sanitizeHtml(Frag, sanitizeOptions);
       // eslint-disable-next-line
-      const regex = /(\:\w+\:)/ig;
+      const regex = /(\:\w+\:)/gi;
 
       const arr = text.split(regex);
 
@@ -135,9 +133,7 @@ const displayFragments = fragments => (
       });
     }
     return React.cloneElement(Frag, { key: index });
-  })
-);
-
+  });
 
 const display = (replacements, message) => {
   // Create fragments
@@ -146,7 +142,6 @@ const display = (replacements, message) => {
   // Return
   return displayFragments(fragments);
 };
-
 
 /*
  * Export

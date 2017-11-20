@@ -3,26 +3,25 @@
  */
 // import React from 'react';
 
-
 /*
  * Export default
  */
 export default [
   {
     className: 'bold',
-    pattern: /\*(.+?)\*($|\s|[.,?!:;)])/mg,
+    pattern: /\*(.+?)\*($|\s|[.,?!:;)])/gm,
     value: 1,
     after: 2,
   },
   {
     className: 'italic',
-    pattern: /_(.+?)_($|\s|[.,?!:;)])/mg,
+    pattern: /_(.+?)_($|\s|[.,?!:;)])/gm,
     value: 1,
     after: 2,
   },
   {
     className: 'strike',
-    pattern: /~(.+?)~($|\s|[.,?!:;)])/mg,
+    pattern: /~(.+?)~($|\s|[.,?!:;)])/gm,
     value: 1,
     after: 2,
   },

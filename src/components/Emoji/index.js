@@ -5,7 +5,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Emoji, emojiIndex } from 'emoji-mart';
 
-
 /*
  * Local import
  */
@@ -24,40 +23,38 @@ const emojiExist = (emoji) => {
   return emojisColons;
 };
 
-
 /*
  * Component
  */
 const EmojiContainer = ({ emoji }) => {
   const emojisColons = emojiExist(emoji);
 
-
   /*
    * View
    */
-  return (
-    (!emojisColons.length)
+  return !emojisColons.length ? (
+    // If Smiley doesn't exist, return string emoji
+    <span>{emoji}</span>
+  ) : (
+    // Otherwise, display Emoji
+    <Emoji
+      emoji={emoji}
+      size={21}
+      set={'emojione'}
+      sheetSize={64}
+      // Local
+      // backgroundImageFn={(set, sheetSize) =>
+      //  `../../oAssets/images/sheet_${set}_${sheetSize}.png`}
 
-      // If Smiley doesn't exist, return string emoji
-      ? <span>{emoji}</span>
-
-      // Otherwise, display Emoji
-      : <Emoji
-        emoji={emoji}
-        size={21}
-        set={'emojione'}
-        sheetSize={64}
-        // Local
-        // backgroundImageFn={(set, sheetSize) =>
-        //  `../../oAssets/images/sheet_${set}_${sheetSize}.png`}
-
-        // Remote
-        backgroundImageFn={((set, sheetSize) =>
-          `https://unpkg.com/emoji-datasource-${set}@3.0.0/img/${set}/sheets/${sheetSize}.png`)}
-      />
+      // Remote
+      backgroundImageFn={(set, sheetSize) =>
+        `https://unpkg.com/emoji-datasource-${set}@3.0.0/img/${set}/sheets/${
+          sheetSize
+        }.png`
+      }
+    />
   );
 };
-
 
 /*
  * PropTypes

@@ -5,21 +5,22 @@ import React from 'react';
 import { should } from 'chai';
 import { mount } from 'enzyme';
 
-
 /*
  * Local Import
  */
 import Format from '../../src';
-import { Code, Link, Blockquote } from '../../src/components/Fragment/formatting/style';
+import {
+  Code,
+  Link,
+  Blockquote,
+} from '../../src/components/Fragment/formatting/style';
 import Highlight from '../../src/components/Highlight';
 import Emoji from '../../src/components/Emoji';
-
 
 /*
  * Code
  */
 should();
-
 
 /*
  * Tests
@@ -41,7 +42,8 @@ describe('** src/index.js **', () => {
     let wrapper = mount(<Format message={message} />);
 
     wrapper
-      .find('span').first()
+      .find('span')
+      .first()
       .hasClass('bold')
       .should.equal(true);
 
@@ -49,7 +51,8 @@ describe('** src/index.js **', () => {
     message = '_test_';
     wrapper = mount(<Format message={message} />);
     wrapper
-      .find('span').first()
+      .find('span')
+      .first()
       .hasClass('italic')
       .should.equal(true);
 
@@ -57,7 +60,8 @@ describe('** src/index.js **', () => {
     message = '~test~';
     wrapper = mount(<Format message={message} />);
     wrapper
-      .find('span').first()
+      .find('span')
+      .first()
       .hasClass('strike')
       .should.equal(true);
   });
@@ -68,8 +72,14 @@ describe('** src/index.js **', () => {
 
     // Each element formatted have 2 span
     // with className { bold / italic / strike }
-    wrapper.find('span').filter('.bold').should.have.length(2);
-    wrapper.find('span').filter('.italic').should.have.length(2);
+    wrapper
+      .find('span')
+      .filter('.bold')
+      .should.have.length(2);
+    wrapper
+      .find('span')
+      .filter('.italic')
+      .should.have.length(2);
   });
 
   it('Should add a <code> when pair of Backtick', () => {

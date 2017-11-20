@@ -3,13 +3,11 @@
  */
 import React from 'react';
 
-
 /*
  * Local import
  */
 import Highlight from '../..//Highlight';
 import { Code, Blockquote, Link } from './style';
-
 
 /*
  * Export default
@@ -53,7 +51,7 @@ export default [
     value: 1,
     after: 2,
     callback() {
-    // callback(mention) {
+      // callback(mention) {
       // if (mention.slice(1) === user.username) {
       //   return { className: 'mention--myself' };
       // }
@@ -66,7 +64,7 @@ export default [
   {
     tag: Blockquote,
     className: 'quote',
-    pattern: /(?:^|\n)>\s?([^\n]+)\n?/mg,
+    pattern: /(?:^|\n)>\s?([^\n]+)\n?/gm,
     value: 1,
   },
   {
