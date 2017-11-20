@@ -104,7 +104,8 @@ const displayFragments = fragments =>
       // Get rid of html or XSS
       const text = sanitizeHtml(Frag, sanitizeOptions);
       // eslint-disable-next-line
-      const regex = /(\:\w+\:)/gi;
+      const regex = /(:[?+\-0-9A-Za-z]+:)/gi;
+      // const regex = /(\:\w+\:)/gi;
 
       const arr = text.split(regex);
 
