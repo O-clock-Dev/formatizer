@@ -9,11 +9,9 @@ import Formatizer from '../src';
 // Usually, you should import like this.
 // import Formatizer from 'formatizer';
 
-
 /*
  * Local Import
  */
-
 
 /*
  * Component
@@ -24,9 +22,10 @@ class App extends React.Component {
    */
   state = {
     // eslint-disable-next-line
-    message: "test *test* _test_ ~test~\n\n> test test\n\n\n:star: test :sunglasses: :heart: test :scream: :smile: :D :test: :) 8-)\n\n```js\nconst abc = \"test\";\nconst def = 123;\n\nreturn abc + def;\n```\n\n test `test`\n\nhttps://github.com/O-clock/formatizer\n\n@test_mention",
-  }
-
+    // message: "test *test* _test_ ~test~\n\n> test test\n\n\n:star: test :sunglasses: :heart: test :scream: :smile: :D :test: :) 8-) :+1::skin-tone-4: \n\n```js\nconst abc = \"test\";\nconst def = 123;\n\nreturn abc + def;\n```\n\n test `test`\n\nhttps://github.com/O-clock/formatizer\n\n@test_mention",
+    message: 'Hello :+1::skin-tone-4: comment ça va ? :wave:',
+    // message: 'Hello comment ça va ? :test:',
+  };
 
   /*
    * Actions
@@ -34,8 +33,7 @@ class App extends React.Component {
   inputChange = (event) => {
     const { value } = event.target;
     this.setState({ message: value });
-  }
-
+  };
 
   /*
    * View
@@ -59,7 +57,6 @@ class App extends React.Component {
     );
   }
 }
-
 
 /*
  * Render

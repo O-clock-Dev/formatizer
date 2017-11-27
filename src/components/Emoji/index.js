@@ -11,10 +11,8 @@ import { Emoji, emojiIndex } from 'emoji-mart';
 
 /*
  * Code
+ * -- Test if Emoji's props matchs with smiley database
  */
-/*
-  * Test if Emoji's props matchs with smiley database
-  */
 const emojiExist = (emoji) => {
   // GetName = [':', 'emoji', ':']
   const getName = emoji.split(':');

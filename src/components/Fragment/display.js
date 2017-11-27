@@ -104,31 +104,27 @@ const displayFragments = fragments =>
       // Get rid of html or XSS
       const text = sanitizeHtml(Frag, sanitizeOptions);
       // eslint-disable-next-line
-      const regex = /(:[?+\-0-9A-Za-z]+:)/gi;
-      // const regex = /(\:\w+\:)/gi;
+      const regex = /(\:[a-zA-Z0-9-_+]+\:(\:skin-tone-[2-6]\:)?)/g;
 
-      const arr = text.split(regex);
+      const arr = text.split(/([\s])+/).map((string) => {
+        const isMatch = string.match(regex);
 
-      arr.forEach((str) => {
-        if (str.match(regex)) {
-          const emoji = <Emoji emoji={str} />;
-
-          const strId = arr.indexOf(str);
-          arr.splice(strId, 1, emoji);
+        if (isMatch) {
+          return <Emoji emoji={string} />;
         }
+
+        return string;
       });
 
       return arr.map((element, elementId) => {
         const key = elementId + index;
 
-        // If element is an object
-        // Element is a smiley.
+        // If element is an object -> Element is a smiley.
         if (typeof element === 'object') {
           return React.cloneElement(element, { key });
         }
 
-        // Otherwise, element is a simple string
-        // Display it.
+        // Otherwise, element is a simple string -> Display it.
         const html = { __html: element };
         return <span key={key} dangerouslySetInnerHTML={html} />;
       });
