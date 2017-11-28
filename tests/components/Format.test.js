@@ -137,6 +137,18 @@ describe('** src/index.js **', () => {
     wrapper.find(Emoji).should.have.length(1);
   });
 
+  it('Should add <Emoji /> for a :+1:', () => {
+    const message = ':+1:';
+    const wrapper = mount(<Format message={message} />);
+    wrapper.find(Emoji).should.have.length(1);
+  });
+
+  it('Should add <Emoji /> for a :+1::skin-tone-6:', () => {
+    const message = ':+1::skin-tone-6:';
+    const wrapper = mount(<Format message={message} />);
+    wrapper.find(Emoji).should.have.length(1);
+  });
+
   it('Should add <Emoji /> for each Smileys and display text between the both', () => {
     const message = ':sunglasses: test :sunny:';
     const wrapper = mount(<Format message={message} />);
