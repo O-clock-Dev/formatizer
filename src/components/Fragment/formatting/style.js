@@ -29,7 +29,7 @@ export const Code = code({
 
 export const Blockquote = blockquote({
   display: 'block',
-  borderLeft: '3px solid rgba(#FFF, .2)',
+  borderLeft: '3px solid rgba(255,255,255,0.2)',
   fontStyle: 'italic',
   paddingLeft: '.7em',
   '&:last-of-type': {
