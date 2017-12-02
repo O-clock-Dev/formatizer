@@ -13,8 +13,8 @@ import { code, blockquote, a } from 'glamorous';
  * Style
  */
 const Style = {
-  background: 'rgba(30, 33, 36, 0.9)',
-  border: 'rgba(30, 33, 36, 0.8)',
+  background: 'rgba(50,55,60,0.5)',
+  border: '1px solid #32373c',
   borderRadius: '.2em',
   margin: '0 .15em',
 };
