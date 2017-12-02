@@ -12,13 +12,14 @@
  * Style
  */
 export const PreFormatted = {
-  background: 'rgba(30, 33, 36, 0.9)',
-  border: 'rgba(30, 33, 36, 0.8)',
+  background: 'rgba(50,55,60,0.5)',
+  border: '1px solid #32373c',
   borderRadius: '.2em',
   color: '#abb2bf',
-  margin: '.2em .15em',
   display: 'block',
   fontSize: '1.5rem',
-  padding: '.4em .8em',
+  fontFamily: 'Menlo',
+  margin: '.2em .15em',
   overflow: 'auto',
+  padding: '.4em .8em',
 };
