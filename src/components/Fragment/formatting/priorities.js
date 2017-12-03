@@ -6,7 +6,7 @@ import React from 'react';
 /*
  * Local import
  */
-import Highlight from '../..//Highlight';
+import Highlight from '../../Highlight';
 import { Code, Blockquote, Link } from './style';
 
 /*
@@ -50,16 +50,6 @@ export default [
     pattern: /(@[a-z0-9_]+)($|\s|[.,?!:;)])/gi,
     value: 1,
     after: 2,
-    callback() {
-      // callback(mention) {
-      // if (mention.slice(1) === user.username) {
-      //   return { className: 'mention--myself' };
-      // }
-      // if (isNotStudent && mention === '@question') {
-      //   return { className: 'mention--question' };
-      // }
-      return false;
-    },
   },
   {
     tag: Blockquote,

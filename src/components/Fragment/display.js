@@ -32,7 +32,7 @@ const sanitizeOptions = {
 /*
  * Code
  */
-const getFragments = (replacements, message) => {
+const getFragments = (replacements, message, mention) => {
   let messageFragments = [message];
 
   // For each replacement
@@ -71,7 +71,11 @@ const getFragments = (replacements, message) => {
 
             // Fragment
             subFragments.push(
-              <Fragment replacement={replacement} values={values} />,
+              <Fragment
+                replacement={replacement}
+                values={values}
+                mention={mention}
+              />,
             );
 
             // End
@@ -132,9 +136,9 @@ const displayFragments = fragments =>
     return React.cloneElement(Frag, { key: index });
   });
 
-const display = (replacements, message) => {
+const display = (replacements, message, mention) => {
   // Create fragments
-  const fragments = getFragments(replacements, message);
+  const fragments = getFragments(replacements, message, mention);
 
   // Return
   return displayFragments(fragments);
@@ -143,5 +147,5 @@ const display = (replacements, message) => {
 /*
  * Export
  */
-export const displayHtml = message => display(allReplacements, message);
-export const displayEmoji = message => display(emojiFormatting, message);
+export const displayHtml = (message, mention) =>
+  display(allReplacements, message, mention);

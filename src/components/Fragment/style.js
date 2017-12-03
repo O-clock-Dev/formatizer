@@ -3,7 +3,7 @@
 /*
  * Package Import
  */
-import { span } from 'glamorous';
+import glamorous from 'glamorous';
 
 /*
  * Local Import
@@ -12,11 +12,11 @@ import { span } from 'glamorous';
 /*
  * Style
  */
-export const Before = span({
+export const Before = glamorous.span({
   display: 'inline',
 });
 
-export const After = span({
+export const After = glamorous.span({
   display: 'inline',
 });
 
@@ -27,11 +27,11 @@ const Style = {
   margin: '0 .15em',
 };
 
-export const FragmentValue = span(
+export const FragmentValue = glamorous.span(
   {
     display: 'inline',
   },
-  ({ className }) => {
+  ({ className, mention }) => {
     const styles = [];
 
     switch (className) {
@@ -51,12 +51,12 @@ export const FragmentValue = span(
         break;
 
       case 'mention':
-        styles.push({ color: '#0ac3a7' });
-        break;
-
-      case 'mention--myself':
-      case 'mention--question':
-        styles.push({ ...Style, color: '#0ac3a7', padding: '0 .25em' });
+        if (mention) {
+          styles.push({ ...Style, color: '#0ac3a7', padding: '0 .25em' });
+        }
+        else {
+          styles.push({ color: '#0ac3a7' });
+        }
         break;
 
       default:

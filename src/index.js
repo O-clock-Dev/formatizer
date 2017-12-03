@@ -12,21 +12,23 @@ import { displayHtml } from './components/Fragment/display';
 /*
  * Component
  */
-const Format = ({ className, message }) => (
-  <div className={className}>{displayHtml(message)}</div>
+const Format = ({ className, children, mention }) => (
+  <div className={className}>{displayHtml(children, mention)}</div>
 );
 
 /*
  * PropTypes
  */
 Format.propTypes = {
-  message: PropTypes.string,
   className: PropTypes.string,
+  children: PropTypes.string,
+  mention: PropTypes.bool,
 };
 
 Format.defaultProps = {
-  message: '',
   className: '',
+  children: '',
+  mention: false,
 };
 
 /*

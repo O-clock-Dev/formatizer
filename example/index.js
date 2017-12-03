@@ -26,7 +26,6 @@ class App extends React.Component {
     message:
       'test *test* _test_ ~test~\n\n> test test\n\n\n:star: test :sunglasses: :heart: test :scream: :smile: :D :test: :) 8-) :+1::skin-tone-4: \n\n```js\nconst abc = "test";\nconst def = 123;\n\nreturn abc + def;\n```\n\n test `test`\n\nhttps://github.com/O-clock/formatizer\n\n@test_mention',
     // message: 'Hello :+1::skin-tone-4: comment ça va ? :wave: :test:',
-    // message: 'Hello comment ça va ? :test:',
   };
 
   /*
@@ -54,7 +53,7 @@ class App extends React.Component {
         {/* Formatizer will format your chat
           and display Hello in bold, world in italic,
           and show star's emoji */}
-        <Formatizer message={message} />
+        <Formatizer>{message}</Formatizer>
       </div>
     );
   }

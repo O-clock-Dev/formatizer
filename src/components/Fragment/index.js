@@ -12,8 +12,7 @@ import { Before, After, FragmentValue } from './style';
 /*
  * Code
  */
-const Fragment = ({ replacement, values }) => {
-  // eslint-disable-next-line max-len
+const Fragment = ({ replacement, values, mention }) => {
   const {
     replace,
     className,
@@ -38,6 +37,10 @@ const Fragment = ({ replacement, values }) => {
     fragmentValue = replace;
   }
   else if (className) {
+    if (className === 'mention') {
+      attrsValue.mention = mention;
+    }
+
     // Parens
     const value = typeof replacement.value === 'number' ? replacement.value : 0;
     if (attrs) {
@@ -81,6 +84,7 @@ const Fragment = ({ replacement, values }) => {
 Fragment.propTypes = {
   replacement: PropTypes.object.isRequired,
   values: PropTypes.array.isRequired,
+  mention: PropTypes.bool.isRequired,
 };
 
 /*

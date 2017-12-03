@@ -1,11 +1,3 @@
-/*
- * Npm import
- */
-// import React from 'react';
-
-/*
- * Export default
- */
 export default [
   {
     className: 'bold',
