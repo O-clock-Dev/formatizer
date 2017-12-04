@@ -14,5 +14,3 @@ yarn-error.log
 
 # Files compiled
 public
-dist
-build
