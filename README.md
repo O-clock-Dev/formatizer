@@ -2,7 +2,7 @@ Pour publier une nouvelle version du module :
 * Commencer une nouvelle release
 * Dans cette release : Éditer le package.json, et lancer un build.
 * Clôre la release.
-* Push.
+* Push. ( Ne pas oublier les tags !  `git push --tags` )
 
 
 ---
@@ -52,8 +52,7 @@ const message = '*test*';
  */
 const App = () => (
   <div>
-    <Formatizer>    {message}
-  </Formatizer>
+    <Formatizer>{message}</Formatizer>
     // Output: In this example, test is formatted in bold
   </div>
 )
