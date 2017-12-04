@@ -46,7 +46,7 @@ export const FragmentValue = glamorous.span(
       case 'strike':
         styles.push({
           background:
-            'linear-gradient(to bottom, transparent 50%, #000 50%) no-repeat content-box 100% 55% / 100% 4px',
+            'linear-gradient(to bottom, transparent 50%, #fff 50%) no-repeat content-box 100% 55%/100% 4px',
         });
         break;
 
