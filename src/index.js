@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 /*
  * Local Import
  */
-import { display } from './components/Fragment/display';
+import { display } from 'src/components/Fragment/display';
 
 /*
  * Component

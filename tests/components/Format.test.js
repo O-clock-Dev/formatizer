@@ -8,14 +8,14 @@ import { mount } from 'enzyme';
 /*
  * Local Import
  */
-import Format from '../../src';
-import {
-  Code,
-  Link,
-  Blockquote,
-} from '../../src/components/Fragment/formatting/style';
-import Highlight from '../../src/components/Highlight';
-import Emoji from '../../src/components/Emoji';
+
+// Components
+import Highlight from 'src/components/Highlight';
+import Emoji from 'src/components/Emoji';
+import Format from 'src';
+
+// Style
+import { Code, Link, Blockquote } from 'src/patterns/style';
 
 /*
  * Code

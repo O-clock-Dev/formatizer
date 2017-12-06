@@ -6,7 +6,7 @@ import React from 'react';
 /*
  * Local import
  */
-import Emoji from '../../Emoji';
+import Emoji from 'src/components/Emoji';
 
 /*
  * Code

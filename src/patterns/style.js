@@ -1,9 +1,7 @@
-/* eslint-disable max-len */
-
 /*
  * Package Import
  */
-import { code, blockquote, a } from 'glamorous';
+import glamorous from 'glamorous';
 
 /*
  * Local Import
@@ -19,7 +17,7 @@ const Style = {
   margin: '0 .15em',
 };
 
-export const Code = code({
+export const Code = glamorous.code({
   ...Style,
   color: '#abb2bf',
   fontFamily: 'Menlo',
@@ -27,7 +25,7 @@ export const Code = code({
   fontSize: '1.4rem',
 });
 
-export const Blockquote = blockquote({
+export const Blockquote = glamorous.blockquote({
   display: 'block',
   borderLeft: '3px solid rgba(255,255,255,0.2)',
   fontStyle: 'italic',
@@ -37,7 +35,7 @@ export const Blockquote = blockquote({
   },
 });
 
-export const Link = a({
+export const Link = glamorous.a({
   textDecoration: 'underline',
   textDecorationSkip: 'ink',
 });

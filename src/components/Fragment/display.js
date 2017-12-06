@@ -5,18 +5,17 @@
  */
 import React from 'react';
 import sanitizeHtml from 'sanitize-html';
-import Emoji from '../Emoji';
 
 /*
  * Local import
  */
-// Display
-import Fragment from './index';
 
-// Formatting
-import emojiFormatting from './formatting/emojis';
-import prioFormatting from './formatting/priorities';
-import textFormatting from './formatting/text';
+// Patterns format
+import { emojis, priorities, text } from 'src/patterns';
+
+// Components
+import Emoji from 'src/components/Emoji';
+import Fragment from './index';
 
 const sanitizeOptions = {
   allowedTags: [],
@@ -100,18 +99,18 @@ const displayFragments = fragments =>
   fragments.map((Frag, index) => {
     if (typeof Frag === 'string') {
       // Get rid of html or XSS
-      const text = sanitizeHtml(Frag, sanitizeOptions);
+      const string = sanitizeHtml(Frag, sanitizeOptions);
       // eslint-disable-next-line
       const regex = /(\:[a-zA-Z0-9-_+]+\:(\:skin-tone-[2-6]\:)?)/g;
 
-      const arr = text.split(/([\s])+/).map((string) => {
-        const isMatch = string.match(regex);
+      const arr = string.split(/([\s])+/).map((str) => {
+        const isMatch = str.match(regex);
 
         if (isMatch) {
-          return <Emoji emoji={string} />;
+          return <Emoji emoji={str} />;
         }
 
-        return string;
+        return str;
       });
 
       return arr.map((element, elementId) => {
@@ -134,11 +133,7 @@ const displayFragments = fragments =>
  * Display
  */
 export const display = (message, isMentionMe) => {
-  const allReplacements = [
-    ...prioFormatting,
-    ...emojiFormatting,
-    ...textFormatting,
-  ];
+  const allReplacements = [...emojis, ...priorities, ...text];
 
   // Create fragments
   const fragments = getFragments(allReplacements, message, isMentionMe);

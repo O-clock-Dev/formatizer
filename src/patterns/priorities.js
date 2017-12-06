@@ -6,7 +6,7 @@ import React from 'react';
 /*
  * Local import
  */
-import Highlight from '../../Highlight';
+import Highlight from 'src/components/Highlight';
 import { Code, Blockquote, Link } from './style';
 
 /*
