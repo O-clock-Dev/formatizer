@@ -14,7 +14,6 @@ import { Emoji, emojiIndex } from 'emoji-mart';
  * -- Test if Emoji's props matchs with smiley database
  */
 const emojiExist = (emoji) => {
-  // GetName = [':', 'emoji', ':']
   const getName = emoji.split(':');
   const newObj = Object.keys(emojiIndex.emojis);
   const emojisColons = newObj.filter(obj => obj === getName[1]);
@@ -24,19 +23,16 @@ const emojiExist = (emoji) => {
 /*
  * Component
  */
-const EmojiContainer = ({ emoji }) => {
-  const emojisColons = emojiExist(emoji);
+const EmojiContainer = ({ children }) => {
+  const emojisColons = emojiExist(children);
 
-  /*
-   * View
-   */
   return !emojisColons.length ? (
     // If Smiley doesn't exist, return string emoji
-    <span>{emoji}</span>
+    <span>{children}</span>
   ) : (
     // Otherwise, display Emoji
     <Emoji
-      emoji={emoji}
+      emoji={children}
       size={21}
       set={'emojione'}
       sheetSize={64}
@@ -58,7 +54,7 @@ const EmojiContainer = ({ emoji }) => {
  * PropTypes
  */
 EmojiContainer.propTypes = {
-  emoji: PropTypes.string.isRequired,
+  children: PropTypes.string.isRequired,
 };
 
 /*

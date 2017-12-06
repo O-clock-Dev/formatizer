@@ -83,10 +83,11 @@ const emojis = [
 ];
 
 const emojiDefault = {
+  className: 'emoji',
   before: 1,
   value: 2,
   after: 3,
-  callback: emoji => ({ value: <Emoji emoji={emoji} /> }),
+  callback: emoji => ({ value: <Emoji>{emoji}</Emoji> }),
 };
 
 const emojiFormatting = emojis.map(emoji => ({

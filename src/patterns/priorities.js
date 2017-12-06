@@ -7,12 +7,19 @@ import React from 'react';
  * Local import
  */
 import Highlight from 'src/components/Highlight';
+import Emoji from 'src/components/Emoji';
 import { Code, Blockquote, Link } from './style';
 
 /*
  * Export default
  */
 export default [
+  {
+    tag: Emoji,
+    className: 'emoji',
+    pattern: /(:[a-zA-Z0-9-_+]+:(:skin-tone-[1-6]:)?)/g,
+    value: 1,
+  },
   {
     tag: Highlight,
     attrs: [

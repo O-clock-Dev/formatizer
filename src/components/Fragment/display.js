@@ -9,12 +9,7 @@ import sanitizeHtml from 'sanitize-html';
 /*
  * Local import
  */
-
-// Patterns format
 import { emojis, priorities, text } from 'src/patterns';
-
-// Components
-import Emoji from 'src/components/Emoji';
 import Fragment from './index';
 
 const sanitizeOptions = {
@@ -25,7 +20,7 @@ const sanitizeOptions = {
 /*
  * Code
  */
-const getFragments = (allReplacements, message, mentions, isMentionMe) => {
+const getFragments = (allReplacements, message) => {
   let messageFragments = [message];
 
   // For each replacement
@@ -64,11 +59,7 @@ const getFragments = (allReplacements, message, mentions, isMentionMe) => {
 
             // Fragment
             subFragments.push(
-              <Fragment
-                replacement={replacement}
-                values={values}
-                isMentionMe={isMentionMe}
-              />,
+              <Fragment replacement={replacement} values={values} />,
             );
 
             // End
@@ -100,31 +91,9 @@ const displayFragments = fragments =>
     if (typeof Frag === 'string') {
       // Get rid of html or XSS
       const string = sanitizeHtml(Frag, sanitizeOptions);
-      // eslint-disable-next-line
-      const regex = /(\:[a-zA-Z0-9-_+]+\:(\:skin-tone-[2-6]\:)?)/g;
 
-      const arr = string.split(/([\s])+/).map((str) => {
-        const isMatch = str.match(regex);
-
-        if (isMatch) {
-          return <Emoji emoji={str} />;
-        }
-
-        return str;
-      });
-
-      return arr.map((element, elementId) => {
-        const key = elementId + index;
-
-        // If element is an object -> Element is a smiley.
-        if (typeof element === 'object') {
-          return React.cloneElement(element, { key });
-        }
-
-        // Otherwise, element is a simple string -> Display it.
-        const html = { __html: element };
-        return <span key={key} dangerouslySetInnerHTML={html} />;
-      });
+      // Insert into HTML
+      return <span key={index} dangerouslySetInnerHTML={{ __html: string }} />;
     }
     return React.cloneElement(Frag, { key: index });
   });
@@ -132,12 +101,15 @@ const displayFragments = fragments =>
 /*
  * Display
  */
-export const display = (message, isMentionMe) => {
-  const allReplacements = [...emojis, ...priorities, ...text];
-
+const Display = ({ message, isMentionMe }) => {
   // Create fragments
+  const allReplacements = [...emojis, ...priorities, ...text];
   const fragments = getFragments(allReplacements, message, isMentionMe);
 
-  // Return
   return displayFragments(fragments);
 };
+
+/*
+ * Export
+ */
+export default Display;

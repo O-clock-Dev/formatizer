@@ -7,15 +7,14 @@ import PropTypes from 'prop-types';
 /*
  * Local Import
  */
-import { display } from 'src/components/Fragment/display';
+import Display from 'src/components/Fragment/Display';
 
 /*
  * Component
  */
-const Format = ({ className, children, mentions, isMentionMe, onMention }) => (
-  <div className={className}>
-    {display(children, mentions, isMentionMe, onMention)}
-  </div>
+// const Format = ({ className, children, mentions, isMentionMe, onMention }) => (
+const Format = ({ className, children }) => (
+  <Display className={className} message={children} />
 );
 
 /*
