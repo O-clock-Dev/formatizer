@@ -7,13 +7,15 @@ import PropTypes from 'prop-types';
 /*
  * Local Import
  */
-import { displayHtml } from './components/Fragment/display';
+import { display } from './components/Fragment/display';
 
 /*
  * Component
  */
-const Format = ({ className, children, mention }) => (
-  <div className={className}>{displayHtml(children, mention)}</div>
+const Format = ({ className, children, mentions, isMentionMe, onMention }) => (
+  <div className={className}>
+    {display(children, mentions, isMentionMe, onMention)}
+  </div>
 );
 
 /*
@@ -22,13 +24,17 @@ const Format = ({ className, children, mention }) => (
 Format.propTypes = {
   className: PropTypes.string,
   children: PropTypes.string,
-  mention: PropTypes.bool,
+  mentions: PropTypes.array,
+  isMentionMe: PropTypes.func,
+  onMention: PropTypes.func,
 };
 
 Format.defaultProps = {
   className: '',
   children: '',
-  mention: false,
+  mentions: [],
+  isMentionMe: () => {},
+  onMention: () => {},
 };
 
 /*

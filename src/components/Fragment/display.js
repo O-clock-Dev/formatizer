@@ -18,12 +18,6 @@ import emojiFormatting from './formatting/emojis';
 import prioFormatting from './formatting/priorities';
 import textFormatting from './formatting/text';
 
-const allReplacements = [
-  ...prioFormatting,
-  ...emojiFormatting,
-  ...textFormatting,
-];
-
 const sanitizeOptions = {
   allowedTags: [],
   allowedAttributes: [],
@@ -32,11 +26,11 @@ const sanitizeOptions = {
 /*
  * Code
  */
-const getFragments = (replacements, message, mention) => {
+const getFragments = (allReplacements, message, mentions, isMentionMe) => {
   let messageFragments = [message];
 
   // For each replacement
-  replacements.forEach((replacement) => {
+  allReplacements.forEach((replacement) => {
     // Var to collect subfragments
     const subFragments = [];
 
@@ -74,7 +68,7 @@ const getFragments = (replacements, message, mention) => {
               <Fragment
                 replacement={replacement}
                 values={values}
-                mention={mention}
+                isMentionMe={isMentionMe}
               />,
             );
 
@@ -136,16 +130,19 @@ const displayFragments = fragments =>
     return React.cloneElement(Frag, { key: index });
   });
 
-const display = (replacements, message, mention) => {
+/*
+ * Display
+ */
+export const display = (message, isMentionMe) => {
+  const allReplacements = [
+    ...prioFormatting,
+    ...emojiFormatting,
+    ...textFormatting,
+  ];
+
   // Create fragments
-  const fragments = getFragments(replacements, message, mention);
+  const fragments = getFragments(allReplacements, message, isMentionMe);
 
   // Return
   return displayFragments(fragments);
 };
-
-/*
- * Export
- */
-export const displayHtml = (message, mention) =>
-  display(allReplacements, message, mention);
