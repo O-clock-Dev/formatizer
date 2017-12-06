@@ -1,16 +1,18 @@
+'use strict';
+
 Object.defineProperty(exports, '__esModule', {
   value: true,
 });
 
-const _react = require('react');
+var _react = require('react');
 
-const _react2 = _interopRequireDefault(_react);
+var _react2 = _interopRequireDefault(_react);
 
-const _propTypes = require('prop-types');
+var _propTypes = require('prop-types');
 
-const _propTypes2 = _interopRequireDefault(_propTypes);
+var _propTypes2 = _interopRequireDefault(_propTypes);
 
-const _display = require('./components/Fragment/display');
+var _display = require('./components/Fragment/display');
 
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
@@ -19,13 +21,13 @@ function _interopRequireDefault(obj) {
 /*
  * Component
  */
-const Format = function Format(_ref) {
-  let className = _ref.className,
+var Format = function Format(_ref) {
+  var className = _ref.className,
     children = _ref.children,
     mention = _ref.mention;
   return _react2.default.createElement(
     'div',
-    { className },
+    { className: className },
     (0, _display.displayHtml)(children, mention),
   );
 };

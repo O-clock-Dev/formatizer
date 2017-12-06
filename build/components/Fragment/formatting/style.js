@@ -1,14 +1,16 @@
+'use strict';
+
 Object.defineProperty(exports, '__esModule', {
   value: true,
 });
 exports.Link = exports.Blockquote = exports.Code = undefined;
 
-const _extends =
+var _extends =
   Object.assign ||
   function(target) {
-    for (let i = 1; i < arguments.length; i++) {
-      const source = arguments[i];
-      for (const key in source) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+      for (var key in source) {
         if (Object.prototype.hasOwnProperty.call(source, key)) {
           target[key] = source[key];
         }
@@ -21,7 +23,7 @@ const _extends =
  * Package Import
  */
 
-const _glamorous = require('glamorous');
+var _glamorous = require('glamorous');
 
 /*
  * Local Import
@@ -30,14 +32,14 @@ const _glamorous = require('glamorous');
 /*
  * Style
  */
-const Style = {
+var Style = {
   background: 'rgba(50,55,60,0.5)',
   border: '1px solid #32373c',
   borderRadius: '.2em',
   margin: '0 .15em',
 };
 
-const Code = (exports.Code = (0, _glamorous.code)(
+var Code = (exports.Code = (0, _glamorous.code)(
   _extends({}, Style, {
     color: '#abb2bf',
     fontFamily: 'Menlo',
@@ -46,7 +48,7 @@ const Code = (exports.Code = (0, _glamorous.code)(
   }),
 ));
 
-const Blockquote = (exports.Blockquote = (0, _glamorous.blockquote)({
+var Blockquote = (exports.Blockquote = (0, _glamorous.blockquote)({
   display: 'block',
   borderLeft: '3px solid rgba(255,255,255,0.2)',
   fontStyle: 'italic',
@@ -56,7 +58,7 @@ const Blockquote = (exports.Blockquote = (0, _glamorous.blockquote)({
   },
 }));
 
-const Link = (exports.Link = (0, _glamorous.a)({
+var Link = (exports.Link = (0, _glamorous.a)({
   textDecoration: 'underline',
   textDecorationSkip: 'ink',
 }));

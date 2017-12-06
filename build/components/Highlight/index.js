@@ -1,13 +1,15 @@
+'use strict';
+
 Object.defineProperty(exports, '__esModule', {
   value: true,
 });
 
-const _extends =
+var _extends =
   Object.assign ||
   function(target) {
-    for (let i = 1; i < arguments.length; i++) {
-      const source = arguments[i];
-      for (const key in source) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+      for (var key in source) {
         if (Object.prototype.hasOwnProperty.call(source, key)) {
           target[key] = source[key];
         }
@@ -22,21 +24,19 @@ const _extends =
  * Local Import
  */
 
-const _react = require('react');
+var _react = require('react');
 
-const _react2 = _interopRequireDefault(_react);
+var _react2 = _interopRequireDefault(_react);
 
-const _propTypes = require('prop-types');
+var _propTypes = require('prop-types');
 
-const _reactSyntaxHighlighter = require('react-syntax-highlighter');
+var _reactSyntaxHighlighter = require('react-syntax-highlighter');
 
-const _reactSyntaxHighlighter2 = _interopRequireDefault(
-  _reactSyntaxHighlighter,
-);
+var _reactSyntaxHighlighter2 = _interopRequireDefault(_reactSyntaxHighlighter);
 
-const _styles = require('react-syntax-highlighter/dist/styles');
+var _styles = require('react-syntax-highlighter/dist/styles');
 
-const _style = require('./style');
+var _style = require('./style');
 
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
@@ -45,7 +45,7 @@ function _interopRequireDefault(obj) {
 /*
  * Code
  */
-const languages = [
+var languages = [
   'apache',
   'apacheconf',
   'bash',
@@ -82,16 +82,18 @@ const languages = [
 /*
  * Component
  */
-const Highlight = function Highlight(_ref) {
-  let className = _ref.className,
+var Highlight = function Highlight(_ref) {
+  var className = _ref.className,
     language = _ref.language,
     children = _ref.children;
 
   // Attribute Options
-  const options = {
+  var options = {
     style: _styles.atomOneDark,
     customStyle: _style.PreFormatted,
-    language: languages.find(lang => lang === language),
+    language: languages.find(function(lang) {
+      return lang === language;
+    }),
   };
 
   /*
@@ -99,7 +101,7 @@ const Highlight = function Highlight(_ref) {
    */
   return _react2.default.createElement(
     _reactSyntaxHighlighter2.default,
-    _extends({ className }, options),
+    _extends({ className: className }, options),
     children,
   );
 };

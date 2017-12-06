@@ -1,13 +1,15 @@
+'use strict';
+
 Object.defineProperty(exports, '__esModule', {
   value: true,
 });
 
-const _extends =
+var _extends =
   Object.assign ||
   function(target) {
-    for (let i = 1; i < arguments.length; i++) {
-      const source = arguments[i];
-      for (const key in source) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+      for (var key in source) {
         if (Object.prototype.hasOwnProperty.call(source, key)) {
           target[key] = source[key];
         }
@@ -22,15 +24,15 @@ const _extends =
  * Local Import
  */
 
-const _react = require('react');
+var _react = require('react');
 
-const _react2 = _interopRequireDefault(_react);
+var _react2 = _interopRequireDefault(_react);
 
-const _propTypes = require('prop-types');
+var _propTypes = require('prop-types');
 
-const _propTypes2 = _interopRequireDefault(_propTypes);
+var _propTypes2 = _interopRequireDefault(_propTypes);
 
-const _style = require('./style');
+var _style = require('./style');
 
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
@@ -39,11 +41,11 @@ function _interopRequireDefault(obj) {
 /*
  * Code
  */
-const Fragment = function Fragment(_ref) {
-  let replacement = _ref.replacement,
+var Fragment = function Fragment(_ref) {
+  var replacement = _ref.replacement,
     values = _ref.values,
     mention = _ref.mention;
-  let replace = replacement.replace,
+  var replace = replacement.replace,
     className = replacement.className,
     before = replacement.before,
     after = replacement.after,
@@ -53,13 +55,13 @@ const Fragment = function Fragment(_ref) {
 
   // Before & after
 
-  const beforeValue = values[before] || '';
-  const afterValue = values[after] || '';
+  var beforeValue = values[before] || '';
+  var afterValue = values[after] || '';
 
   // Fragment
-  const Tag = tag || _style.FragmentValue;
-  const attrsValue = {};
-  let fragmentValue = '';
+  var Tag = tag || _style.FragmentValue;
+  var attrsValue = {};
+  var fragmentValue = '';
 
   // Replace
   if (replace) {
@@ -70,10 +72,10 @@ const Fragment = function Fragment(_ref) {
     }
 
     // Parens
-    const value = typeof replacement.value === 'number' ? replacement.value : 0;
+    var value = typeof replacement.value === 'number' ? replacement.value : 0;
     if (attrs) {
-      attrs.forEach(attribute => {
-        let val = attribute.value;
+      attrs.forEach(function(attribute) {
+        var val = attribute.value;
         if (typeof val === 'number') {
           val = values[val];
         }
@@ -89,7 +91,7 @@ const Fragment = function Fragment(_ref) {
 
   // Callback?
   // Get `value` and/or `className` properties
-  const hooks = (callback && callback(fragmentValue)) || {};
+  var hooks = (callback && callback(fragmentValue)) || {};
 
   /*
    * View

@@ -1,13 +1,15 @@
+'use strict';
+
 Object.defineProperty(exports, '__esModule', {
   value: true,
 });
 
-const _extends =
+var _extends =
   Object.assign ||
   function(target) {
-    for (let i = 1; i < arguments.length; i++) {
-      const source = arguments[i];
-      for (const key in source) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+      for (var key in source) {
         if (Object.prototype.hasOwnProperty.call(source, key)) {
           target[key] = source[key];
         }
@@ -22,13 +24,13 @@ const _extends =
  * Local import
  */
 
-const _react = require('react');
+var _react = require('react');
 
-const _react2 = _interopRequireDefault(_react);
+var _react2 = _interopRequireDefault(_react);
 
-const _Emoji = require('../../Emoji');
+var _Emoji = require('../../Emoji');
 
-const _Emoji2 = _interopRequireDefault(_Emoji);
+var _Emoji2 = _interopRequireDefault(_Emoji);
 
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
@@ -37,7 +39,7 @@ function _interopRequireDefault(obj) {
 /*
  * Code
  */
-const emojis = [
+var emojis = [
   {
     pattern: /(^|\s)(8-?\))($|\s)/g,
     replace: ':sunglasses:',
@@ -108,18 +110,20 @@ const emojis = [
   },
 ];
 
-const emojiDefault = {
+var emojiDefault = {
   before: 1,
   value: 2,
   after: 3,
   callback: function callback(emoji) {
     return {
-      value: _react2.default.createElement(_Emoji2.default, { emoji }),
+      value: _react2.default.createElement(_Emoji2.default, { emoji: emoji }),
     };
   },
 };
 
-const emojiFormatting = emojis.map(emoji => _extends({}, emojiDefault, emoji));
+var emojiFormatting = emojis.map(function(emoji) {
+  return _extends({}, emojiDefault, emoji);
+});
 
 /*
  * Export default

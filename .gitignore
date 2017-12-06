@@ -13,4 +13,5 @@ npm-debug.log
 yarn-error.log
 
 # Files compiled
-public
+/public
+/build

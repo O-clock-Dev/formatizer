@@ -1,14 +1,16 @@
+'use strict';
+
 Object.defineProperty(exports, '__esModule', {
   value: true,
 });
 exports.FragmentValue = exports.After = exports.Before = undefined;
 
-const _extends =
+var _extends =
   Object.assign ||
   function(target) {
-    for (let i = 1; i < arguments.length; i++) {
-      const source = arguments[i];
-      for (const key in source) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+      for (var key in source) {
         if (Object.prototype.hasOwnProperty.call(source, key)) {
           target[key] = source[key];
         }
@@ -21,9 +23,9 @@ const _extends =
  * Package Import
  */
 
-const _glamorous = require('glamorous');
+var _glamorous = require('glamorous');
 
-const _glamorous2 = _interopRequireDefault(_glamorous);
+var _glamorous2 = _interopRequireDefault(_glamorous);
 
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
@@ -36,30 +38,30 @@ function _interopRequireDefault(obj) {
 /*
  * Style
  */
-const Before = (exports.Before = _glamorous2.default.span({
+var Before = (exports.Before = _glamorous2.default.span({
   display: 'inline',
 }));
 
-const After = (exports.After = _glamorous2.default.span({
+var After = (exports.After = _glamorous2.default.span({
   display: 'inline',
 }));
 
-const Style = {
+var Style = {
   background: 'rgba(50,55,60,0.5)',
   border: '1px solid #32373c',
   borderRadius: '.2em',
   margin: '0 .15em',
 };
 
-const FragmentValue = (exports.FragmentValue = _glamorous2.default.span(
+var FragmentValue = (exports.FragmentValue = _glamorous2.default.span(
   {
     display: 'inline',
   },
-  _ref => {
-    let className = _ref.className,
+  function(_ref) {
+    var className = _ref.className,
       mention = _ref.mention;
 
-    const styles = [];
+    var styles = [];
 
     switch (className) {
       case 'bold':
@@ -73,7 +75,7 @@ const FragmentValue = (exports.FragmentValue = _glamorous2.default.span(
       case 'strike':
         styles.push({
           background:
-            'linear-gradient(to bottom, transparent 50%, #000 50%) no-repeat content-box 100% 55% / 100% 4px',
+            'linear-gradient(to bottom, transparent 50%, #fff 50%) no-repeat content-box 100% 55%/100% 4px',
         });
         break;
 

@@ -1,3 +1,5 @@
+'use strict';
+
 Object.defineProperty(exports, '__esModule', {
   value: true,
 });
@@ -14,7 +16,7 @@ Object.defineProperty(exports, '__esModule', {
 /*
  * Style
  */
-const PreFormatted = (exports.PreFormatted = {
+var PreFormatted = (exports.PreFormatted = {
   background: 'rgba(50,55,60,0.5)',
   border: '1px solid #32373c',
   borderRadius: '.2em',

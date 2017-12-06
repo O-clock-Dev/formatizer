@@ -1,13 +1,3 @@
-Pour publier une nouvelle version du module :
-* Commencer une nouvelle release
-* Dans cette release : Éditer le package.json, et lancer un build.
-* Clôre la release.
-* Push. ( Ne pas oublier les tags !  `git push --tags` )
-
-
----
-
-
 # Formatizer
 
 ## :muscle: Peer dependencies
