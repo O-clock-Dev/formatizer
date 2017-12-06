@@ -39,6 +39,14 @@ export default [
         attr: 'href',
         value: 1,
       },
+      {
+        attr: 'target',
+        value: '_blank',
+      },
+      {
+        attr: 'rel',
+        value: 'noopener noreferrer',
+      },
     ],
     className: 'link',
     pattern: /(https?:\/\/(?:[^\s()]|\(.+?\))+?)($|\s|[.,?!:;)]\s)/g,
