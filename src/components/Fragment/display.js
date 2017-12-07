@@ -10,6 +10,8 @@ import sanitizeHtml from 'sanitize-html';
  * Local import
  */
 import { emojis, priorities, text } from 'src/patterns';
+import { shortnameToImage } from 'src/components/Emoji';
+import { EmojiContainer } from 'src/components/Emoji/style';
 import Fragment from './index';
 
 const sanitizeOptions = {
@@ -86,17 +88,22 @@ const getFragments = (allReplacements, message) => {
   return messageFragments;
 };
 
-const displayFragments = fragments =>
-  fragments.map((Frag, index) => {
+const displayFragments = (fragments) => {
+  console.log('fragments', fragments);
+  return fragments.map((Frag, index) => {
     if (typeof Frag === 'string') {
       // Get rid of html or XSS
       const string = sanitizeHtml(Frag, sanitizeOptions);
 
+      // Add emoji
+      const html = { __html: shortnameToImage(string) };
+
       // Insert into HTML
-      return <span key={index} dangerouslySetInnerHTML={{ __html: string }} />;
+      return <EmojiContainer key={index} dangerouslySetInnerHTML={html} />;
     }
     return React.cloneElement(Frag, { key: index });
   });
+};
 
 /*
  * Display
