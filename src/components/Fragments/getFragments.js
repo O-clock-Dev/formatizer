@@ -1,28 +1,19 @@
-/* eslint-disable react/no-array-index-key */
-
 /*
- * Npm import
+ * Package Import
  */
 import React from 'react';
-import sanitizeHtml from 'sanitize-html';
 
 /*
- * Local import
+ * Local Import
  */
+import Fragment from 'src/components/Fragments/Fragment';
 import { emojis, priorities, text } from 'src/patterns';
-import { shortnameToImage } from 'src/components/Emoji';
-import { EmojiContainer } from 'src/components/Emoji/style';
-import Fragment from './index';
-
-const sanitizeOptions = {
-  allowedTags: [],
-  allowedAttributes: [],
-};
 
 /*
  * Code
  */
-const getFragments = (allReplacements, message) => {
+const getFragments = (message) => {
+  const allReplacements = [...emojis, ...priorities, ...text];
   let messageFragments = [message];
 
   // For each replacement
@@ -88,35 +79,7 @@ const getFragments = (allReplacements, message) => {
   return messageFragments;
 };
 
-const displayFragments = (fragments) => {
-  console.log('fragments', fragments);
-  return fragments.map((Frag, index) => {
-    if (typeof Frag === 'string') {
-      // Get rid of html or XSS
-      const string = sanitizeHtml(Frag, sanitizeOptions);
-
-      // Add emoji
-      const html = { __html: shortnameToImage(string) };
-
-      // Insert into HTML
-      return <EmojiContainer key={index} dangerouslySetInnerHTML={html} />;
-    }
-    return React.cloneElement(Frag, { key: index });
-  });
-};
-
-/*
- * Display
- */
-const Display = ({ message, isMentionMe }) => {
-  // Create fragments
-  const allReplacements = [...emojis, ...priorities, ...text];
-  const fragments = getFragments(allReplacements, message, isMentionMe);
-
-  return displayFragments(fragments);
-};
-
 /*
  * Export
  */
-export default Display;
+export default getFragments;
