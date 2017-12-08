@@ -3,12 +3,10 @@
  */
 import React from 'react';
 
-
 /*
  * Local Import
  */
 import { Character } from 'src/components/Replacement';
-
 
 /*
  * Code
@@ -16,7 +14,12 @@ import { Character } from 'src/components/Replacement';
 const characters = [
   {
     pattern: /\n{2,}/g,
-    replace: (<span><br /><br /></span>),
+    replace: (
+      <span>
+        <br />
+        <br />
+      </span>
+    ),
   },
   {
     pattern: /\n/g,

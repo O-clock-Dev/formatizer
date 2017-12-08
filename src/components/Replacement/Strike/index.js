@@ -10,7 +10,6 @@ import Glamorous from 'glamorous';
  */
 import Format from 'src/components/Format';
 
-
 /*
  * Style
  */

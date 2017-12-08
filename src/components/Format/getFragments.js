@@ -21,6 +21,7 @@ const getFragments = (message) => {
     // Var to collect subfragments
     const subFragments = [];
 
+    console.log('messageFragments', messageFragments);
     // We search in each parts
     messageFragments.forEach((messageFragment) => {
       // If this is a string
@@ -75,7 +76,7 @@ const getFragments = (message) => {
     messageFragments = subFragments;
   });
 
-  // Return fragments
+  // Return fragments);
   return messageFragments;
 };
 

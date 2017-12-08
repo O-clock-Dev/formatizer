@@ -2,12 +2,10 @@
  * Package Import
  */
 
-
 /*
  * Local Import
  */
 import { Emoji } from 'src/components/Replacement';
-
 
 /*
  * Code

@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
  * Local Import
  */
 import Fragments from 'src/components/Fragments';
-import getFragments from 'src/components/Fragments/getFragments';
+import getFragments from './getFragments';
 
 /*
  * Component

@@ -5,7 +5,14 @@
 /*
  * Local import
  */
-import { Emoji, Code, Blockquote, Link, Mention, Highlight } from 'src/components/Replacement';
+import {
+  Emoji,
+  Code,
+  Blockquote,
+  Link,
+  Mention,
+  Highlight,
+} from 'src/components/Replacement';
 
 /*
  * Code
