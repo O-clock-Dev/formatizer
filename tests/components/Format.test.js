@@ -18,7 +18,7 @@ import {
   Highlight,
   Link,
   Strike,
-} from 'src/components/Replacement';
+} from 'src/components/Piece';
 
 /*
  * Code

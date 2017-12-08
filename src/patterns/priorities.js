@@ -12,7 +12,7 @@ import {
   Link,
   Mention,
   Highlight,
-} from 'src/components/Replacement';
+} from 'src/components/Piece';
 
 /*
  * Code

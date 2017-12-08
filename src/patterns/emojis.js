@@ -5,7 +5,7 @@
 /*
  * Local Import
  */
-import { Emoji } from 'src/components/Replacement';
+import { Emoji } from 'src/components/Piece';
 
 /*
  * Code

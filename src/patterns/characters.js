@@ -6,7 +6,7 @@ import React from 'react';
 /*
  * Local Import
  */
-import { Character } from 'src/components/Replacement';
+import { Character } from 'src/components/Piece';
 
 /*
  * Code

@@ -5,7 +5,7 @@
 /*
  * Local Import
  */
-import { Bold, Italic, Strike } from 'src/components/Replacement';
+import { Bold, Italic, Strike } from 'src/components/Piece';
 
 /*
  * Code
