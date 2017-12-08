@@ -5,13 +5,23 @@
 /*
  * Local import
  */
-import { Code, Blockquote, Link, Mention, Highlight } from 'src/components/Replacement';
-// import Emoji from 'src/components/Emoji';
+import { Emoji, Code, Blockquote, Link, Mention, Highlight } from 'src/components/Replacement';
 
 /*
  * Code
  */
 const patterns = [
+  {
+    pattern: /```(?:([a-z0-9-]+)(?:\s|\n))?((?:.|\n)+?)```\n?/g,
+    Component: Highlight,
+    attrs: [{ name: 'language', value: 1 }],
+    value: 2,
+  },
+  {
+    pattern: /`(.+?)`/g,
+    Component: Code,
+    value: 1,
+  },
   {
     pattern: /(?:^|\n)>\s?([^\n]+)\n?/gm,
     Component: Blockquote,
@@ -34,14 +44,8 @@ const patterns = [
     value: 1,
   },
   {
-    pattern: /```(?:([a-z0-9-]+)(?:\s|\n))?((?:.|\n)+?)```\n?/g,
-    Component: Highlight,
-    attrs: [{ name: 'language', value: 1 }],
-    value: 2,
-  },
-  {
-    pattern: /`(.+?)`/g,
-    Component: Code,
+    pattern: /(:[?+\-0-9A-Za-z_]+:)/gi,
+    Component: Emoji,
     value: 1,
   },
 ];
@@ -50,39 +54,3 @@ const patterns = [
  * Export
  */
 export default patterns;
-
-/*
- * Export default
- */
-// export default [
-//   // {
-//   //   className: 'emoji',
-//   //   pattern: /(:[?+\-0-9A-Za-z_]+:)/gi,
-//   //   callback: emoji => ({ value: <Emoji emoji={emoji} /> }),
-//   // },
-//   {
-//     pattern: /\n{2,}/g,
-//     replace: (
-//       <span>
-//         <br />
-//         <br />
-//       </span>
-//     ),
-//   },
-//   {
-//     pattern: /\n/g,
-//     replace: <br />,
-//   },
-//   {
-//     pattern: /&/g,
-//     replace: '&',
-//   },
-//   {
-//     pattern: /</g,
-//     replace: '<',
-//   },
-//   {
-//     pattern: />/g,
-//     replace: '>',
-//   },
-// ];

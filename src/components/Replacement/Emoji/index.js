@@ -4,11 +4,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Emojione from 'emojione';
+import glamorous from 'glamorous';
 
 /*
  * Local import
  */
-import { EmojiContainer } from './style';
+
+/*
+ * Style
+ */
+const Style = glamorous.span({
+  display: 'inline',
+  '& .emojione': { display: 'inline', height: '1.2em', width: '1.2em' },
+});
 
 /*
  * Parameters
@@ -22,17 +30,18 @@ Emojione.imagePathSVGSprites = '/images/common/emojione.svg';
  */
 export const shortnameToImage = emoji => Emojione.shortnameToImage(emoji);
 
-const EmojioneContainer = ({ emoji }) => (
-  <EmojiContainer
-    dangerouslySetInnerHTML={{ __html: shortnameToImage(emoji) }}
-  />
+/*
+ * Components
+ */
+const EmojioneContainer = ({ children }) => (
+  <Style dangerouslySetInnerHTML={{ __html: shortnameToImage(children) }} />
 );
 
 /*
  * PropTypes
  */
 EmojioneContainer.propTypes = {
-  emoji: PropTypes.string.isRequired,
+  children: PropTypes.string.isRequired,
 };
 
 /*

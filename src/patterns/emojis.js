@@ -1,12 +1,13 @@
 /*
- * Npm import
+ * Package Import
  */
-import React from 'react';
+
 
 /*
- * Local import
+ * Local Import
  */
-import { Emoji } from 'src/components/Replacement/Emoji';
+import { Emoji } from 'src/components/Replacement';
+
 
 /*
  * Code
@@ -83,13 +84,11 @@ const emojis = [
 ];
 
 const emojiDefault = {
-  before: 1,
   value: 2,
-  after: 3,
-  callback: emoji => ({ value: <Emoji emoji={emoji} /> }),
+  Component: Emoji,
 };
 
-const emojiFormatting = emojis.map(emoji => ({
+const patterns = emojis.map(emoji => ({
   ...emojiDefault,
   ...emoji,
 }));
@@ -97,4 +96,4 @@ const emojiFormatting = emojis.map(emoji => ({
 /*
  * Export default
  */
-export default emojiFormatting;
+export default patterns;

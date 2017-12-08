@@ -12,27 +12,28 @@ import PropTypes from 'prop-types';
  * Code
  */
 const Fragment = ({ replacement, values }) => {
-  const { Component, value, attrs } = replacement;
-
   console.log('replacement', replacement);
   console.log('values', values);
+  // Destructuration
+  const { Component, value, attrs, replace } = replacement;
 
+  // Variable
   let allAttrs = {};
+  let componentValue = values[value];
 
+  // Replace
+  if (replace) {
+    componentValue = replace;
+  }
+
+  // Attributes
   if (attrs) {
-    attrs.forEach((attr) => {
-      allAttrs = { ...allAttrs, [attr.name]: values[attr.value] };
+    attrs.forEach((attribute) => {
+      allAttrs = { ...allAttrs, [attribute.name]: values[attribute.value] };
     });
   }
 
-  console.log('attrs', attrs);
-  console.log('allAttrs', allAttrs);
-
-  return (
-    <Component {...allAttrs}>
-      {values[value]}
-    </Component>
-  );
+  return <Component {...allAttrs}>{componentValue}</Component>;
 };
 
 /*

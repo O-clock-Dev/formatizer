@@ -9,7 +9,7 @@ import sanitizeHtml from 'sanitize-html';
 /*
  * Local Import
  */
-import { shortnameToImage } from 'src/components/Replacement/Emoji';
+// import { shortnameToImage } from 'src/components/Replacement/Emoji';
 // import { EmojiContainer } from 'src/components/Emoji/style';
 
 /*
@@ -27,7 +27,7 @@ const Fragments = ({ fragments }) =>
 
     if (typeof Frag === 'string') {
       // Add emoji
-      const html = { __html: shortnameToImage(string) };
+      const html = { __html: string };
 
       // Insert into HTML
       return <span key={index} dangerouslySetInnerHTML={html} />;

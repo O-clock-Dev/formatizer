@@ -7,7 +7,6 @@
  */
 import { Bold, Italic, Strike } from 'src/components/Replacement';
 
-
 /*
  * Code
  */
