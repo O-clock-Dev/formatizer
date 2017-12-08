@@ -13,8 +13,8 @@ import getFragments from './getFragments';
 /*
  * Component
  */
-// const Formatizer = ({ children, mentions, isMention, isMentionUser }) => {
-const Formatizer = ({ children, isMention }) => {
+// const Format = ({ children, mentions, isMention, isMentionUser }) => {
+const Format = ({ children, isMention }) => {
   const fragments = getFragments(children, isMention);
   return <Fragments fragments={fragments} />;
 };
@@ -22,14 +22,14 @@ const Formatizer = ({ children, isMention }) => {
 /*
  * PropTypes
  */
-Formatizer.propTypes = {
+Format.propTypes = {
   children: PropTypes.string,
   mentions: PropTypes.array,
   isMention: PropTypes.func,
   isMentionUser: PropTypes.func,
 };
 
-Formatizer.defaultProps = {
+Format.defaultProps = {
   children: '',
   mentions: [],
   isMention: () => {},
@@ -39,4 +39,4 @@ Formatizer.defaultProps = {
 /*
  * Export
  */
-export default Formatizer;
+export default Format;
