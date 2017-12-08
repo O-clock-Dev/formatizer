@@ -8,7 +8,8 @@ import Glamorous from 'glamorous';
 /*
  * Local Import
  */
-import Format from 'src/index';
+import Format from 'src/components/Format';
+
 
 /*
  * Style
