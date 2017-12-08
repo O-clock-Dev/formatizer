@@ -5,12 +5,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Glamorous from 'glamorous';
 
-
 /*
  * Local Import
  */
-import { GeneriqueStyle } from 'src/components/Fragment/style';
-
+import { GeneriqueStyle } from '../style';
 
 /*
  * Style
@@ -28,14 +26,10 @@ const Style = Glamorous.span({
   return styles;
 });
 
-
 /*
  * Component
  */
-const Mention = ({ children }) => (
-  <Style>{children}</Style>
-);
-
+const Mention = ({ children }) => <Style>{children}</Style>;
 
 /*
  * PropTypes
@@ -43,7 +37,6 @@ const Mention = ({ children }) => (
 Mention.propTypes = {
   children: PropTypes.string.isRequired,
 };
-
 
 /*
  * Export

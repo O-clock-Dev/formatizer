@@ -8,7 +8,7 @@ import Glamorous from 'glamorous';
 /*
  * Local Import
  */
-import { GeneriqueStyle } from 'src/components/Fragment/style';
+import { GeneriqueStyle } from '../style';
 
 /*
  * Style

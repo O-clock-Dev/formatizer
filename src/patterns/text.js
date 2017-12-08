@@ -5,9 +5,8 @@
 /*
  * Local Import
  */
-import Bold from 'src/components/Fragment/Bold';
-import Italic from 'src/components/Fragment/Italic';
-import Strike from 'src/components/Fragment/Strike';
+import { Bold, Italic, Strike } from 'src/components/Replacement';
+
 
 /*
  * Code

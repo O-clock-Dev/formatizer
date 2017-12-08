@@ -6,13 +6,11 @@ import PropTypes from 'prop-types';
 import Highlighter from 'react-syntax-highlighter';
 import { atomOneDark } from 'react-syntax-highlighter/dist/styles';
 
-
 /*
  * Local Import
  */
 import CustomStyle from './style';
 import languages from './languages';
-
 
 /*
  * Component
@@ -28,11 +26,7 @@ const Highlight = ({ language, children }) => {
   /*
    * View
    */
-  return (
-    <Highlighter {...options}>
-      {children.trim()}
-    </Highlighter>
-  );
+  return <Highlighter {...options}>{children.trim()}</Highlighter>;
 };
 
 /*

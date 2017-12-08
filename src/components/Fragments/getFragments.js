@@ -7,15 +7,13 @@ import React from 'react';
  * Local Import
  */
 import Fragment from 'src/components/Fragment';
-// import { emojis, priorities, text } from 'src/patterns';
-import { priorities, text } from 'src/patterns';
+import { emojis, priorities, text } from 'src/patterns';
 
 /*
  * Code
  */
 const getFragments = (message) => {
-  // const allReplacements = [...emojis, ...priorities, ...text];
-  const allReplacements = [...priorities, ...text];
+  const allReplacements = [...emojis, ...priorities, ...text];
   let messageFragments = [message];
 
   // For each replacement

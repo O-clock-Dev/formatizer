@@ -35,7 +35,6 @@ const Fragment = ({ replacement, values }) => {
   );
 };
 
-
 /*
  * PropTypes
  */

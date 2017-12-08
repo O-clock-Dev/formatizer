@@ -5,13 +5,8 @@
 /*
  * Local import
  */
-import Code from 'src/components/Fragment/Code';
-import Blockquote from 'src/components/Fragment/Blockquote';
-import Link from 'src/components/Fragment/Link';
-import Mention from 'src/components/Fragment/Mention';
-import Highlight from 'src/components/Fragment/Highlight';
+import { Code, Blockquote, Link, Mention, Highlight } from 'src/components/Replacement';
 // import Emoji from 'src/components/Emoji';
-// import { Code, Blockquote, Link } from './style';
 
 /*
  * Code
@@ -23,12 +18,17 @@ const patterns = [
     value: 1,
   },
   {
-    // @ TODO : Améliorer la regex
+    // @ TODO : Améliorer la regex,
+    // sinon ça prend en compte un espace à la fin,
+    // et ça le supprime lors de la transformation.
     pattern: /(https?:\/\/(?:[^\s()]|\(.+?\))+?)($|\s|[.,?!:;)]\s)/g,
     Component: Link,
     value: 1,
   },
   {
+    // @ TODO : Améliorer la regex,
+    // sinon ça prend en compte un espace à la fin,
+    // et ça le supprime lors de la transformation.
     pattern: /(@[a-z0-9_]+)($|\s|[.,?!:;)])/gi,
     Component: Mention,
     value: 1,
