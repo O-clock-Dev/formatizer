@@ -7,33 +7,34 @@ import PropTypes from 'prop-types';
 /*
  * Local Import
  */
-import Display from 'src/components/Display';
+import Fragments from 'src/components/Fragments';
+import getFragments from 'src/components/Fragments/getFragments';
 
 /*
  * Component
  */
-// const Format = ({ className, children, mentions, isMentionMe, onMention }) => (
-const Format = ({ className, children }) => (
-  <Display className={className} message={children} />
-);
+// const Format = ({ children, mentions, isMention, isMentionUser }) => {
+const Format = ({ children, isMention }) => {
+  const fragments = getFragments(children, isMention);
+
+  return <Fragments fragments={fragments} />;
+};
 
 /*
  * PropTypes
  */
 Format.propTypes = {
-  className: PropTypes.string,
   children: PropTypes.string,
   mentions: PropTypes.array,
-  isMentionMe: PropTypes.func,
-  onMention: PropTypes.func,
+  isMention: PropTypes.func,
+  isMentionUser: PropTypes.func,
 };
 
 Format.defaultProps = {
-  className: '',
   children: '',
   mentions: [],
-  isMentionMe: () => {},
-  onMention: () => {},
+  isMention: () => {},
+  isMentionUser: () => {},
 };
 
 /*

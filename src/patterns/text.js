@@ -1,20 +1,33 @@
-export default [
+/*
+ * Package Import
+ */
+
+/*
+ * Local Import
+ */
+import Bold from 'src/components/Fragments/Fragment/Bold';
+import Italic from 'src/components/Fragments/Fragment/Italic';
+import Strike from 'src/components/Fragments/Fragment/Strike';
+
+/*
+ * Code
+ */
+const patterns = [
   {
-    className: 'bold',
     pattern: /\*(.+?)\*($|\s|[.,?!:;)])/gm,
-    value: 1,
-    after: 2,
+    Component: Bold,
   },
   {
-    className: 'italic',
     pattern: /_(.+?)_($|\s|[.,?!:;)])/gm,
-    value: 1,
-    after: 2,
+    Component: Italic,
   },
   {
-    className: 'strike',
     pattern: /~(.+?)~($|\s|[.,?!:;)])/gm,
-    value: 1,
-    after: 2,
+    Component: Strike,
   },
 ];
+
+/*
+ * Export
+ */
+export default patterns;

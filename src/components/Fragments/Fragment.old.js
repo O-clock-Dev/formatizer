@@ -37,7 +37,7 @@ const Fragment = ({ replacement, values }) => {
     fragmentValue = replace;
   }
   else if (className) {
-    // Parens
+    // Parents
     const value = typeof replacement.value === 'number' ? replacement.value : 0;
     if (attrs) {
       attrs.forEach((attribute) => {
@@ -64,12 +64,12 @@ const Fragment = ({ replacement, values }) => {
    * View
    */
   return (
-    <span className={className || hooks.className}>
-      <Before>{beforeValue}</Before>
-      <Tag className={className || hooks.className} {...attrsValue}>
+    <span className={className}>
+      {beforeValue && <Before>{beforeValue}</Before>}
+      <Tag className={className} {...attrsValue}>
         {hooks.value || fragmentValue}
       </Tag>
-      <After>{afterValue}</After>
+      {afterValue && <After>{afterValue}</After>}
     </span>
   );
 };
