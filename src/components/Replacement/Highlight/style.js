@@ -19,4 +19,5 @@ export default {
   margin: '.2em .15em',
   overflow: 'auto',
   padding: '.4em .8em',
+  tabSize: 2,
 };
