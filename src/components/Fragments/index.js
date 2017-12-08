@@ -9,6 +9,7 @@ import sanitizeHtml from 'sanitize-html';
 /*
  * Local Import
  */
+import Fragment from './Fragment';
 
 /*
  * Code
@@ -19,18 +20,18 @@ const sanitizeOptions = { allowedTags: [], allowedAttributes: [] };
  * Component
  */
 const Fragments = ({ fragments }) =>
-  fragments.map((Frag, index) => {
-    // Get rid of html or XSS
-    const string = sanitizeHtml(Frag, sanitizeOptions);
+  fragments.map((fragment, index) => {
+    const { replacement, values } = fragment;
 
-    if (typeof Frag === 'string') {
-      // Add emoji
-      const html = { __html: string };
-
-      // Insert into HTML
-      return <span key={index} dangerouslySetInnerHTML={html} />;
+    // If element is a string
+    if (typeof fragment === 'string') {
+      // Get rid of html or XSS
+      const html = sanitizeHtml(fragment, sanitizeOptions);
+      return <span key={index} dangerouslySetInnerHTML={{ __html: html }} />;
     }
-    return React.cloneElement(Frag, { key: index });
+
+    // Otherwise, is a Fragment.
+    return <Fragment key={index} replacement={replacement} values={values} />;
   });
 
 /*

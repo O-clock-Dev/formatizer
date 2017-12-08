@@ -15,7 +15,12 @@ import getFragments from './getFragments';
  */
 // const Format = ({ children, mentions, isMention, isMentionUser }) => {
 const Format = ({ children, isMention }) => {
+  // Get all Fragments
   const fragments = getFragments(children, isMention);
+
+  /*
+   * View
+   */
   return <Fragments fragments={fragments} />;
 };
 

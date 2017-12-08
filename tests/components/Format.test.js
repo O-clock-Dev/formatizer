@@ -8,14 +8,17 @@ import { mount } from 'enzyme';
 /*
  * Local Import
  */
-
-// Components
-import Highlight from 'src/components/Highlight';
-import Format from 'src';
-
-// Style
-import { EmojiContainer } from 'src/components/Emoji/style';
-import { Code, Link, Blockquote } from 'src/patterns/style';
+import { Formatizer } from 'src';
+import {
+  Blockquote,
+  Bold,
+  Code,
+  Emoji,
+  Italic,
+  Highlight,
+  Link,
+  Strike,
+} from 'src/components/Replacement';
 
 /*
  * Code
@@ -28,7 +31,7 @@ should();
 describe('** src/index.js **', () => {
   it('Should be display a simple Text', () => {
     const message = 'test';
-    const wrapper = mount(<Format>{message}</Format>);
+    const wrapper = mount(<Formatizer>{message}</Formatizer>);
 
     wrapper.should.have.length(1);
 
@@ -39,126 +42,106 @@ describe('** src/index.js **', () => {
   it('Should format a string in Bold', () => {
     // BOLD
     const message = '*test*';
-    const wrapper = mount(<Format>{message}</Format>);
+    const wrapper = mount(<Formatizer>{message}</Formatizer>);
 
-    wrapper
-      .find('span')
-      .first()
-      .hasClass('bold')
-      .should.equal(true);
+    wrapper.find(Bold).should.have.length(1);
   });
 
   it('Should format a string in Italic', () => {
     // ITALIC
     const message = '_test_';
-    const wrapper = mount(<Format>{message}</Format>);
+    const wrapper = mount(<Formatizer>{message}</Formatizer>);
 
-    wrapper
-      .find('span')
-      .first()
-      .hasClass('italic')
-      .should.equal(true);
+    wrapper.find(Italic).should.have.length(1);
   });
 
   it('Should format a string in Strike', () => {
     // STRIKE
     const message = '~test~';
-    const wrapper = mount(<Format>{message}</Format>);
+    const wrapper = mount(<Formatizer>{message}</Formatizer>);
 
-    wrapper
-      .find('span')
-      .first()
-      .hasClass('strike')
-      .should.equal(true);
+    wrapper.find(Strike).should.have.length(1);
   });
 
   it('Should format multiple string', () => {
     const message = '*un* _deux_';
-    const wrapper = mount(<Format>{message}</Format>);
+    const wrapper = mount(<Formatizer>{message}</Formatizer>);
 
-    // Each element formatted have 2 span
-    // with className { bold / italic / strike }
-    wrapper
-      .find('span')
-      .filter('.bold')
-      .should.have.length(2);
-    wrapper
-      .find('span')
-      .filter('.italic')
-      .should.have.length(2);
+    wrapper.find(Bold).should.have.length(1);
+    wrapper.find(Italic).should.have.length(1);
   });
 
   it('Should add a <code> when pair of Backtick', () => {
     const message = 'Bonjour, je suis un `code` :)';
-    const wrapper = mount(<Format>{message}</Format>);
-    wrapper.find('code').should.have.length(1);
+    const wrapper = mount(<Formatizer>{message}</Formatizer>);
+    wrapper.find(Code).should.have.length(1);
   });
 
   it('Should add <Code /> for each pair of Backtick', () => {
     const message = 'Bonjour, `je` suis un `code` :)';
-    const wrapper = mount(<Format>{message}</Format>);
+    const wrapper = mount(<Formatizer>{message}</Formatizer>);
     wrapper.find(Code).should.have.length(2);
   });
 
   it('Should add <a> for a Link', () => {
     // https
     let message = 'Bonjour, https://oclock.io';
-    let wrapper = mount(<Format>{message}</Format>);
+    let wrapper = mount(<Formatizer>{message}</Formatizer>);
     wrapper.find(Link).should.have.length(1);
 
     // http
     message = 'Bonjour, http://oclock.io';
-    wrapper = mount(<Format>{message}</Format>);
+    wrapper = mount(<Formatizer>{message}</Formatizer>);
     wrapper.find(Link).should.have.length(1);
   });
 
   it('Should dont add <a> if link is fail', () => {
     // Fail link
     const message = 'Bonjour, http//oclock.io';
-    const wrapper = mount(<Format>{message}</Format>);
+    const wrapper = mount(<Formatizer>{message}</Formatizer>);
     wrapper.find(Link).should.have.length(0);
   });
 
   it('Should add <Highlight /> for a Snippet', () => {
     const message = 'Bonjour, ```js const a = "je suis un snippet"; ```';
-    const wrapper = mount(<Format>{message}</Format>);
+    const wrapper = mount(<Formatizer>{message}</Formatizer>);
     wrapper.find(Highlight).should.have.length(1);
   });
 
   it('Should add <Highlight /> for a Snippet withou language', () => {
     const message = 'Bonjour, ``` coucou ```';
-    const wrapper = mount(<Format>{message}</Format>);
+    const wrapper = mount(<Formatizer>{message}</Formatizer>);
     wrapper.find(Highlight).should.have.length(1);
   });
 
   it('Should add <blockquote> for a Quote', () => {
     const message = '> Bonjour, Je suis une quote';
-    const wrapper = mount(<Format>{message}</Format>);
+    const wrapper = mount(<Formatizer>{message}</Formatizer>);
     wrapper.find(Blockquote).should.have.length(1);
   });
 
   it('Should add <Emoji /> for a Smiley', () => {
     const message = ':sunglasses:';
-    const wrapper = mount(<Format>{message}</Format>);
-    wrapper.find(EmojiContainer).should.have.length(1);
+    const wrapper = mount(<Formatizer>{message}</Formatizer>);
+    wrapper.find(Emoji).should.have.length(1);
   });
 
   it('Should add <Emoji /> for a :+1:', () => {
     const message = ':+1:';
-    const wrapper = mount(<Format>{message}</Format>);
-    wrapper.find(EmojiContainer).should.have.length(1);
+    const wrapper = mount(<Formatizer>{message}</Formatizer>);
+    wrapper.find(Emoji).should.have.length(1);
   });
 
   it('Should add <Emoji /> for a :thumbsup_tone5:', () => {
     const message = ':thumbsup_tone5:';
-    const wrapper = mount(<Format>{message}</Format>);
-    wrapper.find(EmojiContainer).should.have.length(1);
+    const wrapper = mount(<Formatizer>{message}</Formatizer>);
+    wrapper.find(Emoji).should.have.length(1);
   });
 
   it.skip('Should add <Emoji /> for each Smileys and display text between the both', () => {
     const message = ':sunglasses: test :sunny:';
-    const wrapper = mount(<Format>{message}</Format>);
-    wrapper.find(EmojiContainer).should.have.length(2);
+    const wrapper = mount(<Formatizer>{message}</Formatizer>);
+    wrapper.find(Emoji).should.have.length(2);
     wrapper.text().should.be.a('string');
     wrapper.text().should.be.equal(' test ');
   });

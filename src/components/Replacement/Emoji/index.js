@@ -33,18 +33,18 @@ export const shortnameToImage = emoji => Emojione.shortnameToImage(emoji);
 /*
  * Components
  */
-const EmojioneContainer = ({ children }) => (
+const Emoji = ({ children }) => (
   <Style dangerouslySetInnerHTML={{ __html: shortnameToImage(children) }} />
 );
 
 /*
  * PropTypes
  */
-EmojioneContainer.propTypes = {
+Emoji.propTypes = {
   children: PropTypes.string.isRequired,
 };
 
 /*
  * Export default
  */
-export default EmojioneContainer;
+export default Emoji;

@@ -1,12 +1,10 @@
 /*
  * Package Import
  */
-import React from 'react';
 
 /*
  * Local Import
  */
-import Fragment from 'src/components/Fragment';
 import { characters, emojis, priorities, text } from 'src/patterns';
 
 /*
@@ -51,9 +49,7 @@ const getFragments = (message) => {
             const values = Array.from(result);
 
             // Fragment
-            subFragments.push(
-              <Fragment replacement={replacement} values={values} />,
-            );
+            subFragments.push({ replacement, values });
 
             // End
             msgFragment = messageEnd;
