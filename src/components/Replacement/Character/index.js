@@ -22,16 +22,17 @@ const Style = Glamorous.span({
 /*
  * Component
  */
-const Character = ({ children }) => (
-  <Style dangerouslySetInnerHTML={{ __html: children }} />
-);
+const Character = ({ children }) => <Style>{children}</Style>;
 
 
 /*
  * PropTypes
  */
 Character.propTypes = {
-  children: PropTypes.string.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.string,
+  ]).isRequired,
 };
 
 

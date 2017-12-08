@@ -1,6 +1,7 @@
 /*
  * Package Import
  */
+import React from 'react';
 
 
 /*
@@ -15,11 +16,11 @@ import { Character } from 'src/components/Replacement';
 const characters = [
   {
     pattern: /\n{2,}/g,
-    replace: '<span><br /><br /></span>',
+    replace: (<span><br /><br /></span>),
   },
   {
     pattern: /\n/g,
-    replace: '<br />',
+    replace: <br />,
   },
   {
     pattern: /&/g,
