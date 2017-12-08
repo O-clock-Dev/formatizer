@@ -1,20 +1,19 @@
-/* eslint-disable import/prefer-default-export */
-
 /*
  * Package Import
  */
 
+
 /*
  * Local Import
  */
+import { GeneriqueStyle } from 'src/components/Fragment/style';
+
 
 /*
  * Style
  */
-export const PreFormatted = {
-  background: 'rgba(50,55,60,0.5)',
-  border: '1px solid #32373c',
-  borderRadius: '.2em',
+export default {
+  ...GeneriqueStyle,
   color: '#abb2bf',
   display: 'block',
   fontSize: '1.5rem',

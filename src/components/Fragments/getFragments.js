@@ -6,7 +6,7 @@ import React from 'react';
 /*
  * Local Import
  */
-import Fragment from 'src/components/Fragments/Fragment';
+import Fragment from 'src/components/Fragment';
 // import { emojis, priorities, text } from 'src/patterns';
 import { priorities, text } from 'src/patterns';
 

@@ -5,25 +5,28 @@
 /*
  * Local Import
  */
-import Bold from 'src/components/Fragments/Fragment/Bold';
-import Italic from 'src/components/Fragments/Fragment/Italic';
-import Strike from 'src/components/Fragments/Fragment/Strike';
+import Bold from 'src/components/Fragment/Bold';
+import Italic from 'src/components/Fragment/Italic';
+import Strike from 'src/components/Fragment/Strike';
 
 /*
  * Code
  */
 const patterns = [
   {
-    pattern: /\*(.+?)\*($|\s|[.,?!:;)])/gm,
+    pattern: /\*(.+?)\*/gm,
     Component: Bold,
+    value: 1,
   },
   {
-    pattern: /_(.+?)_($|\s|[.,?!:;)])/gm,
+    pattern: /_(.+?)_/gm,
     Component: Italic,
+    value: 1,
   },
   {
-    pattern: /~(.+?)~($|\s|[.,?!:;)])/gm,
+    pattern: /~(.+?)~/gm,
     Component: Strike,
+    value: 1,
   },
 ];
 

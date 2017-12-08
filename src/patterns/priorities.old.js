@@ -6,9 +6,9 @@ import React from 'react';
 /*
  * Local import
  */
-import Highlight from 'src/components/Highlight';
+// import Highlight from 'src/components/Highlight';
 // import Emoji from 'src/components/Emoji';
-import { Code, Blockquote, Link } from './style';
+// import { Code, Blockquote, Link } from './style';
 
 /*
  * Export default

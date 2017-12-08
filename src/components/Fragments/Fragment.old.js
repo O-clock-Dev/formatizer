@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 /*
  * Local Import
  */
-import { Before, After, FragmentValue } from './style';
+import { Before, After, FragmentValue } from './style.old';
 
 /*
  * Code
