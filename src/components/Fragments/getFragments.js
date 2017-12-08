@@ -13,7 +13,7 @@ import { characters, emojis, priorities, text } from 'src/patterns';
  * Code
  */
 const getFragments = (message) => {
-  const allReplacements = [...emojis, ...priorities, ...text, ...characters];
+  const allReplacements = [...priorities, ...emojis, ...text, ...characters];
   let messageFragments = [message];
 
   // For each replacement

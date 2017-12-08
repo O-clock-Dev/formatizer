@@ -12,9 +12,6 @@ import PropTypes from 'prop-types';
  * Code
  */
 const Fragment = ({ replacement, values }) => {
-  console.log('replacement', replacement);
-  console.log('values', values);
-  // Destructuration
   const { Component, value, attrs, replace } = replacement;
 
   // Variable
