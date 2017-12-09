@@ -16,6 +16,9 @@ exports.config =
     javascripts:
       joinTo: 'app.js'
 
+    stylesheets:
+      joinTo: 'css/app.css'
+
   paths:
     watched: ['example', 'src']
 

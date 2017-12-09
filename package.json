@@ -48,6 +48,7 @@
     "brunch": "^2.10.9",
     "chai": "^4.1.2",
     "emojione": "^2.2.7",
+    "emojione-picker": "^2.2.1",
     "enzyme": "^3.0.0",
     "enzyme-adapter-react-16": "^1.0.0",
     "eslint": "^4.4.1",
