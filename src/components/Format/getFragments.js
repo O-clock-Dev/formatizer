@@ -5,13 +5,12 @@
 /*
  * Local Import
  */
-import { characters, emojis, priorities, text } from 'src/patterns';
+import allReplacements from 'src/patterns';
 
 /*
  * Code
  */
 const getFragments = (message) => {
-  const allReplacements = [...priorities, ...emojis, ...text, ...characters];
   let messageFragments = [message];
 
   // For each replacement

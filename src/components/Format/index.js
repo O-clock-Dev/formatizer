@@ -13,10 +13,9 @@ import getFragments from './getFragments';
 /*
  * Component
  */
-// const Format = ({ children, mentions, isMention, isMentionUser }) => {
-const Format = ({ children, isMention }) => {
+const Format = ({ children, ...props }) => {
   // Get all Fragments
-  const fragments = getFragments(children, isMention);
+  const fragments = getFragments(children, props);
 
   /*
    * View

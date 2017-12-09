@@ -1,4 +1,17 @@
-export { default as characters } from './characters';
-export { default as emojis } from './emojis';
-export { default as priorities } from './priorities';
-export { default as text } from './text';
+import Character, {
+  pattern as patternCharacter,
+} from 'src/components/Piece/Character';
+import emojis from './emojis';
+import priorities from './priorities';
+import text from './text';
+
+export default [
+  ...priorities,
+  ...emojis,
+  ...text,
+  {
+    pattern: patternCharacter,
+    Component: Character,
+    value: 1,
+  },
+];

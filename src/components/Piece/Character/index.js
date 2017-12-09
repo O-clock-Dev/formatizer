@@ -3,30 +3,44 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
-import Glamorous from 'glamorous';
 
 /*
  * Local Import
  */
 
 /*
- * Style
+ * Pattern
  */
-const Style = Glamorous.span({
-  display: 'inline',
-});
+export const pattern = /(\n+|&|<|>)/g;
 
 /*
  * Component
  */
-const Character = ({ children }) => <Style>{children}</Style>;
+const Character = ({ children }) => {
+  // Line
+  if (children === '\n') {
+    return <br />;
+  }
+
+  // Multiline
+  if (children.slice(0, 1) === '\n') {
+    return (
+      <span>
+        <br />
+        <br />
+      </span>
+    );
+  }
+
+  // Other char
+  return <span>{children}</span>;
+};
 
 /*
  * PropTypes
  */
 Character.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.object, PropTypes.string])
-    .isRequired,
+  children: PropTypes.any.isRequired,
 };
 
 /*
