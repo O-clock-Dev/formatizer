@@ -30,7 +30,7 @@ const Fragments = ({ fragments }) =>
       return <span key={index} dangerouslySetInnerHTML={{ __html: html }} />;
     }
 
-    // Otherwise, is a Fragment.
+    // Otherwise, is a Piece of Fragment.
     return <Fragment key={index} replacement={replacement} values={values} />;
   });
 

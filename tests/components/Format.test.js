@@ -14,9 +14,10 @@ import {
   Bold,
   Code,
   Emoji,
-  Italic,
   Highlight,
+  Italic,
   Link,
+  Mention,
   Strike,
 } from 'src/components/Piece';
 
@@ -32,35 +33,41 @@ describe('** src/index.js **', () => {
   it('Should be display a simple Text', () => {
     const message = 'test';
     const wrapper = mount(<Formatizer>{message}</Formatizer>);
-
-    wrapper.should.have.length(1);
-
-    wrapper.text().should.be.a('string');
-    wrapper.text().should.be.equal('test');
+    wrapper
+      .text()
+      .should.be.a('string')
+      .which.be.equal('test');
   });
 
-  it('Should format a string in Bold', () => {
-    // BOLD
+  it('Should format a string in <Bold />', () => {
     const message = '*test*';
     const wrapper = mount(<Formatizer>{message}</Formatizer>);
-
     wrapper.find(Bold).should.have.length(1);
   });
 
-  it('Should format a string in Italic', () => {
-    // ITALIC
+  it('Should format a string in <Italic />', () => {
     const message = '_test_';
     const wrapper = mount(<Formatizer>{message}</Formatizer>);
-
     wrapper.find(Italic).should.have.length(1);
   });
 
-  it('Should format a string in Strike', () => {
-    // STRIKE
+  it('Should format a string in <Strike />', () => {
     const message = '~test~';
     const wrapper = mount(<Formatizer>{message}</Formatizer>);
-
     wrapper.find(Strike).should.have.length(1);
+  });
+
+  it('Should add a <Mention />', () => {
+    const message = 'Je suis une @mention';
+    const wrapper = mount(<Formatizer>{message}</Formatizer>);
+    wrapper.find(Mention).should.have.length(1);
+  });
+
+  it('Should format a string with many Piece', () => {
+    const message = '*_test_*';
+    const wrapper = mount(<Formatizer>{message}</Formatizer>);
+    wrapper.find(Bold).should.have.length(1);
+    wrapper.find(Italic).should.have.length(1);
   });
 
   it('Should format multiple string', () => {
@@ -71,7 +78,7 @@ describe('** src/index.js **', () => {
     wrapper.find(Italic).should.have.length(1);
   });
 
-  it('Should add a <code> when pair of Backtick', () => {
+  it('Should add a <Code /> when pair of Backtick', () => {
     const message = 'Bonjour, je suis un `code` :)';
     const wrapper = mount(<Formatizer>{message}</Formatizer>);
     wrapper.find(Code).should.have.length(1);
@@ -83,7 +90,7 @@ describe('** src/index.js **', () => {
     wrapper.find(Code).should.have.length(2);
   });
 
-  it('Should add <a> for a Link', () => {
+  it('Should add <Link /> for a Link', () => {
     // https
     let message = 'Bonjour, https://oclock.io';
     let wrapper = mount(<Formatizer>{message}</Formatizer>);
@@ -95,8 +102,7 @@ describe('** src/index.js **', () => {
     wrapper.find(Link).should.have.length(1);
   });
 
-  it('Should dont add <a> if link is fail', () => {
-    // Fail link
+  it('Should DID NOT add <Link /> if link is fail', () => {
     const message = 'Bonjour, http//oclock.io';
     const wrapper = mount(<Formatizer>{message}</Formatizer>);
     wrapper.find(Link).should.have.length(0);
@@ -114,7 +120,7 @@ describe('** src/index.js **', () => {
     wrapper.find(Highlight).should.have.length(1);
   });
 
-  it('Should add <blockquote> for a Quote', () => {
+  it('Should add <Blockquote> for a Quote', () => {
     const message = '> Bonjour, Je suis une quote';
     const wrapper = mount(<Formatizer>{message}</Formatizer>);
     wrapper.find(Blockquote).should.have.length(1);
@@ -132,13 +138,13 @@ describe('** src/index.js **', () => {
     wrapper.find(Emoji).should.have.length(1);
   });
 
-  it('Should add <Emoji /> for a :thumbsup_tone5:', () => {
+  it('Should add a tone <Emoji /> for a :thumbsup_tone5:', () => {
     const message = ':thumbsup_tone5:';
     const wrapper = mount(<Formatizer>{message}</Formatizer>);
     wrapper.find(Emoji).should.have.length(1);
   });
 
-  it.skip('Should add <Emoji /> for each Smileys and display text between the both', () => {
+  it.skip('Should add <Emoji /> for each Emoji and display text between the both', () => {
     const message = ':sunglasses: test :sunny:';
     const wrapper = mount(<Formatizer>{message}</Formatizer>);
     wrapper.find(Emoji).should.have.length(2);
