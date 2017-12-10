@@ -4,36 +4,42 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Highlighter from 'react-syntax-highlighter';
-import { atomOneDark } from 'react-syntax-highlighter/dist/styles';
+import { atomOneDark as style } from 'react-syntax-highlighter/dist/styles';
 
 /*
  * Local Import
  */
-import CustomStyle from './style';
+import customStyle from './style';
 import languages from './languages';
 
 /*
  * Patterns
  */
-export const pattern = /```(?:([a-z0-9-]+)(?:\s|\n))?((?:.|\n)+?)```\n?/g;
+/* eslint-disable prefer-template */
+const regexp = '```(?:(' + languages.join('|') + ')\\s+)?((?:.|\\n)+?)```\\n?';
+export const pattern = new RegExp(regexp, 'g');
 
 /*
  * Component
  */
 const Highlight = ({ children }) => {
-  const language = '';
+  // Never forget to reset lastIndex after a .exec()
+  const matches = pattern.exec(children);
+  pattern.lastIndex = 0;
 
-  // Attribute Options
-  const options = {
-    style: atomOneDark,
-    customStyle: CustomStyle,
-    language: languages.find(lang => lang === language) || '',
-  };
+  // Highlighter options
+  const options = { style, customStyle };
 
-  /*
-   * View
-   */
-  return <Highlighter {...options}>{children}</Highlighter>;
+  // First capturing paren: language
+  if (matches[1]) {
+    options.language = matches[1];
+  }
+
+  // Second capturing paren: code
+  const code = matches[2];
+
+  // View
+  return <Highlighter {...options}>{code}</Highlighter>;
 };
 
 /*
