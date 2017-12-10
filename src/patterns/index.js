@@ -44,12 +44,6 @@ export default [
     Component: Mention,
   },
 
-  // Text
-  {
-    pattern: patternTextFormat,
-    Component: TextFormat,
-  },
-
   // Emojis
   {
     pattern: patternColon,
@@ -58,6 +52,12 @@ export default [
   {
     pattern: patternSmiley,
     Component: Emoji,
+  },
+
+  // Text
+  {
+    pattern: patternTextFormat,
+    Component: TextFormat,
   },
 
   // Character

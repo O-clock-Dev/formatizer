@@ -28,9 +28,9 @@ const Format = ({ children, ...props }) => {
    * View
    */
 
-  // @TODO : Delate <div> when we pass at React 16
+  // @TODO : Delate <span> when we pass at React 16
   return (
-    <div>
+    <span>
       {fragments.map((fragment, index) => {
         // If element is a string
         if (typeof fragment === 'string') {
@@ -45,7 +45,7 @@ const Format = ({ children, ...props }) => {
         // Clone element to add key
         return React.cloneElement(fragment, { key: index });
       })}
-    </div>
+    </span>
   );
 };
 
