@@ -17,7 +17,7 @@ import smileyToColon from './smiley';
  */
 /* eslint-disable max-len */
 // @TODO ":) :)" does not work
-export const patternColons = /:[?+\-0-9A-Za-z_]+:/gi;
+export const patternColon = /:[?+\-0-9A-Za-z_]+:/gi;
 export const patternSmiley = /(\s|^)(8-?\)|:-?\||:o\)|=-?\)|;-?\)|:-?>|>:-?\(|:-?\)|:-?\(|:-?\/|:-?\\|D:|:-?d|:-?o|:-?x|:-?p|:-?\*|:'\(|:-?D|:-?O|:-?X|:-?P)(\s|$)/g;
 
 /*

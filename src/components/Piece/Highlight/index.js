@@ -17,15 +17,15 @@ import languages from './languages';
  */
 /* eslint-disable prefer-template */
 const regexp = '```(?:(' + languages.join('|') + ')\\s+)?((?:.|\\n)+?)```\\n?';
-export const pattern = new RegExp(regexp, 'g');
+export const patternHighlight = new RegExp(regexp, 'g');
 
 /*
  * Component
  */
 const Highlight = ({ children }) => {
   // Never forget to reset lastIndex after a .exec()
-  const matches = pattern.exec(children);
-  pattern.lastIndex = 0;
+  const matches = patternHighlight.exec(children);
+  patternHighlight.lastIndex = 0;
 
   // Highlighter options
   const options = { style, customStyle };

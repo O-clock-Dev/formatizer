@@ -13,7 +13,7 @@ import getStyle from './style';
 /*
  * Pattern
  */
-export const pattern = /\*.+?\*|~.+?~|_.+?_/g;
+export const patternTextFormat = /\*.+?\*|~.+?~|_.+?_/g;
 
 /*
  * TextFormat

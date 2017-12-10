@@ -12,7 +12,7 @@ import Glamorous from 'glamorous';
 /*
  * Pattern
  */
-export const pattern = /(?:^|\n)>\s?([^\n]+)\n?/gm;
+export const patternBlockquote = /(?:^|\n)>\s?([^\n]+)\n?/gm;
 
 /*
  * Style

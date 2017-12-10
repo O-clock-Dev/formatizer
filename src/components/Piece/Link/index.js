@@ -15,7 +15,7 @@ import Glamorous from 'glamorous';
 // @TODO : Améliorer la regex,
 // sinon ça prend en compte un espace à la fin,
 // et ça le supprime lors de la transformation.
-export const pattern = /(https?:\/\/(?:[^\s()]|\(.+?\))+?)($|\s|[.,?!:;)]\s)/g;
+export const patternLink = /(https?:\/\/(?:[^\s()]|\(.+?\))+?)($|\s|[.,?!:;)]\s)/g;
 
 /*
  * Style

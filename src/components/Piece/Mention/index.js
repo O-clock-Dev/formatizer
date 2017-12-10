@@ -15,7 +15,7 @@ import { Style } from './style';
 // @TODO : Améliorer la regex,
 // sinon ça prend en compte un espace à la fin,
 // et ça le supprime lors de la transformation.
-export const pattern = /(@[a-z0-9_]+)($|\s|[.,?!:;)])/gi;
+export const patternMention = /(@[a-z0-9_]+)($|\s|[.,?!:;)])/gi;
 
 /*
  * Component

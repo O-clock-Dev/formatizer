@@ -12,7 +12,7 @@ import { Style } from './style';
 /*
  * Pattern
  */
-export const pattern = /`(.+?)`/g;
+export const patternCode = /`(.+?)`/g;
 
 /*
  * Style

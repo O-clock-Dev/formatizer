@@ -3,38 +3,20 @@
  */
 
 // Priorities
-import Highlight, {
-  pattern as patternHighlight,
-} from 'src/components/Piece/Highlight';
-
-import Code, { pattern as patternCode } from 'src/components/Piece/Code';
-
-import Blockquote, {
-  pattern as patternBlockquote,
-} from 'src/components/Piece/Blockquote';
-
-import Link, { pattern as patternLink } from 'src/components/Piece/Link';
-
-import Mention, {
-  pattern as patternMention,
-} from 'src/components/Piece/Mention';
+import Highlight, { patternHighlight } from 'src/components/Piece/Highlight';
+import Code, { patternCode } from 'src/components/Piece/Code';
+import Blockquote, { patternBlockquote } from 'src/components/Piece/Blockquote';
+import Link, { patternLink } from 'src/components/Piece/Link';
+import Mention, { patternMention } from 'src/components/Piece/Mention';
 
 // Text
-import TextFormat, {
-  pattern as patternTextFormat,
-} from 'src/components/Piece/TextFormat';
+import TextFormat, { patternTextFormat } from 'src/components/Piece/TextFormat';
 
 // Emoji
-import Emoji, {
-  patternColons,
-  patternSmiley,
-  patternSmileyInsensitive,
-} from 'src/components/Piece/Emoji';
+import Emoji, { patternColon, patternSmiley } from 'src/components/Piece/Emoji';
 
 // Character
-import Character, {
-  pattern as patternCharacter,
-} from 'src/components/Piece/Character';
+import Character, { patternCharacter } from 'src/components/Piece/Character';
 
 /*
  * Export
@@ -70,15 +52,11 @@ export default [
 
   // Emojis
   {
-    pattern: patternColons,
+    pattern: patternColon,
     Component: Emoji,
   },
   {
     pattern: patternSmiley,
-    Component: Emoji,
-  },
-  {
-    pattern: patternSmileyInsensitive,
     Component: Emoji,
   },
 
