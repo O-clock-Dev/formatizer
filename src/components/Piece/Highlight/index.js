@@ -21,6 +21,8 @@ export const pattern = /```(?:([a-z0-9-]+)(?:\s|\n))?((?:.|\n)+?)```\n?/g;
  * Component
  */
 const Highlight = ({ children }) => {
+  const language = '';
+
   // Attribute Options
   const options = {
     style: atomOneDark,
