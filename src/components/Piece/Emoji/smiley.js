@@ -17,6 +17,8 @@ export default {
   ':-(': ':disappointed:',
   ':/': ':confused:',
   ':-/': ':confused:',
+  ':\\': ':confused:',
+  ':-\\': ':confused:',
   ':o)': ':monkey_face:',
   'D:': ':fearful:',
   ':d': ':grin:',
