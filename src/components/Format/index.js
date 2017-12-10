@@ -27,18 +27,26 @@ const Format = ({ children, ...props }) => {
   /*
    * View
    */
-  return fragments.map((fragment, index) => {
-    // If element is a string
-    if (typeof fragment === 'string') {
-      // Get rid of html or XSS
-      const html = sanitizeHtml(fragment, sanitizeOptions);
-      return <span key={index} dangerouslySetInnerHTML={{ __html: html }} />;
-    }
 
-    // Otherwise, is a Piece of Fragment.
-    // Clone element to add key
-    return React.cloneElement(fragment, { key: index });
-  });
+  // @TODO : Delate <div> when we pass at React 16
+  return (
+    <div>
+      {fragments.map((fragment, index) => {
+        // If element is a string
+        if (typeof fragment === 'string') {
+          // Get rid of html or XSS
+          const html = sanitizeHtml(fragment, sanitizeOptions);
+          return (
+            <span key={index} dangerouslySetInnerHTML={{ __html: html }} />
+          );
+        }
+
+        // Otherwise, is a Piece of Fragment.
+        // Clone element to add key
+        return React.cloneElement(fragment, { key: index });
+      })}
+    </div>
+  );
 };
 
 /*
