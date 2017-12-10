@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
 /*
  * Pattern
  */
-export const pattern = /(\n+|&|<|>)/g;
+export const pattern = /\n+|&|<|>/g;
 
 /*
  * Component

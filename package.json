@@ -32,7 +32,7 @@
     "emojione": "^2.2.7",
     "glamor": "^2.20.40",
     "glamorous": "^4.11.0",
-    "react": "^15.6.1 || ^16.0.0"
+    "react": "^15.4.1 || ^16.0.0"
   },
   "devDependencies": {
     "auto-reload-brunch": "^2.7.1",

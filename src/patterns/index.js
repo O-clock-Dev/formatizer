@@ -1,6 +1,9 @@
-/* eslint-disable max-len */
-// import Character, { pattern as patternCharacter } from 'src/components/Piece/Character';
-// import Highlight, { pattern as patternHighlight } from 'src/components/Piece/Highlight';
+import Character, {
+  pattern as patternCharacter,
+} from 'src/components/Piece/Character';
+import Highlight, {
+  pattern as patternHighlight,
+} from 'src/components/Piece/Highlight';
 import TextFormat, {
   pattern as patternTextFormat,
 } from 'src/components/Piece/TextFormat';
@@ -8,18 +11,18 @@ import TextFormat, {
 // import priorities from './priorities';
 
 export default [
-  // {
-  //   pattern: patternHighlight,
-  //   Component: Highlight,
-  // },
+  {
+    pattern: patternHighlight,
+    Component: Highlight,
+  },
   // ...priorities,
   // ...emojis,
   {
     pattern: patternTextFormat,
     Component: TextFormat,
   },
-  // {
-  //   pattern: patternCharacter,
-  //   Component: Character,
-  // },
+  {
+    pattern: patternCharacter,
+    Component: Character,
+  },
 ];
