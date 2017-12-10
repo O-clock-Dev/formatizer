@@ -13,8 +13,6 @@ import {
   Blockquote,
   Bold,
   Code,
-  Emoji,
-  Highlight,
   Italic,
   Link,
   Mention,
@@ -108,47 +106,9 @@ describe('** src/components/Format.js **', () => {
     wrapper.find(Link).should.have.length(0);
   });
 
-  it('Should add <Highlight /> for a Snippet', () => {
-    const message = 'Bonjour, ```js const a = "je suis un snippet"; ```';
-    const wrapper = mount(<Formatizer>{message}</Formatizer>);
-    wrapper.find(Highlight).should.have.length(1);
-  });
-
-  it('Should add <Highlight /> for a Snippet withou language', () => {
-    const message = 'Bonjour, ``` coucou ```';
-    const wrapper = mount(<Formatizer>{message}</Formatizer>);
-    wrapper.find(Highlight).should.have.length(1);
-  });
-
   it('Should add <Blockquote> for a Quote', () => {
     const message = '> Bonjour, Je suis une quote';
     const wrapper = mount(<Formatizer>{message}</Formatizer>);
     wrapper.find(Blockquote).should.have.length(1);
-  });
-
-  it('Should add <Emoji /> for a Smiley', () => {
-    const message = ':sunglasses:';
-    const wrapper = mount(<Formatizer>{message}</Formatizer>);
-    wrapper.find(Emoji).should.have.length(1);
-  });
-
-  it('Should add <Emoji /> for a :+1:', () => {
-    const message = ':+1:';
-    const wrapper = mount(<Formatizer>{message}</Formatizer>);
-    wrapper.find(Emoji).should.have.length(1);
-  });
-
-  it('Should add a tone <Emoji /> for a :thumbsup_tone5:', () => {
-    const message = ':thumbsup_tone5:';
-    const wrapper = mount(<Formatizer>{message}</Formatizer>);
-    wrapper.find(Emoji).should.have.length(1);
-  });
-
-  it.skip('Should add <Emoji /> for each Emoji and display text between the both', () => {
-    const message = ':sunglasses: test :sunny:';
-    const wrapper = mount(<Formatizer>{message}</Formatizer>);
-    wrapper.find(Emoji).should.have.length(2);
-    wrapper.text().should.be.a('string');
-    wrapper.text().should.be.equal(' test ');
   });
 });

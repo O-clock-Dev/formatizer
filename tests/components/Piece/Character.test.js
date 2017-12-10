@@ -19,7 +19,7 @@ should();
 /*
  * Tests
  */
-describe('** src/components/Character.js **', () => {
+describe('** src/components/Piece/Character.js **', () => {
   it('Should format & in <Character />', () => {
     const message = '&';
     const wrapper = mount(<Formatizer>{message}</Formatizer>);
