@@ -11,11 +11,12 @@ import PropTypes from 'prop-types';
 /*
  * Pattern
  */
-export const pattern = /(\n+|&|<|>)/g;
+export const pattern = /\n+|&|<|>/g;
 
 /*
  * Component
  */
+// @TODO, get rid of <span>s with React 16.2
 const Character = ({ children }) => {
   // Line
   if (children === '\n') {

@@ -12,7 +12,7 @@
     "build": "babel src -d build",
     "publish": "rm -rf build/ && yarn run build && npm publish",
     "test": "mocha --reporter spec tests/.setup.js tests/**/*.test.js tests/**/**/*.test.js",
-    "test:one": "mocha --watch --reporter spec tests/.setup.js",
+    "test:one": "mocha --reporter spec tests/.setup.js",
     "lint": "eslint --fix src tests",
     "pretty": "prettier --write --single-quote --trailing-comma all \"{src,tests}/**/*.js\"",
     "precommit": "lint-staged && yarn test"
@@ -32,7 +32,7 @@
     "emojione": "^2.2.7",
     "glamor": "^2.20.40",
     "glamorous": "^4.11.0",
-    "react": "^15.6.2 || ^16.0.0"
+    "react": "^15.4.1 || ^16.0.0"
   },
   "devDependencies": {
     "auto-reload-brunch": "^2.7.1",
