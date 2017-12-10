@@ -9,7 +9,7 @@ import { mount } from 'enzyme';
  * Local Import
  */
 import { Formatizer } from 'src';
-import { Character } from 'src/components/Piece';
+import Character from 'src/components/Piece/Character';
 
 /*
  * Code

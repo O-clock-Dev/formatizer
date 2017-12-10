@@ -1,11 +1,14 @@
 /*
  * Package Import
  */
+import React from 'react';
+
 
 /*
  * Local Import
  */
 import allReplacements from 'src/patterns';
+
 
 /*
  * Code
@@ -23,7 +26,8 @@ const getFragments = (message) => {
       // If this is a string
       if (typeof messageFragment === 'string') {
         // Then we search for pattern
-        const { pattern } = replacement;
+        const { Component, pattern } = replacement;
+
         const matches = messageFragment.match(pattern);
 
         // Fragment in which we look for next match
@@ -45,10 +49,13 @@ const getFragments = (message) => {
             // Get result, reset, and transform to array
             const result = pattern.exec(match);
             pattern.lastIndex = 0;
+
+            console.log('result', result);
             const values = Array.from(result);
+            console.log('values', values);
 
             // Fragment
-            subFragments.push({ replacement, values });
+            subFragments.push(<Component>{result[1]}</Component>);
 
             // End
             msgFragment = messageEnd;

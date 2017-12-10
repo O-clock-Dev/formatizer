@@ -13,20 +13,25 @@ import CustomStyle from './style';
 import languages from './languages';
 
 /*
+ * Patterns
+ */
+export const pattern = /```(?:([a-z0-9-]+)(?:\s|\n))?((?:.|\n)+?)```\n?/g;
+
+/*
  * Component
  */
-const Highlight = ({ language, children }) => {
+const Highlight = ({ children }) => {
   // Attribute Options
   const options = {
     style: atomOneDark,
     customStyle: CustomStyle,
-    language: languages.find(lang => lang === language),
+    language: languages.find(lang => lang === language) || '',
   };
 
   /*
    * View
    */
-  return <Highlighter {...options}>{children.trim()}</Highlighter>;
+  return <Highlighter {...options}>{children}</Highlighter>;
 };
 
 /*
@@ -34,11 +39,6 @@ const Highlight = ({ language, children }) => {
  */
 Highlight.propTypes = {
   children: PropTypes.string.isRequired,
-  language: PropTypes.string,
-};
-
-Highlight.defaultProps = {
-  language: '',
 };
 
 /*

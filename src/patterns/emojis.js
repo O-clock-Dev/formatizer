@@ -82,7 +82,6 @@ const emojis = [
 ];
 
 const emojiDefault = {
-  value: 2,
   Component: Emoji,
 };
 
