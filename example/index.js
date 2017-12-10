@@ -23,6 +23,7 @@ class App extends React.Component {
    * State
    */
   state = {
+    pickerIsActive: false,
     // message:
     // 'test *test* _test_ ~test~\n\n> test test\n\n\n:star: test :sunglasses: :heart: test :scream: :smile: :thumbsup_tone5: :-1_tone2: :D :test: :) 8-) :+1: \n\n```js\nconst abc = "test";\nconst def = 123;\n\nreturn abc + def;\n```\n\n test `test`\n\nhttps://github.com/O-clock/formatizer\n\n@test_mention',
     // message: 'Hello :thumbsup_tone5: :+1_tone3: comment ça va ? :wave: :test:',
@@ -43,13 +44,18 @@ class App extends React.Component {
     this.setState({ message: value });
   };
 
+  handlePicker = () => {
+    this.setState(prevPops => ({ pickerIsActive: !prevPops.pickerIsActive }));
+  };
+
   /*
    * View
    */
   render() {
-    const { message } = this.state;
+    const { pickerIsActive, message } = this.state;
     return (
       <div>
+        <button onClick={this.handlePicker}>Emoji Picker</button>
         {/* This textarea got message but doesn't format by Formatizer. */}
         <textarea
           style={{ height: '300px', width: '200px' }}
@@ -61,9 +67,11 @@ class App extends React.Component {
         <Formatizer>{message}</Formatizer>
 
         {/* Emoji Picker */}
-        <div style={{ height: '350px', width: '276px' }}>
-          <Picker onChange={this.handleEmoji} />
-        </div>
+        {pickerIsActive && (
+          <div style={{ height: '350px', width: '276px' }}>
+            <Picker onChange={this.handleEmoji} />
+          </div>
+        )}
       </div>
     );
   }
