@@ -7,18 +7,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import sanitizeHtml from 'sanitize-html';
 
-
 /*
  * Local Import
  */
 import getFragments from './getFragments';
 
-
 /*
  * Code
  */
 const sanitizeOptions = { allowedTags: [], allowedAttributes: [] };
-
 
 /*
  * Component
@@ -30,19 +27,18 @@ const Format = ({ children, ...props }) => {
   /*
    * View
    */
-  return (
-    fragments.map((fragment, index) => {
+  return fragments.map((fragment, index) => {
     // If element is a string
-      if (typeof fragment === 'string') {
+    if (typeof fragment === 'string') {
       // Get rid of html or XSS
-        const html = sanitizeHtml(fragment, sanitizeOptions);
-        return <span key={index} dangerouslySetInnerHTML={{ __html: html }} />;
-      }
+      const html = sanitizeHtml(fragment, sanitizeOptions);
+      return <span key={index} dangerouslySetInnerHTML={{ __html: html }} />;
+    }
 
-      // Otherwise, is a Piece of Fragment.
-      return React.cloneElement(fragment, { key: index });
-    })
-  );
+    // Otherwise, is a Piece of Fragment.
+    // Clone element to add key
+    return React.cloneElement(fragment, { key: index });
+  });
 };
 
 /*

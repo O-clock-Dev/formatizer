@@ -11,7 +11,7 @@ import allReplacements from 'src/patterns';
 /*
  * Code
  */
-const getFragments = (message) => {
+const getFragments = (message, props) => {
   let messageFragments = [message];
 
   // For each replacement
@@ -44,12 +44,8 @@ const getFragments = (message) => {
               subFragments.push(messageBegin);
             }
 
-            // Get result, reset, and transform to array
-            const result = pattern.exec(match);
-            pattern.lastIndex = 0;
-
             // Fragment
-            subFragments.push(<Component>{result[1]}</Component>);
+            subFragments.push(<Component {...props}>{match}</Component>);
 
             // End
             msgFragment = messageEnd;
