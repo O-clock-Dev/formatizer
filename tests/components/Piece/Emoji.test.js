@@ -9,7 +9,7 @@ import { mount } from 'enzyme';
  * Local Import
  */
 import { Formatizer } from 'src';
-import { Emoji } from 'src/components/Piece';
+import Emoji from 'src/components/Piece/Emoji';
 
 /*
  * Code
@@ -19,7 +19,7 @@ should();
 /*
  * Tests
  */
-describe.skip('** src/components/Piece/Emoji.js **', () => {
+describe('** src/components/Piece/Emoji.js **', () => {
   describe('** Colons **', () => {
     it('Should format :sunglasses: in  <Emoji />', () => {
       const message = ':sunglasses:';
@@ -258,7 +258,7 @@ describe.skip('** src/components/Piece/Emoji.js **', () => {
       wrapper.find(Emoji).should.have.length(2);
     });
 
-    it.skip('Should format same multiple Smileys in <Emoji />', () => {
+    it('Should format same multiple Smileys in <Emoji />', () => {
       const message = ':-) :-)';
       const wrapper = mount(<Formatizer>{message}</Formatizer>);
       wrapper.find(Emoji).should.have.length(2);

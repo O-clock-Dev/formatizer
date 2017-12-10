@@ -6,14 +6,23 @@
 import Highlight, {
   pattern as patternHighlight,
 } from 'src/components/Piece/Highlight';
+
 import Code, { pattern as patternCode } from 'src/components/Piece/Code';
+
 import Blockquote, {
   pattern as patternBlockquote,
 } from 'src/components/Piece/Blockquote';
+
 import Link, { pattern as patternLink } from 'src/components/Piece/Link';
+
 import Mention, {
   pattern as patternMention,
 } from 'src/components/Piece/Mention';
+
+// Text
+import TextFormat, {
+  pattern as patternTextFormat,
+} from 'src/components/Piece/TextFormat';
 
 // Emoji
 import Emoji, {
@@ -21,11 +30,6 @@ import Emoji, {
   patternSmiley,
   patternSmileyInsensitive,
 } from 'src/components/Piece/Emoji';
-
-// Text
-import TextFormat, {
-  pattern as patternTextFormat,
-} from 'src/components/Piece/TextFormat';
 
 // Character
 import Character, {
