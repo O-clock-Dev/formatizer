@@ -5,13 +5,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Emojione from 'emojione';
 
-
 /*
  * Local import
  */
 import { Style } from './style';
 import SmileyToColon from './smiley';
-
 
 /*
  * Pattern
@@ -19,7 +17,6 @@ import SmileyToColon from './smiley';
 export const patternColons = /(:[?+\-0-9A-Za-z_]+:)/gi;
 export const patternSmiley = /8-?\)|:-?\||:o\)|=-?\)|;-?\)|:-?>|>:-?\(|:-?\)|:-?\(|:-?[\\/]|D:/g;
 export const patternSmileyInsensitive = /:-?d|:-?o|:-?x|:-?p|:-?\*|:'\(/gi;
-
 
 /*
  * Parameters
@@ -42,7 +39,6 @@ const Emoji = ({ children }) => {
     <Style dangerouslySetInnerHTML={{ __html: shortnameToImage(emoji) }} />
   );
 };
-
 
 /*
  * PropTypes

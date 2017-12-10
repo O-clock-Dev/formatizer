@@ -9,12 +9,10 @@ import Glamorous from 'glamorous';
  * Local Import
  */
 
-
 /*
  * Pattern
  */
 export const pattern = /(?:^|\n)>\s?([^\n]+)\n?/gm;
-
 
 /*
  * Style

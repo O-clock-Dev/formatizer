@@ -4,23 +4,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-
 /*
  * Local Import
  */
 import { Style } from './style';
-
 
 /*
  * Pattern
  */
 export const pattern = /`(.+?)`/g;
 
-
 /*
  * Style
  */
-
 
 /*
  * Component

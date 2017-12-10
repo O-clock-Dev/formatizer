@@ -9,7 +9,6 @@ import Glamorous from 'glamorous';
  * Local Import
  */
 
-
 /*
  * Pattern
  */
@@ -18,7 +17,6 @@ import Glamorous from 'glamorous';
 // et ça le supprime lors de la transformation.
 export const pattern = /(https?:\/\/(?:[^\s()]|\(.+?\))+?)($|\s|[.,?!:;)]\s)/g;
 
-
 /*
  * Style
  */
@@ -26,7 +24,6 @@ const Style = Glamorous.a({
   textDecoration: 'underline',
   textDecorationSkip: 'ink',
 });
-
 
 /*
  * Component
@@ -37,14 +34,12 @@ const Link = ({ children }) => (
   </Style>
 );
 
-
 /*
  * PropTypes
  */
 Link.propTypes = {
   children: PropTypes.string.isRequired,
 };
-
 
 /*
  * Export

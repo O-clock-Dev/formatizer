@@ -3,12 +3,10 @@
  */
 import Glamorous from 'glamorous';
 
-
 /*
  * Local Import
  */
 import { GeneriqueStyle } from '../style';
-
 
 /*
  * Style

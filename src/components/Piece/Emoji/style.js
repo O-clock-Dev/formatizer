@@ -3,11 +3,9 @@
  */
 import Glamorous from 'glamorous';
 
-
 /*
  * Local Import
  */
-
 
 /*
  * Style

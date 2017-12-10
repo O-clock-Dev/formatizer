@@ -3,11 +3,17 @@
  */
 
 // Priorities
-import Highlight, { pattern as patternHighlight } from 'src/components/Piece/Highlight';
+import Highlight, {
+  pattern as patternHighlight,
+} from 'src/components/Piece/Highlight';
 import Code, { pattern as patternCode } from 'src/components/Piece/Code';
-import Blockquote, { pattern as patternBlockquote } from 'src/components/Piece/Blockquote';
+import Blockquote, {
+  pattern as patternBlockquote,
+} from 'src/components/Piece/Blockquote';
 import Link, { pattern as patternLink } from 'src/components/Piece/Link';
-import Mention, { pattern as patternMention } from 'src/components/Piece/Mention';
+import Mention, {
+  pattern as patternMention,
+} from 'src/components/Piece/Mention';
 
 // Emoji
 import Emoji, {
@@ -22,8 +28,9 @@ import TextFormat, {
 } from 'src/components/Piece/TextFormat';
 
 // Character
-import Character, { pattern as patternCharacter } from 'src/components/Piece/Character';
-
+import Character, {
+  pattern as patternCharacter,
+} from 'src/components/Piece/Character';
 
 /*
  * Export
