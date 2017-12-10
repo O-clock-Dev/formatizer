@@ -9,6 +9,13 @@ import Glamorous from 'glamorous';
  * Local Import
  */
 
+
+/*
+ * Pattern
+ */
+export const pattern = /(?:^|\n)>\s?([^\n]+)\n?/gm;
+
+
 /*
  * Style
  */
@@ -31,7 +38,7 @@ const Blockquote = ({ children }) => <Style>{children}</Style>;
  * PropTypes
  */
 Blockquote.propTypes = {
-  children: PropTypes.string.isRequired,
+  children: PropTypes.any.isRequired,
 };
 
 /*

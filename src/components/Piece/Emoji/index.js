@@ -4,19 +4,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Emojione from 'emojione';
-import glamorous from 'glamorous';
+
 
 /*
  * Local import
  */
+import { Style } from './style';
+import SmileyToColon from './smiley';
+
 
 /*
- * Style
+ * Pattern
  */
-const Style = glamorous.span({
-  display: 'inline',
-  '& .emojione': { display: 'inline', height: '1.2em', width: '1.2em' },
-});
+export const patternColons = /(:[?+\-0-9A-Za-z_]+:)/gi;
+export const patternSmiley = /8-?\)|:-?\||:o\)|=-?\)|;-?\)|:-?>|>:-?\(|:-?\)|:-?\(|:-?[\\/]|D:/g;
+export const patternSmileyInsensitive = /:-?d|:-?o|:-?x|:-?p|:-?\*|:'\(/gi;
+
 
 /*
  * Parameters
@@ -33,9 +36,13 @@ export const shortnameToImage = emoji => Emojione.shortnameToImage(emoji);
 /*
  * Components
  */
-const Emoji = ({ children }) => (
-  <Style dangerouslySetInnerHTML={{ __html: shortnameToImage(children) }} />
-);
+const Emoji = ({ children }) => {
+  const emoji = SmileyToColon[children] || children;
+  return (
+    <Style dangerouslySetInnerHTML={{ __html: shortnameToImage(emoji) }} />
+  );
+};
+
 
 /*
  * PropTypes

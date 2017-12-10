@@ -3,36 +3,28 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
-import Glamorous from 'glamorous';
+
 
 /*
  * Local Import
  */
-import { GeneriqueStyle } from '../style';
+import { Style } from './style';
+
 
 /*
- * Style
+ * Pattern
  */
-const Style = Glamorous.span(
-  {
-    display: 'inline',
-    color: '#0ac3a7',
-  },
-  ({ mention }) => {
-    const styles = [];
+// @TODO : Améliorer la regex,
+// sinon ça prend en compte un espace à la fin,
+// et ça le supprime lors de la transformation.
+export const pattern = /(@[a-z0-9_]+)($|\s|[.,?!:;)])/gi;
 
-    if (mention) {
-      styles.push({ ...GeneriqueStyle, padding: '0 .25em' });
-    }
-
-    return styles;
-  },
-);
 
 /*
  * Component
  */
 const Mention = ({ children }) => <Style>{children}</Style>;
+
 
 /*
  * PropTypes
@@ -40,6 +32,7 @@ const Mention = ({ children }) => <Style>{children}</Style>;
 Mention.propTypes = {
   children: PropTypes.string.isRequired,
 };
+
 
 /*
  * Export

@@ -3,20 +3,20 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
-import Glamorous from 'glamorous';
+
 
 /*
  * Local Import
  */
 import Format from 'src/components/Format';
+import { Style } from './style';
+
 
 /*
- * Style
+ * Pattern
  */
-const Style = Glamorous.span({
-  display: 'inline',
-  fontStyle: 'italic',
-});
+export const pattern = /_(.+?)_/gm;
+
 
 /*
  * Component
