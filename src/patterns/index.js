@@ -1,22 +1,86 @@
-import Character, { pattern as pC } from 'src/components/Piece/Character';
-import Highlight, { pattern as pH } from 'src/components/Piece/Highlight';
-import TextFormat, { pattern as pTF } from 'src/components/Piece/TextFormat';
-// import emojis from './emojis';
-// import priorities from './priorities';
+/*
+ * Local Import
+ */
 
+// Priorities
+import Highlight, {
+  pattern as patternHighlight,
+} from 'src/components/Piece/Highlight';
+import Code, { pattern as patternCode } from 'src/components/Piece/Code';
+import Blockquote, {
+  pattern as patternBlockquote,
+} from 'src/components/Piece/Blockquote';
+import Link, { pattern as patternLink } from 'src/components/Piece/Link';
+import Mention, {
+  pattern as patternMention,
+} from 'src/components/Piece/Mention';
+
+// Emoji
+import Emoji, {
+  patternColons,
+  patternSmiley,
+  patternSmileyInsensitive,
+} from 'src/components/Piece/Emoji';
+
+// Text
+import TextFormat, {
+  pattern as patternTextFormat,
+} from 'src/components/Piece/TextFormat';
+
+// Character
+import Character, {
+  pattern as patternCharacter,
+} from 'src/components/Piece/Character';
+
+/*
+ * Export
+ */
 export default [
+  // Priorities
   {
-    pattern: pH,
+    pattern: patternHighlight,
     Component: Highlight,
   },
-  // ...priorities,
-  // ...emojis,
   {
-    pattern: pTF,
-    Component: TextFormat,
+    pattern: patternCode,
+    Component: Code,
   },
   {
-    pattern: pC,
+    pattern: patternBlockquote,
+    Component: Blockquote,
+  },
+  {
+    pattern: patternLink,
+    Component: Link,
+  },
+  {
+    pattern: patternMention,
+    Component: Mention,
+  },
+
+  // Emojis
+  {
+    pattern: patternColons,
+    Component: Emoji,
+  },
+  {
+    pattern: patternSmiley,
+    Component: Emoji,
+  },
+  {
+    pattern: patternSmileyInsensitive,
+    Component: Emoji,
+  },
+
+  // Text
+  {
+    pattern: patternTextFormat,
+    Component: TextFormat,
+  },
+
+  // Character
+  {
+    pattern: patternCharacter,
     Component: Character,
   },
 ];
