@@ -19,7 +19,7 @@ should();
 /*
  * Tests
  */
-describe('** src/components/Piece/Emoji.js **', () => {
+describe.skip('** src/components/Piece/Emoji.js **', () => {
   describe('** Colons **', () => {
     it('Should format :sunglasses: in  <Emoji />', () => {
       const message = ':sunglasses:';

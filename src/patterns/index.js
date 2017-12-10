@@ -17,9 +17,9 @@ import Emoji, {
 } from 'src/components/Piece/Emoji';
 
 // Text
-import Bold, { pattern as patternBold } from 'src/components/Piece/Bold';
-import Italic, { pattern as patternItalic } from 'src/components/Piece/Italic';
-import Strike, { pattern as patternStrike } from 'src/components/Piece/Strike';
+import TextFormat, {
+  pattern as patternTextFormat,
+} from 'src/components/Piece/TextFormat';
 
 // Character
 import Character, { pattern as patternCharacter } from 'src/components/Piece/Character';
@@ -67,16 +67,8 @@ export default [
 
   // Text
   {
-    pattern: patternBold,
-    Component: Bold,
-  },
-  {
-    pattern: patternItalic,
-    Component: Italic,
-  },
-  {
-    pattern: patternStrike,
-    Component: Strike,
+    pattern: patternTextFormat,
+    Component: TextFormat,
   },
 
   // Character
