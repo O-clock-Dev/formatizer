@@ -11,18 +11,12 @@ import { GeneriqueStyle } from '../style';
 /*
  * Style
  */
-export const Style = Glamorous.span(
-  {
-    display: 'inline',
-    color: '#0ac3a7',
-  },
-  ({ mention }) => {
-    const styles = [];
+export const Style = Glamorous.span({
+  color: '#0ac3a7',
+});
 
-    if (mention) {
-      styles.push({ ...GeneriqueStyle, padding: '0 .25em' });
-    }
-
-    return styles;
-  },
-);
+export const StyleMention = Glamorous.span({
+  ...GeneriqueStyle,
+  color: '#0ac3a7',
+  padding: '0 .25em',
+});
