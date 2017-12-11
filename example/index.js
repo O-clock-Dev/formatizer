@@ -1,19 +1,19 @@
 /* eslint-disable max-len */
-
 /*
  * Package Import
  */
 import React from 'react';
 import { render } from 'react-dom';
 
-// Used for dev.
-import { Formatizer, Picker } from '../src';
-// Usually, you should import like this.
-// import Formatizer from 'formatizer';
+/*
+ * Local import
+ */
+import { Formatizer, Picker, Emojione } from '../src';
 
 /*
- * Local Import
+ * Setup
  */
+Emojione.imagePathSVGSprites = '/images/common/emojione.svg';
 
 /*
  * Code

@@ -1,20 +1,19 @@
 /*
  * Package Import
  */
-import Glamorous from 'glamorous';
+import glamorous from 'glamorous';
 
 /*
  * Local Import
  */
-import { GeneriqueStyle } from '../style';
+import { Chunk, CodingFont } from '../style';
 
 /*
  * Style
  */
-export const Style = Glamorous.span({
-  ...GeneriqueStyle,
+export const Style = glamorous.span({
+  ...Chunk,
+  ...CodingFont,
   color: '#abb2bf',
-  fontFamily: 'Menlo',
   padding: '.1em .3em',
-  fontSize: '1.4rem',
 });

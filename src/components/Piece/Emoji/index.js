@@ -25,7 +25,11 @@ export const patternSmiley = /(\s|^)(8-?\)|:-?\||:o\)|=-?\)|;-?\)|:-?>|>:-?\(|:-
  */
 Emojione.imageType = 'svg';
 Emojione.sprites = true;
-Emojione.imagePathSVGSprites = '/images/common/emojione.svg';
+if (!Emojione.imagePathSVGSprites) {
+  console.error(
+    'Please set `Emojione.imagePathSVGSprites = "/path/to/svg";` before using Formatizer',
+  );
+}
 
 /*
  * Code
