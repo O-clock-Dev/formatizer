@@ -21,7 +21,12 @@ export const patternCode = /`(.+?)`/g;
 /*
  * Component
  */
-const Code = ({ children }) => <Style>{children}</Style>;
+const Code = ({ children }) => {
+  // Get rid of first and last `
+  const value = children.slice(1, -1);
+
+  return <Style>{value}</Style>;
+};
 
 /*
  * PropTypes
