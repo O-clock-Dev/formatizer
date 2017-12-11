@@ -10,6 +10,7 @@ import { mount } from 'enzyme';
  */
 import { Formatizer } from 'src';
 import Emoji from 'src/components/Piece/Emoji';
+import Blockquote from 'src/components/Piece/Blockquote';
 
 /*
  * Code
@@ -21,37 +22,37 @@ should();
  */
 describe('** src/components/Piece/Emoji.js **', () => {
   describe('** Colons **', () => {
-    it('Should format :sunglasses: in  <Emoji />', () => {
+    it('Should format :sunglasses:  in  <Emoji />', () => {
       const message = ':sunglasses:';
       const wrapper = mount(<Formatizer>{message}</Formatizer>);
       wrapper.find(Emoji).should.have.length(1);
     });
 
-    it('Should format :+1: in <Emoji />', () => {
+    it('Should format :+1: 👍 in <Emoji />', () => {
       const message = ':+1:';
       const wrapper = mount(<Formatizer>{message}</Formatizer>);
       wrapper.find(Emoji).should.have.length(1);
     });
 
-    it('Should format :thumbsup_tone5: in <Emoji />', () => {
+    it('Should format :thumbsup_tone5: 👍🏿 in <Emoji />', () => {
       const message = ':thumbsup_tone5:';
       const wrapper = mount(<Formatizer>{message}</Formatizer>);
       wrapper.find(Emoji).should.have.length(1);
     });
 
-    it('Should format multiple Emoji in <Emoji />', () => {
+    it('Should format multiple Emoji 😎 ☀️ in <Emoji />', () => {
       const message = ':sunglasses: :sunny:';
       const wrapper = mount(<Formatizer>{message}</Formatizer>);
       wrapper.find(Emoji).should.have.length(2);
     });
 
-    it('Should format multiple Emoji in <Emoji />', () => {
+    it('Should format multiple Emoji without space 😎 ☀️ in <Emoji />', () => {
       const message = ':sunglasses::sunny:';
       const wrapper = mount(<Formatizer>{message}</Formatizer>);
       wrapper.find(Emoji).should.have.length(2);
     });
 
-    it('Should format multiple tone Emoji in <Emoji />', () => {
+    it('Should format multiple tone Emoji  👍🏿 👎🏻  in <Emoji />', () => {
       const message = ':thumbsup_tone5: :-1_tone2:';
       const wrapper = mount(<Formatizer>{message}</Formatizer>);
       wrapper.find(Emoji).should.have.length(2);
@@ -60,7 +61,7 @@ describe('** src/components/Piece/Emoji.js **', () => {
 
   describe('** Smileys **', () => {
     // sunglasses
-    it('Should format smiley 8-) in <Emoji />', () => {
+    it('Should format smiley 8-) 😎 in <Emoji />', () => {
       let message = '8-)';
       let wrapper = mount(<Formatizer>{message}</Formatizer>);
       wrapper.find(Emoji).should.have.length(1);
@@ -71,7 +72,7 @@ describe('** src/components/Piece/Emoji.js **', () => {
     });
 
     // neutral_face
-    it('Should format smiley :-| in <Emoji />', () => {
+    it('Should format smiley :-| 😐 in <Emoji />', () => {
       let message = ':-|';
       let wrapper = mount(<Formatizer>{message}</Formatizer>);
       wrapper.find(Emoji).should.have.length(1);
@@ -82,14 +83,14 @@ describe('** src/components/Piece/Emoji.js **', () => {
     });
 
     // monkey_face
-    it('Should format smiley :o) in <Emoji />', () => {
+    it('Should format smiley :o) 🐵 in <Emoji />', () => {
       const message = ':o)';
       const wrapper = mount(<Formatizer>{message}</Formatizer>);
       wrapper.find(Emoji).should.have.length(1);
     });
 
     // grinning
-    it('Should format smiley =-) in <Emoji />', () => {
+    it('Should format smiley =-) 😃 in <Emoji />', () => {
       let message = '=-)';
       let wrapper = mount(<Formatizer>{message}</Formatizer>);
       wrapper.find(Emoji).should.have.length(1);
@@ -100,7 +101,7 @@ describe('** src/components/Piece/Emoji.js **', () => {
     });
 
     // grin
-    it('Should format smiley :-D in <Emoji />', () => {
+    it('Should format smiley :-D 😄 in <Emoji />', () => {
       let message = ':-D';
       let wrapper = mount(<Formatizer>{message}</Formatizer>);
       wrapper.find(Emoji).should.have.length(1);
@@ -111,7 +112,7 @@ describe('** src/components/Piece/Emoji.js **', () => {
     });
 
     // wink
-    it('Should format smiley ;-) in <Emoji />', () => {
+    it('Should format smiley ;-) 😉 in <Emoji />', () => {
       let message = ';-)';
       let wrapper = mount(<Formatizer>{message}</Formatizer>);
       wrapper.find(Emoji).should.have.length(1);
@@ -122,7 +123,7 @@ describe('** src/components/Piece/Emoji.js **', () => {
     });
 
     // laughing
-    it('Should format smiley :-> in <Emoji />', () => {
+    it('Should format smiley :-> 😆 in <Emoji />', () => {
       let message = ':->';
       let wrapper = mount(<Formatizer>{message}</Formatizer>);
       wrapper.find(Emoji).should.have.length(1);
@@ -133,7 +134,7 @@ describe('** src/components/Piece/Emoji.js **', () => {
     });
 
     // open_mouth
-    it('Should format smiley :-o in <Emoji />', () => {
+    it('Should format smiley :-o 😮 in <Emoji />', () => {
       let message = ':-o';
       let wrapper = mount(<Formatizer>{message}</Formatizer>);
       wrapper.find(Emoji).should.have.length(1);
@@ -152,7 +153,7 @@ describe('** src/components/Piece/Emoji.js **', () => {
     });
 
     // no_mouth
-    it('Should format smiley :-x in <Emoji />', () => {
+    it('Should format smiley :-x 😶 in <Emoji />', () => {
       let message = ':-x';
       let wrapper = mount(<Formatizer>{message}</Formatizer>);
       wrapper.find(Emoji).should.have.length(1);
@@ -171,18 +172,19 @@ describe('** src/components/Piece/Emoji.js **', () => {
     });
 
     // angry
-    it.skip('Should format smiley >:-( in <Emoji />', () => {
+    it.skip('Should format smiley >:-( 😠 in <Emoji />', () => {
       let message = '>:-(';
       let wrapper = mount(<Formatizer>{message}</Formatizer>);
-      wrapper.find(Emoji).should.have.length(1);
+      wrapper.find(Emoji).should.have.length(0);
+      wrapper.find(Blockquote).should.have.length(0);
 
-      message = '>:(';
+      message = 'test >:(';
       wrapper = mount(<Formatizer>{message}</Formatizer>);
       wrapper.find(Emoji).should.have.length(1);
     });
 
     // slightly_smiling_face
-    it('Should format smiley :-) in <Emoji />', () => {
+    it('Should format smiley :-) 🙂 in <Emoji />', () => {
       let message = ':-)';
       let wrapper = mount(<Formatizer>{message}</Formatizer>);
       wrapper.find(Emoji).should.have.length(1);
@@ -193,7 +195,7 @@ describe('** src/components/Piece/Emoji.js **', () => {
     });
 
     // disappointed
-    it('Should format smiley :-( in <Emoji />', () => {
+    it('Should format smiley :-( 😞 in <Emoji />', () => {
       let message = ':-(';
       let wrapper = mount(<Formatizer>{message}</Formatizer>);
       wrapper.find(Emoji).should.have.length(1);
@@ -204,7 +206,7 @@ describe('** src/components/Piece/Emoji.js **', () => {
     });
 
     // confused
-    it('Should format smiley :-/ in <Emoji />', () => {
+    it('Should format smiley :-/ 😕 in <Emoji />', () => {
       let message = ':-/';
       let wrapper = mount(<Formatizer>{message}</Formatizer>);
       wrapper.find(Emoji).should.have.length(1);
@@ -215,7 +217,7 @@ describe('** src/components/Piece/Emoji.js **', () => {
     });
 
     // yum
-    it('Should format smiley :-p in <Emoji />', () => {
+    it('Should format smiley :-p 😋 in <Emoji />', () => {
       let message = ':-p';
       let wrapper = mount(<Formatizer>{message}</Formatizer>);
       wrapper.find(Emoji).should.have.length(1);
@@ -234,7 +236,7 @@ describe('** src/components/Piece/Emoji.js **', () => {
     });
 
     // kiss
-    it('Should format smiley :-* in <Emoji />', () => {
+    it('Should format smiley :-* 💋 in <Emoji />', () => {
       let message = ':-*';
       let wrapper = mount(<Formatizer>{message}</Formatizer>);
       wrapper.find(Emoji).should.have.length(1);
@@ -245,26 +247,26 @@ describe('** src/components/Piece/Emoji.js **', () => {
     });
 
     // Cry
-    it("Should format smiley :'( in <Emoji />", () => {
+    it("Should format smiley :'( 😢 in <Emoji />", () => {
       const message = ":'(";
       const wrapper = mount(<Formatizer>{message}</Formatizer>);
       wrapper.find(Emoji).should.have.length(1);
     });
 
     // fearful
-    it('Should format smiley D: in <Emoji />', () => {
+    it('Should format smiley D: 😧 in <Emoji />', () => {
       const message = 'D:';
       const wrapper = mount(<Formatizer>{message}</Formatizer>);
       wrapper.find(Emoji).should.have.length(1);
     });
 
-    it.skip('Should format multiple Smileys in <Emoji />', () => {
+    it.skip('Should format multiple Smileys 🙂 😄 in <Emoji />', () => {
       const message = ':-) :-D';
       const wrapper = mount(<Formatizer>{message}</Formatizer>);
       wrapper.find(Emoji).should.have.length(2);
     });
 
-    it.skip('Should format same multiple Smileys in <Emoji />', () => {
+    it.skip('Should format same multiple Smileys 🙂 🙂 in <Emoji />', () => {
       const message = ':-) :-)';
       const wrapper = mount(<Formatizer>{message}</Formatizer>);
       wrapper.find(Emoji).should.have.length(2);

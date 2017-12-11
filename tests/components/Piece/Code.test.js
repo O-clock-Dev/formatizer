@@ -46,4 +46,13 @@ describe('** src/components/Piece/Code.js **', () => {
     const wrapper = mount(<Formatizer>{message}</Formatizer>);
     wrapper.find(Code).should.have.length(0);
   });
+
+  it("Shouldn't have ` in text", () => {
+    const message = 'Bonjour, je suis un `code`';
+    const wrapper = mount(<Formatizer>{message}</Formatizer>);
+    wrapper
+      .find(Code)
+      .text()
+      .should.not.be.equal('`code`');
+  });
 });
