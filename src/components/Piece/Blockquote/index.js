@@ -8,11 +8,12 @@ import Glamorous from 'glamorous';
 /*
  * Local Import
  */
+import Format from 'src/components/Format';
 
 /*
  * Pattern
  */
-export const patternBlockquote = /(?:^|\n)>\s?([^\n]+)\n?/gm;
+export const patternBlockquote = /(?:^|\n.)>[^\n]+\n?/gm;
 
 /*
  * Style
@@ -30,7 +31,16 @@ const Style = Glamorous.span({
 /*
  * Component
  */
-const Blockquote = ({ children }) => <Style>{children}</Style>;
+const Blockquote = ({ children }) => {
+  // Leave the ">"
+  const value = children.slice(1);
+
+  return (
+    <Style>
+      <Format>{value}</Format>
+    </Style>
+  );
+};
 
 /*
  * PropTypes
