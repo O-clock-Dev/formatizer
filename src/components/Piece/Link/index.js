@@ -1,13 +1,15 @@
+/* eslint-disable max-len */
 /*
  * Package Import
  */
 import React from 'react';
 import PropTypes from 'prop-types';
-import Glamorous from 'glamorous';
+import glamorous from 'glamorous';
 
 /*
  * Local Import
  */
+import Character from 'src/components/Piece/Character';
 
 /*
  * Pattern
@@ -20,7 +22,7 @@ export const patternLink = /(https?:\/\/(?:[^\s()]|\(.+?\))+?)($|\s|[.,?!:;)]\s)
 /*
  * Style
  */
-const Style = Glamorous.a({
+const Style = glamorous.a({
   textDecoration: 'underline',
   textDecorationSkip: 'ink',
 });
@@ -28,11 +30,18 @@ const Style = Glamorous.a({
 /*
  * Component
  */
-const Link = ({ children }) => (
-  <Style href={children} target="_blank" rel="noopener noreferrer">
-    {children}
-  </Style>
-);
+const Link = ({ children }) => {
+  const [, link, after] = Array.from(patternLink.exec(children));
+  patternLink.lastIndex = 0;
+  return (
+    <span>
+      <Style href={link} target="_blank" rel="noopener noreferrer">
+        {link}
+      </Style>
+      {after && <Character>{after}</Character>}
+    </span>
+  );
+};
 
 /*
  * PropTypes

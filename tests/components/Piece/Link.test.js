@@ -45,4 +45,35 @@ describe('** src/components/Piece/Link.js **', () => {
     wrapper.find(Link).should.have.length(1);
     wrapper.find(Emoji).should.have.length(0);
   });
+
+  it.skip("Shouldn't add last character in <Link />", () => {
+    let message = 'Bonjour, https://oclock.io.';
+    let wrapper = mount(<Formatizer>{message}</Formatizer>);
+    wrapper.find(Link).should.have.length(1);
+    wrapper
+      .find('a')
+      .props()
+      .should.have.a.property('href')
+      .which.is.equal('https://oclock.io');
+
+    message = 'Bonjour, https://oclock.io ';
+    wrapper = mount(<Formatizer>{message}</Formatizer>);
+    wrapper.find(Link).should.have.length(1);
+    wrapper
+      .find('a')
+      .props()
+      .should.have.a.property('href')
+      .which.is.equal('https://oclock.io');
+  });
+
+  it("Should add <Link /> on url in '(url)'", () => {
+    const message = 'Allez voir mon site (https://oclock.io) !';
+    const wrapper = mount(<Formatizer>{message}</Formatizer>);
+    wrapper.find(Link).should.have.length(1);
+    wrapper
+      .find('a')
+      .props()
+      .should.have.a.property('href')
+      .which.is.equal('https://oclock.io');
+  });
 });
