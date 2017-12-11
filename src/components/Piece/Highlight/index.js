@@ -35,8 +35,8 @@ const Highlight = ({ children }) => {
     options.language = matches[1];
   }
 
-  // Second capturing paren: code
-  const code = matches[2];
+  // Second capturing paren: code + trim it
+  const code = matches[2].trim();
 
   // View
   return <Highlighter {...options}>{code}</Highlighter>;

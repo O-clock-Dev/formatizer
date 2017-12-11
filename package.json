@@ -1,6 +1,6 @@
 {
   "name": "formatizer",
-  "version": "0.1.16",
+  "version": "0.1.17-alpha",
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/O-clock-dev/formatizer.git"
@@ -71,7 +71,8 @@
   "main": "build/index.js",
   "files": [
     "README.md",
-    "build"
+    "build",
+    "example"
   ],
   "bugs": {
     "url": "https://github.com/O-clock-dev/formatizer/issues"
