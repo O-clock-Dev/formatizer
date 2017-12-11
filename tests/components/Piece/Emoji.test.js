@@ -172,11 +172,11 @@ describe('** src/components/Piece/Emoji.js **', () => {
     });
 
     // angry
-    it.skip('Should format smiley >:-( 😠 in <Emoji />', () => {
+    it('Should format smiley >:-( 😠 in <Emoji />', () => {
       let message = '>:-(';
       let wrapper = mount(<Formatizer>{message}</Formatizer>);
-      wrapper.find(Emoji).should.have.length(0);
-      wrapper.find(Blockquote).should.have.length(0);
+      wrapper.find(Emoji).should.have.length(1);
+      wrapper.find(Blockquote).should.have.length(1);
 
       message = 'test >:(';
       wrapper = mount(<Formatizer>{message}</Formatizer>);
@@ -260,16 +260,30 @@ describe('** src/components/Piece/Emoji.js **', () => {
       wrapper.find(Emoji).should.have.length(1);
     });
 
-    it.skip('Should format multiple Smileys 🙂 😄 in <Emoji />', () => {
-      const message = ':-) :-D';
+    it('Should format multiple smileys with spaces in <Emoji />', () => {
+      const message = ':-) :-D\n :)\n\n\n:(';
       const wrapper = mount(<Formatizer>{message}</Formatizer>);
-      wrapper.find(Emoji).should.have.length(2);
+      wrapper.find(Emoji).should.have.length(1);
+      wrapper
+        .find(Emoji)
+        .render()
+        .find('svg')
+        .should.have.length(4);
+      wrapper
+        .find(Emoji)
+        .render()
+        .find('br')
+        .should.have.length(3);
     });
 
-    it.skip('Should format same multiple Smileys 🙂 🙂 in <Emoji />', () => {
-      const message = ':-) :-)';
+    it('Should format multiple smileys without space in <Emoji />', () => {
+      const message = ':):-):)';
       const wrapper = mount(<Formatizer>{message}</Formatizer>);
-      wrapper.find(Emoji).should.have.length(2);
+      wrapper
+        .find(Emoji)
+        .render()
+        .find('svg')
+        .should.have.length(3);
     });
   });
 });

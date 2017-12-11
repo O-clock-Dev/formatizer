@@ -20,24 +20,6 @@ should();
  * Tests
  */
 describe('** src/components/Piece/Character.js **', () => {
-  it('Should format & in <Character />', () => {
-    const message = '&';
-    const wrapper = mount(<Formatizer>{message}</Formatizer>);
-    wrapper.find(Character).should.have.length(1);
-  });
-
-  it('Should format < in <Character />', () => {
-    const message = '<';
-    const wrapper = mount(<Formatizer>{message}</Formatizer>);
-    wrapper.find(Character).should.have.length(1);
-  });
-
-  it('Should format > in <Character />', () => {
-    const message = '>';
-    const wrapper = mount(<Formatizer>{message}</Formatizer>);
-    wrapper.find(Character).should.have.length(1);
-  });
-
   it('Should format \\n in <Character />', () => {
     const message = '\n';
     const wrapper = mount(<Formatizer>{message}</Formatizer>);

@@ -1,4 +1,5 @@
-export default {
+/* eslint-disable max-len */
+const smileyToColon = {
   '8)': ':sunglasses:',
   '8-)': ':sunglasses:',
   ':|': ':neutral_face:',
@@ -41,3 +42,8 @@ export default {
   ':-*': ':kiss:',
   ":'(": ':cry:',
 };
+
+export const smileyReplace = smiley => smileyToColon[smiley];
+
+export const smileyStr =
+  "(?:8-?\\)|:-?\\||:o\\)|=-?\\)|;-?\\)|:-?>|>:-?\\(|:-?\\)|:-?\\(|:-?\\/|:-?\\\\|D:|:-?d|:-?o|:-?x|:-?p|:-?\\*|:'\\()";

@@ -27,8 +27,7 @@
   "dependencies": {
     "emojione": "^2.2.7",
     "emojione-picker": "^2.2.1",
-    "react-syntax-highlighter": "^5.7.0",
-    "sanitize-html": "^1.14.1"
+    "react-syntax-highlighter": "^5.7.0"
   },
   "peerDependencies": {
     "emojione": "^2.2.7",

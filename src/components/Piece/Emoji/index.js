@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /*
  * Package import
  */
@@ -8,28 +9,25 @@ import Emojione from 'emojione';
 /*
  * Local import
  */
-import Format from 'src/components/Format';
+import Character from 'src/components/Piece/Character';
 import { Style } from './style';
-import smileyToColon from './smiley';
+import { smileyReplace, smileyStr } from './smiley';
 
 /*
  * Pattern
  */
-/* eslint-disable max-len */
-// @TODO ":) :)" does not work
+const smileyRegexp = new RegExp(smileyStr, 'gi');
 export const patternColon = /:[?+\-0-9A-Za-z_]+:/gi;
-export const patternSmiley = /(\s|^)(8-?\)|:-?\||:o\)|=-?\)|;-?\)|:-?>|>:-?\(|:-?\)|:-?\(|:-?\/|:-?\\|D:|:-?d|:-?o|:-?x|:-?p|:-?\*|:'\(|:-?D|:-?O|:-?X|:-?P)(\s|$)/g;
+export const patternSmiley = new RegExp(
+  `(\\s|^)((?:${smileyStr}\\s*)+)(\\s|$)`,
+  'gi',
+);
 
 /*
  * Parameters
  */
 Emojione.imageType = 'svg';
 Emojione.sprites = true;
-if (!Emojione.imagePathSVGSprites) {
-  console.error(
-    'Please set `Emojione.imagePathSVGSprites = "/path/to/svg";` before using Formatizer',
-  );
-}
 
 /*
  * Code
@@ -40,6 +38,7 @@ export const shortnameToImage = emoji => Emojione.shortnameToImage(emoji);
  * Components
  */
 // @TODO Get rid of <span> with React 16.2
+// @TODO Use Character to create <br /> ?
 const Emoji = ({ children }) => {
   let before = '';
   let emoji = children;
@@ -49,9 +48,12 @@ const Emoji = ({ children }) => {
   const matches = patternSmiley.exec(children);
   patternSmiley.lastIndex = 0;
   if (matches) {
-    before = !!matches[1] && <Format>{matches[1]}</Format>;
-    emoji = smileyToColon[matches[2]];
-    after = !!matches[3] && <Format>{matches[3]}</Format>;
+    before = !!matches[1] && <Character>{matches[1]}</Character>;
+    emoji = matches[2]
+      .replace(smileyRegexp, smileyReplace)
+      .replace(/\n{2,}/g, '<br /><br />')
+      .replace(/\n/g, '<br />');
+    after = !!matches[3] && <Character>{matches[3]}</Character>;
   }
   return (
     <span>
