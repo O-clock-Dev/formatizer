@@ -1,6 +1,6 @@
 {
   "name": "formatizer",
-  "version": "0.1.17-alpha",
+  "version": "0.1.17-beta",
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/O-clock-dev/formatizer.git"
@@ -30,7 +30,6 @@
     "react-syntax-highlighter": "^5.7.0"
   },
   "peerDependencies": {
-    "emojione": "^2.2.7",
     "glamor": "^2.20.40",
     "glamorous": "^4.11.0",
     "react": "^15.4.1 || ^16.0.0"
