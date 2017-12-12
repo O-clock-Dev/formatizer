@@ -30,6 +30,7 @@ const Style = glamorous.a({
 /*
  * Component
  */
+// @TODO Get rid of <span> with React 16.2
 const Link = ({ children }) => {
   const [, link, after] = Array.from(patternLink.exec(children));
   patternLink.lastIndex = 0;
