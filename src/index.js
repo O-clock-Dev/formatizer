@@ -1,43 +1,4 @@
-/*
- * Package Import
- */
-import React from 'react';
-import PropTypes from 'prop-types';
-
-/*
- * Local Import
- */
-import { display } from './components/Fragment/display';
-
-/*
- * Component
- */
-const Format = ({ className, children, mentions, isMentionMe, onMention }) => (
-  <div className={className}>
-    {display(children, mentions, isMentionMe, onMention)}
-  </div>
-);
-
-/*
- * PropTypes
- */
-Format.propTypes = {
-  className: PropTypes.string,
-  children: PropTypes.string,
-  mentions: PropTypes.array,
-  isMentionMe: PropTypes.func,
-  onMention: PropTypes.func,
-};
-
-Format.defaultProps = {
-  className: '',
-  children: '',
-  mentions: [],
-  isMentionMe: () => {},
-  onMention: () => {},
-};
-
-/*
- * Export
- */
-export default Format;
+export { default as Emojione } from 'emojione';
+export { default as Formatizer } from 'src/components/Format';
+export { default as Picker } from 'src/components/Picker';
+export { default as Emoji } from 'src/components/Piece/Emoji';

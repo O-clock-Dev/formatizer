@@ -8,8 +8,6 @@
     "import/prefer-default-export": "off",
     "jsx-a11y/no-static-element-interactions": "off",
     "max-len": ["error", { "ignoreUrls": true }, { "ignoreStrings": false }, { "code": 100 }],
-    "no-console": "off",
-    "no-debugger": "warn",
     "no-irregular-whitespace": ["error", { "skipTemplates": true }],
     "no-trailing-spaces": ["error", { "skipBlankLines": true }],
     "no-param-reassign": ["error", { "props": false }],
@@ -24,7 +22,7 @@
   "settings": {
     "import/resolver": {
       "node": {
-        "paths": ["app/"]
+        "paths": ["./"]
       }
     }
   },

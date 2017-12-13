@@ -1,19 +1,25 @@
 /* eslint-disable max-len */
-
 /*
  * Package Import
  */
 import React from 'react';
 import { render } from 'react-dom';
 
-// Used for dev.
-import Formatizer from '../src';
-// Usually, you should import like this.
-// import Formatizer from 'formatizer';
+/*
+ * Local import
+ */
+import { Formatizer, Picker, Emojione } from '../src';
 
 /*
- * Local Import
+ * Setup
  */
+Emojione.imagePathSVGSprites = '/images/common/emojione.svg';
+
+/*
+ * Code
+ */
+const isMention = mention =>
+  mention === 'test_mention' || mention === 'question';
 
 /*
  * Component
@@ -23,10 +29,10 @@ class App extends React.Component {
    * State
    */
   state = {
-    // message:
-    // 'test *test* _test_ ~test~\n\n> test test\n\n\n:star: test :sunglasses: :heart: test :scream: :smile: :D :test: :) 8-) :+1::skin-tone-4: \n\n```js\nconst abc = "test";\nconst def = 123;\n\nreturn abc + def;\n```\n\n test `test`\n\nhttps://github.com/O-clock/formatizer\n\n@test_mention',
-    // message: 'Hello :+1::skin-tone-4: comment ça va ? :wave: :test:',
-    message: 'Hello @alex',
+    pickerIsActive: false,
+    message:
+      'test *test* _test_ ~test~\n\n> test test\n\n\n:star: test :sunglasses: :heart: test :scream: :smile: :thumbsup_tone5: :-1_tone2: :D :test: :) 8-) :+1: \n\n```js\nconst abc = "test";\nconst def = 123;\n\nreturn abc + def;\n```\n\n test `test`\n\nhttps://github.com/O-clock/formatizer\n\n@test_mention test @test',
+    // message: '',
   };
 
   /*
@@ -37,24 +43,41 @@ class App extends React.Component {
     this.setState({ message: value });
   };
 
+  handleEmoji = ({ shortname }) => {
+    const { message } = this.state;
+    const value = `${message} ${shortname}`.trim();
+    this.setState({ message: value });
+  };
+
+  handlePicker = () => {
+    this.setState(prevPops => ({ pickerIsActive: !prevPops.pickerIsActive }));
+  };
+
   /*
    * View
    */
   render() {
-    const { message } = this.state;
+    const { pickerIsActive, message } = this.state;
+
     return (
       <div>
+        <button onClick={this.handlePicker}>Emoji Picker</button>
         {/* This textarea got message but doesn't format by Formatizer. */}
         <textarea
-          onChange={this.inputChange}
           style={{ height: '300px', width: '200px' }}
+          onChange={this.inputChange}
           value={message}
         />
 
-        {/* Formatizer will format your chat
-          and display Hello in bold, world in italic,
-          and show star's emoji */}
-        <Formatizer onMentionMe>{message}</Formatizer>
+        {/* Formatizer will format your chat */}
+        <Formatizer isMention={isMention}>{message}</Formatizer>
+
+        {/* Emoji Picker */}
+        {pickerIsActive && (
+          <div style={{ height: '350px', width: '276px' }}>
+            <Picker onChange={this.handleEmoji} />
+          </div>
+        )}
       </div>
     );
   }

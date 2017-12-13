@@ -1,6 +1,6 @@
 {
   "name": "formatizer",
-  "version": "0.1.16",
+  "version": "0.1.17-beta",
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/O-clock-dev/formatizer.git"
@@ -11,9 +11,8 @@
     "start": "brunch watch --server",
     "build": "babel src -d build",
     "publish": "rm -rf build/ && yarn run build && npm publish",
-    "test": "mocha --reporter spec tests/.setup.js tests/**/*.test.js",
-    "test:one": "mocha --watch --reporter spec tests/.setup.js $1",
-    "test:watch": "mocha --recursive --reporter spec -w tests/.setup.js tests/**/*.test.js",
+    "test": "mocha --reporter spec tests/.setup.js tests/**/*.test.js tests/**/**/*.test.js",
+    "test:one": "mocha --reporter spec tests/.setup.js",
     "lint": "eslint --fix src tests",
     "pretty": "prettier --write --single-quote --trailing-comma all \"{src,tests}/**/*.js\"",
     "precommit": "lint-staged && yarn test"
@@ -26,30 +25,29 @@
     ]
   },
   "dependencies": {
-    "react-syntax-highlighter": "^5.7.0",
-    "sanitize-html": "^1.14.1"
+    "emojione": "^2.2.7",
+    "emojione-picker": "^2.2.1",
+    "react-syntax-highlighter": "^5.7.0"
   },
   "peerDependencies": {
-    "emoji-mart": "^2.0.1",
     "glamor": "^2.20.40",
-    "glamorous": "^4.9.7",
-    "react": "^15.6.1 || ^16.0.0"
+    "glamorous": "^4.11.0",
+    "react": "^15.4.1 || ^16.0.0"
   },
   "devDependencies": {
     "auto-reload-brunch": "^2.7.1",
     "babel-brunch": "git+https://github.com/webdif/babel-brunch.git",
     "babel-cli": "^6.26.0",
     "babel-eslint": "^7.2.3",
+    "babel-plugin-module-resolver": "^3.0.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-preset-env": "^1.6.0",
     "babel-preset-react": "^6.24.1",
-    "babel-resolver": "^1.1.0",
-    "brunch": "^2.10.9",
+    "brunch": "^2.10.12",
     "chai": "^4.1.2",
-    "emoji-mart": "^2.0.1",
-    "enzyme": "^3.0.0",
-    "enzyme-adapter-react-16": "^1.0.0",
+    "enzyme": "^3.2.0",
+    "enzyme-adapter-react-15": "^1.0.5",
     "eslint": "^4.4.1",
     "eslint-config-airbnb": "^15.1.0",
     "eslint-import-resolver-node": "^0.3.0",
@@ -57,21 +55,22 @@
     "eslint-plugin-jsx-a11y": "^5.0.3",
     "eslint-plugin-react": "^7.1.0",
     "glamor": "^2.20.40",
-    "glamorous": "^4.9.7",
+    "glamorous": "^4.11.0",
     "husky": "^0.14.3",
-    "jsdom": "^11.2.0",
-    "lint-staged": "^5.0.0",
-    "mocha": "^3.5.3",
-    "prettier": "^1.8.2",
+    "jsdom": "^11.5.1",
+    "lint-staged": "^6.0.0",
+    "mocha": "^4.0.1",
+    "prettier": "^1.9.1",
     "prop-types": "^15.6.0",
-    "react": "^16.0.0",
-    "react-dom": "^16.0.0",
-    "react-test-renderer": "^16.0.0"
+    "react": "^15.6.2",
+    "react-dom": "^15.6.2",
+    "react-test-renderer": "^15.6.2"
   },
   "main": "build/index.js",
   "files": [
     "README.md",
-    "build"
+    "build",
+    "example"
   ],
   "bugs": {
     "url": "https://github.com/O-clock-dev/formatizer/issues"

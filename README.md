@@ -4,9 +4,8 @@
 You need these packages to install **Formatizer**.
   * React
   * Glamor & Glamorous
-  * Emoji-Mart
 
-If you don't have these, please install `yarn add react glamor glamorous emoji-mart`
+If you don't have these, please install `yarn add react glamor glamorous`
 
 
 ## :rocket: Installation
@@ -28,7 +27,7 @@ With this module, you can format your text more easily. For example, you can for
 /*
  * Package Import
  */
-import Formatizer from 'formatizer';
+import { Formatizer } from 'formatizer';
 // Other import...
 
 /*
@@ -60,6 +59,7 @@ You can also try this example in live :
 
 
 ## :pick: API Reference
+
 * **bold** :   
 ```js
 const message = '*message*';
@@ -79,13 +79,6 @@ const message = '_message_';
 const message = '~message~';
 <Formatizer>{message}</Formatizer>
 // Output: message in STRIKE
-```
-
-* Smiley :sunglasses: | :star: | :heart:, or other... :
-```js
-const message = ':sunglasses: | :star: | :heart: ';
-<Formatizer>{message}</Formatizer>
-// Output: Smiley !
 ```
 
 * Snippet Code :
@@ -117,6 +110,25 @@ const message = 'https://github.com/o-clock/formatizer';
 // Output: Link formatted
 ```
 
+* Emoji with colons (eg. :sunglasses:, :star:, :heart:, or other...) or with Smiley :-P :
+```js
+const message = ':star:';
+<Formatizer>{message}</Formatizer>
+// Output: An Emoji ⭐️ !
+```
+
+* Picker :sunglasses:, or other... :
+```js
+import { Picker } from 'formatizer';
+// onChange = return data @ emoji
+<Picker onChange={(data) => console.log(data)} />
+```
+
+* If you want use the Sprite SVG in `/assets/` folder for Emoji / Picker
+  + you need to download it, [here](https://github.com/emojione/emojione/blob/2.2.7/assets/sprites/emojione.sprites.svg).
+  + In your code, `Import { Emojione } from 'formatizer`'
+  + Add your assets folder, `Emojione.imagePathSVGSprites = '/images/common/emojione.svg';`
+
 
 ## :construction: Tests
 You can run tests with:
@@ -126,10 +138,6 @@ You can run tests with:
   * `yarn test:one  $1`: Execute one test,
     * For example, if we're doing `yarn test:one tests/components/Machin.test.js`
     * $1 is `tests/components/Format.test.js`
-
-
-  * `yarn test:watch`: same `yarn test`, but here it's watching for change and auto-reload
-
 
 
 ## :busts_in_silhouette: Contributors

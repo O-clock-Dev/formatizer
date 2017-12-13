@@ -1,19 +1,15 @@
 /*
  * Package Import
  */
-var path = require('path');
 var babelRegister = require('babel-register');
-var babelResolver = require('babel-resolver');
-var Enzyme = require('enzyme');
-var Adapter = require('enzyme-adapter-react-16');
 var JSDOM = require('jsdom').JSDOM;
+var Enzyme = require('enzyme');
+var Adapter = require('enzyme-adapter-react-15');
 
 /*
  * Babel
  */
-const app = path.join(__dirname, '..', 'app');
-const resolveModuleSource = babelResolver(app);
-babelRegister({ resolveModuleSource });
+babelRegister();
 
 /*
  * Enzyme
