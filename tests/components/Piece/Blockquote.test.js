@@ -39,7 +39,7 @@ describe('** src/components/Piece/Blockquote.js **', () => {
     wrapper.find(Blockquote).should.have.length(0);
   });
 
-  it("Should add <Blockquote /> if we're passing at line with a space", () => {
+  it('Should add <Blockquote /> if we have a space before \\n', () => {
     const message = '> \nBonjour, Je suis une quote';
     const wrapper = mount(<Formatizer>{message}</Formatizer>);
     wrapper.find(Blockquote).should.have.length(1);

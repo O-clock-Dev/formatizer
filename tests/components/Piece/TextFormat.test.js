@@ -53,9 +53,9 @@ describe('** src/components/Piece/TextFormat.js **', () => {
   });
 
   it('Should format a string with many Piece', () => {
-    const message = '*_test_*';
+    const message = '*_~test~_*';
     const wrapper = mount(<Formatizer>{message}</Formatizer>);
-    wrapper.find(TextFormat).should.have.length(2);
+    wrapper.find(TextFormat).should.have.length(3);
   });
 
   it('Should format multiple string', () => {
