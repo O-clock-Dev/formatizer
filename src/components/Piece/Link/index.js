@@ -9,15 +9,11 @@ import glamorous from 'glamorous';
 /*
  * Local Import
  */
-import Character from 'src/components/Piece/Character';
 
 /*
  * Pattern
  */
-// @TODO : Améliorer la regex,
-// sinon ça prend en compte un espace à la fin,
-// et ça le supprime lors de la transformation.
-export const patternLink = /(https?:\/\/(?:[^\s()]|\(.+?\))+?)($|\s|[.,?!:;)]\s)/g;
+export const patternLink = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}[.|:][a-zA-Z0-9]{1,6}\b(\/[-a-zA-Z0-9@:%_+.~#?&//=]*)?/g;
 
 /*
  * Style
@@ -30,19 +26,11 @@ const Style = glamorous.a({
 /*
  * Component
  */
-// @TODO Get rid of <span> with React 16.2
-const Link = ({ children }) => {
-  const [, link, after] = Array.from(patternLink.exec(children));
-  patternLink.lastIndex = 0;
-  return (
-    <span>
-      <Style href={link} target="_blank" rel="noopener noreferrer">
-        {link}
-      </Style>
-      {after && <Character>{after}</Character>}
-    </span>
-  );
-};
+const Link = ({ children }) => (
+  <Style href={children} target="_blank" rel="noopener noreferrer">
+    {children}
+  </Style>
+);
 
 /*
  * PropTypes
