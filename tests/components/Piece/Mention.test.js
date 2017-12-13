@@ -35,7 +35,7 @@ describe('** src/components/Piece/Mention.js **', () => {
       .should.not.be.equal('@mention ');
   });
 
-  it.skip("Shouldn't add a <Mention />", () => {
+  it("Shouldn't add a <Mention />", () => {
     const message = 'test@mention ';
     const wrapper = mount(<Formatizer>{message}</Formatizer>);
     wrapper.find(Mention).should.have.length(0);
