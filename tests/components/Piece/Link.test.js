@@ -46,7 +46,7 @@ describe('** src/components/Piece/Link.js **', () => {
     wrapper.find(Emoji).should.have.length(0);
   });
 
-  it.skip("Shouldn't add last character in <Link />", () => {
+  it("Shouldn't add last character in <Link />", () => {
     let message = 'Bonjour, https://oclock.io.';
     let wrapper = mount(<Formatizer>{message}</Formatizer>);
     wrapper.find(Link).should.have.length(1);
