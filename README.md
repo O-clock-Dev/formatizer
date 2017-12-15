@@ -19,7 +19,7 @@ With this module, you can format your text more easily. For example, you can for
 
 
 ## :gear: Options
-`<Formatizer>` just need a `message` prop: _the string you want format._
+`<Formatizer>` just need a children `message` : _the string you want format._
 
 
 ## :eyes: Code Example
@@ -117,7 +117,7 @@ const message = ':star:';
 // Output: An Emoji ⭐️ !
 ```
 
-* Picker :sunglasses:, or other... :
+* Picker :sunglasses: :
 ```js
 import { Picker } from 'formatizer';
 // onChange = return data @ emoji
