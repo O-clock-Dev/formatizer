@@ -8,30 +8,36 @@ import PropTypes from 'prop-types';
  * Local Import
  */
 import Format from 'src/components/Format';
+import Character from 'src/components/Piece/Character';
 import getStyle from './style';
 
 /*
  * Pattern
  */
-export const patternTextFormat = /\*.+?\*|~.+?~|_.+?_/g;
+export const patternTextFormat = /(\s|^)((?:\*.+?\*|~.+?~|_.+?_))(?=\s|$)/g;
 
 /*
  * TextFormat
  * Remove first and last character
  */
 const TextFormat = ({ children }) => {
+  const [, before, format] = patternTextFormat.exec(children);
+
   // Text
-  const firstChar = children.slice(0, 1);
-  const text = children.slice(1).slice(0, -1);
+  const firstChar = format.slice(0, 1);
+  const text = format.slice(1).slice(0, -1);
 
   // Style
   const Style = getStyle(firstChar);
 
   // View
   return (
-    <Style>
-      <Format>{text}</Format>
-    </Style>
+    <span>
+      {before && <Character>{before}</Character>}
+      <Style>
+        <Format>{text}</Format>
+      </Style>
+    </span>
   );
 };
 
