@@ -34,20 +34,20 @@ describe('** src/components/Piece/Code.js **', () => {
     wrapper.find(Emoji).should.have.length(1);
   });
 
-  it("Shouldn't add <Emoji /> in <Code />", () => {
+  it('Should not add <Emoji /> in <Code />', () => {
     const message = 'Bonjour, je suis un `code :)`';
     const wrapper = mount(<Formatizer>{message}</Formatizer>);
     wrapper.find(Code).should.have.length(1);
     wrapper.find(Emoji).should.have.length(0);
   });
 
-  it("Shouldn't add <Code /> if multiple line", () => {
+  it('Should not add <Code /> if multiple line', () => {
     const message = 'Bonjour, je suis un `\ncode\n`';
     const wrapper = mount(<Formatizer>{message}</Formatizer>);
     wrapper.find(Code).should.have.length(0);
   });
 
-  it("Shouldn't have ` in text", () => {
+  it('Should not have ` in text', () => {
     const message = 'Bonjour, je suis un `code`';
     const wrapper = mount(<Formatizer>{message}</Formatizer>);
     wrapper

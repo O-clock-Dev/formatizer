@@ -11,6 +11,7 @@ import { mount } from 'enzyme';
 import { Formatizer } from 'src';
 import Emoji from 'src/components/Piece/Emoji';
 import Blockquote from 'src/components/Piece/Blockquote';
+import TextFormat from 'src/components/Piece/TextFormat';
 
 /*
  * Code
@@ -244,6 +245,18 @@ describe('** src/components/Piece/Emoji.js **', () => {
       message = ':*';
       wrapper = mount(<Formatizer>{message}</Formatizer>);
       wrapper.find(Emoji).should.have.length(1);
+    });
+
+    it('Should format smiley :-* text in <Emoji />, not in <TextFormat />', () => {
+      let message = ':-* test*';
+      let wrapper = mount(<Formatizer>{message}</Formatizer>);
+      wrapper.find(Emoji).should.have.length(1);
+      wrapper.find(TextFormat).should.have.length(0);
+
+      message = ':* message :*';
+      wrapper = mount(<Formatizer>{message}</Formatizer>);
+      wrapper.find(Emoji).should.have.length(2);
+      wrapper.find(TextFormat).should.have.length(0);
     });
 
     // Cry

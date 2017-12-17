@@ -39,7 +39,7 @@ describe('** src/components/Piece/TextFormat.js **', () => {
     wrapper.find(TextFormat).should.have.length(1);
   });
 
-  it("Shouldn't format string with multi line", () => {
+  it('Should not format string with multi line', () => {
     const message = '*\ntest\n*';
     const wrapper = mount(<Formatizer>{message}</Formatizer>);
     wrapper.find(TextFormat).should.have.length(0);
@@ -64,7 +64,7 @@ describe('** src/components/Piece/TextFormat.js **', () => {
     wrapper.find(TextFormat).should.have.length(2);
   });
 
-  it("Shouldn't format 'a_message_with_underscore'", () => {
+  it("Should not format 'a_message_with_underscore'", () => {
     const message = 'a_message_with_underscore';
     const wrapper = mount(<Formatizer>{message}</Formatizer>);
     wrapper.find(TextFormat).should.have.length(0);
