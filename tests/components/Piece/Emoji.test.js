@@ -298,5 +298,16 @@ describe('** src/components/Piece/Emoji.js **', () => {
         .find('svg')
         .should.have.length(3);
     });
+
+    it('Should format smileys in <Emoji /> inside of <TextFormat />', () => {
+      const message = '*test :) :( test*';
+      const wrapper = mount(<Formatizer>{message}</Formatizer>);
+      wrapper
+        .find(Emoji)
+        .render()
+        .find('svg')
+        .should.have.length(2);
+      wrapper.find(TextFormat).should.have.length(1);
+    });
   });
 });
