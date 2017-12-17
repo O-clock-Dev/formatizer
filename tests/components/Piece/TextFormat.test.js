@@ -63,4 +63,10 @@ describe('** src/components/Piece/TextFormat.js **', () => {
     const wrapper = mount(<Formatizer>{message}</Formatizer>);
     wrapper.find(TextFormat).should.have.length(2);
   });
+
+  it.skip("Shouldn't format 'a_message_with_underscore'", () => {
+    const message = 'a_message_with_underscore';
+    const wrapper = mount(<Formatizer>{message}</Formatizer>);
+    wrapper.find(TextFormat).should.have.length(0);
+  });
 });
