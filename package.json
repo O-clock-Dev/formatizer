@@ -10,7 +10,7 @@
   "scripts": {
     "start": "brunch watch --server",
     "build": "babel src -d build",
-    "publish": "rm -rf build/ && yarn run build && npm publish",
+    "publish": "rm -rf build && yarn build && npm publish",
     "test": "mocha tests/.setup.js 'tests/**/*.test.js'",
     "test:one": "mocha tests/.setup.js",
     "lint": "eslint --fix src tests",
