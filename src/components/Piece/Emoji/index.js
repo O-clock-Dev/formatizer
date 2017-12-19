@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 /*
  * Package import
  */
@@ -19,15 +18,9 @@ import { smileyReplace, smileyStr } from './smiley';
 const smileyRegexp = new RegExp(smileyStr, 'gi');
 export const patternColon = /:[?+\-0-9A-Za-z_]+:/gi;
 export const patternSmiley = new RegExp(
-  `(\\s|^)((?:${smileyStr}\\s*)+)(\\s|$)`,
+  `(\\s|^)((?:${smileyStr}\\s*)+)(?=\\s|$)`,
   'gi',
 );
-
-/*
- * Parameters
- */
-Emojione.imageType = 'svg';
-Emojione.sprites = true;
 
 /*
  * Code
@@ -42,7 +35,6 @@ export const shortnameToImage = emoji => Emojione.shortnameToImage(emoji);
 const Emoji = ({ children }) => {
   let before = '';
   let emoji = children;
-  let after = '';
 
   // Smiley ?
   const matches = patternSmiley.exec(children);
@@ -53,13 +45,11 @@ const Emoji = ({ children }) => {
       .replace(smileyRegexp, smileyReplace)
       .replace(/\n{2,}/g, '<br /><br />')
       .replace(/\n/g, '<br />');
-    after = !!matches[3] && <Character>{matches[3]}</Character>;
   }
   return (
     <span>
       {before}
       <Style dangerouslySetInnerHTML={{ __html: shortnameToImage(emoji) }} />
-      {after}
     </span>
   );
 };

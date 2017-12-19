@@ -8,12 +8,12 @@ import { render } from 'react-dom';
 /*
  * Local import
  */
-import { Formatizer, Picker, Emojione } from '../src';
+import { Formatizer, Picker, setImagePath } from '../src';
 
 /*
  * Setup
  */
-Emojione.imagePathSVGSprites = '/images/common/emojione.svg';
+setImagePath('/images/common/emojione.svg');
 
 /*
  * Code

@@ -27,13 +27,13 @@ describe('** src/components/Piece/Blockquote.js **', () => {
     wrapper.find(Blockquote).should.have.length(1);
   });
 
-  it("Shouldn't add <Blockquote />", () => {
+  it('Should not add <Blockquote />', () => {
     const message = 'Bonjour, > Je suis une quote';
     const wrapper = mount(<Formatizer>{message}</Formatizer>);
     wrapper.find(Blockquote).should.have.length(0);
   });
 
-  it("Shouldn't add <Blockquote /> if we're passing at line", () => {
+  it("Should not add <Blockquote /> if we're passing at line", () => {
     const message = '>\nJe suis une quote';
     const wrapper = mount(<Formatizer>{message}</Formatizer>);
     wrapper.find(Blockquote).should.have.length(0);

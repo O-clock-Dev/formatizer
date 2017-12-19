@@ -66,20 +66,20 @@ describe('** src/components/Piece/Link.js **', () => {
       .which.is.equal('https://checklist.oclock.io/checklist.php?id=1');
   });
 
-  it("Shouldn't add <Link /> if link is fail", () => {
+  it('Should not add <Link /> if link is fail', () => {
     const message = 'Bonjour, http//oclock.io';
     const wrapper = mount(<Formatizer>{message}</Formatizer>);
     wrapper.find(Link).should.have.length(0);
   });
 
-  it("Shouldn't add <Emoji /> in <Link />", () => {
+  it('Should not add <Emoji /> in <Link />', () => {
     const message = 'Bonjour, https://oclock.io';
     const wrapper = mount(<Formatizer>{message}</Formatizer>);
     wrapper.find(Link).should.have.length(1);
     wrapper.find(Emoji).should.have.length(0);
   });
 
-  it("Shouldn't add last character in <Link />", () => {
+  it('Should not add last character in <Link />', () => {
     let message = 'Bonjour, https://oclock.io.';
     let wrapper = mount(<Formatizer>{message}</Formatizer>);
     wrapper.find(Link).should.have.length(1);
@@ -99,7 +99,7 @@ describe('** src/components/Piece/Link.js **', () => {
       .which.is.equal('https://oclock.io');
   });
 
-  it("Shouldn't add last character in <Link /> 2", () => {
+  it('Should not add last character in <Link /> 2', () => {
     let message = 'Bonjour, https://oclock.io)';
     let wrapper = mount(<Formatizer>{message}</Formatizer>);
     wrapper.find(Link).should.have.length(1);
@@ -119,7 +119,7 @@ describe('** src/components/Piece/Link.js **', () => {
       .which.is.equal('https://oclock.io');
   });
 
-  it("Shouldn't add <Emoji /> in <Link />", () => {
+  it('Should not add <Emoji /> in <Link />', () => {
     const message = 'http://:sunglasses:.com';
     const wrapper = mount(<Formatizer>{message}</Formatizer>);
     wrapper.find(Link).should.have.length(1);

@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /*
  * Package Import
  */
@@ -8,9 +9,10 @@ import { mount } from 'enzyme';
 /*
  * Local Import
  */
-import { Formatizer } from 'src';
+import { Formatizer, setImagePath } from 'src';
 import Emoji from 'src/components/Piece/Emoji';
 import Blockquote from 'src/components/Piece/Blockquote';
+import TextFormat from 'src/components/Piece/TextFormat';
 
 /*
  * Code
@@ -246,6 +248,18 @@ describe('** src/components/Piece/Emoji.js **', () => {
       wrapper.find(Emoji).should.have.length(1);
     });
 
+    it('Should format smiley :-* text in <Emoji />, not in <TextFormat />', () => {
+      let message = ':-* test*';
+      let wrapper = mount(<Formatizer>{message}</Formatizer>);
+      wrapper.find(Emoji).should.have.length(1);
+      wrapper.find(TextFormat).should.have.length(0);
+
+      message = ':* message :*';
+      wrapper = mount(<Formatizer>{message}</Formatizer>);
+      wrapper.find(Emoji).should.have.length(2);
+      wrapper.find(TextFormat).should.have.length(0);
+    });
+
     // Cry
     it("Should format smiley :'( 😢 in <Emoji />", () => {
       const message = ":'(";
@@ -284,6 +298,38 @@ describe('** src/components/Piece/Emoji.js **', () => {
         .render()
         .find('svg')
         .should.have.length(3);
+    });
+
+    it('Should format smileys in <Emoji /> inside of <TextFormat />', () => {
+      const message = '*test :) :( test*';
+      const wrapper = mount(<Formatizer>{message}</Formatizer>);
+      wrapper
+        .find(Emoji)
+        .render()
+        .find('svg')
+        .should.have.length(2);
+      wrapper.find(TextFormat).should.have.length(1);
+    });
+  });
+
+  describe('** Config **', () => {
+    after(() => {
+      setImagePath();
+    });
+
+    it('Should render with local image if config has been set up', () => {
+      const imagePath = '/path/to/fake-file.svg';
+      setImagePath(imagePath);
+      const message = ':)';
+      const wrapper = mount(<Formatizer>{message}</Formatizer>);
+      wrapper
+        .find(Emoji)
+        .render()
+        .find('use')
+        .get(0)
+        // Begin with imagePath => indexOf(imagePath) === 0
+        .attribs.href.indexOf(imagePath)
+        .should.be.equal(0);
     });
   });
 });
