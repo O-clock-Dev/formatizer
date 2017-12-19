@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 /*
  * Package import
  */
@@ -22,12 +21,6 @@ export const patternSmiley = new RegExp(
   `(\\s|^)((?:${smileyStr}\\s*)+)(?=\\s|$)`,
   'gi',
 );
-
-/*
- * Parameters
- */
-Emojione.imageType = 'svg';
-Emojione.sprites = true;
 
 /*
  * Code

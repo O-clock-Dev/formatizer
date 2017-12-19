@@ -57,9 +57,6 @@ You can also try this example in live :
   * Go http://localhost:3333/
   * Test it ! :tada:
 
-
-## :pick: API Reference
-
 * **bold** :   
 ```js
 const message = '*message*';
@@ -124,10 +121,27 @@ import { Picker } from 'formatizer';
 <Picker onChange={(data) => console.log(data)} />
 ```
 
-* If you want use the Sprite SVG in `/assets/` folder for Emoji / Picker
-  + you need to download it, [here](https://github.com/emojione/emojione/blob/2.2.7/assets/sprites/emojione.sprites.svg).
-  + In your code, `Import { Emojione } from 'formatizer`'
-  + Add your assets folder, `Emojione.imagePathSVGSprites = '/images/common/emojione.svg';`
+
+## :pick: Advanced configuration
+
+By default, Formatizer is using this emoji sprite:  
+https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/sprites/emojione.sprites.svg
+
+If you want use a local file instead of cdnjs for Emoji / Picker:  
+1. You need a emoji svg sprite, you can dowload it [here](https://github.com/emojione/emojione/blob/2.2.7/assets/sprites/emojione.sprites.svg).
+2. In your code, use `setImagePath` :
+```js
+// Import `setConfig`
+import { Formatizer, setImagePath } from 'formatizer';
+
+// Use setImagePath with the path to the file
+setImagePath('/path/to/emojione.svg');
+
+// And you're good to go!
+const Smile = () => (
+  <Formatizer>:)</Formatizer>
+);
+```
 
 
 ## :construction: Tests
