@@ -281,7 +281,7 @@ describe('** src/components/Piece/Emoji.js **', () => {
       wrapper
         .find(Emoji)
         .render()
-        .find('svg')
+        .find('img')
         .should.have.length(4);
       wrapper
         .find(Emoji)
@@ -296,7 +296,7 @@ describe('** src/components/Piece/Emoji.js **', () => {
       wrapper
         .find(Emoji)
         .render()
-        .find('svg')
+        .find('img')
         .should.have.length(3);
     });
 
@@ -306,17 +306,13 @@ describe('** src/components/Piece/Emoji.js **', () => {
       wrapper
         .find(Emoji)
         .render()
-        .find('svg')
+        .find('img')
         .should.have.length(2);
       wrapper.find(TextFormat).should.have.length(1);
     });
   });
 
   describe('** Config **', () => {
-    after(() => {
-      setImagePath();
-    });
-
     it('Should render with local image if config has been set up', () => {
       const imagePath = '/path/to/fake-file.svg';
       setImagePath(imagePath);
