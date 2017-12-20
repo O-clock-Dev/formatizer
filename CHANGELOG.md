@@ -2,6 +2,10 @@
 
 **Ne pas oublier de changer le package.json**
 
+## 1.1.2
+
+Add export `Emojione`.
+
 ## 1.1.1
 
 Leave `Emojione` default values at startup.
