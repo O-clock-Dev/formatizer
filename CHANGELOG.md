@@ -2,6 +2,10 @@
 
 **Ne pas oublier de changer le package.json**
 
+## 1.1.3
+
+Update style of `Code` (fontSize: '0.825em')
+
 ## 1.1.2
 
 Add export `Emojione`.
