@@ -15,7 +15,7 @@ To install `formatizer` :
 
 
 ## :sunny: Synopsis
-With this module, you can format your text more easily. For example, you can format into **bold**, _italic_ or ~~strike~~ a message, send a smiley, a code snippet or a blockquote... Let's see [API Reference](https://github.com/O-clock/formatizer#pick-api-reference) for more details. :smile:
+With this module, you can format your text more easily. For example, you can format into **bold**, _italic_ or ~~strike~~ a message, send a smiley, a code snippet or a blockquote... Let's see [API Reference](https://github.com/O-clock/formatizer#api-reference) for more details. :smile:
 
 
 ## :gear: Options
@@ -56,6 +56,9 @@ You can also try this example in live :
   * Launch watcher via `yarn start` or `npm start`
   * Go http://localhost:3333/
   * Test it ! :tada:
+
+
+## API Reference
 
 * **bold** :   
 ```js
