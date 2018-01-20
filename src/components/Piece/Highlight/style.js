@@ -24,7 +24,7 @@ export const customStyle = {
 export const lineNumberContainerStyle = {
   font: 'inherit',
   float: 'left',
-  margin: '.1em .5em .1em 0',
+  margin: '0 .5em 0 0',
 };
 
 export const codeTagProps = {
