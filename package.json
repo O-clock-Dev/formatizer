@@ -5,7 +5,7 @@
     "type": "git",
     "url": "git+ssh://git@github.com/O-clock-dev/formatizer.git"
   },
-  "author": "AlexandreBourdeaudhui <alexandre.bourdeaudhui@gmail.com>",
+  "author": "Alexandre Bourdeaud'hui <alexandre@oclock.io>",
   "license": "MIT",
   "scripts": {
     "start": "brunch watch --server",

@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
-import Glamorous from 'glamorous';
+import glamorous from 'glamorous';
 
 /*
  * Local Import
@@ -18,7 +18,7 @@ export const patternBlockquote = /(?:^|\n.)>[^\n]+\n?/gm;
 /*
  * Style
  */
-const Style = Glamorous.span({
+const Style = glamorous.span({
   display: 'block',
   borderLeft: '3px solid rgba(255,255,255,0.2)',
   fontStyle: 'italic',
