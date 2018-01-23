@@ -9,7 +9,7 @@ import { atomOneDark as style } from 'react-syntax-highlighter/dist/styles';
 /*
  * Local Import
  */
-import customStyle from './style';
+import { customStyle, lineNumberContainerStyle, codeTagProps } from './style';
 import languages from './languages';
 
 /*
@@ -28,7 +28,15 @@ const Highlight = ({ children }) => {
   patternHighlight.lastIndex = 0;
 
   // Highlighter options
-  const options = { style, customStyle };
+  const options = {
+    style,
+    customStyle,
+    codeTagProps,
+
+    // Line Numbers
+    showLineNumbers: true,
+    lineNumberContainerStyle,
+  };
 
   // First capturing paren: language
   if (matches[1]) {

@@ -18,4 +18,5 @@ export const Chunk = {
 
 export const CodingFont = {
   fontFamily: 'Menlo',
+  fontSize: '0.825em',
 };

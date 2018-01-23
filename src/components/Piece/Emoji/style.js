@@ -1,7 +1,7 @@
 /*
  * Package Import
  */
-import Glamorous from 'glamorous';
+import glamorous from 'glamorous';
 
 /*
  * Local Import
@@ -10,6 +10,6 @@ import Glamorous from 'glamorous';
 /*
  * Style
  */
-export const Style = Glamorous.span({
+export const Style = glamorous.span({
   '& .emojione': { display: 'inline', height: '1.2em', width: '1.2em' },
 });

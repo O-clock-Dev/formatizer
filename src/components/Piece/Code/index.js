@@ -12,7 +12,7 @@ import { Style } from './style';
 /*
  * Pattern
  */
-export const patternCode = /`(.+?)`/g;
+export const patternCode = /`(.+?)\n?`/g;
 
 /*
  * Style
@@ -23,7 +23,7 @@ export const patternCode = /`(.+?)`/g;
  */
 const Code = ({ children }) => {
   // Get rid of first and last `
-  const value = children.slice(1, -1);
+  const value = children.slice(1, -1).trim();
 
   return <Style>{value}</Style>;
 };
