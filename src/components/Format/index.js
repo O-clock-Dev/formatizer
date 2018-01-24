@@ -9,6 +9,7 @@ import PropTypes from 'prop-types';
  * Local Import
  */
 import getFragments from './getFragments';
+import { Container } from './style';
 
 /*
  * Code
@@ -25,9 +26,9 @@ const Format = ({ children, ...props }) => {
    * View
    */
 
-  // @TODO : Delate <span> when we pass at React 16
+  // @TODO : Delete <span> when we pass at React 16
   return (
-    <span>
+    <Container>
       {fragments.map((fragment, index) => {
         // If element is a string
         if (typeof fragment === 'string') {
@@ -38,7 +39,7 @@ const Format = ({ children, ...props }) => {
         // Clone element to add key
         return React.cloneElement(fragment, { key: index });
       })}
-    </span>
+    </Container>
   );
 };
 
