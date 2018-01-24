@@ -2,6 +2,14 @@
 
 **Ne pas oublier de changer le package.json**
 
+## 1.1.7
+Move picker.css in folder example
+Create `Formatizer/index.js`
+Update style <Highlight />
+  * `-  margin: '.2em .15em',`
+  * `+  margin: '.2em -.2em .2em 0'`
+
+
 ## 1.1.6
 Update <Highlight />
   - Update style with `opacity: .5` and `textAlign: right` for `lineNumbers`.
