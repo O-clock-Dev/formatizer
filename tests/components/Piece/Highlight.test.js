@@ -56,4 +56,36 @@ describe('** src/components/Piece/Highlight.js **', () => {
     const wrapper = mount(<Formatizer>{message}</Formatizer>);
     wrapper.find(Highlight).should.have.length(2);
   });
+
+  it('Should correctly display a snippet with space before code', () => {
+    const message = '```\n  coucou```';
+    const wrapper = mount(<Formatizer>{message}</Formatizer>);
+    const component = wrapper.find(Highlight);
+
+    component
+      .find(Highlighter)
+      .props()
+      .should.have.property('children')
+      .which.be.equal('  coucou');
+  });
+
+  it('Should correctly display a snippet with language and space before code', () => {
+    const message = '```javascript\n  coucou```';
+    const wrapper = mount(<Formatizer>{message}</Formatizer>);
+    const component = wrapper.find(Highlight);
+
+    // Language
+    component
+      .find(Highlighter)
+      .props()
+      .should.have.property('language')
+      .which.is.equal('javascript');
+
+    // Text
+    component
+      .find(Highlighter)
+      .props()
+      .should.have.property('children')
+      .which.be.equal('  coucou');
+  });
 });
