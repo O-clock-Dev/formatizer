@@ -16,7 +16,7 @@ import languages from './languages';
  * Patterns
  */
 /* eslint-disable prefer-template */
-const regexp = '```(?:(' + languages.join('|') + ')\\s+)?((?:.|\\n)+?)```\\n?';
+const regexp = '```(?:(' + languages.join('|') + ')\\s)?((?:.|\\n)+?)```\\n?';
 export const patternHighlight = new RegExp(regexp, 'g');
 
 /*
@@ -44,7 +44,8 @@ const Highlight = ({ children }) => {
   }
 
   // Second capturing paren: code + trim it
-  const code = matches[2].trim();
+  const prevCode = matches[2];
+  const code = prevCode[0] === '\n' ? prevCode.slice(1) : prevCode;
 
   // View
   return <Highlighter {...options}>{code}</Highlighter>;

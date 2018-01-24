@@ -25,6 +25,8 @@ export const lineNumberContainerStyle = {
   font: 'inherit',
   float: 'left',
   margin: '0 .5em 0 0',
+  opacity: '.5',
+  textAlign: 'right',
 };
 
 export const codeTagProps = {
