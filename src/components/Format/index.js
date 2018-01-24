@@ -25,7 +25,7 @@ const Format = ({ children, ...props }) => {
    * View
    */
 
-  // @TODO : Delate <span> when we pass at React 16
+  // @TODO : Delete <span> when we pass at React 16
   return (
     <span>
       {fragments.map((fragment, index) => {

@@ -15,7 +15,7 @@ export const customStyle = {
   ...CodingFont,
   color: '#abb2bf',
   display: 'block',
-  margin: '.2em .15em',
+  margin: '.2em -.2em .2em 0',
   overflow: 'auto',
   padding: '.4em .8em',
   tabSize: 2,

@@ -124,7 +124,11 @@ import { Picker } from 'formatizer';
 <Picker onChange={(data) => console.log(data)} />
 ```
 
-:bulb: For a better experience when you use `Snippet Code` and `Code`, please install and use font `Menlo`... You can look at the `example` folder if you want an example.
+### Tips :bulb:
+
+1. If you're using `Picker`, you need add the css file `picker.css`. You can find this file in folder `example/assets`
+
+2. For a better experience when you use `Snippet Code` and `Code`, please install and use font `Menlo`... You can look at the `example` folder if you want an example.
 
 
 ## :pick: Advanced configuration
