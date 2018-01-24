@@ -2,6 +2,15 @@
 
 **Ne pas oublier de changer le package.json**
 
+## 1.1.6
+Update <Highlight />
+  - Update style with `opacity: .5` and `textAlign: right` for `lineNumbers`.
+  - Update Regex.
+  - Delete `.trim()`
+  - Condition if code in the `<Highlight />` start with space.
+  - More tests
+
+
 ## 1.1.5
 Update Regex of `Code`
   - Delete line break at the End of `Code`
