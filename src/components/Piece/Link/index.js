@@ -20,7 +20,7 @@ export const patternLink = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}[.|:]
  */
 const Style = glamorous.a({
   textDecoration: 'underline',
-  textDecorationSkip: 'ink',
+  textUnderlinePosition: 'under',
 });
 
 /*
