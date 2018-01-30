@@ -32,10 +32,6 @@ const Highlight = ({ children }) => {
     style,
     customStyle,
     codeTagProps,
-
-    // Line Numbers
-    showLineNumbers: true,
-    lineNumberContainerStyle,
   };
 
   // First capturing paren: language
@@ -46,6 +42,13 @@ const Highlight = ({ children }) => {
   // Second capturing paren: code + trim it
   const prevCode = matches[2];
   const code = prevCode[0] === '\n' ? prevCode.slice(1) : prevCode;
+
+  // Line Numbers
+  const lines = code.trim().split(/\r\n|\r|\n/).length;
+  if (lines > 1) {
+    options.showLineNumbers = true;
+    options.lineNumberContainerStyle = lineNumberContainerStyle;
+  }
 
   // View
   return <Highlighter {...options}>{code}</Highlighter>;

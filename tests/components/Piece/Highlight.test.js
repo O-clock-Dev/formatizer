@@ -88,4 +88,35 @@ describe('** src/components/Piece/Highlight.js **', () => {
       .should.have.property('children')
       .which.be.equal('  coucou');
   });
+
+  it('Should display lineNumbers if lines > 1', () => {
+    const message = '```\ncoucou\nHello\n```';
+    const wrapper = mount(<Formatizer>{message}</Formatizer>);
+    const component = wrapper.find(Highlight);
+    component
+      .find(Highlighter)
+      .props()
+      .should.have.property('showLineNumbers')
+      .which.be.equal(true);
+  });
+
+  it('Should not display lineNumbers if lines === 1', () => {
+    const message = '``` coucou ```';
+    const wrapper = mount(<Formatizer>{message}</Formatizer>);
+    const component = wrapper.find(Highlight);
+    component
+      .find(Highlighter)
+      .props()
+      .should.not.have.property('showLineNumbers');
+  });
+
+  it('Should not display lineNumbers if we have breakline', () => {
+    const message = '```\ncoucou\n```';
+    const wrapper = mount(<Formatizer>{message}</Formatizer>);
+    const component = wrapper.find(Highlight);
+    component
+      .find(Highlighter)
+      .props()
+      .should.not.have.property('showLineNumbers');
+  });
 });
