@@ -144,7 +144,8 @@ describe('** src/components/Piece/Link.js **', () => {
   });
 
   it('should add <Link /> in url with a comma', () => {
-    const message = 'https://en.wikibooks.org/wiki/MySQL/Language/Definitions:_what_are_DDL,_DML_and_DQL%3F';
+    const message =
+      'https://en.wikibooks.org/wiki/MySQL/Language/Definitions:_what_are_DDL,_DML_and_DQL%3F';
     const wrapper = mount(<Formatizer>{message}</Formatizer>);
     wrapper.find(Link).should.have.length(1);
     wrapper
