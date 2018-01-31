@@ -97,6 +97,15 @@ describe('** src/components/Piece/Link.js **', () => {
       .props()
       .should.have.a.property('href')
       .which.is.equal('https://oclock.io');
+
+    message = 'https://oclock.io, Bonjour !';
+    wrapper = mount(<Formatizer>{message}</Formatizer>);
+    wrapper.find(Link).should.have.length(1);
+    wrapper
+      .find('a')
+      .props()
+      .should.have.a.property('href')
+      .which.is.equal('https://oclock.io');
   });
 
   it('should not add last character in <Link /> 2', () => {
