@@ -2,6 +2,11 @@
 
 **Ne pas oublier de changer le package.json**
 
+## 1.1.9
+Add comma in Regex @ `<Link />`
+add `textTransform: "none"` in `CodingFront`
+
+
 ## 1.1.8
 Change style for `<Link />`, `-  textDecorationSkip: 'ink'` => `+  textUnderlinePosition: 'under'`
 Display lineNumbers in `<Highlight />` only if we have more than 1 line
