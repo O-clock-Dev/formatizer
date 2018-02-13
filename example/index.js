@@ -16,10 +16,23 @@ import { Formatizer, Picker, setImagePath } from '../src';
 setImagePath('/images/common/emojione.svg');
 
 /*
+ * Init
+ */
+const usersList = ['Alexandre', 'Carine', 'Maxime'];
+
+const user = {
+  id: 1,
+  username: 'Alexandre',
+};
+
+/*
  * Code
  */
+const isMentionMe = mention =>
+  mention === user.username || mention === 'question';
+
 const isMention = mention =>
-  mention === 'test_mention' || mention === 'question';
+  mention === 'question' || usersList.includes(mention);
 
 /*
  * Component
@@ -30,9 +43,10 @@ class App extends React.Component {
    */
   state = {
     pickerIsActive: false,
+    // message:
+    //   'test *test* _test_ ~test~\n\n> test test\n\n\n:star: test :sunglasses: :heart: test :scream: :smile: :thumbsup_tone5: :-1_tone2: :D :test: :) 8-) :+1: \n\n```js\nconst abc = "test";\nconst def = 123;\n\nreturn abc + def;\n```\n\n test `test`\n\nhttps://github.com/O-clock/formatizer\n\n@test_mention test @test',
     message:
-      'test *test* _test_ ~test~\n\n> test test\n\n\n:star: test :sunglasses: :heart: test :scream: :smile: :thumbsup_tone5: :-1_tone2: :D :test: :) 8-) :+1: \n\n```js\nconst abc = "test";\nconst def = 123;\n\nreturn abc + def;\n```\n\n test `test`\n\nhttps://github.com/O-clock/formatizer\n\n@test_mention test @test',
-    // message: 'Bonjour, je suis un `code\n`',
+      "@question Bonjour, je m'appelle @alex, et je comprends rien à Downshift. Quelqu'un peut m'aider ?",
   };
 
   /*
@@ -70,7 +84,19 @@ class App extends React.Component {
         />
 
         {/* Formatizer will format your chat */}
-        <Formatizer isMention={isMention}>{message}</Formatizer>
+        <Formatizer
+          isMention={isMention}
+          isMentionMe={isMentionMe}
+          // On l'utilisera pas dans oLMS, mais je trouve ça cool de le dev quand même
+          onMention={mention =>
+            console.log(`hey, ${mention} a été mentionné dans le chat :)`)
+          }
+          // onMentionMe={actions.notifMention}
+        >
+          {message}
+        </Formatizer>
+
+        {/* <Formatizer isMention={isMention}>{message}</Formatizer> */}
 
         {/* Emoji Picker */}
         {pickerIsActive && (
