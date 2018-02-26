@@ -9,8 +9,8 @@
   "license": "MIT",
   "scripts": {
     "start": "brunch watch --server",
-    "build": "babel src -d build",
-    "prepublish": "rm -rf build && yarn build",
+    "build": "babel src -d dist",
+    "prepublish": "rm -rf dist && yarn build",
     "test": "mocha tests/.setup.js 'tests/**/*.test.js'",
     "test:one": "mocha tests/.setup.js",
     "lint": "eslint --fix src tests",
@@ -66,7 +66,7 @@
     "react-dom": "^15.6.2",
     "react-test-renderer": "^15.6.2"
   },
-  "main": "build/index.js",
+  "main": "dist/index.js",
   "files": [
     "README.md",
     "build",
