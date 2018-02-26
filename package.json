@@ -69,7 +69,7 @@
   "main": "dist/index.js",
   "files": [
     "README.md",
-    "build",
+    "dist",
     "example"
   ],
   "bugs": {
@@ -81,5 +81,8 @@
     "format",
     "message",
     "react"
+  ],
+  "contributors": [
+    "Maxime Vasse <maxime@oclock.io>"
   ]
 }
