@@ -47,18 +47,18 @@ const Format = ({ children, ...props }) => {
  */
 Format.propTypes = {
   children: PropTypes.string,
+  mentions: PropTypes.array,
   isMention: PropTypes.func,
   isMentionMe: PropTypes.func,
-  // onMention: PropTypes.func,
-  // onMentionMe: PropTypes.func,
+  onMention: PropTypes.func,
 };
 
 Format.defaultProps = {
   children: '',
+  mentions: [],
   isMention: () => {},
   isMentionMe: () => {},
-  // onMention: () => {},
-  // onMentionMe: () => {},
+  onMention: () => {},
 };
 
 /*

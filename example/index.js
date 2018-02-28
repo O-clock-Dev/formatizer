@@ -16,24 +16,23 @@ import { Formatizer, Picker, setImagePath } from '../src';
 setImagePath('/images/common/emojione.svg');
 
 /*
- * Init
- */
-const usersList = ['Alexandre', 'Carine', 'Maxime'];
-
-const user = {
-  id: 1,
-  username: 'Alexandre',
-};
-
-/*
  * Code
  */
+const users = [
+  { id: 0, mention: 'test_mention_me' },
+  { id: 1, mention: 'someone' },
+];
+
+const isMention = (mention) => {
+  const userFound = users.find(user => mention === user.mention);
+  return mention === userFound.mention;
+};
+
 const isMentionMe = mention =>
-  mention === user.username || mention === 'question';
+  mention === 'test_mention_me' || mention === 'question';
 
-const isMention = mention =>
-  mention === 'question' || usersList.includes(mention);
-
+const onMention = mention =>
+  console.log(`Hey, ${mention} has been mentioned in the chat! :)`);
 /*
  * Component
  */
@@ -43,10 +42,9 @@ class App extends React.Component {
    */
   state = {
     pickerIsActive: false,
-    // message:
-    //   'test *test* _test_ ~test~\n\n> test test\n\n\n:star: test :sunglasses: :heart: test :scream: :smile: :thumbsup_tone5: :-1_tone2: :D :test: :) 8-) :+1: \n\n```js\nconst abc = "test";\nconst def = 123;\n\nreturn abc + def;\n```\n\n test `test`\n\nhttps://github.com/O-clock/formatizer\n\n@test_mention test @test',
     message:
-      "@question Bonjour, je m'appelle @alex, et je comprends rien à Downshift. Quelqu'un peut m'aider ?",
+      'test *test* _test_ ~test~\n\n> test test\n\n\n:star: test :sunglasses: :heart: test :scream: :smile: :thumbsup_tone5: :-1_tone2: :D :test: :) 8-) :+1: \n\n```js\nconst abc = "test";\nconst def = 123;\n\nreturn abc + def;\n```\n\n test `test`\n\nhttps://github.com/O-clock/formatizer\n\n@test_mention_me test @someone',
+    // message: 'Bonjour, je suis un `code\n`',
   };
 
   /*
@@ -87,16 +85,10 @@ class App extends React.Component {
         <Formatizer
           isMention={isMention}
           isMentionMe={isMentionMe}
-          // On l'utilisera pas dans oLMS, mais je trouve ça cool de le dev quand même
-          onMention={mention =>
-            console.log(`hey, ${mention} a été mentionné dans le chat :)`)
-          }
-          // onMentionMe={actions.notifMention}
+          onMention={onMention}
         >
           {message}
         </Formatizer>
-
-        {/* <Formatizer isMention={isMention}>{message}</Formatizer> */}
 
         {/* Emoji Picker */}
         {pickerIsActive && (
