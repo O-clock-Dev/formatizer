@@ -24,8 +24,7 @@ const getFragments = (message, props) => {
       // If this is a string
       if (typeof messageFragment === 'string') {
         // Then we search for pattern
-        const { Component, pattern } = replacement;
-
+        const { Component, pattern, check } = replacement;
         const matches = messageFragment.match(pattern);
 
         // Fragment in which we look for next match
@@ -38,14 +37,23 @@ const getFragments = (message, props) => {
             const indexEnd = indexBegin + match.length;
             const messageBegin = msgFragment.slice(0, indexBegin);
             const messageEnd = msgFragment.slice(indexEnd);
+            const mention = match.slice(1);
+            // If there is no check, or check pass:
+            // push the text before + component for the match
+            if (!check || check(props, mention)) {
+              // Begin
+              if (messageBegin !== '') {
+                subFragments.push(messageBegin);
+              }
 
-            // Begin
-            if (messageBegin !== '') {
-              subFragments.push(messageBegin);
+              // Fragment
+              subFragments.push(<Component {...props}>{match}</Component>);
             }
-
-            // Fragment
-            subFragments.push(<Component {...props}>{match}</Component>);
+            else {
+              // If there is a check, but it does not pass
+              // push the text before and the matching text without any component
+              subFragments.push(`${messageBegin}${match}`);
+            }
 
             // End
             msgFragment = messageEnd;

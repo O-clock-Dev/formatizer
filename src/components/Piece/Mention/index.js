@@ -43,7 +43,7 @@ const Mention = ({
     return <Style>{value}</Style>;
   }
 
-  return <span>{children}</span>;
+  return false;
 };
 
 /*

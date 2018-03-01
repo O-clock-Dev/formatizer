@@ -57,7 +57,7 @@ Format.propTypes = {
 Format.defaultProps = {
   children: '',
   mentions: [],
-  isMention: () => {},
+  isMention: () => true,
   isMentionMe: () => {},
   onMention: () => {},
   onMentionMe: () => {},
