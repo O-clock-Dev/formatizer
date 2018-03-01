@@ -32,18 +32,14 @@ const Mention = ({
    * Return StyleMention
    */
   if (mention && isMentionMe(mention)) {
-    if (onMentionMe) {
-      onMentionMe(mention);
-    }
+    onMentionMe(mention);
     return <StyleMention>{value}</StyleMention>;
   }
   else if (mention && isMention(mention)) {
     /*
    * Otherwise, return basic Style
    */
-    if (onMention) {
-      onMention(mention);
-    }
+    onMention(mention);
     return <Style>{value}</Style>;
   }
 
