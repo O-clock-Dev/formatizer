@@ -11,7 +11,7 @@ import { mount } from 'enzyme';
 import { Formatizer } from 'src';
 import Mention from 'src/components/Piece/Mention';
 import { Style, StyleMention } from 'src/components/Piece/Mention/style';
-
+import { isMention, isMentionMe } from './utils';
 /*
  * Code
  */
@@ -21,33 +21,18 @@ should();
  * Tests
  */
 describe('** src/components/Piece/Mention.js **', () => {
-  const users = [
-    { id: 0, mention: 'carine' },
-    { id: 1, mention: 'someone_else_123' },
-  ];
-  const isMention = (mention) => {
-    const userFound = users.find(user => mention === user.mention);
-    return mention === userFound.mention;
-  };
-
-  const isMentionMe = mention => mention === 'carine' || mention === 'question';
-
-  it('Should add a <Mention />', () => {
-    const message = 'Je suis @carine ';
-    const wrapper = mount(
-      <Formatizer isMention={isMention} isMentionMe={isMentionMe}>
-        {message}
-      </Formatizer>,
-    );
+  it('Should add a <Mention /> without any props', () => {
+    const message = 'I am @mention ';
+    const wrapper = mount(<Formatizer>{message}</Formatizer>);
     wrapper.find(Mention).should.have.length(1);
     wrapper
       .find(Mention)
       .text()
-      .should.be.equal('@carine');
+      .should.be.equal('@mention');
     wrapper
       .find(Mention)
       .text()
-      .should.not.be.equal('@carine ');
+      .should.not.be.equal('@mention ');
   });
 
   it('Should not add a <Mention />', () => {
@@ -63,36 +48,43 @@ describe('** src/components/Piece/Mention.js **', () => {
   });
 
   it('Should add a <Mention /> for a name with special char like _', () => {
-    const message = 'Je suis une @someone_else_123 abc';
-    const wrapper = mount(
-      <Formatizer isMention={isMention} isMentionMe={isMentionMe}>
-        {message}
-      </Formatizer>,
-    );
+    const message = 'I am a @machine_123 abc';
+    const wrapper = mount(<Formatizer>{message}</Formatizer>);
     wrapper.find(Mention).should.have.length(1);
     wrapper
       .find(Mention)
       .text()
-      .should.be.equal('@someone_else_123');
+      .should.be.equal('@machine_123');
     wrapper
       .find(Mention)
       .text()
-      .should.not.be.equal('@someone_else_123 abc');
+      .should.not.be.equal('@machine_123 abc');
   });
 
-  it('Should add a <Mention /> for @question', () => {
-    const message = 'Je suis une @question';
+  it('Should add a <Mention /> with props isMention', () => {
+    const message = 'You are a @randomPerson';
     const wrapper = mount(
       <Formatizer isMention={isMention} isMentionMe={isMentionMe}>
         {message}
       </Formatizer>,
     );
     wrapper.find(Mention).should.have.length(1);
-    wrapper.find(Style).should.have.length(0);
+    wrapper.find(Style).should.have.length(1);
+  });
+
+  it('Should not add a <Mention /> with props isMention', () => {
+    const message = 'You are a @randomPerson';
+    const wrapper = mount(
+      <Formatizer isMention={isMention} isMentionMe={isMentionMe}>
+        {message}
+      </Formatizer>,
+    );
+    wrapper.find(Mention).should.have.length(1);
+    wrapper.find(Style).should.have.length(1);
   });
 
   it("Should add a <Mention> with special style if we're mentionned", () => {
-    const message = 'Hello @carine !';
+    const message = 'Hello @myself !';
     const wrapper = mount(
       <Formatizer isMention={isMention} isMentionMe={isMentionMe}>
         {message}
