@@ -31,14 +31,15 @@ const Mention = ({
    * If Mention match with my Name || 'question'
    * Return StyleMention
    */
-  if (mention && isMentionMe(mention)) {
+  if (isMentionMe(mention)) {
     onMentionMe(mention);
     return <StyleMention>{value}</StyleMention>;
   }
-  else if (mention && isMention(mention)) {
-    /*
+
+  /*
    * Otherwise, return basic Style
    */
+  if (isMention(mention)) {
     onMention(mention);
     return <Style>{value}</Style>;
   }

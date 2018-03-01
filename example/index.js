@@ -9,40 +9,13 @@ import { render } from 'react-dom';
  * Local import
  */
 import { Formatizer, Picker, setImagePath } from '../src';
+import { isMention, isMentionMe, onMention, onMentionMe } from './utils';
 
 /*
  * Setup
  */
 setImagePath('/images/common/emojione.svg');
 
-/*
- * Init
- */
-const users = [
-  { id: 0, mention: 'question' },
-  { id: 1, mention: 'test_mention_me' },
-  { id: 2, mention: 'someone' },
-];
-
-const isMention = (mention) => {
-  const userExists = users.find(user => mention === user.mention);
-  if (userExists) {
-    return mention === userExists.mention;
-  }
-  return false;
-};
-
-const isMentionMe = mention =>
-  mention === 'test_mention_me' || mention === 'question';
-
-/* eslint-disable no-console */
-const onMention = mention =>
-  console.log(`Hey, ${mention} has been mentioned in the chat! :)`);
-
-const onMentionMe = mention =>
-  console.log(
-    `Hey, I have been mentioned in the chat, I succeeded ${mention}! :)`,
-  );
 /*
  * Component
  */
@@ -76,7 +49,7 @@ class App extends React.Component {
   };
 
   /*
-   * View
+   * Render
    */
   render() {
     const { pickerIsActive, message } = this.state;

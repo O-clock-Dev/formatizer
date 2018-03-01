@@ -38,6 +38,7 @@ const getFragments = (message, props) => {
             const messageBegin = msgFragment.slice(0, indexBegin);
             const messageEnd = msgFragment.slice(indexEnd);
             const mention = match.slice(1);
+
             // If there is no check, or check pass:
             // push the text before + component for the match
             if (!check || check(props, mention)) {
