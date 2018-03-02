@@ -19,7 +19,7 @@ should();
  * Tests
  */
 describe('** src/components/Format.js **', () => {
-  it('Should be display a simple Text', () => {
+  it('should be display a simple Text', () => {
     const message = 'test';
     const wrapper = mount(<Formatizer>{message}</Formatizer>);
     wrapper

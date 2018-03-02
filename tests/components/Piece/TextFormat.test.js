@@ -21,50 +21,50 @@ should();
  * Tests
  */
 describe('** src/components/Piece/TextFormat.js **', () => {
-  it('Should format string in Bold', () => {
+  it('should format string in Bold', () => {
     const message = '*test*';
     const wrapper = mount(<Formatizer>{message}</Formatizer>);
     wrapper.find(TextFormat).should.have.length(1);
   });
 
-  it('Should format string in Italic', () => {
+  it('should format string in Italic', () => {
     const message = '_test_';
     const wrapper = mount(<Formatizer>{message}</Formatizer>);
     wrapper.find(TextFormat).should.have.length(1);
   });
 
-  it('Should format string in Strike', () => {
+  it('should format string in Strike', () => {
     const message = '~test~';
     const wrapper = mount(<Formatizer>{message}</Formatizer>);
     wrapper.find(TextFormat).should.have.length(1);
   });
 
-  it('Should not format string with multi line', () => {
+  it('should not format string with multi line', () => {
     const message = '*\ntest\n*';
     const wrapper = mount(<Formatizer>{message}</Formatizer>);
     wrapper.find(TextFormat).should.have.length(0);
   });
 
-  it('Should format string with a smiley', () => {
+  it('should format string with a smiley', () => {
     const message = '*test :)*';
     const wrapper = mount(<Formatizer>{message}</Formatizer>);
     wrapper.find(TextFormat).should.have.length(1);
     wrapper.find(Emoji).should.have.length(1);
   });
 
-  it('Should format a string with many Piece', () => {
+  it('should format a string with many Piece', () => {
     const message = '*_~test~_*';
     const wrapper = mount(<Formatizer>{message}</Formatizer>);
     wrapper.find(TextFormat).should.have.length(3);
   });
 
-  it('Should format multiple string', () => {
+  it('should format multiple string', () => {
     const message = '*un* _deux_';
     const wrapper = mount(<Formatizer>{message}</Formatizer>);
     wrapper.find(TextFormat).should.have.length(2);
   });
 
-  it("Should not format 'a_message_with_underscore'", () => {
+  it("should not format 'a_message_with_underscore'", () => {
     const message = 'a_message_with_underscore';
     const wrapper = mount(<Formatizer>{message}</Formatizer>);
     wrapper.find(TextFormat).should.have.length(0);

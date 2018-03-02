@@ -21,20 +21,20 @@ should();
  * Tests
  */
 describe('** src/components/Piece/Code.js **', () => {
-  it('Should add a <Code /> when pair of Backtick', () => {
+  it('should add a <Code /> when pair of Backtick', () => {
     const message = 'Bonjour, je suis un `code` :)';
     const wrapper = mount(<Formatizer>{message}</Formatizer>);
     wrapper.find(Code).should.have.length(1);
   });
 
-  it('Should add <Code /> for each pair of Backtick', () => {
+  it('should add <Code /> for each pair of Backtick', () => {
     const message = 'Bonjour, `je` suis un `code` :)';
     const wrapper = mount(<Formatizer>{message}</Formatizer>);
     wrapper.find(Code).should.have.length(2);
     wrapper.find(Emoji).should.have.length(1);
   });
 
-  it('Should not add <Emoji /> in <Code />', () => {
+  it('should not add <Emoji /> in <Code />', () => {
     const message = 'Bonjour, je suis un `code :)`';
     const wrapper = mount(<Formatizer>{message}</Formatizer>);
 
@@ -47,11 +47,11 @@ describe('** src/components/Piece/Code.js **', () => {
     code.text().should.be.equal('code :)');
   });
 
-  it('Should add <Code /> if new line at the end', () => {
+  it('should add <Code /> if new line at the end', () => {
     const message = 'Bonjour, je suis un `code\n`';
     const wrapper = mount(<Formatizer>{message}</Formatizer>);
 
-    // Should add <Code />
+    // should add <Code />
     const code = wrapper.find(Code);
     code.should.have.length(1);
 
@@ -59,13 +59,13 @@ describe('** src/components/Piece/Code.js **', () => {
     code.text().should.be.equal('code');
   });
 
-  it('Should not add <Code /> if multiple line', () => {
+  it('should not add <Code /> if multiple line', () => {
     const message = 'Bonjour, je suis un `\ncode\n`';
     const wrapper = mount(<Formatizer>{message}</Formatizer>);
     wrapper.find(Code).should.have.length(0);
   });
 
-  it('Should not have ` in text', () => {
+  it('should not have ` in text', () => {
     const message = 'Bonjour, je suis un `code`';
     const wrapper = mount(<Formatizer>{message}</Formatizer>);
     wrapper
