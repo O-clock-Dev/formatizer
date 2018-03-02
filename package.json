@@ -11,8 +11,7 @@
     "start": "brunch watch --server",
     "build": "babel src -d build",
     "prepublish": "rm -rf build && yarn build",
-    "test": "mocha tests/.setup.js 'tests/**/*.test.js'",
-    "test:one": "mocha tests/.setup.js",
+    "test": "test(){ if [[ -z $1 ]]; then mocha tests/.setup.js 'tests/**/*.test.js'; else mocha tests/.setup.js $1; fi; }; test",
     "lint": "eslint --fix src tests",
     "pretty": "prettier --write --single-quote --trailing-comma all \"{src,tests}/**/*.js\"",
     "precommit": "lint-staged && yarn test"
