@@ -15,7 +15,7 @@ export const Style = glamorous.span({}, ({ color }) => ({
     background: color,
     borderRadius: '5px',
     content: '""',
-    display: 'block',
+    display: 'inline-block',
     marginLeft: '.25em',
     height: '.9em',
     width: '.9em',
