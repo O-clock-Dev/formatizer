@@ -55,4 +55,10 @@ describe('** src/components/Piece/Color.js **', () => {
       .should.have.property('color')
       .which.be.equal('#ee1225');
   });
+
+  it('should not add <Code /> if color is stuck at the <Mention />', () => {
+    const message = 'Hello @alex#123';
+    const wrapper = mount(<Formatizer>{message}</Formatizer>);
+    wrapper.find(Color).should.have.length(0);
+  });
 });

@@ -41,15 +41,15 @@ export default [
     Component: Link,
   },
   {
+    pattern: patternColor,
+    Component: ColorFormat,
+  },
+  {
     pattern: patternMention,
     Component: Mention,
   },
 
   // Text
-  {
-    pattern: patternColor,
-    Component: ColorFormat,
-  },
   {
     pattern: patternTextFormat,
     Component: TextFormat,

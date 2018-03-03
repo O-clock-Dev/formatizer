@@ -19,5 +19,6 @@ export const Style = glamorous.span({}, ({ color }) => ({
     marginLeft: '.25em',
     height: '.9em',
     width: '.9em',
+    verticalAlign: 'middle',
   },
 }));
