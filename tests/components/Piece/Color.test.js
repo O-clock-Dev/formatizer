@@ -39,10 +39,16 @@ describe('** src/components/Piece/Color.js **', () => {
     wrapper.find(Color).should.have.length(0);
   });
 
-  it('should not add <Color /> if characters after # is > F', () => {
-    const message = 'Hello #ABCZZZ';
+  it('should add <Color /> with color in quote', () => {
+    const message = "Hello '#ee1225'";
     const wrapper = mount(<Formatizer>{message}</Formatizer>);
-    wrapper.find(Color).should.have.length(0);
+    wrapper.find(Color).should.have.length(1);
+  });
+
+  it('should add one <Color /> if two colors are stuck', () => {
+    const message = 'Hello #ee1225#ee1225';
+    const wrapper = mount(<Formatizer>{message}</Formatizer>);
+    wrapper.find(Color).should.have.length(1);
   });
 
   it('<Color /> should have a property color which be equal "ee1225"', () => {
@@ -54,6 +60,12 @@ describe('** src/components/Piece/Color.js **', () => {
       .props()
       .should.have.property('color')
       .which.be.equal('#ee1225');
+  });
+
+  it('should not add <Color /> if characters after # is > F', () => {
+    const message = 'Hello #ABCZZZ';
+    const wrapper = mount(<Formatizer>{message}</Formatizer>);
+    wrapper.find(Color).should.have.length(0);
   });
 
   it('should not add <Code /> if color is stuck at the <Mention />', () => {
