@@ -10,6 +10,7 @@ import Link, { patternLink } from 'src/components/Piece/Link';
 import Mention, { patternMention } from 'src/components/Piece/Mention';
 
 // Text
+import ColorFormat, { patternColor } from 'src/components/Piece/Color';
 import TextFormat, { patternTextFormat } from 'src/components/Piece/TextFormat';
 
 // Emoji
@@ -38,6 +39,10 @@ export default [
   {
     pattern: patternLink,
     Component: Link,
+  },
+  {
+    pattern: patternColor,
+    Component: ColorFormat,
   },
   {
     pattern: patternMention,

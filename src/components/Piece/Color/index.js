@@ -12,26 +12,21 @@ import { Style } from './style';
 /*
  * Pattern
  */
-export const patternCode = /`(.+?)\n?`/g;
+export const patternColor = /(?:\B)#(?:[0-9a-f]{3}){1,2}(?=\b|$)/gi;
 
 /*
  * Component
  */
-const Code = ({ children }) => {
-  // Get rid of first and last `
-  const value = children.slice(1, -1).trim();
-
-  return <Style>{value}</Style>;
-};
+const Color = ({ children }) => <Style color={children}>{children}</Style>;
 
 /*
  * PropTypes
  */
-Code.propTypes = {
+Color.propTypes = {
   children: PropTypes.any.isRequired,
 };
 
 /*
  * Export
  */
-export default Code;
+export default Color;

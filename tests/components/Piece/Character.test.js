@@ -20,13 +20,13 @@ should();
  * Tests
  */
 describe('** src/components/Piece/Character.js **', () => {
-  it('Should format \\n in <Character />', () => {
+  it('should format \\n in <Character />', () => {
     const message = '\n';
     const wrapper = mount(<Formatizer>{message}</Formatizer>);
     wrapper.find(Character).should.have.length(1);
   });
 
-  it('Should format multiple \\n in <Character />', () => {
+  it('should format multiple \\n in <Character />', () => {
     let message = '\n\n';
     let wrapper = mount(<Formatizer>{message}</Formatizer>);
     wrapper.find(Character).should.have.length(1);
@@ -36,13 +36,13 @@ describe('** src/components/Piece/Character.js **', () => {
     wrapper.find(Character).should.have.length(1);
   });
 
-  it('Should format \\n with a <br />', () => {
+  it('should format \\n with a <br />', () => {
     const message = '\n';
     const wrapper = mount(<Character>{message}</Character>);
     wrapper.find('br').should.have.length(1);
   });
 
-  it('Should format multiple \\n with a two <br />', () => {
+  it('should format multiple \\n with a two <br />', () => {
     let message = '\n\n';
     let wrapper = mount(<Character>{message}</Character>);
     wrapper.find('br').should.have.length(2);
