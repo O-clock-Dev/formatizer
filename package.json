@@ -9,9 +9,9 @@
   "license": "MIT",
   "scripts": {
     "start": "brunch watch --server",
-    "build": "babel src -d build",
-    "prepublish": "rm -rf build && yarn build",
-    "test": "test(){ if [[ -z $1 ]]; then mocha tests/.setup.js 'tests/**/*.test.js'; else mocha tests/.setup.js $1; fi; }; test",
+    "build": "babel src -d dist",
+    "prepublish": "rm -rf dist && yarn build",
+    "test": "test(){ if [[ -z $1 ]]; then mocha tests/.setup.js 'tests/**/*.test.js'; else mocha tests/.setup.js $1 $2; fi; }; test",
     "lint": "eslint --fix src tests",
     "pretty": "prettier --write --single-quote --trailing-comma all \"{src,tests}/**/*.js\"",
     "precommit": "lint-staged && yarn test"
@@ -65,10 +65,10 @@
     "react-dom": "^15.6.2",
     "react-test-renderer": "^15.6.2"
   },
-  "main": "build/index.js",
+  "main": "dist/index.js",
   "files": [
     "README.md",
-    "build",
+    "dist",
     "example"
   ],
   "bugs": {
@@ -80,5 +80,8 @@
     "format",
     "message",
     "react"
+  ],
+  "contributors": [
+    "Maxime Vasse <maxime@oclock.io>"
   ]
 }

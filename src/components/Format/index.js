@@ -49,14 +49,18 @@ Format.propTypes = {
   children: PropTypes.string,
   mentions: PropTypes.array,
   isMention: PropTypes.func,
-  isMentionUser: PropTypes.func,
+  isMentionMe: PropTypes.func,
+  onMention: PropTypes.func,
+  onMentionMe: PropTypes.func,
 };
 
 Format.defaultProps = {
   children: '',
   mentions: [],
-  isMention: () => {},
-  isMentionUser: () => {},
+  isMention: () => true,
+  isMentionMe: () => {},
+  onMention: () => {},
+  onMentionMe: () => {},
 };
 
 /*

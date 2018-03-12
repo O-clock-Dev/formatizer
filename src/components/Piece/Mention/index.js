@@ -17,7 +17,13 @@ export const patternMention = /\B(@[a-z0-9_-]+)($|\b|[.,?!:;)])/gi;
 /*
  * Component
  */
-const Mention = ({ children, isMention }) => {
+const Mention = ({
+  children,
+  isMentionMe,
+  isMention,
+  onMention,
+  onMentionMe,
+}) => {
   const value = children.trim();
   const mention = value.slice(1);
 
@@ -25,14 +31,20 @@ const Mention = ({ children, isMention }) => {
    * If Mention match with my Name || 'question'
    * Return StyleMention
    */
-  if (isMention(mention)) {
+  if (isMentionMe(mention)) {
+    onMentionMe(mention);
     return <StyleMention>{value}</StyleMention>;
   }
 
   /*
    * Otherwise, return basic Style
    */
-  return <Style>{value}</Style>;
+  if (isMention(mention)) {
+    onMention(mention);
+    return <Style>{value}</Style>;
+  }
+
+  return false;
 };
 
 /*
@@ -41,6 +53,9 @@ const Mention = ({ children, isMention }) => {
 Mention.propTypes = {
   children: PropTypes.string.isRequired,
   isMention: PropTypes.func.isRequired,
+  isMentionMe: PropTypes.func.isRequired,
+  onMention: PropTypes.func.isRequired,
+  onMentionMe: PropTypes.func.isRequired,
 };
 
 /*

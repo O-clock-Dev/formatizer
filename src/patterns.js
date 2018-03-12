@@ -47,6 +47,7 @@ export default [
   {
     pattern: patternMention,
     Component: Mention,
+    check: (props, value) => props.isMention(value) || props.isMentionMe(value),
   },
 
   // Text

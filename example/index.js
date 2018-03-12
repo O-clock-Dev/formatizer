@@ -9,17 +9,12 @@ import { render } from 'react-dom';
  * Local import
  */
 import { Formatizer, Picker, setImagePath } from '../src';
+import { isMention, isMentionMe, onMention, onMentionMe } from './utils';
 
 /*
  * Setup
  */
 setImagePath('/images/common/emojione.svg');
-
-/*
- * Code
- */
-const isMention = mention =>
-  mention === 'test_mention' || mention === 'question';
 
 /*
  * Component
@@ -31,7 +26,7 @@ class App extends React.Component {
   state = {
     pickerIsActive: false,
     message:
-      'test *test* _test_ ~test~\n\n> test test\n\n\n:star: test :sunglasses: :heart: test :scream: :smile: :thumbsup_tone5: :-1_tone2: :D :test: :) 8-) :+1: \n\n```js\nconst abc = "test";\nconst def = 123;\n\nreturn abc + def;\n```\n\n test `test`\n\nhttps://github.com/O-clock/formatizer\n\n@test_mention test @test',
+      'test *test* _test_ ~test~\n\n> test test\n\n\n:star: test :sunglasses: :heart: test :scream: :smile: :thumbsup_tone5: :-1_tone2: :D :test: :) 8-) :+1: \n\n```js\nconst abc = "test";\nconst def = 123;\n\nreturn abc + def;\n```\n\n test `test`\n\nhttps://github.com/O-clock/formatizer\n\n@test_mention_me @question @someone @coucou test',
     // message: 'Bonjour, je suis un `code\n`',
   };
 
@@ -54,7 +49,7 @@ class App extends React.Component {
   };
 
   /*
-   * View
+   * Render
    */
   render() {
     const { pickerIsActive, message } = this.state;
@@ -70,7 +65,14 @@ class App extends React.Component {
         />
 
         {/* Formatizer will format your chat */}
-        <Formatizer isMention={isMention}>{message}</Formatizer>
+        <Formatizer
+          isMention={isMention}
+          isMentionMe={isMentionMe}
+          onMention={onMention}
+          onMentionMe={onMentionMe}
+        >
+          {message}
+        </Formatizer>
 
         {/* Emoji Picker */}
         {pickerIsActive && (
