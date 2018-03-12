@@ -2,6 +2,11 @@
 
 **Ne pas oublier de changer le package.json**
 
+## 1.2.0
+Add full support for `@mention`. If an user is not mentionable, his mention is not going in `<Mention />`you can see a complete example in `example` folder.  
+When a HEX color is pass like param in `Formatizer`, we're displaying a little square with this color.
+
+
 ## 1.1.9
 Add comma in Regex @ `<Link />`
 add `textTransform: "none"` in `CodingFront`
