@@ -13,14 +13,14 @@ import glamorous from 'glamorous';
 export const Style = glamorous.span({}, ({ color }) => ({
   '::after': {
     background: color,
-    border: '1px solid #323232',
+    border: '1px solid #32373c',
     borderRadius: '3px',
     content: '""',
     display: 'inline-block',
     marginLeft: '.25em',
     position: 'relative',
     top: '2px',
-    height: '.75em',
-    width: '.75em',
+    height: '.9em',
+    width: '.9em',
   },
 }));
