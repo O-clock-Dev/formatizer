@@ -14,7 +14,7 @@ export const Style = glamorous.span({}, ({ color }) => ({
   '::after': {
     background: color,
     border: '1px solid #32373c',
-    borderRadius: '3px',
+    borderRadius: '4px',
     content: '""',
     display: 'inline-block',
     marginLeft: '.25em',
