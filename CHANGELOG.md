@@ -2,6 +2,10 @@
 
 **Ne pas oublier de changer le package.json**
 
+## 1.2.1
+Update style of `<Color />`
+
+
 ## 1.2.0
 Add full support for `@mention`. If an user is not mentionable, his mention is not going in `<Mention />`you can see a complete example in `example` folder.  
 When a HEX color is pass like param in `Formatizer`, we're displaying a little square with this color.
@@ -15,6 +19,7 @@ add `textTransform: "none"` in `CodingFront`
 ## 1.1.8
 Change style for `<Link />`, `-  textDecorationSkip: 'ink'` => `+  textUnderlinePosition: 'under'`
 Display lineNumbers in `<Highlight />` only if we have more than 1 line
+
 
 ## 1.1.7
 Move picker.css in folder example
