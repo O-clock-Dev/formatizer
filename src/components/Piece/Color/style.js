@@ -21,6 +21,6 @@ export const Style = glamorous.span({}, ({ color }) => ({
     position: 'relative',
     top: '2px',
     height: '.9em',
-    width: '.9em',
+    width: '.85em',
   },
 }));

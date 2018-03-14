@@ -8,10 +8,17 @@ import { mount } from 'enzyme';
 /*
  * Local Import
  */
+
+// Components Formatizer
 import { Formatizer } from 'src';
 import Mention from 'src/components/Piece/Mention';
+
+// Style Mention
 import { Style, StyleMention } from 'src/components/Piece/Mention/style';
+
+// Utils
 import { isMention, isMentionMe } from './utils';
+
 /*
  * Code
  */
@@ -25,10 +32,14 @@ describe('** src/components/Piece/Mention.js **', () => {
     const message = 'I am @mention ';
     const wrapper = mount(<Formatizer>{message}</Formatizer>);
     wrapper.find(Mention).should.have.length(1);
+
+    // Should have a text `@mention`
     wrapper
       .find(Mention)
       .text()
       .should.be.equal('@mention');
+
+    // Should not have a space in text
     wrapper
       .find(Mention)
       .text()
@@ -51,14 +62,56 @@ describe('** src/components/Piece/Mention.js **', () => {
     const message = 'I am a @machine_123 abc';
     const wrapper = mount(<Formatizer>{message}</Formatizer>);
     wrapper.find(Mention).should.have.length(1);
+
+    // Should have a text `@machine_123`
     wrapper
       .find(Mention)
       .text()
       .should.be.equal('@machine_123');
+
+    // Should not have more characters after a mention
     wrapper
       .find(Mention)
       .text()
       .should.not.be.equal('@machine_123 abc');
+  });
+
+  it('should add a <Mention /> with an accent in username ', () => {
+    const message = 'Hello @Céline ';
+    const wrapper = mount(<Formatizer>{message}</Formatizer>);
+
+    wrapper.find(Mention).should.have.length(1);
+
+    // Mention should be `@Céline`
+    wrapper
+      .find(Mention)
+      .text()
+      .should.be.equal('@Céline');
+
+    // Not `@C`
+    wrapper
+      .find(Mention)
+      .text()
+      .should.not.be.equal('@C');
+  });
+
+  it('should add a <Mention /> with comma pasted at mention', () => {
+    const message = 'Hello @alex, comment ça va?';
+    const wrapper = mount(<Formatizer>{message}</Formatizer>);
+
+    wrapper.find(Mention).should.have.length(1);
+
+    // Mention should be `@alex`
+    wrapper
+      .find(Mention)
+      .text()
+      .should.be.equal('@alex');
+
+    // But, without comma in Mention
+    wrapper
+      .find(Mention)
+      .text()
+      .should.not.be.equal('@alex,');
   });
 
   it('Should add a <Mention /> with props isMention', () => {
