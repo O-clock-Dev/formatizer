@@ -81,10 +81,37 @@ describe('** src/components/Piece/Mention.js **', () => {
     const wrapper = mount(<Formatizer>{message}</Formatizer>);
 
     wrapper.find(Mention).should.have.length(1);
+
+    // Mention should be `@Céline`
     wrapper
       .find(Mention)
       .text()
       .should.be.equal('@Céline');
+
+    // Not `@C`
+    wrapper
+      .find(Mention)
+      .text()
+      .should.not.be.equal('@C');
+  });
+
+  it('should add a <Mention /> with comma pasted at mention', () => {
+    const message = 'Hello @alex, comment ça va?';
+    const wrapper = mount(<Formatizer>{message}</Formatizer>);
+
+    wrapper.find(Mention).should.have.length(1);
+
+    // Mention should be `@alex`
+    wrapper
+      .find(Mention)
+      .text()
+      .should.be.equal('@alex');
+
+    // But, without comma in Mention
+    wrapper
+      .find(Mention)
+      .text()
+      .should.not.be.equal('@alex,');
   });
 
   it('Should add a <Mention /> with props isMention', () => {
