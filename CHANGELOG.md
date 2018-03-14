@@ -2,6 +2,10 @@
 
 **Ne pas oublier de changer le package.json**
 
+## 1.2.2
+Update Regex of `<Mention />`
+
+
 ## 1.2.1
 Update style of `<Color />`
 
