@@ -119,4 +119,20 @@ describe('** src/components/Piece/Highlight.js **', () => {
       .props()
       .should.not.have.property('showLineNumbers');
   });
+
+  it.skip('Should display 3 backticks if wrapped into 4', () => {
+    const message = '````\n```\ncoucou\n```\n````';
+    const wrapper = mount(<Formatizer>{message}</Formatizer>);
+    const component = wrapper.find(Highlight);
+
+    // Only one <Highlight />
+    component.should.have.length(1);
+
+    // Content with triple backkticks
+    component
+      .find(Highlighter)
+      .props()
+      .should.have.property('children')
+      .which.be.equal('```\ncoucou\n```');
+  });
 });
