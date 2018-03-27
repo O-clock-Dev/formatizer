@@ -19,45 +19,31 @@ export const patternSpoil = new RegExp(regexp, 'g');
 /*
  * Component
  */
-export default class Spoil extends React.Component {
-  /*
-   * PropTypes
-   */
-  static propTypes = {
-    children: PropTypes.string.isRequired,
-  };
+const Spoil = ({ children }) => {
+  // Never forget to reset lastIndex after a .exec()
+  const matches = patternSpoil.exec(children);
+  patternSpoil.lastIndex = 0;
 
-  /*
-   * State
-   */
-  state = {
-    isOpen: false,
-  };
+  // Capturing paren: Text + Trim it !
+  const prevCode = matches[1];
+  const spoiler = prevCode[0] === '\n' ? prevCode.slice(1) : prevCode;
 
-  /*
-   * Handlers
-   */
-  handleClick = () => {
-    this.setState(prevState => ({ isOpen: !prevState.isOpen }));
-  };
+  return (
+    <Details>
+      <Summary>Spoiler</Summary>
+      <Format>{spoiler}</Format>
+    </Details>
+  );
+};
 
-  /*
-   * Render
-   */
-  render() {
-    // Never forget to reset lastIndex after a .exec()
-    const matches = patternSpoil.exec(this.props.children);
-    patternSpoil.lastIndex = 0;
+/*
+ * PropTypes
+ */
+Spoil.propTypes = {
+  children: PropTypes.string.isRequired,
+};
 
-    // Capturing paren: Text + Trim it !
-    const prevCode = matches[1];
-    const spoiler = prevCode[0] === '\n' ? prevCode.slice(1) : prevCode;
-
-    return (
-      <Details>
-        <Summary>Spoiler</Summary>
-        <Format>{spoiler}</Format>
-      </Details>
-    );
-  }
-}
+/*
+ * Export
+ */
+export default Spoil;
