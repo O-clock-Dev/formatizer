@@ -8,15 +8,9 @@ import { mount } from 'enzyme';
 /*
  * Local Import
  */
-
-// Components Formatizer
 import { Formatizer } from 'src';
 import Mention from 'src/components/Piece/Mention';
-
-// Style Mention
 import { Style, StyleMention } from 'src/components/Piece/Mention/style';
-
-// Utils
 import { isMention, isMentionMe } from './utils';
 
 /*

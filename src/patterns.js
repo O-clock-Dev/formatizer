@@ -3,6 +3,7 @@
  */
 
 // Priorities
+import Spoil, { patternSpoil } from 'src/components/Piece/Spoil';
 import Highlight, { patternHighlight } from 'src/components/Piece/Highlight';
 import Code, { patternCode } from 'src/components/Piece/Code';
 import Blockquote, { patternBlockquote } from 'src/components/Piece/Blockquote';
@@ -24,6 +25,10 @@ import Character, { patternCharacter } from 'src/components/Piece/Character';
  */
 export default [
   // Priorities
+  {
+    pattern: patternSpoil,
+    Component: Spoil,
+  },
   {
     pattern: patternHighlight,
     Component: Highlight,

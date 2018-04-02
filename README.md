@@ -81,6 +81,22 @@ const message = '~message~';
 // Output: message in STRIKE
 ```
 
+* Color #ee1225 :   
+```js
+const message = '#ee1225 or #000';
+<Formatizer>{message}</Formatizer>
+// Output: colors red and black
+```
+
+* <details>
+  <summary>Spoiler</summary>
+  </details>
+```js
+const message = '### Hello ###';   
+<Formatizer>{message}</Formatizer>
+// Output: A message in spoiler
+```
+
 * Snippet Code :
 ```js
 const message = '```js const a = "string"```';   
