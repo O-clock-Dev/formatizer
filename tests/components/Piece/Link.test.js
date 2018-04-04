@@ -175,7 +175,7 @@ describe('** src/components/Piece/Link.js **', () => {
       .which.is.equal(message);
   });
 
-  it.skip('should add <Link /> with atom teletype link', () => {
+  it('should add <Link /> with atom teletype link', () => {
     const message =
       'atom://teletype/portal/c962cbc5-8fab-40ca-be3d-ed43ee9ca7d3';
     const wrapper = mount(<Formatizer>{message}</Formatizer>);
