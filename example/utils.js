@@ -14,7 +14,9 @@
 const users = [
   { id: 0, mention: 'question' },
   { id: 1, mention: 'test_mention_me' },
-  { id: 2, mention: 'someone' },
+  { id: 2, mention: 'Céline' },
+  { id: 3, mention: "hanto-art'soa" },
+  { id: 4, mention: 'Loic S' },
 ];
 
 /*
