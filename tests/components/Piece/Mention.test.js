@@ -89,7 +89,7 @@ describe('** src/components/Piece/Mention.js **', () => {
       .should.not.be.equal('@C');
   });
 
-  it.skip('should add a <Mention /> with an apostrophe in username ', () => {
+  it('should add a <Mention /> with an apostrophe in username ', () => {
     const message = "Hello @hanto-art'soa !";
     const wrapper = mount(<Formatizer>{message}</Formatizer>);
 
