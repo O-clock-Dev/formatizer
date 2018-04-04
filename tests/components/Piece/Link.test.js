@@ -163,4 +163,15 @@ describe('** src/components/Piece/Link.js **', () => {
       .should.have.a.property('href')
       .which.is.equal(message);
   });
+
+  it.skip('should add <Link /> without comma at the end', () => {
+    const message = 'https://oclock.io';
+    const wrapper = mount(<Formatizer>{message},</Formatizer>);
+    wrapper.find(Link).should.have.length(1);
+    wrapper
+      .find('a')
+      .props()
+      .should.have.a.property('href')
+      .which.is.equal(message);
+  });
 });
