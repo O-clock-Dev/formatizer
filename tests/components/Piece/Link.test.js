@@ -44,6 +44,23 @@ describe('** src/components/Piece/Link.js **', () => {
       .which.is.equal('http://localhost:3000');
   });
 
+  it('should add <Link /> for a http://localhost/site/web/', () => {
+    const message = 'Bonjour, http://localhost/site/web/';
+    const wrapper = mount(<Formatizer>{message}</Formatizer>);
+    wrapper.find(Link).should.have.length(1);
+    wrapper
+      .find('a')
+      .props()
+      .should.have.a.property('href')
+      .which.is.equal('http://localhost/site/web/');
+  });
+
+  it('should not add <Link /> for a http://test/', () => {
+    const message = 'Bonjour, http://test/';
+    const wrapper = mount(<Formatizer>{message}</Formatizer>);
+    wrapper.find(Link).should.have.length(0);
+  });
+
   it('should add <Link /> for a http://127.0.0.1', () => {
     const message = 'Bonjour, http://127.0.0.1';
     const wrapper = mount(<Formatizer>{message}</Formatizer>);
@@ -79,27 +96,9 @@ describe('** src/components/Piece/Link.js **', () => {
     wrapper.find(Emoji).should.have.length(0);
   });
 
-  it('should not add last character in <Link />', () => {
-    let message = 'Bonjour, https://oclock.io.';
-    let wrapper = mount(<Formatizer>{message}</Formatizer>);
-    wrapper.find(Link).should.have.length(1);
-    wrapper
-      .find('a')
-      .props()
-      .should.have.a.property('href')
-      .which.is.equal('https://oclock.io');
-
-    message = 'Bonjour, https://oclock.io ';
-    wrapper = mount(<Formatizer>{message}</Formatizer>);
-    wrapper.find(Link).should.have.length(1);
-    wrapper
-      .find('a')
-      .props()
-      .should.have.a.property('href')
-      .which.is.equal('https://oclock.io');
-
-    message = 'https://oclock.io, Bonjour !';
-    wrapper = mount(<Formatizer>{message}</Formatizer>);
+  it('should not add last character in <Link /> (Dot)', () => {
+    const message = 'Bonjour, https://oclock.io.';
+    const wrapper = mount(<Formatizer>{message}</Formatizer>);
     wrapper.find(Link).should.have.length(1);
     wrapper
       .find('a')
@@ -108,18 +107,42 @@ describe('** src/components/Piece/Link.js **', () => {
       .which.is.equal('https://oclock.io');
   });
 
-  it('should not add last character in <Link /> 2', () => {
-    let message = 'Bonjour, https://oclock.io)';
-    let wrapper = mount(<Formatizer>{message}</Formatizer>);
+  it('should not add last character in <Link /> (Space)', () => {
+    const message = 'Bonjour, https://oclock.io ';
+    const wrapper = mount(<Formatizer>{message}</Formatizer>);
     wrapper.find(Link).should.have.length(1);
     wrapper
       .find('a')
       .props()
       .should.have.a.property('href')
       .which.is.equal('https://oclock.io');
+  });
 
-    message = 'Bonjour, https://oclock.io()';
-    wrapper = mount(<Formatizer>{message}</Formatizer>);
+  it('should not add last character in <Link /> (Comma)', () => {
+    const message = 'https://oclock.io, Bonjour !';
+    const wrapper = mount(<Formatizer>{message}</Formatizer>);
+    wrapper.find(Link).should.have.length(1);
+    wrapper
+      .find('a')
+      .props()
+      .should.have.a.property('href')
+      .which.is.equal('https://oclock.io');
+  });
+
+  it('should not add last character in <Link /> (parenthese)', () => {
+    const message = 'Bonjour, https://oclock.io)';
+    const wrapper = mount(<Formatizer>{message}</Formatizer>);
+    wrapper.find(Link).should.have.length(1);
+    wrapper
+      .find('a')
+      .props()
+      .should.have.a.property('href')
+      .which.is.equal('https://oclock.io');
+  });
+
+  it('should not add last character in <Link /> (couple of parenthese)', () => {
+    const message = 'Bonjour, https://oclock.io()';
+    const wrapper = mount(<Formatizer>{message}</Formatizer>);
     wrapper.find(Link).should.have.length(1);
     wrapper
       .find('a')
