@@ -55,6 +55,17 @@ describe('** src/components/Piece/Link.js **', () => {
       .which.is.equal('http://localhost/site/web/');
   });
 
+  it('should add <Link /> for a https://username:password@example.com:12345', () => {
+    const message = 'Bonjour, https://username:password@example.com:12345';
+    const wrapper = mount(<Formatizer>{message}</Formatizer>);
+    wrapper.find(Link).should.have.length(1);
+    wrapper
+      .find('a')
+      .props()
+      .should.have.a.property('href')
+      .which.is.equal('https://username:password@example.com:12345');
+  });
+
   it('should not add <Link /> for a http://test/', () => {
     const message = 'Bonjour, http://test/';
     const wrapper = mount(<Formatizer>{message}</Formatizer>);
