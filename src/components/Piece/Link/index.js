@@ -32,7 +32,10 @@ const Style = glamorous.a({
  * Component
  */
 const Link = ({ children }) => {
+  // @TODO : Voir pour refaire cette partie plus proprement.
+  // Intégrer directement la partie avec le slice dans la régex
   const last = children.slice(-1);
+
   if (last === '.' || last === ',') {
     const link = children.slice(0, -1);
     return (
@@ -44,6 +47,7 @@ const Link = ({ children }) => {
       </span>
     );
   }
+
   return (
     <Style href={children} target="_blank" rel="noopener noreferrer">
       {children}
