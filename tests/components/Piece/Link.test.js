@@ -198,9 +198,17 @@ describe('** src/components/Piece/Link.js **', () => {
       .which.is.equal(message);
   });
 
-  it.skip('should add <Link /> without comma at the end', () => {
+  it('should add <Link /> without comma or point at the end', () => {
     const message = 'https://github.com/O-clock-Dev/formatizer';
-    const wrapper = mount(<Formatizer>{`${message},`}</Formatizer>);
+    let wrapper = mount(<Formatizer>{message},</Formatizer>);
+    wrapper.find(Link).should.have.length(1);
+    wrapper
+      .find('a')
+      .props()
+      .should.have.a.property('href')
+      .which.is.equal(message);
+
+    wrapper = mount(<Formatizer>{message}.</Formatizer>);
     wrapper.find(Link).should.have.length(1);
     wrapper
       .find('a')
