@@ -199,8 +199,8 @@ describe('** src/components/Piece/Link.js **', () => {
   });
 
   it.skip('should add <Link /> without comma at the end', () => {
-    const message = 'https://oclock.io';
-    const wrapper = mount(<Formatizer>{message},</Formatizer>);
+    const message = 'https://github.com/O-clock-Dev/formatizer';
+    const wrapper = mount(<Formatizer>{`${message},`}</Formatizer>);
     wrapper.find(Link).should.have.length(1);
     wrapper
       .find('a')
