@@ -2,6 +2,7 @@
  * Package Import
  */
 import React from 'react';
+import PropTypes from 'prop-types';
 
 /*
  * Local Import
@@ -16,11 +17,22 @@ import { Container } from './style';
 /*
  * Component
  */
-const Formatizer = props => (
+const Formatizer = ({ children, ...props }) => (
   <Container>
-    <Format {...props} />
+    <Format {...props}>
+      {typeof children === 'object' ? children.join('') : children}
+    </Format>
   </Container>
 );
+Formatizer.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.arrayOf(PropTypes.string),
+  ]),
+};
+Formatizer.defaultProps = {
+  children: '',
+};
 
 /*
  * Export
