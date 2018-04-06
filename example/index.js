@@ -9,7 +9,13 @@ import { render } from 'react-dom';
  * Local import
  */
 import { Formatizer, Picker, setImagePath } from '../src';
-import { isMention, isMentionMe, onMention, onMentionMe } from './utils';
+import {
+  isMention,
+  isMentionMe,
+  onMention,
+  onMentionMe,
+  isTeacher,
+} from './utils';
 
 /*
  * Setup
@@ -25,9 +31,9 @@ class App extends React.Component {
    */
   state = {
     pickerIsActive: false,
-    // message:
-    // 'test *test* _test_ ~test~\n\n> test test\n\n\n:star: test :sunglasses: :heart: test :scream: :smile: :thumbsup_tone5: :-1_tone2: :D :test: :) 8-) :+1: \n\n```js\nconst abc = "test";\nconst def = 123;\n\nreturn abc + def;\n```\n\n test `test`\n\nhttps://github.com/O-clock/formatizer\n\n@test_mention_me @question @someone @coucou test',
-    message: '###\ntest\n###',
+    message:
+      'test *test* _test_ ~test~\n\n> test test\n\n\n:star: test :sunglasses: :heart: test :scream: :smile: :thumbsup_tone5: :-1_tone2: :D :test: :) 8-) :+1: \n\n```js\nconst abc = "test";\nconst def = 123;\n\nreturn abc + def;\n```\n\n test `test`\n\nhttps://github.com/O-clock/formatizer\n\n@test_mention_me @question @someone @coucou test\n\n###\ntest\n###',
+    // message: 'atom://teletype/portal/c962cbc5-8fab-40ca-be3d-ed43ee9ca7d3',
   };
 
   /*
@@ -70,6 +76,11 @@ class App extends React.Component {
           isMentionMe={isMentionMe}
           onMention={onMention}
           onMentionMe={onMentionMe}
+          options={{
+            spoiler: {
+              open: isTeacher,
+            },
+          }}
         >
           {message}
         </Formatizer>

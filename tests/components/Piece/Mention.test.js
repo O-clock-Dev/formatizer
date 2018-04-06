@@ -89,6 +89,63 @@ describe('** src/components/Piece/Mention.js **', () => {
       .should.not.be.equal('@C');
   });
 
+  it('should add a <Mention /> with 2 accent in username ', () => {
+    const message = 'Hello @Jéjé ';
+    const wrapper = mount(<Formatizer>{message}</Formatizer>);
+
+    wrapper.find(Mention).should.have.length(1);
+
+    // Mention should be `@Jéjé`
+    wrapper
+      .find(Mention)
+      .text()
+      .should.be.equal('@Jéjé');
+
+    // Not `@Jéj`
+    wrapper
+      .find(Mention)
+      .text()
+      .should.not.be.equal('@Jéj');
+  });
+
+  it('should add a <Mention /> with an apostrophe in username ', () => {
+    const message = "Hello @hanto-art'soa !";
+    const wrapper = mount(<Formatizer>{message}</Formatizer>);
+
+    wrapper.find(Mention).should.have.length(1);
+
+    // Mention should be `@hanto-art'soa`
+    wrapper
+      .find(Mention)
+      .text()
+      .should.be.equal("@hanto-art'soa");
+
+    // Not `@hanto-art`
+    wrapper
+      .find(Mention)
+      .text()
+      .should.not.be.equal('@hanto-art');
+  });
+
+  it.skip('should add a <Mention /> with a space in username ', () => {
+    const message = 'Hello @Loic S !';
+    const wrapper = mount(<Formatizer>{message}</Formatizer>);
+
+    wrapper.find(Mention).should.have.length(1);
+
+    // Mention should be `@Loic S`
+    wrapper
+      .find(Mention)
+      .text()
+      .should.be.equal('@Loic S');
+
+    // Not `@Loic`
+    wrapper
+      .find(Mention)
+      .text()
+      .should.not.be.equal('@Loic');
+  });
+
   it('should add a <Mention /> with comma pasted at mention', () => {
     const message = 'Hello @alex, comment ça va?';
     const wrapper = mount(<Formatizer>{message}</Formatizer>);
