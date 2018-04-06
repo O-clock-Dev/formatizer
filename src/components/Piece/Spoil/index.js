@@ -19,7 +19,7 @@ export const patternSpoil = new RegExp(regexp, 'g');
 /*
  * Component
  */
-const Spoil = ({ children, spoiled }) => {
+const Spoil = ({ children, options }) => {
   // Never forget to reset lastIndex after a .exec()
   const matches = patternSpoil.exec(children);
   patternSpoil.lastIndex = 0;
@@ -27,9 +27,9 @@ const Spoil = ({ children, spoiled }) => {
   // Capturing paren: Text + Trim it !
   const prevCode = matches[1];
   const spoiler = prevCode[0] === '\n' ? prevCode.slice(1) : prevCode;
-
+  const { open } = options.spoiler;
   return (
-    <Details open={spoiled}>
+    <Details open={open}>
       <Summary>Spoiler</Summary>
       <Format>{spoiler}</Format>
     </Details>
@@ -41,7 +41,7 @@ const Spoil = ({ children, spoiled }) => {
  */
 Spoil.propTypes = {
   children: PropTypes.string.isRequired,
-  spoiled: PropTypes.bool.isRequired,
+  options: PropTypes.object.isRequired,
 };
 
 /*

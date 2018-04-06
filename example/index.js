@@ -9,7 +9,13 @@ import { render } from 'react-dom';
  * Local import
  */
 import { Formatizer, Picker, setImagePath } from '../src';
-import { isMention, isMentionMe, onMention, onMentionMe } from './utils';
+import {
+  isMention,
+  isMentionMe,
+  onMention,
+  onMentionMe,
+  isTeacher,
+} from './utils';
 
 /*
  * Setup
@@ -70,7 +76,11 @@ class App extends React.Component {
           isMentionMe={isMentionMe}
           onMention={onMention}
           onMentionMe={onMentionMe}
-          spoiled
+          options={{
+            spoiler: {
+              open: isTeacher,
+            },
+          }}
         >
           {message}
         </Formatizer>

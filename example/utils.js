@@ -38,6 +38,7 @@ const users = [
   },
 ];
 
+export const isTeacher = true;
 /*
  * Example `isMention`
  */
