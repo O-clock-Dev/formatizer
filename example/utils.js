@@ -13,10 +13,10 @@
  */
 const users = [
   { id: 0, mention: 'question' },
-  { id: 1, mention: 'test_mention_me' },
-  { id: 2, mention: 'Céline' },
-  { id: 3, mention: "hanto-art'soa" },
-  { id: 4, mention: 'Loic S' },
+  { id: 1, mention: 'test_mention_me', role: 'teacher' },
+  { id: 2, mention: 'Céline', role: 'student' },
+  { id: 3, mention: "hanto-art'soa", role: 'student' },
+  { id: 4, mention: 'Loic S', role: 'student' },
 ];
 
 /*

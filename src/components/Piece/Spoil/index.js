@@ -19,7 +19,7 @@ export const patternSpoil = new RegExp(regexp, 'g');
 /*
  * Component
  */
-const Spoil = ({ children }) => {
+const Spoil = ({ children, spoiled }) => {
   // Never forget to reset lastIndex after a .exec()
   const matches = patternSpoil.exec(children);
   patternSpoil.lastIndex = 0;
@@ -29,7 +29,7 @@ const Spoil = ({ children }) => {
   const spoiler = prevCode[0] === '\n' ? prevCode.slice(1) : prevCode;
 
   return (
-    <Details>
+    <Details open={spoiled}>
       <Summary>Spoiler</Summary>
       <Format>{spoiler}</Format>
     </Details>
@@ -41,6 +41,7 @@ const Spoil = ({ children }) => {
  */
 Spoil.propTypes = {
   children: PropTypes.string.isRequired,
+  spoiled: PropTypes.bool.isRequired,
 };
 
 /*

@@ -70,6 +70,7 @@ class App extends React.Component {
           isMentionMe={isMentionMe}
           onMention={onMention}
           onMentionMe={onMentionMe}
+          spoiled
         >
           {message}
         </Formatizer>

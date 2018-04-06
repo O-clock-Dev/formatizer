@@ -52,6 +52,7 @@ Format.propTypes = {
   isMentionMe: PropTypes.func,
   onMention: PropTypes.func,
   onMentionMe: PropTypes.func,
+  spoiled: PropTypes.bool,
 };
 
 Format.defaultProps = {
@@ -61,6 +62,7 @@ Format.defaultProps = {
   isMentionMe: () => {},
   onMention: () => {},
   onMentionMe: () => {},
+  spoiled: false,
 };
 
 /*
