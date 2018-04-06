@@ -19,6 +19,7 @@ const users = [
   { id: 4, mention: 'Loic S' },
 ];
 
+export const isTeacher = true;
 /*
  * Example `isMention`
  */
