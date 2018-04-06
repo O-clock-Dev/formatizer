@@ -2,6 +2,20 @@
 
 **Ne pas oublier de changer le package.json**
 
+## 1.2.4
+`<Mention />`
+  - Fix Mention with dot
+  - Fix Mention with apostrophe
+  - Fix Mention with 2 accents
+
+`<Link />`
+  - Fix Link with comma in second party of URL (path, etc...)
+  - Add support for `atom://teletype/...`
+
+`<Spoiler />`
+  - Add an option for open it automatically, and prepare for future options :)
+
+
 ## 1.2.3
 <details>
   <summary>Open</summary>
@@ -9,7 +23,6 @@
     Add Spoiler
    </p>
   </details>
-
 
 ## 1.2.2
 Update Regex of `<Mention />`
@@ -37,7 +50,7 @@ Update style <Highlight />
   * `+  margin: '.2em -.2em .2em 0'`
 
 ## 1.1.6
-Update <Highlight />
+Update `<Highlight />`
   - Update style with `opacity: .5` and `textAlign: right` for `lineNumbers`.
   - Update Regex.
   - Delete `.trim()`
