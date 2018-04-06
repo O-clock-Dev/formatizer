@@ -12,7 +12,7 @@ import { Style, StyleMention } from './style';
 /*
  * Pattern
  */
-export const patternMention = /\B(@[a-zÀ-ÿ0-9'_-]+)($|\b|[.,?!:;)])/gi;
+export const patternMention = /(?:\B)(?:@[a-zÀ-ÿ0-9'._-]+)(?:[a-zÀ-ÿ]|\b)/gi;
 
 /*
  * Component
