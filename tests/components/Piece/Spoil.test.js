@@ -12,7 +12,7 @@ import { Formatizer } from 'src';
 import Format from 'src/components/Format';
 import Spoil from 'src/components/Piece/Spoil';
 import Highlight from 'src/components/Piece/Highlight';
-// import { StyleSpoil, Style } from 'src/components/Piece/Spoil/style';
+import { StyleSpoil } from 'src/components/Piece/Spoil/style';
 
 /*
  * Code
@@ -80,5 +80,17 @@ describe('** src/components/Piece/Spoil.js **', () => {
 
     // Should have <Highlight />
     component.find(Highlight).should.have.length(1);
+  });
+
+  it('should have an open property false by default', () => {
+    const message = '### coucou ###';
+    const wrapper = mount(<Formatizer>{message}</Formatizer>);
+    const component = wrapper.find(Spoil);
+
+    component
+      .find(StyleSpoil)
+      .props()
+      .should.have.property('open')
+      .which.equal(false);
   });
 });
