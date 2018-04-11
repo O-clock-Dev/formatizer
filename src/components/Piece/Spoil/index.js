@@ -8,8 +8,7 @@ import PropTypes from 'prop-types';
  * Local Import
  */
 import Format from 'src/components/Format';
-import { Details, Summary } from './style';
-
+import { StyleSpoil, Style } from './style';
 /*
  * Patterns
  */
@@ -19,23 +18,33 @@ export const patternSpoil = new RegExp(regexp, 'g');
 /*
  * Component
  */
-const Spoil = ({ children, options }) => {
-  // Never forget to reset lastIndex after a .exec()
-  const matches = patternSpoil.exec(children);
-  patternSpoil.lastIndex = 0;
+class Spoil extends React.Component {
+  state = { open: this.props.options.spoiler.open };
 
-  // Capturing paren: Text + Trim it !
-  const prevCode = matches[1];
-  const spoiler = prevCode[0] === '\n' ? prevCode.slice(1) : prevCode;
-  const { open } = options.spoiler;
-  return (
-    <Details open={open}>
-      <Summary>Spoiler</Summary>
-      <Format>{spoiler}</Format>
-    </Details>
-  );
-};
+  handleClick = () => {
+    this.setState({ open: !this.state.open });
+  };
+  render() {
+    const { children } = this.props;
+    const { open } = this.state;
 
+    // Never forget to reset lastIndex after a .exec()
+    const matches = patternSpoil.exec(children);
+    patternSpoil.lastIndex = 0;
+
+    // Capturing paren: Text + Trim it !
+    const prevCode = matches[1];
+    const spoiler = prevCode[0] === '\n' ? prevCode.slice(1) : prevCode;
+    return (
+      <Style onClick={this.handleClick}>
+        Spoiler
+        <StyleSpoil open={open}>
+          <Format>{spoiler}</Format>
+        </StyleSpoil>
+      </Style>
+    );
+  }
+}
 /*
  * PropTypes
  */
