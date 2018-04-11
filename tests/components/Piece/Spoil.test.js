@@ -87,10 +87,34 @@ describe('** src/components/Piece/Spoil.js **', () => {
     const wrapper = mount(<Formatizer>{message}</Formatizer>);
     const component = wrapper.find(Spoil);
 
+    // By default the spoiler should be closed
     component
       .find(StyleSpoil)
       .props()
       .should.have.property('open')
       .which.equal(false);
+  });
+
+  it('should be open when the options property is set', () => {
+    const message = '### coucou ###';
+    const wrapper = mount(
+      <Formatizer
+        options={{
+          spoiler: {
+            open: true,
+          },
+        }}
+      >
+        {message}
+      </Formatizer>,
+    );
+    const component = wrapper.find(Spoil);
+
+    // You can change the display by setting the options
+    component
+      .find(StyleSpoil)
+      .props()
+      .should.have.property('open')
+      .which.equal(true);
   });
 });
