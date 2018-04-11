@@ -31,12 +31,13 @@ describe('** src/components/Piece/Spoil.js **', () => {
     // Should have <Spoil />
     component.should.have.length(1);
 
-    // // Should have `Style` with text `Spoiler`
+    // Should have `Style` with text `Spoiler`
     // component
     //   .find(Style)
     //   .props()
-    //   .should.have.property('children').first().props()
-    //   .which.should.equal('Spoiler');
+    //   .should.have.property('children')
+    //   .childAt(0)
+    //   .should.equal('Spoiler');
 
     // Should have text `Je suis un spoiler`
     component
