@@ -89,6 +89,25 @@ describe('** src/components/Piece/Mention.js **', () => {
       .should.not.be.equal('@C');
   });
 
+  it('should add a <Mention /> with 2 accent in username ', () => {
+    const message = 'Hello @Jéjé ';
+    const wrapper = mount(<Formatizer>{message}</Formatizer>);
+
+    wrapper.find(Mention).should.have.length(1);
+
+    // Mention should be `@Jéjé`
+    wrapper
+      .find(Mention)
+      .text()
+      .should.be.equal('@Jéjé');
+
+    // Not `@Jéj`
+    wrapper
+      .find(Mention)
+      .text()
+      .should.not.be.equal('@Jéj');
+  });
+
   it('should add a <Mention /> with an apostrophe in username ', () => {
     const message = "Hello @hanto-art'soa !";
     const wrapper = mount(<Formatizer>{message}</Formatizer>);
