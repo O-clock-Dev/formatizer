@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
  * Local Import
  */
 import Format from 'src/components/Format';
-import { StyleSpoil, Style, StyleSpoiler } from './style';
+import { StyleSpoil, StyleSpoiler } from './style';
 /*
  * Patterns
  */
@@ -36,12 +36,12 @@ class Spoil extends React.Component {
     const prevCode = matches[1];
     const spoiler = prevCode[0] === '\n' ? prevCode.slice(1) : prevCode;
     return (
-      <Style onClick={this.handleClick}>
+      <div onClick={this.handleClick}>
         <StyleSpoiler open={open}>Spoiler</StyleSpoiler>
         <StyleSpoil open={open}>
           <Format>{spoiler}</Format>
         </StyleSpoil>
-      </Style>
+      </div>
     );
   }
 }
