@@ -12,7 +12,7 @@ import { Formatizer } from 'src';
 import Format from 'src/components/Format';
 import Spoil from 'src/components/Piece/Spoil';
 import Highlight from 'src/components/Piece/Highlight';
-import { StyleSpoil } from 'src/components/Piece/Spoil/style';
+import { StyleSpoil, StyleSpoiler } from 'src/components/Piece/Spoil/style';
 
 /*
  * Code
@@ -32,12 +32,11 @@ describe('** src/components/Piece/Spoil.js **', () => {
     component.should.have.length(1);
 
     // Should have `Style` with text `Spoiler`
-    // component
-    //   .find(Style)
-    //   .props()
-    //   .should.have.property('children')
-    //   .childAt(0)
-    //   .should.equal('Spoiler');
+    component
+      .find(StyleSpoiler)
+      .props()
+      .should.have.property('children')
+      .which.equal('Spoiler');
 
     // Should have text `Je suis un spoiler`
     component

@@ -14,24 +14,16 @@ export const StyleSpoil = glamorous.div(({ open }) => ({
   display: !open && 'none',
 }));
 
-const arrowRight = {
-  content: '""',
-  display: 'inline-block',
-  borderLeft: '5px solid black',
-  borderTop: '5px solid transparent',
-  borderBottom: '5px solid transparent',
-  marginRight: '5px',
-};
+export const Style = glamorous.div({});
 
-const arrowDown = {
-  content: '""',
-  display: 'inline-block',
-  borderTop: '5px solid black',
-  borderRight: '5px solid transparent',
-  borderLeft: '5px solid transparent',
-  marginRight: '5px',
-};
-
-export const Style = glamorous.div(({ open }) => ({
-  '::before': open ? arrowDown : arrowRight,
+export const StyleSpoiler = glamorous.div(({ open }) => ({
+  '::before': {
+    transform: open && 'rotate(90deg)',
+    content: '""',
+    display: 'inline-block',
+    borderLeft: '5px solid black',
+    borderTop: '5px solid transparent',
+    borderBottom: '5px solid transparent',
+    marginRight: '5px',
+  },
 }));
