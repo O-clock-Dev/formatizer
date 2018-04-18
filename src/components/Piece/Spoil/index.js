@@ -19,10 +19,14 @@ export const patternSpoil = new RegExp(regexp, 'g');
  * Component
  */
 class Spoil extends React.Component {
-  state = { open: this.props.options.spoiler.open };
+  state = {
+    open: this.props.options.spoiler.open,
+    onClick: this.props.options.spoiler.onClick,
+  };
 
-  handleClick = () => {
+  handleClick = (evt) => {
     this.setState({ open: !this.state.open });
+    if (this.state.onClick) this.state.onClick(evt);
   };
   render() {
     const { children } = this.props;

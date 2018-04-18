@@ -55,6 +55,7 @@ Format.propTypes = {
   options: PropTypes.shape({
     spoiler: PropTypes.shape({
       open: PropTypes.bool,
+      onClick: PropTypes.func,
     }),
   }),
 };
@@ -69,6 +70,7 @@ Format.defaultProps = {
   options: {
     spoiler: {
       open: false,
+      onClick: () => {},
     },
   },
 };
