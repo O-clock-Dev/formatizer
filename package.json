@@ -12,8 +12,8 @@
     "build": "babel src -d dist",
     "prepublish": "rm -rf dist && yarn build",
     "test": "test(){ if [ -z $1 ]; then mocha tests/.setup.js 'tests/**/*.test.js'; else mocha tests/.setup.js $1 $2; fi; }; test",
-    "lint": "eslint --fix src tests",
-    "pretty": "prettier --write --single-quote --trailing-comma all \"{src,tests}/**/*.js\"",
+    "lint": "eslint --fix '{example,src,tests}/**/*.{js,json}'",
+    "pretty": "prettier --write '{example,src,tests}/**/*.{js,json}'",
     "precommit": "lint-staged && yarn test"
   },
   "lint-staged": {
