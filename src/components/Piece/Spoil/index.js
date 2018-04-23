@@ -40,8 +40,10 @@ class Spoil extends React.Component {
     const prevCode = matches[1];
     const spoiler = prevCode[0] === '\n' ? prevCode.slice(1) : prevCode;
     return (
-      <div onClick={this.handleClick}>
-        <StyleSpoiler open={open}>Spoiler</StyleSpoiler>
+      <div>
+        <StyleSpoiler onClick={this.handleClick} open={open}>
+          Spoiler
+        </StyleSpoiler>
         <StyleSpoil open={open}>
           <Format>{spoiler}</Format>
         </StyleSpoil>
