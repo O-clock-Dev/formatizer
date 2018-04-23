@@ -9,6 +9,7 @@ import PropTypes from 'prop-types';
  */
 import Format from 'src/components/Format';
 import { StyleSpoil, StyleSpoiler } from './style';
+
 /*
  * Patterns
  */
@@ -19,15 +20,30 @@ export const patternSpoil = new RegExp(regexp, 'g');
  * Component
  */
 class Spoil extends React.Component {
+  /*
+   * State
+   */
   state = {
     open: this.props.options.spoiler.open,
     onClick: this.props.options.spoiler.onClick,
   };
 
+  /*
+   * Handlers
+   */
   handleClick = (evt) => {
-    this.setState({ open: !this.state.open });
-    if (this.state.onClick) this.state.onClick(evt);
+    this.setState(prevState => ({
+      open: !prevState.open,
+    }));
+
+    if (this.state.onClick) {
+      this.state.onClick(evt);
+    }
   };
+
+  /*
+   * Render
+   */
   render() {
     const { children } = this.props;
     const { open } = this.state;
@@ -39,6 +55,10 @@ class Spoil extends React.Component {
     // Capturing paren: Text + Trim it !
     const prevCode = matches[1];
     const spoiler = prevCode[0] === '\n' ? prevCode.slice(1) : prevCode;
+
+    /*
+     * View
+     */
     return (
       <div>
         <StyleSpoiler onClick={this.handleClick} open={open}>
