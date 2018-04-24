@@ -54,6 +54,11 @@ class App extends React.Component {
     this.setState(prevPops => ({ pickerIsActive: !prevPops.pickerIsActive }));
   };
 
+  handleSpoiler = (evt) => {
+    console.log('You have clicked on me !');
+    console.log(evt.target);
+  };
+
   /*
    * Render
    */
@@ -79,6 +84,7 @@ class App extends React.Component {
           options={{
             spoiler: {
               open: isTeacher,
+              onClick: this.handleSpoiler,
             },
           }}
         >

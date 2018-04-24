@@ -10,7 +10,19 @@ import glamorous from 'glamorous';
 /*
  * Style
  */
+export const StyleSpoil = glamorous.div(({ open }) => ({
+  display: !open && 'none',
+}));
 
-// @TODO
-export const Details = glamorous.details({});
-export const Summary = glamorous.summary({});
+export const StyleSpoiler = glamorous.div(({ open }) => ({
+  cursor: 'pointer',
+  '::before': {
+    transform: open && 'rotate(90deg)',
+    content: '""',
+    display: 'inline-block',
+    borderLeft: '5px solid',
+    borderTop: '5px solid transparent',
+    borderBottom: '5px solid transparent',
+    marginRight: '5px',
+  },
+}));

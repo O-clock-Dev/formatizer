@@ -12,7 +12,7 @@ import { Formatizer } from 'src';
 import Format from 'src/components/Format';
 import Spoil from 'src/components/Piece/Spoil';
 import Highlight from 'src/components/Piece/Highlight';
-import { Summary } from 'src/components/Piece/Spoil/style';
+import { StyleSpoil, StyleSpoiler } from 'src/components/Piece/Spoil/style';
 
 /*
  * Code
@@ -31,12 +31,12 @@ describe('** src/components/Piece/Spoil.js **', () => {
     // Should have <Spoil />
     component.should.have.length(1);
 
-    // Should have `Summary` with text `Spoiler`
+    // Should have `Style` with text `Spoiler`
     component
-      .find(Summary)
+      .find(StyleSpoiler)
       .props()
       .should.have.property('children')
-      .which.be.equal('Spoiler');
+      .which.equal('Spoiler');
 
     // Should have text `Je suis un spoiler`
     component
@@ -80,5 +80,41 @@ describe('** src/components/Piece/Spoil.js **', () => {
 
     // Should have <Highlight />
     component.find(Highlight).should.have.length(1);
+  });
+
+  it('should have an open property false by default', () => {
+    const message = '### coucou ###';
+    const wrapper = mount(<Formatizer>{message}</Formatizer>);
+    const component = wrapper.find(Spoil);
+
+    // By default the spoiler should be closed
+    component
+      .find(StyleSpoil)
+      .props()
+      .should.have.property('open')
+      .which.equal(false);
+  });
+
+  it('should be open when the options property is set', () => {
+    const message = '### coucou ###';
+    const wrapper = mount(
+      <Formatizer
+        options={{
+          spoiler: {
+            open: true,
+          },
+        }}
+      >
+        {message}
+      </Formatizer>,
+    );
+    const component = wrapper.find(Spoil);
+
+    // You can change the display by setting the options
+    component
+      .find(StyleSpoil)
+      .props()
+      .should.have.property('open')
+      .which.equal(true);
   });
 });
