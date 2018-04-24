@@ -15,6 +15,7 @@ export const StyleSpoil = glamorous.div(({ open }) => ({
 }));
 
 export const StyleSpoiler = glamorous.div(({ open }) => ({
+  cursor: 'pointer',
   '::before': {
     transform: open && 'rotate(90deg)',
     content: '""',
