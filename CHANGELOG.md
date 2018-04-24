@@ -2,6 +2,11 @@
 
 **Ne pas oublier de changer le package.json**
 
+## 1.2.5
+`<Spoiler>`
+  - Fix issues with scroll @ Spoiler in the Cockpit.
+
+
 ## 1.2.4
 `<Mention />`
   - Fix Mention with dot
