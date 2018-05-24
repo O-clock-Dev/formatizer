@@ -3,87 +3,107 @@
 **Ne pas oublier de changer le package.json**
 
 ## 1.2.5
-`<Spoiler>`
-  - Fix issues with scroll @ Spoiler in the Cockpit.
 
+### :bug: Fixes
+
+* Fix issues with scroll in `Spoiler` in the Cockpit.
 
 ## 1.2.4
-`<Mention />`
-  - Fix Mention with dot
-  - Fix Mention with apostrophe
-  - Fix Mention with 2 accents
 
-`<Link />`
-  - Fix Link with comma in second party of URL (path, etc...)
-  - Add support for `atom://teletype/...`
+### :bug: Fixes
 
-`<Spoiler />`
-  - Add an option for open it automatically, and prepare for future options :)
+* [#14](https://github.com/O-clock-Dev/formatizer/issues/14) : Fix Mention with dot
+* [#9](https://github.com/O-clock-Dev/formatizer/issues/9) : Fix Mention with apostrophe
+* Fix Mention with 2 accents
+* [#10](https://github.com/O-clock-Dev/formatizer/issues/10) : Fix Link with comma in second party of URL (path, etc...)
 
+### :tada: Enhancements
+
+* [#11](https://github.com/O-clock-Dev/formatizer/issues/11) : Add support for `atom://teletype/...`
+* [#13](https://github.com/O-clock-Dev/formatizer/issues/13) : Add an option for open Spoiler automatically, and prepare for future options :)
 
 ## 1.2.3
-<details>
-  <summary>Open</summary>
-   <p>
-    Add Spoiler
-   </p>
-  </details>
+
+### :tada: Enhancements
+
+* [#8](https://github.com/O-clock-Dev/formatizer/issues/8) : Add piece `Spoiler`
 
 ## 1.2.2
-Update Regex of `<Mention />`
+
+### :tada: Enhancements
+
+* [#6](https://github.com/O-clock-Dev/formatizer/issues/6) : Update Regex of `Mention` with accents
 
 ## 1.2.1
-Update style of `<Color />`
+
+### :tada: Enhancements
+
+* Update style of `Color`
 
 ## 1.2.0
-Add full support for `@mention`. If an user is not mentionable, his mention is not going in `<Mention />`you can see a complete example in `example` folder.  
-When a HEX color is pass like param in `Formatizer`, we're displaying a little square with this color.
+
+### :boom: Breaking Changes
+
+* Add full support for `Mention`. If an user is not mentionable, his mention is not going in `Mention`you can see a complete example in `example` folder.
+
+### :tada: Enhancements
+
+* When a HEX color is pass like param in `Formatizer`, we're displaying a little square with this color.
 
 ## 1.1.9
-Add comma in Regex @ `<Link />`
-add `textTransform: "none"` in `CodingFront`
+
+### :tada: Enhancements
+
+* Add comma in Regex @ `Link`
+* add `textTransform: "none"` in `CodingFront`
 
 ## 1.1.8
-Change style for `<Link />`, `-  textDecorationSkip: 'ink'` => `+  textUnderlinePosition: 'under'`
-Display lineNumbers in `<Highlight />` only if we have more than 1 line
+
+* Change style for `Link`, `- textDecorationSkip: 'ink'` => `+ textUnderlinePosition: 'under'`
+* Display lineNumbers in `Highlight` only if we have more than 1 line
 
 ## 1.1.7
-Move picker.css in folder example
-Create `Formatizer/index.js`
-Update style <Highlight />
-  * `-  margin: '.2em .15em',`
-  * `+  margin: '.2em -.2em .2em 0'`
+
+* Move picker.css in folder example
+* Create `Formatizer/index.js`
+* Update style Highlight
+  * `- margin: '.2em .15em',`
+  * `+ margin: '.2em -.2em .2em 0'`
 
 ## 1.1.6
-Update `<Highlight />`
-  - Update style with `opacity: .5` and `textAlign: right` for `lineNumbers`.
-  - Update Regex.
-  - Delete `.trim()`
-  - Condition if code in the `<Highlight />` start with space.
-  - More tests
+
+* Update `Highlight`
+  * Update style with `opacity: .5` and `textAlign: right` for `lineNumbers`.
+  * Update Regex.
+  * Delete `.trim()`
+  * Condition if code in the `Highlight` start with space.
+  * More tests
 
 ## 1.1.5
-Update Regex of `Code`
-  - Delete line break at the End of `Code`
 
-Add `Menlo` font in `Example` folder
+* Update Regex of `Code`
 
-Update style of `Highlighter Code`
-  - Fix `font-family: inherit` for `<code>{...}</code>`
-  - Add lineNumbers
+  * Delete line break at the End of `Code`
 
-## 1.1.4
+* Add `Menlo` font in `Example` folder
+* Update style of `Highlighter Code`
+  * Fix `font-family: inherit` for `<code>{...}</code>`
+  * Add lineNumbers
 
 ## 1.1.3
-Update style of `Code` (fontSize: '0.825em')
+
+* Update style of `Code` (fontSize: '0.825em')
 
 ## 1.1.2
-Add export `Emojione`.
+
+* Add export `Emojione`.
 
 ## 1.1.1
-Leave `Emojione` default values at startup.
+
+* Leave `Emojione` default values at startup.
 
 ## 1.1.0
-It's now easier to change image, without having to mess with Emojione.
-  - `Emojione` is gone from exports.
-  - `setImagePath` allow to change svg sprite file.
+
+* It's now easier to change image, without having to mess with Emojione.
+  * `Emojione` is gone from exports.
+  * `setImagePath` allow to change svg sprite file.
