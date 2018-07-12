@@ -127,6 +127,44 @@ describe('** src/components/Piece/Mention.js **', () => {
       .should.not.be.equal('@hanto-art');
   });
 
+  it('should add a <Mention /> with an apostrophe at the end', () => {
+    const message = "Hello @Max' !";
+    const wrapper = mount(<Formatizer>{message}</Formatizer>);
+
+    wrapper.find(Mention).should.have.length(1);
+
+    // Mention should be `@Max'`
+    wrapper
+      .find(Mention)
+      .text()
+      .should.be.equal("@Max'");
+
+    // Not `@Max`
+    wrapper
+      .find(Mention)
+      .text()
+      .should.not.be.equal('@Max');
+  });
+
+  it('should add a <Mention /> with a special characters like !', () => {
+    const message = 'Hello @v!nc3 !';
+    const wrapper = mount(<Formatizer>{message}</Formatizer>);
+
+    wrapper.find(Mention).should.have.length(1);
+
+    // Mention should be `@v!nc3`
+    wrapper
+      .find(Mention)
+      .text()
+      .should.be.equal('@v!nc3');
+
+    // Not `@v`
+    wrapper
+      .find(Mention)
+      .text()
+      .should.not.be.equal('@v');
+  });
+
   it.skip('should add a <Mention /> with a space in username ', () => {
     const message = 'Hello @Loic S !';
     const wrapper = mount(<Formatizer>{message}</Formatizer>);
