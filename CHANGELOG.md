@@ -2,6 +2,16 @@
 
 **Ne pas oublier de changer le package.json**
 
+## 1.2.6 / 16-07-2018
+
+### :tada: Enhancements
+
+* Improvement regex `Mention`
+
+### :bug: Fixes
+
+* [#15](https://github.com/O-clock-Dev/formatizer/issues/15) : Fix issues with `Mention` (Special char)
+
 ## 1.2.5
 
 ### :bug: Fixes
@@ -12,10 +22,10 @@
 
 ### :bug: Fixes
 
-* [#14](https://github.com/O-clock-Dev/formatizer/issues/14) : Fix Mention with dot
-* [#9](https://github.com/O-clock-Dev/formatizer/issues/9) : Fix Mention with apostrophe
-* Fix Mention with 2 accents
-* [#10](https://github.com/O-clock-Dev/formatizer/issues/10) : Fix Link with comma in second party of URL (path, etc...)
+* [#14](https://github.com/O-clock-Dev/formatizer/issues/14) : Fix `Mention` with dot
+* [#9](https://github.com/O-clock-Dev/formatizer/issues/9) : Fix `Mention` with apostrophe
+* Fix `Mention` with 2 accents
+* [#10](https://github.com/O-clock-Dev/formatizer/issues/10) : Fix `Link` with comma in second party of URL (path, etc...)
 
 ### :tada: Enhancements
 
