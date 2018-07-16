@@ -7,6 +7,7 @@
 ### :tada: Enhancements
 
 * Improvement regex `Mention`
+* Increased arrow spoiler margin
 
 ### :bug: Fixes
 
