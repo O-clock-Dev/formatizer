@@ -14,6 +14,9 @@ import { Style, StyleMention } from './style';
  */
 export const patternMention = /(?:\B)(?:@[a-zÀ-ÿ0-9._!'-]+)/gi;
 
+// @TODO : Mention with Space -- WIP
+// export const patternMention = /(?:\B)@(?:[a-zÀ-ÿ0-9'._!-]+)\s?(?:[a-zÀ-ÿ0-9'._-]*)/gi
+
 /*
  * Component
  */
