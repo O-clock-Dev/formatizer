@@ -23,6 +23,6 @@ export const StyleSpoiler = glamorous.div(({ open }) => ({
     borderLeft: '5px solid',
     borderTop: '5px solid transparent',
     borderBottom: '5px solid transparent',
-    marginRight: '5px',
+    marginRight: '10px',
   },
 }));
