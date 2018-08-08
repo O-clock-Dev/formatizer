@@ -1,7 +1,7 @@
 /*
  * Package Import
  */
-import glamorous from 'glamorous';
+import styled from 'react-emotion';
 
 /*
  * Local Import
@@ -11,7 +11,7 @@ import { Chunk, CodingFont } from '../style';
 /*
  * Style
  */
-export const Style = glamorous.span({
+export const Style = styled.span({
   ...Chunk,
   ...CodingFont,
   color: '#abb2bf',

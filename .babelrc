@@ -3,8 +3,35 @@
   "plugins": [
     "transform-class-properties",
     "transform-object-rest-spread",
-    ["module-resolver", {
-      "root": ["./"]
-    }]
-  ]
+    [
+      "module-resolver",
+      {
+        "root": ["./"]
+      }
+    ]
+  ],
+  "env": {
+    "production": {
+      "plugins": [
+        "transform-react-remove-prop-types",
+        [
+          "emotion",
+          {
+            "hoist": true
+          }
+        ]
+      ]
+    },
+    "development": {
+      "plugins": [
+        [
+          "emotion",
+          {
+            "sourceMap": true,
+            "autoLabel": true
+          }
+        ]
+      ]
+    }
+  }
 }

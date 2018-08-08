@@ -11,10 +11,6 @@ import Format from 'src/components/Format';
 import { Container } from './style';
 
 /*
- * Code
- */
-
-/*
  * Component
  */
 const Formatizer = ({ children, ...props }) => (
@@ -24,12 +20,17 @@ const Formatizer = ({ children, ...props }) => (
     </Format>
   </Container>
 );
+
+/*
+ * PropTypes
+ */
 Formatizer.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.arrayOf(PropTypes.string),
   ]),
 };
+
 Formatizer.defaultProps = {
   children: '',
 };

@@ -13,8 +13,10 @@ import EmojiPicker from 'emojione-picker';
  * Component
  */
 const Picker = ({ onChange }) => {
+  // Handlers
   const handleChange = (...args) => onChange(...args);
 
+  // Render
   return <EmojiPicker search onChange={handleChange} />;
 };
 

@@ -1,7 +1,7 @@
 /*
  * Package Import
  */
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 /*
@@ -32,12 +32,12 @@ const TextFormat = ({ children }) => {
 
   // View
   return (
-    <span>
+    <Fragment>
       {before && <Character>{before}</Character>}
       <Style>
         <Format>{text}</Format>
       </Style>
-    </span>
+    </Fragment>
   );
 };
 

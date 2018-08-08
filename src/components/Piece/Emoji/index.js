@@ -30,7 +30,7 @@ export const shortnameToImage = emoji => Emojione.shortnameToImage(emoji);
 /*
  * Components
  */
-// @TODO Get rid of <span> with React 16.2
+
 // @TODO Use Character to create <br /> ?
 const Emoji = ({ children }) => {
   let before = '';

@@ -1,13 +1,6 @@
-/*
- * Package Import
- */
-
-/*
- * Local Import
- */
-
-/*
- * Code
+/**
+ * Languages
+ * @type {Array}
  */
 export default [
   'apache',

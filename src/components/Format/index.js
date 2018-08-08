@@ -1,8 +1,9 @@
-/* eslint-disable react/no-array-index-key */
+/* eslint-disable  */
+
 /*
  * Package Import
  */
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 /*
@@ -24,21 +25,19 @@ const Format = ({ children, ...props }) => {
   /*
    * View
    */
-
-  // @TODO : Delete <span> when we pass at React 16
   return (
-    <span>
+    <Fragment>
       {fragments.map((fragment, index) => {
         // If element is a string
         if (typeof fragment === 'string') {
-          return <span key={index}>{fragment}</span>;
+          return <Fragment key={index}>{fragment}</Fragment>;
         }
 
         // Otherwise, is a Piece of Fragment.
         // Clone element to add key
         return React.cloneElement(fragment, { key: index });
       })}
-    </span>
+    </Fragment>
   );
 };
 

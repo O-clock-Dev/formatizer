@@ -3,9 +3,9 @@
 ## :muscle: Peer dependencies
 You need these packages to install **Formatizer**.
   * React
-  * Glamor & Glamorous
+  * Emotion & React-Emotion
 
-If you don't have these, please install `yarn add react glamor glamorous`
+If you don't have these, please install `yarn add react emotion react-emotion`
 
 
 ## :rocket: Installation

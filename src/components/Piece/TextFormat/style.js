@@ -1,15 +1,22 @@
 /*
  * Package Import
  */
-import glamorous from 'glamorous';
+import styled from 'react-emotion';
 
 /*
  * Style
  */
-/* eslint-disable max-len */
-const Bold = glamorous.span({ fontWeight: 700 });
-const Strike = glamorous.span({ textDecoration: 'line-through' });
-const Italic = glamorous.span({ fontStyle: 'italic' });
+const Bold = styled.span({
+  fontWeight: 700,
+});
+
+const Strike = styled.span({
+  textDecoration: 'line-through',
+});
+
+const Italic = styled.span({
+  fontStyle: 'italic',
+});
 
 /*
  * Get style by char

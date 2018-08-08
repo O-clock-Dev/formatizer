@@ -51,8 +51,8 @@ const getFragments = (message, props) => {
               subFragments.push(<Component {...props}>{match}</Component>);
             }
             else {
-              // If there is a check, but it does not pass
-              // push the text before and the matching text without any component
+              // If there is a check, but it does not pass push the text before
+              // and the matching text without any component
               subFragments.push(`${messageBegin}${match}`);
             }
 

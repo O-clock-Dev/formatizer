@@ -1,13 +1,11 @@
-/* eslint-disable max-len */
 /*
  * Package import
  */
 import Emojione from 'emojione';
 
 /*
- * Code
+ * Config setter
  */
-// Config setter
 const setImagePath = (path) => {
   Emojione.imagePathSVGSprites = path;
   Emojione.imageType = 'svg';
@@ -15,6 +13,6 @@ const setImagePath = (path) => {
 };
 
 /*
- * Export default
+ * Export
  */
 export default setImagePath;

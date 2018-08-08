@@ -1,7 +1,7 @@
 /*
  * Package Import
  */
-import glamorous from 'glamorous';
+import styled from 'react-emotion';
 
 /*
  * Local Import
@@ -10,11 +10,11 @@ import glamorous from 'glamorous';
 /*
  * Style
  */
-export const StyleSpoil = glamorous.div(({ open }) => ({
+export const StyleSpoil = styled.div(({ open }) => ({
   display: !open && 'none',
 }));
 
-export const StyleSpoiler = glamorous.div(({ open }) => ({
+export const StyleSpoiler = styled.div(({ open }) => ({
   cursor: 'pointer',
   '::before': {
     transform: open && 'rotate(90deg)',

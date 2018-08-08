@@ -4,7 +4,7 @@
 var babelRegister = require('babel-register');
 var JSDOM = require('jsdom').JSDOM;
 var Enzyme = require('enzyme');
-var Adapter = require('enzyme-adapter-react-15');
+var Adapter = require('enzyme-adapter-react-16');
 
 /*
  * Babel
@@ -20,7 +20,7 @@ Enzyme.configure({ adapter: new Adapter() });
  * Global stuff
  */
 var exposedProperties = ['window', 'navigator', 'document'];
-var js = new JSDOM();
+var js = new JSDOM(``, { url: 'http://localhost' });
 global.window = js.window;
 global.document = js.window.document;
 global.HTMLElement = js.window.HTMLElement;

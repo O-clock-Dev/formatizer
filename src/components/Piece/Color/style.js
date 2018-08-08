@@ -1,7 +1,7 @@
 /*
  * Package Import
  */
-import glamorous from 'glamorous';
+import styled from 'react-emotion';
 
 /*
  * Local Import
@@ -10,7 +10,7 @@ import glamorous from 'glamorous';
 /*
  * Style
  */
-export const Style = glamorous.span({}, ({ color }) => ({
+export const Style = styled.span({}, ({ color }) => ({
   '::after': {
     background: color,
     border: '1px solid #32373c',

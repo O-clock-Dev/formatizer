@@ -1,7 +1,7 @@
 /*
  * Package Import
  */
-import glamorous from 'glamorous';
+import styled from 'react-emotion';
 
 /*
  * Local Import
@@ -10,6 +10,10 @@ import glamorous from 'glamorous';
 /*
  * Style
  */
-export const Style = glamorous.span({
-  '& .emojione': { display: 'inline', height: '1.2em', width: '1.2em' },
+export const Style = styled.span({
+  '& .emojione': {
+    display: 'inline',
+    height: '1.2em',
+    width: '1.2em',
+  },
 });

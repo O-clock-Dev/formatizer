@@ -10,6 +10,7 @@ import styled from 'react-emotion';
 /*
  * Style
  */
-export const Container = styled.div({
-  paddingRight: '.2em',
+export const Style = styled.a({
+  textDecoration: 'underline',
+  textUnderlinePosition: 'under',
 });
