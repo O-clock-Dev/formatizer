@@ -23,15 +23,46 @@ const getFragments = (message, props) => {
     messageFragments.forEach((messageFragment) => {
       // If this is a string
       if (typeof messageFragment === 'string') {
-        // Then we search for pattern
-        const { Component, pattern, check } = replacement;
-        const matches = messageFragment.match(pattern);
+        let matches;
+        let Component;
+        let check;
+        if (Array.isArray(replacement)) {
+          const matchesSpoil = replacement[0].pattern.exec(messageFragment);
+          const matchesHighlight = replacement[1].pattern.exec(messageFragment);
+
+          if (matchesSpoil && matchesHighlight) {
+            if (matchesSpoil.index > matchesHighlight.index) {
+              matches = messageFragment.match(replacement[1].pattern);
+              Component = replacement[1].Component;
+            }
+            else {
+              matches = messageFragment.match(replacement[0].pattern);
+              Component = replacement[0].Component;
+            }
+          }
+          else if (matchesSpoil) {
+            matches = messageFragment.match(replacement[0].pattern);
+            Component = replacement[0].Component;
+          }
+          else if (matchesHighlight) {
+            matches = messageFragment.match(replacement[1].pattern);
+            Component = replacement[1].Component;
+          }
+        }
+        else {
+          // Then we search for pattern
+          const { pattern } = replacement;
+          Component = replacement.Component;
+          check = replacement.check;
+          matches = messageFragment.match(pattern);
+        }
 
         // Fragment in which we look for next match
         let msgFragment = messageFragment;
 
         // For each match, take begin, replace match by fragment, and continue
         if (matches) {
+          console.log('matches', matches);
           matches.forEach((match) => {
             const indexBegin = msgFragment.indexOf(match);
             const indexEnd = indexBegin + match.length;
@@ -76,6 +107,7 @@ const getFragments = (message, props) => {
     messageFragments = subFragments;
   });
 
+  console.log('messageFragments', messageFragments);
   // Return fragments
   return messageFragments;
 };
