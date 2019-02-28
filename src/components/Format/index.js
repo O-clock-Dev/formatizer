@@ -20,18 +20,18 @@ import getFragments from './getFragments';
 // @TODO Add React.memo() when we upgrade to React 16.8
 const Format = ({ children, ...props }) => {
   // Get all Fragments
-  const fragments = getFragments(children, props);
+  const fragments = getFragments({ message: children, props });
 
   /*
    * View
    */
-
   // @TODO Delete <span> when we upgrade to React 16.2
   return (
     <span>
       {fragments.map((fragment, index) => {
         // If element is a string
         if (typeof fragment === 'string') {
+          // @TODO Replace by <> when we upgrade to React 16.2
           return <span key={index}>{fragment}</span>;
         }
 
