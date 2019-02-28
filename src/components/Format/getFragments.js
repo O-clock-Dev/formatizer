@@ -18,7 +18,7 @@ import allReplacements from 'src/replacements';
  * @param  {Function} check     Additionnal checking function (optionnal)
  * @param  {Function} Component Component to insert
  * @param  {Object} props       User land props
- * @return {Array}              Array of node (string or React element)
+ * @return {Array}              Array of fragments (string or React element)
  */
 const splitMessage = ({ message, pattern, check, Component, props }) => {
   const subFragments = [];
@@ -70,11 +70,11 @@ const splitMessage = ({ message, pattern, check, Component, props }) => {
 };
 
 /**
- * Transform a string into array of node for a given replacement
+ * Transform a string into array of fragments for a given replacement
  * @param  {String} message           Message to formatize
  * @param  {Array|Object} replacement Replacement
  * @param  {Object} props             User land props
- * @return {Array}                    Array of node (string or React element)
+ * @return {Array}                    Array of fragments (string or React element)
  */
 const getSubFragments = ({ message, replacement, props }) => {
   let winner;
@@ -84,10 +84,10 @@ const getSubFragments = ({ message, replacement, props }) => {
     let winnerIndex = Infinity;
     replacement.forEach((repl) => {
       // Never forget to reset lastIndex after a .exec()
-      const { index } = repl.pattern.exec(message);
+      const match = repl.pattern.exec(message);
       repl.pattern.lastIndex = 0;
-      if (index < winnerIndex) {
-        winnerIndex = index;
+      if (match && match.index < winnerIndex) {
+        winnerIndex = match.index;
         winner = repl;
       }
     });
@@ -107,39 +107,50 @@ const getSubFragments = ({ message, replacement, props }) => {
 };
 
 /**
- * Transform a string into array of node
+ * Apply a replacement on fragments
+ * @param  {Array} fragments          Array of fragments (string or React element)
+ * @param  {Array|Object} replacement Replacement
+ * @param  {Object} props             User land props
+ * @return {Array}                    Array of fragments (string or React element)
+ */
+const applyReplacement = ({ fragments, replacement, props }) => {
+  // Var to collect subfragments
+  const subFragments = [];
+
+  // We search in each parts
+  fragments.forEach((fragment) => {
+    // If this is a string
+    if (typeof fragment === 'string') {
+      subFragments.push(
+        ...getSubFragments({
+          message: fragment,
+          replacement,
+          props,
+        }),
+      );
+    }
+    else {
+      // If this not a string, this is a already a fragment. Nothing to do.
+      subFragments.push(fragment);
+    }
+  });
+
+  // subFragments is the new fragments :)
+  return subFragments;
+};
+
+/**
+ * Transform a string into array of fragments
  * @param  {String} message Message to formatize
  * @param  {Object} props   User land props
- * @return {Array}          Array of node (string or React element)
+ * @return {Array}          Array of fragments (string or React element)
  */
 const getFragments = ({ message, props }) => {
   let fragments = [message];
 
   // For each replacement
   allReplacements.forEach((replacement) => {
-    // Var to collect subfragments
-    const subFragments = [];
-
-    // We search in each parts
-    fragments.forEach((fragment) => {
-      // If this is a string
-      if (typeof fragment === 'string') {
-        subFragments.push(
-          ...getSubFragments({
-            message: fragment,
-            replacement,
-            props,
-          }),
-        );
-      }
-      else {
-        // If this not a string, this is a already a fragment. Nothing to do.
-        subFragments.push(fragment);
-      }
-    });
-
-    // subFragments is the new fragments :)
-    fragments = subFragments;
+    fragments = applyReplacement({ fragments, replacement, props });
   });
 
   // Return fragments

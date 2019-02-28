@@ -11,6 +11,7 @@ import Highlighter from 'react-syntax-highlighter';
  */
 import { Formatizer } from 'src';
 import Highlight from 'src/components/Piece/Highlight';
+import Spoil from 'src/components/Piece/Spoil';
 
 /*
  * Code
@@ -134,5 +135,17 @@ describe('** src/components/Piece/Highlight.js **', () => {
       .props()
       .should.have.property('children')
       .which.be.equal('```\ncoucou\n```');
+  });
+
+  it.skip('should add ### in <Highlight /> without <Spoil />', () => {
+    const message = '```###\nHello\n###```';
+    const wrapper = mount(<Formatizer>{message}</Formatizer>);
+    const component = wrapper.find(Spoil);
+
+    // Should not have any <Spoil />
+    component.should.have.length(0);
+
+    // Should have <Highlight />
+    component.find(Highlight).should.have.length(1);
   });
 });

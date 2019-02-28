@@ -25,16 +25,16 @@ import Character, { patternCharacter } from 'src/components/Piece/Character';
  */
 export default [
   // Priorities
-  // [
-  {
-    pattern: patternSpoil,
-    Component: Spoil,
-  },
-  {
-    pattern: patternHighlight,
-    Component: Highlight,
-  },
-  // ],
+  [
+    {
+      pattern: patternSpoil,
+      Component: Spoil,
+    },
+    {
+      pattern: patternHighlight,
+      Component: Highlight,
+    },
+  ],
   {
     pattern: patternCode,
     Component: Code,
