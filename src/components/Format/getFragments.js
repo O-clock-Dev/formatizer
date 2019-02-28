@@ -6,7 +6,7 @@ import React from 'react';
 /*
  * Local Import
  */
-import allReplacements from 'src/replacements';
+import allReplacements from './replacements';
 
 /*
  * Code
