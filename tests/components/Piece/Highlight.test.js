@@ -137,15 +137,14 @@ describe('** src/components/Piece/Highlight.js **', () => {
       .which.be.equal('```\ncoucou\n```');
   });
 
-  it.skip('should add ### in <Highlight /> without <Spoil />', () => {
-    const message = '```###\nHello\n###```';
+  it('should add ### in <Highlight /> without <Spoil />', () => {
+    const message = '```\n###\ncoucou\n###\n```';
     const wrapper = mount(<Formatizer>{message}</Formatizer>);
-    const component = wrapper.find(Spoil);
 
     // Should not have any <Spoil />
-    component.should.have.length(0);
+    wrapper.find(Spoil).should.have.length(0);
 
     // Should have <Highlight />
-    component.find(Highlight).should.have.length(1);
+    wrapper.find(Highlight).should.have.length(1);
   });
 });

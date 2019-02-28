@@ -11,6 +11,7 @@ import allReplacements from 'src/replacements';
 /*
  * Code
  */
+/* eslint-disable no-use-before-define */
 /**
  * Split message into an array for a given pattern
  * @param  {String} message     Message to formatize
@@ -78,10 +79,13 @@ const splitMessage = ({ message, pattern, check, Component, props }) => {
  */
 const getSubFragments = ({ message, replacement, props }) => {
   let winner;
+  let losers;
 
   // Which pattern is going to fire first?
   if (Array.isArray(replacement)) {
     let winnerIndex = Infinity;
+
+    // And the winner is…
     replacement.forEach((repl) => {
       // Never forget to reset lastIndex after a .exec()
       const match = repl.pattern.exec(message);
@@ -91,6 +95,9 @@ const getSubFragments = ({ message, replacement, props }) => {
         winner = repl;
       }
     });
+
+    // Losers will have a second chance :)
+    losers = replacement.filter(repl => repl !== winner);
   }
   else {
     // Easy to win a race when you're alone :)
@@ -99,7 +106,19 @@ const getSubFragments = ({ message, replacement, props }) => {
 
   // If there is a winner, split baby!
   if (winner) {
-    return splitMessage({ message, props, ...winner });
+    let fragments = splitMessage({ message, props, ...winner });
+
+    // If there are losers, rince and repeat
+    if (losers && losers.length > 0) {
+      fragments = applyReplacement({
+        replacement: losers,
+        fragments,
+        props,
+      });
+    }
+
+    // After winner and losers split it all, return fragments
+    return fragments;
   }
 
   // No pattern found, nothing to split, just return the message
