@@ -17,6 +17,7 @@ import getFragments from './getFragments';
 /*
  * Component
  */
+// @TODO Add React.memo() when we upgrade to React 16.8
 const Format = ({ children, ...props }) => {
   // Get all Fragments
   const fragments = getFragments(children, props);
@@ -25,7 +26,7 @@ const Format = ({ children, ...props }) => {
    * View
    */
 
-  // @TODO : Delete <span> when we pass at React 16
+  // @TODO Delete <span> when we upgrade to React 16.2
   return (
     <span>
       {fragments.map((fragment, index) => {

@@ -25,7 +25,6 @@ class Spoil extends React.Component {
    */
   state = {
     open: this.props.options.spoiler.open,
-    onClick: this.props.options.spoiler.onClick,
   };
 
   /*
@@ -36,8 +35,9 @@ class Spoil extends React.Component {
       open: !prevState.open,
     }));
 
-    if (this.state.onClick) {
-      this.state.onClick(evt);
+    const { onClick } = this.props.options.spoiler;
+    if (onClick) {
+      onClick(evt);
     }
   };
 

@@ -62,7 +62,6 @@ const getFragments = (message, props) => {
 
         // For each match, take begin, replace match by fragment, and continue
         if (matches) {
-          console.log('matches', matches);
           matches.forEach((match) => {
             const indexBegin = msgFragment.indexOf(match);
             const indexEnd = indexBegin + match.length;
@@ -107,7 +106,6 @@ const getFragments = (message, props) => {
     messageFragments = subFragments;
   });
 
-  console.log('messageFragments', messageFragments);
   // Return fragments
   return messageFragments;
 };
