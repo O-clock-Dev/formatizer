@@ -70,7 +70,7 @@ describe('** src/components/Piece/Spoil.js **', () => {
       .which.be.equal('  coucou');
   });
 
-  it.skip('should add <Highlight /> in <Spoil />', () => {
+  it('should add <Highlight /> in <Spoil />', () => {
     const message = '### ```js const a = "je suis un snippet"; ``` ###';
     const wrapper = mount(<Formatizer>{message}</Formatizer>);
     const component = wrapper.find(Spoil);

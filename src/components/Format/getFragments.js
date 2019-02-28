@@ -6,60 +6,33 @@ import React from 'react';
 /*
  * Local Import
  */
-import allReplacements from 'src/patterns';
+import allReplacements from 'src/replacements';
 
 /*
  * Code
  */
 /**
- * [getFragmentsFromString description]
- * @param  {[type]} replacement     [description]
- * @param  {[type]} fragment [description]
- * @param  {[type]} props           [description]
- * @return {[type]}                 [description]
+ * Split message into an array for a given pattern
+ * @param  {String} message     Message to formatize
+ * @param  {Object} pattern     Pattern to search for
+ * @param  {Function} check     Additionnal checking function (optionnal)
+ * @param  {Function} Component Component to insert
+ * @param  {Object} props       User land props
+ * @return {Array}              Array of node (string or React element)
  */
-const getFragmentsFromString = ({ replacement, fragment, props }) => {
-  let matches;
-  let Component;
-  let check;
+const splitMessage = ({ message, pattern, check, Component, props }) => {
   const subFragments = [];
-  if (Array.isArray(replacement)) {
-    const matchesSpoil = replacement[0].pattern.exec(fragment);
-    const matchesHighlight = replacement[1].pattern.exec(fragment);
 
-    if (matchesSpoil && matchesHighlight) {
-      if (matchesSpoil.index > matchesHighlight.index) {
-        matches = fragment.match(replacement[1].pattern);
-        Component = replacement[1].Component;
-      }
-      else {
-        matches = fragment.match(replacement[0].pattern);
-        Component = replacement[0].Component;
-      }
-    }
-    else if (matchesSpoil) {
-      matches = fragment.match(replacement[0].pattern);
-      Component = replacement[0].Component;
-    }
-    else if (matchesHighlight) {
-      matches = fragment.match(replacement[1].pattern);
-      Component = replacement[1].Component;
-    }
-  }
-  else {
-    // Then we search for pattern
-    const { pattern } = replacement;
-    Component = replacement.Component;
-    check = replacement.check;
-    matches = fragment.match(pattern);
-  }
+  // Match and get rid of undefined values
+  const matches = message.match(pattern);
 
   // Fragment in which we look for next match
-  let msgFragment = fragment;
+  let msgFragment = message;
 
   // For each match, take begin, replace match by fragment, and continue
   if (matches) {
-    matches.forEach((match) => {
+    // Before looping, filter undefined values
+    matches.filter(match => match).forEach((match) => {
       const indexBegin = msgFragment.indexOf(match);
       const indexEnd = indexBegin + match.length;
       const messageBegin = msgFragment.slice(0, indexBegin);
@@ -97,6 +70,43 @@ const getFragmentsFromString = ({ replacement, fragment, props }) => {
 };
 
 /**
+ * Transform a string into array of node for a given replacement
+ * @param  {String} message           Message to formatize
+ * @param  {Array|Object} replacement Replacement
+ * @param  {Object} props             User land props
+ * @return {Array}                    Array of node (string or React element)
+ */
+const getSubFragments = ({ message, replacement, props }) => {
+  let winner;
+
+  // Which pattern is going to fire first?
+  if (Array.isArray(replacement)) {
+    let winnerIndex = Infinity;
+    replacement.forEach((repl) => {
+      // Never forget to reset lastIndex after a .exec()
+      const { index } = repl.pattern.exec(message);
+      repl.pattern.lastIndex = 0;
+      if (index < winnerIndex) {
+        winnerIndex = index;
+        winner = repl;
+      }
+    });
+  }
+  else {
+    // Easy to win a race when you're alone :)
+    winner = replacement;
+  }
+
+  // If there is a winner, split baby!
+  if (winner) {
+    return splitMessage({ message, props, ...winner });
+  }
+
+  // No pattern found, nothing to split, just return the message
+  return [message];
+};
+
+/**
  * Transform a string into array of node
  * @param  {String} message Message to formatize
  * @param  {Object} props   User land props
@@ -104,6 +114,7 @@ const getFragmentsFromString = ({ replacement, fragment, props }) => {
  */
 const getFragments = ({ message, props }) => {
   let fragments = [message];
+
   // For each replacement
   allReplacements.forEach((replacement) => {
     // Var to collect subfragments
@@ -114,7 +125,11 @@ const getFragments = ({ message, props }) => {
       // If this is a string
       if (typeof fragment === 'string') {
         subFragments.push(
-          ...getFragmentsFromString({ replacement, fragment, props }),
+          ...getSubFragments({
+            message: fragment,
+            replacement,
+            props,
+          }),
         );
       }
       else {
