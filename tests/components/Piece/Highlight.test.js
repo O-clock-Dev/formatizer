@@ -21,7 +21,7 @@ should();
  * Tests
  */
 describe('** src/components/Piece/Highlight.js **', () => {
-  it('should add <Highlight /> for a Snippet with language', () => {
+  it('should add <Highlight /> for a code block with language', () => {
     const message = 'Bonjour, ```js const a = "je suis un snippet"; ```';
     const wrapper = mount(<Formatizer>{message}</Formatizer>);
     const component = wrapper.find(Highlight);
@@ -33,7 +33,7 @@ describe('** src/components/Piece/Highlight.js **', () => {
       .which.is.equal('js');
   });
 
-  it('should add <Highlight /> for a Snippet without language', () => {
+  it('should add <Highlight /> for a code block without language', () => {
     const message = 'Bonjour, ``` coucou ```';
     const wrapper = mount(<Formatizer>{message}</Formatizer>);
     const component = wrapper.find(Highlight);
@@ -44,28 +44,28 @@ describe('** src/components/Piece/Highlight.js **', () => {
       .should.not.have.property('language');
   });
 
-  it('should have <Highlight /> if we’re using 3 backticks', () => {
+  it('we can use 3 backticks to have <Highlight />', () => {
     const message = '```coucou```';
     const wrapper = mount(<Formatizer>{message}</Formatizer>);
     const component = wrapper.find(Highlight);
     component.should.have.length(1);
   });
 
-  it('should have <Highlight /> if we’re using 4 backticks', () => {
+  it('we can use 4 backticks to have <Highlight />', () => {
     const message = '````coucou````';
     const wrapper = mount(<Formatizer>{message}</Formatizer>);
     const component = wrapper.find(Highlight);
     component.should.have.length(1);
   });
 
-  it('should have <Highlight /> if we’re using 3 tildes', () => {
+  it('we can use 3 tildes to have <Highlight />', () => {
     const message = '~~~coucou~~~';
     const wrapper = mount(<Formatizer>{message}</Formatizer>);
     const component = wrapper.find(Highlight);
     component.should.have.length(1);
   });
 
-  it('should have <Highlight /> if we’re using 4 tildes', () => {
+  it('we can use 4 tildes to have <Highlight />', () => {
     const message = '~~~~coucou~~~~';
     const wrapper = mount(<Formatizer>{message}</Formatizer>);
     const component = wrapper.find(Highlight);
@@ -85,7 +85,7 @@ describe('** src/components/Piece/Highlight.js **', () => {
     wrapper.find(Highlight).should.have.length(2);
   });
 
-  it('should display correctly, with space before code', () => {
+  it('Code can be indented', () => {
     const message = '```\n  coucou```';
     const wrapper = mount(<Formatizer>{message}</Formatizer>);
     const component = wrapper.find(Highlight);
@@ -97,7 +97,7 @@ describe('** src/components/Piece/Highlight.js **', () => {
       .which.be.equal('  coucou');
   });
 
-  it('should display correctly, without space', () => {
+  it('should render Highlight, without space between fenced code', () => {
     const message = '```coucou```';
     const wrapper = mount(<Formatizer>{message}</Formatizer>);
     const component = wrapper.find(Highlight);
@@ -109,7 +109,7 @@ describe('** src/components/Piece/Highlight.js **', () => {
       .which.be.equal('coucou');
   });
 
-  it('should display correctly with line break', () => {
+  it('should render Highlight with line break', () => {
     const message = '```\ncoucou```';
     const wrapper = mount(<Formatizer>{message}</Formatizer>);
     const component = wrapper.find(Highlight);
@@ -121,7 +121,7 @@ describe('** src/components/Piece/Highlight.js **', () => {
       .which.be.equal('coucou');
   });
 
-  it('should display correctly, with language and space before code', () => {
+  it('should render Highlight, with language and space before code', () => {
     const message = '```javascript\n  coucou```';
     const wrapper = mount(<Formatizer>{message}</Formatizer>);
     const component = wrapper.find(Highlight);
@@ -145,6 +145,7 @@ describe('** src/components/Piece/Highlight.js **', () => {
     const message = '```\ncoucou\nHello\n```';
     const wrapper = mount(<Formatizer>{message}</Formatizer>);
     const component = wrapper.find(Highlight);
+
     component
       .find(Highlighter)
       .props()
@@ -156,6 +157,7 @@ describe('** src/components/Piece/Highlight.js **', () => {
     const message = '``` coucou ```';
     const wrapper = mount(<Formatizer>{message}</Formatizer>);
     const component = wrapper.find(Highlight);
+
     component
       .find(Highlighter)
       .props()
@@ -166,6 +168,7 @@ describe('** src/components/Piece/Highlight.js **', () => {
     const message = '```\ncoucou\n```';
     const wrapper = mount(<Formatizer>{message}</Formatizer>);
     const component = wrapper.find(Highlight);
+
     component
       .find(Highlighter)
       .props()
@@ -197,12 +200,60 @@ describe('** src/components/Piece/Highlight.js **', () => {
     // Only one <Highlight />
     component.should.have.length(1);
 
-    // Content with triple backkticks
+    // Content
     component
       .find(Highlighter)
       .props()
       .should.have.property('children')
       // eslint-disable-next-line no-template-curly-in-string
       .which.be.equal("const x = 'coucou';\nconst y = `${x}`\n");
+  });
+
+  it('The closing code fence must use the same character as the opening fence', () => {
+    const message = '```\ncoucou\n~~~\n```';
+    const wrapper = mount(<Formatizer>{message}</Formatizer>);
+    const component = wrapper.find(Highlight);
+
+    // Only one <Highlight />
+    component.should.have.length(1);
+
+    // Content
+    component
+      .find(Highlighter)
+      .props()
+      .should.have.property('children')
+      .which.be.equal('coucou\n~~~\n');
+  });
+
+  it('The closing code fence must be at least as long as the opening fence', () => {
+    const message = '````\ncoucou\n```\n````';
+    const wrapper = mount(<Formatizer>{message}</Formatizer>);
+    const component = wrapper.find(Highlight);
+
+    // Only one <Highlight />
+    component.should.have.length(1);
+
+    // Content
+    component
+      .find(Highlighter)
+      .props()
+      .should.have.property('children')
+      .which.be.equal('coucou\n```\n');
+  });
+
+  it('A code block can be empty', () => {
+    const message = '```\n```';
+    const wrapper = mount(<Formatizer>{message}</Formatizer>);
+    const component = wrapper.find(Highlight);
+
+    // Only one <Highlight />
+    component.should.have.length(1);
+
+    // Content
+    component
+      .find(Highlighter)
+      .props()
+      .should.have.property('children')
+      .which.be.equal('');
   });
 });
