@@ -1,0 +1,92 @@
+#############################################################################
+#           Javascript Node CircleCI 2.0 configuration file
+# Check https://circleci.com/docs/2.0/language-javascript/ for more details
+#############################################################################
+
+executors:
+  node:
+    parameters:
+      image:
+        type: string
+        default: "10"
+    docker:
+      - image: circleci/node:<< parameters.image >>
+
+aliases:
+  restore_cache: &restore_cache
+    restore_cache:
+      name: Restore node_modules cache
+      keys:
+        - v1-dependencies-{{ checksum "yarn.lock" }}
+        # fallback to using the latest cache if no exact match is found
+        - v1-dependencies-
+
+  install_node_modules: &install_node_modules
+    run:
+      name: Install node modules
+      command: yarn --frozen-lockfile
+
+  persist_cache: &persist_cache
+    save_cache:
+      name: Save node modules cache
+      key: v1-dependencies-{{ checksum "yarn.lock" }}
+      paths:
+        - node_modules
+
+  ignore_features: &ignore_features
+    filters:
+      branches:
+        ignore:
+          - feature/*
+
+  test_template: &test_template
+    steps:
+      - checkout
+      - <<: *restore_cache
+      - <<: *install_node_modules
+      - <<: *persist_cache
+      - run: yarn test
+
+version: 2.1
+jobs:
+  lint:
+    executor: node
+    steps:
+      - checkout
+      - <<: *restore_cache
+      - <<: *install_node_modules
+      - <<: *persist_cache
+      - run: yarn lint
+
+  unit_tests_node6:
+    executor:
+      name: node
+      image: "6"
+    <<: *test_template
+
+  unit_tests_node8:
+    executor:
+      name: node
+      image: "8"
+    <<: *test_template
+
+  unit_tests_node10:
+    executor: node
+    <<: *test_template
+
+
+
+workflows:
+  version: 2
+
+  test_and_deploy:
+    jobs:
+      - lint
+      - unit_tests_node6:
+          <<: *ignore_features
+
+      - unit_tests_node8:
+          <<: *ignore_features
+
+      - unit_tests_node10:
+          <<: *ignore_features
