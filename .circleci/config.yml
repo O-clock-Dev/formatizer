@@ -2,6 +2,7 @@
 #           Javascript Node CircleCI 2.0 configuration file
 # Check https://circleci.com/docs/2.0/language-javascript/ for more details
 #############################################################################
+version: 2
 
 executors:
   node:
@@ -9,6 +10,7 @@ executors:
       image:
         type: string
         default: "10"
+    working_directory: ~/repo
     docker:
       - image: circleci/node:<< parameters.image >>
 
@@ -47,7 +49,6 @@ aliases:
       - <<: *persist_cache
       - run: yarn test
 
-version: 2.1
 jobs:
   lint:
     executor: node
@@ -75,11 +76,10 @@ jobs:
     <<: *test_template
 
 
-
 workflows:
   version: 2
 
-  test_and_deploy:
+  test_build:
     jobs:
       - lint
       - unit_tests_node6:
