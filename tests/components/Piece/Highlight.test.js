@@ -44,6 +44,34 @@ describe('** src/components/Piece/Highlight.js **', () => {
       .should.not.have.property('language');
   });
 
+  it('should have <Highlight /> if we’re using 3 backticks', () => {
+    const message = '```coucou```';
+    const wrapper = mount(<Formatizer>{message}</Formatizer>);
+    const component = wrapper.find(Highlight);
+    component.should.have.length(1);
+  });
+
+  it('should have <Highlight /> if we’re using 4 backticks', () => {
+    const message = '````coucou````';
+    const wrapper = mount(<Formatizer>{message}</Formatizer>);
+    const component = wrapper.find(Highlight);
+    component.should.have.length(1);
+  });
+
+  it('should have <Highlight /> if we’re using 3 tildes', () => {
+    const message = '~~~coucou~~~';
+    const wrapper = mount(<Formatizer>{message}</Formatizer>);
+    const component = wrapper.find(Highlight);
+    component.should.have.length(1);
+  });
+
+  it('should have <Highlight /> if we’re using 4 tildes', () => {
+    const message = '~~~~coucou~~~~';
+    const wrapper = mount(<Formatizer>{message}</Formatizer>);
+    const component = wrapper.find(Highlight);
+    component.should.have.length(1);
+  });
+
   it('should manage many snippets and newlines', () => {
     const message = `Bonjour,
       Lorem ipsum
@@ -57,7 +85,7 @@ describe('** src/components/Piece/Highlight.js **', () => {
     wrapper.find(Highlight).should.have.length(2);
   });
 
-  it('should correctly display a snippet with space before code', () => {
+  it('should display correctly, with space before code', () => {
     const message = '```\n  coucou```';
     const wrapper = mount(<Formatizer>{message}</Formatizer>);
     const component = wrapper.find(Highlight);
@@ -69,7 +97,31 @@ describe('** src/components/Piece/Highlight.js **', () => {
       .which.be.equal('  coucou');
   });
 
-  it('should correctly display a snippet with language and space before code', () => {
+  it('should display correctly, without space', () => {
+    const message = '```coucou```';
+    const wrapper = mount(<Formatizer>{message}</Formatizer>);
+    const component = wrapper.find(Highlight);
+
+    component
+      .find(Highlighter)
+      .props()
+      .should.have.property('children')
+      .which.be.equal('coucou');
+  });
+
+  it('should display correctly with line break', () => {
+    const message = '```\ncoucou```';
+    const wrapper = mount(<Formatizer>{message}</Formatizer>);
+    const component = wrapper.find(Highlight);
+
+    component
+      .find(Highlighter)
+      .props()
+      .should.have.property('children')
+      .which.be.equal('coucou');
+  });
+
+  it('should display correctly, with language and space before code', () => {
     const message = '```javascript\n  coucou```';
     const wrapper = mount(<Formatizer>{message}</Formatizer>);
     const component = wrapper.find(Highlight);
@@ -120,7 +172,7 @@ describe('** src/components/Piece/Highlight.js **', () => {
       .should.not.have.property('showLineNumbers');
   });
 
-  it.skip('Should display 3 backticks if wrapped into 4', () => {
+  it('Should display 3 backticks if wrapped into 4', () => {
     const message = '````\n```\ncoucou\n```\n````';
     const wrapper = mount(<Formatizer>{message}</Formatizer>);
     const component = wrapper.find(Highlight);
@@ -133,6 +185,24 @@ describe('** src/components/Piece/Highlight.js **', () => {
       .find(Highlighter)
       .props()
       .should.have.property('children')
-      .which.be.equal('```\ncoucou\n```');
+      .which.be.equal('```\ncoucou\n```\n');
+  });
+
+  it('Should don’t fail if we have backticks in the code', () => {
+    // eslint-disable-next-line no-template-curly-in-string
+    const message = "```\nconst x = 'coucou';\nconst y = `${x}`\n```";
+    const wrapper = mount(<Formatizer>{message}</Formatizer>);
+    const component = wrapper.find(Highlight);
+
+    // Only one <Highlight />
+    component.should.have.length(1);
+
+    // Content with triple backkticks
+    component
+      .find(Highlighter)
+      .props()
+      .should.have.property('children')
+      // eslint-disable-next-line no-template-curly-in-string
+      .which.be.equal("const x = 'coucou';\nconst y = `${x}`\n");
   });
 });

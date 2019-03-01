@@ -20,7 +20,7 @@ Enzyme.configure({ adapter: new Adapter() });
  * Global stuff
  */
 var exposedProperties = ['window', 'navigator', 'document'];
-var js = new JSDOM();
+var js = new JSDOM(``, { url: 'http://localhost/' });
 global.window = js.window;
 global.document = js.window.document;
 global.HTMLElement = js.window.HTMLElement;
