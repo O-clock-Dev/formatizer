@@ -54,7 +54,10 @@ export default [
   {
     pattern: patternMention,
     Component: Mention,
-    check: (props, value) => props.isMention(value) || props.isMentionMe(value),
+    check: ({ props, match }) => {
+      const mention = match.slice(1);
+      return props.isMention(mention) || props.isMentionMe(mention);
+    },
   },
 
   // Text

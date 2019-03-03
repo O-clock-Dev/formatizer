@@ -23,48 +23,35 @@ import allReplacements from './replacements';
  */
 const splitMessage = ({ message, pattern, check, Component, props }) => {
   const subFragments = [];
-
-  // Match and get rid of undefined values
   const matches = message.match(pattern);
-
-  // Fragment in which we look for next match
-  let msgFragment = message;
 
   // For each match, take begin, replace match by fragment, and continue
   if (matches) {
-    // Before looping, filter undefined values
-    matches.filter(match => match).forEach((match) => {
-      const indexBegin = msgFragment.indexOf(match);
-      const indexEnd = indexBegin + match.length;
-      const messageBegin = msgFragment.slice(0, indexBegin);
-      const messageEnd = msgFragment.slice(indexEnd);
-      const mention = match.slice(1);
+    const match = matches[0];
+    const indexBegin = message.indexOf(match);
+    const indexEnd = indexBegin + match.length;
+    const messageBegin = message.slice(0, indexBegin);
+    const messageEnd = message.slice(indexEnd);
 
-      // If there is no check, or check pass:
-      // push the text before + component for the match
-      if (!check || check(props, mention)) {
-        // Begin
-        if (messageBegin !== '') {
-          subFragments.push(messageBegin);
-        }
+    // If there is no check, or check passes:
+    // push the text before + component for the match
+    if (!check || check({ match, props })) {
+      // Begin
+      if (messageBegin !== '') {
+        subFragments.push(messageBegin);
+      }
 
-        // Fragment
-        subFragments.push(<Component {...props}>{match}</Component>);
-      }
-      else {
-        // If there is a check, but it does not pass
-        // push the text before and the matching text without any component
-        subFragments.push(`${messageBegin}${match}`);
-      }
+      // Fragment
+      subFragments.push(<Component {...props}>{match}</Component>);
 
       // End
-      msgFragment = messageEnd;
-    });
-  }
-
-  // Last fragment
-  if (msgFragment !== '') {
-    subFragments.push(msgFragment);
+      subFragments.push(messageEnd);
+    }
+    else {
+      // If there is a check, but it does not pass
+      // push the text before and the matching text without any component
+      subFragments.push(message);
+    }
   }
 
   return subFragments;
@@ -77,48 +64,43 @@ const splitMessage = ({ message, pattern, check, Component, props }) => {
  * @param  {Object} props             User land props
  * @return {Array}                    Array of fragments (string or React element)
  */
-const getSubFragments = ({ message, replacement, props }) => {
-  let winner;
-  let losers;
+const getSubFragments = ({ message, replacement: strOrArray, props }) => {
+  const replacement = Array.isArray(strOrArray) ? strOrArray : [strOrArray];
 
   // Which pattern is going to fire first?
-  if (Array.isArray(replacement)) {
-    let winnerIndex = Infinity;
-
-    // And the winner is…
-    replacement.forEach((repl) => {
-      // Never forget to reset lastIndex after a .exec()
-      const match = repl.pattern.exec(message);
-      repl.pattern.lastIndex = 0;
-      if (match && match.index < winnerIndex) {
-        winnerIndex = match.index;
-        winner = repl;
-      }
-    });
-
-    // Losers will have a second chance :)
-    losers = replacement.filter(repl => repl !== winner);
-  }
-  else {
-    // Easy to win a race when you're alone :)
-    winner = replacement;
-  }
+  let winner;
+  let winnerIndex = Infinity;
+  replacement.forEach((repl) => {
+    // Never forget to reset lastIndex after a .exec()
+    const match = repl.pattern.exec(message);
+    repl.pattern.lastIndex = 0;
+    if (
+      // Found
+      match &&
+      // Valid
+      (!repl.check || !repl.check({ props, match })) &&
+      // Lower index
+      match.index < winnerIndex
+    ) {
+      winnerIndex = match.index;
+      winner = repl;
+    }
+  });
 
   // If there is a winner, split baby!
   if (winner) {
-    let fragments = splitMessage({ message, props, ...winner });
+    const fragments = splitMessage({
+      message,
+      props,
+      ...winner,
+    });
 
-    // If there are losers, rince and repeat
-    if (losers && losers.length > 0) {
-      fragments = applyReplacement({
-        replacement: losers,
-        fragments,
-        props,
-      });
-    }
-
-    // After winner and losers split it all, return fragments
-    return fragments;
+    // After winner, rince and repeat. Until there is no winner!
+    return applyReplacement({
+      replacement,
+      fragments,
+      props,
+    });
   }
 
   // No pattern found, nothing to split, just return the message
