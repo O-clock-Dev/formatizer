@@ -31,9 +31,7 @@ class App extends React.Component {
    */
   state = {
     pickerIsActive: false,
-    message: 'test',
-    // message: '```\ncoucou\n```\n\n###\n```\ncoucou\n```\n###',
-    // message: '```\n###\ntest\n###\n```\n\n\n',
+    message: '```\n###\ncoucou\n###\n```\n\n###\n```\ncoucou\n```\n###',
     // message:
     // 'J’ai une @question pour @Alexandre Ollivier, n’est-ce pas @test_mention_me ?',
     // message:

@@ -45,7 +45,9 @@ const splitMessage = ({ message, pattern, check, Component, props }) => {
       subFragments.push(<Component {...props}>{match}</Component>);
 
       // End
-      subFragments.push(messageEnd);
+      if (messageEnd !== '') {
+        subFragments.push(messageEnd);
+      }
     }
     else {
       // If there is a check, but it does not pass
@@ -72,17 +74,17 @@ const getSubFragments = ({ message, replacement: strOrArray, props }) => {
   let winnerIndex = Infinity;
   replacement.forEach((repl) => {
     // Never forget to reset lastIndex after a .exec()
-    const match = repl.pattern.exec(message);
+    const matches = repl.pattern.exec(message);
     repl.pattern.lastIndex = 0;
     if (
       // Found
-      match &&
+      matches &&
       // Valid
-      (!repl.check || !repl.check({ props, match })) &&
+      (!repl.check || repl.check({ props, match: matches[0] })) &&
       // Lower index
-      match.index < winnerIndex
+      matches.index < winnerIndex
     ) {
-      winnerIndex = match.index;
+      winnerIndex = matches.index;
       winner = repl;
     }
   });

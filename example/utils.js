@@ -29,15 +29,8 @@ export const isTeacher = true;
  * @param  {String}  mention
  * @return {Boolean}
  */
-export const isMention = (mention) => {
-  const userExists = users.find(user => mention === user.mention);
-
-  if (userExists) {
-    return mention === userExists.mention;
-  }
-
-  return false;
-};
+export const isMention = mention =>
+  !!users.find(user => mention === user.mention);
 
 /**
  * Example `isMentionMe`

@@ -17,31 +17,35 @@ import getFragments from './getFragments';
 /*
  * Component
  */
-// @TODO Add React.memo() when we upgrade to React 16.8
-const Format = ({ children, ...props }) => {
-  // Get all Fragments
-  const fragments = getFragments({ message: children, props });
+// @TODO Use React.memo() instead of PureComponent when we upgrade to React 16.8
+class Format extends React.PureComponent {
+  render() {
+    const { children, ...props } = this.props;
 
-  /*
-   * View
-   */
-  // @TODO Delete <span> when we upgrade to React 16.2
-  return (
-    <span>
-      {fragments.map((fragment, index) => {
-        // If element is a string
-        if (typeof fragment === 'string') {
-          // @TODO Replace by <> when we upgrade to React 16.2
-          return <span key={index}>{fragment}</span>;
-        }
+    // Get all Fragments
+    const fragments = getFragments({ message: children, props });
 
-        // Otherwise, is a Piece of Fragment.
-        // Clone element to add key
-        return React.cloneElement(fragment, { key: index });
-      })}
-    </span>
-  );
-};
+    /*
+     * View
+     */
+    // @TODO Delete <span> when we upgrade to React 16.2
+    return (
+      <span>
+        {fragments.map((fragment, index) => {
+          // If element is a string
+          if (typeof fragment === 'string') {
+            // @TODO Replace by <> when we upgrade to React 16.2
+            return <span key={index}>{fragment}</span>;
+          }
+
+          // Otherwise, is a Piece of Fragment.
+          // Clone element to add key
+          return React.cloneElement(fragment, { key: index });
+        })}
+      </span>
+    );
+  }
+}
 
 /*
  * PropTypes

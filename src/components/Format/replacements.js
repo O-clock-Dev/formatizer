@@ -62,6 +62,9 @@ export default [
     pattern: patternMention,
     Component: Mention,
     check: ({ props, match }) => {
+      if (!match) {
+        return false;
+      }
       const mention = match.slice(1);
       return props.isMention(mention) || props.isMentionMe(mention);
     },
