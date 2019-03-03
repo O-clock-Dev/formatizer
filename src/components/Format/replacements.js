@@ -12,7 +12,14 @@ import Mention, { patternMention } from 'src/components/Piece/Mention';
 
 // Text
 import ColorFormat, { patternColor } from 'src/components/Piece/Color';
-import TextFormat, { patternTextFormat } from 'src/components/Piece/TextFormat';
+import {
+  Bold,
+  Italic,
+  Strike,
+  patternBold,
+  patternItalic,
+  patternStrike,
+} from 'src/components/Piece/TextFormat';
 
 // Emoji
 import Emoji, { patternColon, patternSmiley } from 'src/components/Piece/Emoji';
@@ -60,11 +67,21 @@ export default [
     },
   },
 
-  // Text
-  {
-    pattern: patternTextFormat,
-    Component: TextFormat,
-  },
+  // TextFormat
+  [
+    {
+      pattern: patternBold,
+      Component: Bold,
+    },
+    {
+      pattern: patternItalic,
+      Component: Italic,
+    },
+    {
+      pattern: patternStrike,
+      Component: Strike,
+    },
+  ],
 
   // Emojis
   {

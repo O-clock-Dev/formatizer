@@ -45,10 +45,10 @@ describe('** src/components/Piece/Color.js **', () => {
     wrapper.find(Color).should.have.length(1);
   });
 
-  it('should add one <Color /> if two colors are stuck', () => {
+  it('should add two <Color /> if two colors are attached', () => {
     const message = 'Hello #ee1225#ee1225';
     const wrapper = mount(<Formatizer>{message}</Formatizer>);
-    wrapper.find(Color).should.have.length(1);
+    wrapper.find(Color).should.have.length(2);
   });
 
   it('<Color /> should have a property color which be equal "ee1225"', () => {

@@ -12,7 +12,7 @@ import { mount } from 'enzyme';
 import { Formatizer, setImagePath } from 'src';
 import Emoji from 'src/components/Piece/Emoji';
 import Blockquote from 'src/components/Piece/Blockquote';
-import TextFormat from 'src/components/Piece/TextFormat';
+import { Bold } from 'src/components/Piece/TextFormat';
 
 /*
  * Code
@@ -248,16 +248,16 @@ describe('** src/components/Piece/Emoji.js **', () => {
       wrapper.find(Emoji).should.have.length(1);
     });
 
-    it('should format smiley :-* text in <Emoji />, not in <TextFormat />', () => {
+    it('should format smiley :-* text in <Emoji />, not in <Bold />', () => {
       let message = ':-* test*';
       let wrapper = mount(<Formatizer>{message}</Formatizer>);
       wrapper.find(Emoji).should.have.length(1);
-      wrapper.find(TextFormat).should.have.length(0);
+      wrapper.find(Bold).should.have.length(0);
 
       message = ':* message :*';
       wrapper = mount(<Formatizer>{message}</Formatizer>);
       wrapper.find(Emoji).should.have.length(2);
-      wrapper.find(TextFormat).should.have.length(0);
+      wrapper.find(Bold).should.have.length(0);
     });
 
     // Cry
@@ -300,7 +300,7 @@ describe('** src/components/Piece/Emoji.js **', () => {
         .should.have.length(3);
     });
 
-    it('should format smileys in <Emoji /> inside of <TextFormat />', () => {
+    it('should format smileys in <Emoji /> inside of <Bold />', () => {
       const message = '*test :) :( test*';
       const wrapper = mount(<Formatizer>{message}</Formatizer>);
       wrapper
@@ -308,7 +308,7 @@ describe('** src/components/Piece/Emoji.js **', () => {
         .render()
         .find('img')
         .should.have.length(2);
-      wrapper.find(TextFormat).should.have.length(1);
+      wrapper.find(Bold).should.have.length(1);
     });
   });
 

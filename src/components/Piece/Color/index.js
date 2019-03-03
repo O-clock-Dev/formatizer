@@ -12,7 +12,7 @@ import { Style } from './style';
 /*
  * Pattern
  */
-export const patternColor = /(?:\B)#(?:[0-9a-f]{3}){1,2}(?=\b|$)/gi;
+export const patternColor = /(?:\B)#(?:[0-9a-f]{3}){1,2}(?=\b)/gi;
 
 /*
  * Component
