@@ -235,4 +235,17 @@ describe('** src/components/Piece/Mention.js **', () => {
     wrapper.find(Mention).should.have.length(1);
     wrapper.find(StyleMention).should.have.length(1);
   });
+
+  it.skip('Should detects @mention even after unknow @mention', () => {
+    const message =
+      // eslint-disable-next-line max-len
+      'Bonjour @randomPerson, @someone_else_123, @unknowMention, @someone_else_123 et @randomPerson !';
+    const wrapper = mount(
+      <Formatizer isMention={isMention} isMentionMe={isMentionMe}>
+        {message}
+      </Formatizer>,
+    );
+    wrapper.find(Mention).should.have.length(4);
+    wrapper.find(Style).should.have.length(4);
+  });
 });
