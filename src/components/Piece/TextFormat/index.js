@@ -2,33 +2,31 @@
  * Package Import
  */
 import React from 'react';
-import PropTypes from 'prop-types';
 
 /*
  * Local Import
  */
 import Format from 'src/components/Format';
 import Character from 'src/components/Piece/Character';
-import getStyle from './style';
+import * as S from './style';
 
 /*
  * Pattern
  */
-export const patternTextFormat = /(\s|^)((?:\*.+?\*|~.+?~|_.+?_))(?=\s|$)/g;
+export const patternBold = /(\s|^)(\*.+?\*)(?=\s|$)/g;
+export const patternItalic = /(\s|^)(_.+?_)(?=\s|$)/g;
+export const patternStrike = /(\s|^)(~.+?~)(?=\s|$)/g;
 
 /*
  * TextFormat
  * Remove first and last character
  */
-const TextFormat = ({ children }) => {
-  const [, before, format] = patternTextFormat.exec(children);
+// eslint-disable-next-line react/prop-types
+const create = (Style, pattern) => ({ children }) => {
+  const [, before, format] = pattern.exec(children);
 
   // Text
-  const firstChar = format.slice(0, 1);
   const text = format.slice(1).slice(0, -1);
-
-  // Style
-  const Style = getStyle(firstChar);
 
   // View
   return (
@@ -41,14 +39,6 @@ const TextFormat = ({ children }) => {
   );
 };
 
-/*
- * PropTypes
- */
-TextFormat.propTypes = {
-  children: PropTypes.string.isRequired,
-};
-
-/*
- * Export
- */
-export default TextFormat;
+export const Bold = create(S.Bold, patternBold);
+export const Italic = create(S.Italic, patternItalic);
+export const Strike = create(S.Strike, patternStrike);

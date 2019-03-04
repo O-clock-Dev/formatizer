@@ -12,7 +12,14 @@ import Mention, { patternMention } from 'src/components/Piece/Mention';
 
 // Text
 import ColorFormat, { patternColor } from 'src/components/Piece/Color';
-import TextFormat, { patternTextFormat } from 'src/components/Piece/TextFormat';
+import {
+  Bold,
+  Italic,
+  Strike,
+  patternBold,
+  patternItalic,
+  patternStrike,
+} from 'src/components/Piece/TextFormat';
 
 // Emoji
 import Emoji, { patternColon, patternSmiley } from 'src/components/Piece/Emoji';
@@ -25,14 +32,16 @@ import Character, { patternCharacter } from 'src/components/Piece/Character';
  */
 export default [
   // Priorities
-  {
-    pattern: patternSpoil,
-    Component: Spoil,
-  },
-  {
-    pattern: patternHighlight,
-    Component: Highlight,
-  },
+  [
+    {
+      pattern: patternSpoil,
+      Component: Spoil,
+    },
+    {
+      pattern: patternHighlight,
+      Component: Highlight,
+    },
+  ],
   {
     pattern: patternCode,
     Component: Code,
@@ -52,14 +61,30 @@ export default [
   {
     pattern: patternMention,
     Component: Mention,
-    check: (props, value) => props.isMention(value) || props.isMentionMe(value),
+    check: ({ props, match }) => {
+      if (!match) {
+        return false;
+      }
+      const mention = match.slice(1);
+      return props.isMention(mention) || props.isMentionMe(mention);
+    },
   },
 
-  // Text
-  {
-    pattern: patternTextFormat,
-    Component: TextFormat,
-  },
+  // TextFormat
+  [
+    {
+      pattern: patternBold,
+      Component: Bold,
+    },
+    {
+      pattern: patternItalic,
+      Component: Italic,
+    },
+    {
+      pattern: patternStrike,
+      Component: Strike,
+    },
+  ],
 
   // Emojis
   {

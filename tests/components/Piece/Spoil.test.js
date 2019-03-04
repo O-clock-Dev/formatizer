@@ -78,8 +78,30 @@ describe('** src/components/Piece/Spoil.js **', () => {
     // Should have <Spoil />
     component.should.have.length(1);
 
-    // Should have <Highlight />
+    // Should have <Highlight /> inside
     component.find(Highlight).should.have.length(1);
+  });
+
+  it('should add <Spoil /> even if there is a <Highlight /> with ### before', () => {
+    const message = '```\n###\ncoucou\n###\n```\n\n###\ncoucou\n###';
+    const wrapper = mount(<Formatizer>{message}</Formatizer>);
+
+    // Should have <Spoil />
+    wrapper.find(Spoil).should.have.length(1);
+
+    // Should have <Highlight />
+    wrapper.find(Highlight).should.have.length(1);
+  });
+
+  it('should add <Spoil /> with ``` even if there is a <Highlight /> before', () => {
+    const message = '```\ncoucou\n```\n\n###\n```\ncoucou\n```\n###';
+    const wrapper = mount(<Formatizer>{message}</Formatizer>);
+
+    // Should have <Spoil />
+    wrapper.find(Spoil).should.have.length(1);
+
+    // Should have <Highlight />
+    wrapper.find(Highlight).should.have.length(2);
   });
 
   it('should have an open property false by default', () => {
