@@ -31,11 +31,11 @@ class App extends React.Component {
    */
   state = {
     pickerIsActive: false,
-    message: '```\n###\ncoucou\n###\n```\n\n###\n```\ncoucou\n```\n###',
+    message:
+      'test *test* _test_ ~test~\n\n> test test\n\n\n:star: test :sunglasses: :heart: test :scream: :smile: :thumbsup_tone5: :-1_tone2: :D :test: :) 8-) :+1: \n\n```js\nconst abc = "test";\nconst def = 123;\n\nreturn abc + def;\n```\n\n test `test`\n\nhttps://github.com/O-clock/formatizer\n\n@test_mention_me @question @someone @coucou test\n\n###\ntest\n###\n```\n###\ncoucou\n###\n```\n\n###\n```\ncoucou\n```\n###',
+    // message: '```\n###\ncoucou\n###\n```\n\n###\n```\ncoucou\n```\n###',
     // message:
     // 'J’ai une @question pour @Alexandre Ollivier, n’est-ce pas @test_mention_me ?',
-    // message:
-    //   'test *test* _test_ ~test~\n\n> test test\n\n\n:star: test :sunglasses: :heart: test :scream: :smile: :thumbsup_tone5: :-1_tone2: :D :test: :) 8-) :+1: \n\n```js\nconst abc = "test";\nconst def = 123;\n\nreturn abc + def;\n```\n\n test `test`\n\nhttps://github.com/O-clock/formatizer\n\n@test_mention_me @question @someone @coucou test\n\n###\ntest\n###',
   };
 
   /*
