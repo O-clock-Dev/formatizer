@@ -4,17 +4,24 @@
 #############################################################################
 version: 2.1
 
+defaults: &defaults
+  working_directory: ~/formatizer
+  executor: node
+
 executors:
   node:
     parameters:
       image:
         type: string
-        default: "10"
-    working_directory: ~/repo
+        default: '10'
     docker:
       - image: circleci/node:<< parameters.image >>
 
 aliases:
+  attach_workspace: &attach_workspace
+    attach_workspace:
+      at: ~/formatizer
+
   restore_cache: &restore_cache
     restore_cache:
       name: Restore node_modules cache
@@ -35,58 +42,55 @@ aliases:
       paths:
         - node_modules
 
-  ignore_features: &ignore_features
-    filters:
-      branches:
-        ignore:
-          - feature/*
-
-  test_template: &test_template
-    steps:
-      - checkout
-      - <<: *restore_cache
-      - <<: *install_node_modules
-      - <<: *persist_cache
-      - run: yarn test
-
 jobs:
   lint:
-    executor: node
+    <<: *defaults
     steps:
       - checkout
+      - <<: *attach_workspace
       - <<: *restore_cache
       - <<: *install_node_modules
       - <<: *persist_cache
       - run: yarn lint
 
-  unit_tests_node6:
-    executor:
-      name: node
-      image: "6"
-    <<: *test_template
+  test:
+    <<: *defaults
+    steps:
+      - checkout
+      - <<: *attach_workspace
+      - <<: *restore_cache
+      - <<: *install_node_modules
+      - <<: *persist_cache
+      - run: yarn test
 
-  unit_tests_node8:
-    executor:
-      name: node
-      image: "8"
-    <<: *test_template
-
-  unit_tests_node10:
-    executor: node
-    <<: *test_template
-
+  release:
+    <<: *defaults
+    steps:
+      - <<: *attach_workspace
+      - <<: *restore_cache
+      - run:
+          name: Build
+          command: yarn build
+      - run:
+          name: Authenticate with registry
+          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/repo/.npmrc
+      - run:
+          name: Publish package
+          command: npm publish
 
 workflows:
   version: 2
 
-  test_build:
+  publish_release:
     jobs:
       - lint
-      - unit_tests_node6:
-          <<: *ignore_features
-
-      - unit_tests_node8:
-          <<: *ignore_features
-
-      - unit_tests_node10:
-          <<: *ignore_features
+      - test
+      - release:
+          requires:
+            - lint
+            - test
+          filters:
+            tags:
+              only: /^v.*/
+            branches:
+              ignore: /.*/
