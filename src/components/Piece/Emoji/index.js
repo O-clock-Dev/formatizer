@@ -3,29 +3,20 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
-import Emojione from 'emojione';
+import { Emoji as Emojimart } from 'emoji-mart';
 
 /*
  * Local import
  */
 import Character from 'src/components/Piece/Character';
-import { Style } from './style';
 import { smileyReplace, smileyStr } from './smiley';
 
 /*
  * Pattern
  */
-const smileyRegexp = new RegExp(smileyStr, 'gi');
-export const patternColon = /:[?+\-0-9A-Za-z_]+:/gi;
-export const patternSmiley = new RegExp(
-  `(\\s|^)((?:${smileyStr}\\s*)+)(?=\\s|$)`,
-  'gi',
-);
-
-/*
- * Code
- */
-export const shortnameToImage = emoji => Emojione.shortnameToImage(emoji);
+export const smileyRegexp = new RegExp(smileyStr, 'gi');
+export const patternColon = /(?::([^:]+):)(?::skin-tone-(\d):)?/gi;
+export const patternSmiley = new RegExp(`(^|\\s|)((?:${smileyStr}))`, 'gi');
 
 /*
  * Components
@@ -39,6 +30,7 @@ const Emoji = ({ children }) => {
   // Smiley ?
   const matches = patternSmiley.exec(children);
   patternSmiley.lastIndex = 0;
+
   if (matches) {
     before = !!matches[1] && <Character>{matches[1]}</Character>;
     emoji = matches[2]
@@ -46,10 +38,22 @@ const Emoji = ({ children }) => {
       .replace(/\n{2,}/g, '<br /><br />')
       .replace(/\n/g, '<br />');
   }
+
   return (
     <span>
       {before}
-      <Style dangerouslySetInnerHTML={{ __html: shortnameToImage(emoji) }} />
+      <span
+        dangerouslySetInnerHTML={{
+          __html: Emojimart({
+            html: true,
+            set: 'twitter',
+            emoji,
+            fallback: (emojix, props) =>
+              (emojix ? `:${emojix.short_names[0]}:` : props.emoji),
+            size: 16,
+          }),
+        }}
+      />
     </span>
   );
 };
