@@ -16,8 +16,12 @@ import languages from './languages';
  * Patterns
  */
 /* eslint-disable prefer-template */
-const regexp = '```(?:(' + languages.join('|') + ')\\s)?((?:.|\\n)+?)```\\n?';
-export const patternHighlight = new RegExp(regexp, 'g');
+// const regexp = '```(?:(' + languages.join('|') + ')\\s)?((?:.|\\n)+?)```\\n?';
+// export const patternHighlight = new RegExp(regexp, 'g');
+
+const regexp =
+  '([`~]{3,4})(?:(' + languages.join('|') + ')\\s)?((?:.|\\n)+?)(\\1)\\n?';
+export const patternHighlight = new RegExp(regexp, 'gm');
 
 /*
  * Component
@@ -35,12 +39,12 @@ const Highlight = ({ children }) => {
   };
 
   // First capturing paren: language
-  if (matches[1]) {
-    options.language = matches[1];
+  if (matches[2]) {
+    options.language = matches[2];
   }
 
   // Second capturing paren: code + trim it
-  const prevCode = matches[2];
+  const prevCode = matches[3];
   const code = prevCode[0] === '\n' ? prevCode.slice(1) : prevCode;
 
   // Line Numbers

@@ -10,7 +10,7 @@ import { mount } from 'enzyme';
  */
 import { Formatizer } from 'src';
 import Blockquote from 'src/components/Piece/Blockquote';
-import TextFormat from 'src/components/Piece/TextFormat';
+import { Bold } from 'src/components/Piece/TextFormat';
 
 /*
  * Code
@@ -45,10 +45,10 @@ describe('** src/components/Piece/Blockquote.js **', () => {
     wrapper.find(Blockquote).should.have.length(1);
   });
 
-  it('should add <Blockquote /> and <TextFormat />', () => {
+  it('should add <Blockquote /> and <Bold />', () => {
     const message = '> *Hello*';
     const wrapper = mount(<Formatizer>{message}</Formatizer>);
     wrapper.find(Blockquote).should.have.length(1);
-    wrapper.find(TextFormat).should.have.length(1);
+    wrapper.find(Bold).should.have.length(1);
   });
 });

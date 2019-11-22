@@ -1,6 +1,6 @@
 {
   "name": "formatizer",
-  "version": "1.2.6",
+  "version": "1.3.0",
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/O-clock-dev/formatizer.git"
@@ -10,7 +10,6 @@
   "scripts": {
     "start": "brunch watch --server",
     "build": "babel src -d dist",
-    "prepublish": "rm -rf dist && yarn build",
     "test": "test(){ if [ -z $1 ]; then mocha tests/.setup.js 'tests/**/*.test.js'; else mocha tests/.setup.js $1 $2; fi; }; test",
     "lint": "eslint --fix '{example,src,tests}/**/*.{js,json}'",
     "pretty": "prettier --write '{example,src,tests}/**/*.{js,json}'",
@@ -24,8 +23,7 @@
     ]
   },
   "dependencies": {
-    "emojione": "^2.2.7",
-    "emojione-picker": "^2.2.1",
+    "emoji-mart": "^2.11.1",
     "react-syntax-highlighter": "^5.7.0"
   },
   "peerDependencies": {
