@@ -91,6 +91,6 @@ workflows:
             - test
           filters:
             tags:
-              only: /^v.*/
+              only: /^v?[0-9.]+/
             branches:
               ignore: /.*/
