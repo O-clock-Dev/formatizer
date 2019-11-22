@@ -1,0 +1,96 @@
+#############################################################################
+#           Javascript Node CircleCI 2.0 configuration file
+# Check https://circleci.com/docs/2.0/language-javascript/ for more details
+#############################################################################
+version: 2.1
+
+defaults: &defaults
+  working_directory: ~/formatizer
+  executor: node
+
+executors:
+  node:
+    parameters:
+      image:
+        type: string
+        default: '10'
+    docker:
+      - image: circleci/node:<< parameters.image >>
+
+aliases:
+  attach_workspace: &attach_workspace
+    attach_workspace:
+      at: ~/formatizer
+
+  restore_cache: &restore_cache
+    restore_cache:
+      name: Restore node_modules cache
+      keys:
+        - v1-dependencies-{{ checksum "yarn.lock" }}
+        # fallback to using the latest cache if no exact match is found
+        - v1-dependencies-
+
+  install_node_modules: &install_node_modules
+    run:
+      name: Install node modules
+      command: yarn --frozen-lockfile
+
+  persist_cache: &persist_cache
+    save_cache:
+      name: Save node modules cache
+      key: v1-dependencies-{{ checksum "yarn.lock" }}
+      paths:
+        - node_modules
+
+jobs:
+  lint:
+    <<: *defaults
+    steps:
+      - checkout
+      - <<: *attach_workspace
+      - <<: *restore_cache
+      - <<: *install_node_modules
+      - <<: *persist_cache
+      - run: yarn lint
+
+  test:
+    <<: *defaults
+    steps:
+      - checkout
+      - <<: *attach_workspace
+      - <<: *restore_cache
+      - <<: *install_node_modules
+      - <<: *persist_cache
+      - run: yarn test
+
+  release:
+    <<: *defaults
+    steps:
+      - <<: *attach_workspace
+      - <<: *restore_cache
+      - run:
+          name: Build
+          command: yarn build
+      - run:
+          name: Authenticate with registry
+          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/repo/.npmrc
+      - run:
+          name: Publish package
+          command: npm publish
+
+workflows:
+  version: 2
+
+  publish_release:
+    jobs:
+      - lint
+      - test
+      - release:
+          requires:
+            - lint
+            - test
+          filters:
+            tags:
+              only: /^v.*/
+            branches:
+              ignore: /.*/

@@ -8,7 +8,7 @@ import { render } from 'react-dom';
 /*
  * Local import
  */
-import { Formatizer, Picker, setImagePath } from '../src';
+import { Formatizer, Picker } from '../src';
 import {
   isMention,
   isMentionMe,
@@ -16,11 +16,6 @@ import {
   onMentionMe,
   isTeacher,
 } from './utils';
-
-/*
- * Setup
- */
-setImagePath('/images/common/emojione.svg');
 
 /*
  * Component
@@ -32,7 +27,8 @@ class App extends React.Component {
   state = {
     pickerIsActive: false,
     message:
-      'test *test* _test_ ~test~\n\n> test test\n\n\n:star: test :sunglasses: :heart: test :scream: :smile: :thumbsup_tone5: :-1_tone2: :D :test: :) 8-) :+1: \n\n```js\nconst abc = "test";\nconst def = 123;\n\nreturn abc + def;\n```\n\n test `test`\n\nhttps://github.com/O-clock/formatizer\n\n@test_mention_me @question @someone @coucou test\n\n###\ntest\n###',
+      'test *test* _test_ ~test~\n\n> test test\n\n\n:star: test :sunglasses: :heart: test :scream: :smile: :+1::skin-tone-6: :-1::skin-tone-3: :D :test: :) 8-) :+1: \n\n```js\nconst abc = "test";\nconst def = 123;\n\nreturn abc + def;\n```\n\n test `test`\n\nhttps://github.com/O-clock/formatizer\n\n@test_mention_me @question @someone @coucou test\n\n###\ntest\n###',
+    // message: ':-) :-D\n :)\n\n\n:(',
   };
 
   /*
@@ -43,9 +39,9 @@ class App extends React.Component {
     this.setState({ message: value });
   };
 
-  handleEmoji = ({ shortname }) => {
+  handleEmoji = (emoji) => {
     const { message } = this.state;
-    const value = `${message} ${shortname}`.trim();
+    const value = `${message} ${emoji.colons}`.trim();
     this.setState({ message: value });
   };
 

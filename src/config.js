@@ -2,16 +2,15 @@
 /*
  * Package import
  */
-import Emojione from 'emojione';
+import { Emoji, Picker } from 'emoji-mart';
 
 /*
  * Code
  */
 // Config setter
 const setImagePath = (path) => {
-  Emojione.imagePathSVGSprites = path;
-  Emojione.imageType = 'svg';
-  Emojione.sprites = true;
+  Emoji({ backgroundImageFn: () => path });
+  Picker({ backgroundImageFn: () => path });
 };
 
 /*
