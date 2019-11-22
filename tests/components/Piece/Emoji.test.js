@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 /*
  * Package Import
  */
@@ -9,7 +8,7 @@ import { mount } from 'enzyme';
 /*
  * Local Import
  */
-import { Formatizer, setImagePath } from 'src';
+import { Formatizer } from 'src';
 import Emoji from 'src/components/Piece/Emoji';
 import Blockquote from 'src/components/Piece/Blockquote';
 import { Bold } from 'src/components/Piece/TextFormat';
@@ -24,22 +23,36 @@ should();
  */
 describe('** src/components/Piece/Emoji.js **', () => {
   describe('** Colons **', () => {
-    it('should format :sunglasses:  in  <Emoji />', () => {
+    it('should doesn’t format :test: in <Emoji />', () => {
+      const message = ':test:';
+      const wrapper = mount(<Formatizer>{message}</Formatizer>);
+
+      wrapper
+        .find(Emoji)
+        .text()
+        .should.be.equal(':test:');
+    });
+
+    it('should format :sunglasses: in <Emoji />', () => {
       const message = ':sunglasses:';
       const wrapper = mount(<Formatizer>{message}</Formatizer>);
+
       wrapper.find(Emoji).should.have.length(1);
     });
 
     it('should format :+1: 👍 in <Emoji />', () => {
       const message = ':+1:';
       const wrapper = mount(<Formatizer>{message}</Formatizer>);
+
       wrapper.find(Emoji).should.have.length(1);
     });
 
-    it('should format :thumbsup_tone5: 👍🏿 in <Emoji />', () => {
-      const message = ':thumbsup_tone5:';
+    it('should format :+1::skin-tone-6: 👍🏿 in <Emoji />', () => {
+      const message = ':+1::skin-tone-6:';
       const wrapper = mount(<Formatizer>{message}</Formatizer>);
+
       wrapper.find(Emoji).should.have.length(1);
+      wrapper.find(Emoji).should.not.have.length(2);
     });
 
     it('should format multiple Emoji 😎 ☀️ in <Emoji />', () => {
@@ -55,7 +68,7 @@ describe('** src/components/Piece/Emoji.js **', () => {
     });
 
     it('should format multiple tone Emoji  👍🏿 👎🏻  in <Emoji />', () => {
-      const message = ':thumbsup_tone5: :-1_tone2:';
+      const message = ':+1::skin-tone-6: :-1::skin-tone-3:';
       const wrapper = mount(<Formatizer>{message}</Formatizer>);
       wrapper.find(Emoji).should.have.length(2);
     });
@@ -64,12 +77,16 @@ describe('** src/components/Piece/Emoji.js **', () => {
   describe('** Smileys **', () => {
     // sunglasses
     it('should format smiley 8-) 😎 in <Emoji />', () => {
+      // 8-)
       let message = '8-)';
       let wrapper = mount(<Formatizer>{message}</Formatizer>);
+
       wrapper.find(Emoji).should.have.length(1);
 
+      // 8)
       message = '8)';
       wrapper = mount(<Formatizer>{message}</Formatizer>);
+
       wrapper.find(Emoji).should.have.length(1);
     });
 
@@ -77,10 +94,12 @@ describe('** src/components/Piece/Emoji.js **', () => {
     it('should format smiley :-| 😐 in <Emoji />', () => {
       let message = ':-|';
       let wrapper = mount(<Formatizer>{message}</Formatizer>);
+
       wrapper.find(Emoji).should.have.length(1);
 
       message = ':|';
       wrapper = mount(<Formatizer>{message}</Formatizer>);
+
       wrapper.find(Emoji).should.have.length(1);
     });
 
@@ -277,55 +296,24 @@ describe('** src/components/Piece/Emoji.js **', () => {
     it('should format multiple smileys with spaces in <Emoji />', () => {
       const message = ':-) :-D\n :)\n\n\n:(';
       const wrapper = mount(<Formatizer>{message}</Formatizer>);
-      wrapper.find(Emoji).should.have.length(1);
-      wrapper
-        .find(Emoji)
-        .render()
-        .find('img')
-        .should.have.length(4);
-      wrapper
-        .find(Emoji)
-        .render()
-        .find('br')
-        .should.have.length(3);
+
+      wrapper.find(Emoji).should.have.length(4);
+      wrapper.find('br').should.have.length(4);
     });
 
     it('should format multiple smileys without space in <Emoji />', () => {
       const message = ':):-):)';
       const wrapper = mount(<Formatizer>{message}</Formatizer>);
-      wrapper
-        .find(Emoji)
-        .render()
-        .find('img')
-        .should.have.length(3);
+
+      wrapper.find(Emoji).should.have.length(3);
     });
 
     it('should format smileys in <Emoji /> inside of <Bold />', () => {
       const message = '*test :) :( test*';
       const wrapper = mount(<Formatizer>{message}</Formatizer>);
-      wrapper
-        .find(Emoji)
-        .render()
-        .find('img')
-        .should.have.length(2);
-      wrapper.find(Bold).should.have.length(1);
-    });
-  });
 
-  describe('** Config **', () => {
-    it('should render with local image if config has been set up', () => {
-      const imagePath = '/path/to/fake-file.svg';
-      setImagePath(imagePath);
-      const message = ':)';
-      const wrapper = mount(<Formatizer>{message}</Formatizer>);
-      wrapper
-        .find(Emoji)
-        .render()
-        .find('use')
-        .get(0)
-        // Begin with imagePath => indexOf(imagePath) === 0
-        .attribs.href.indexOf(imagePath)
-        .should.be.equal(0);
+      wrapper.find(Emoji).should.have.length(2);
+      wrapper.find(Bold).should.have.length(1);
     });
   });
 });

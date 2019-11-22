@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
-import EmojiPicker from 'emojione-picker';
+import { Picker as EmojiPicker } from 'emoji-mart';
 
 /*
  * Local Import
@@ -14,8 +14,14 @@ import EmojiPicker from 'emojione-picker';
  */
 const Picker = ({ onChange }) => {
   const handleChange = (...args) => onChange(...args);
-
-  return <EmojiPicker search onChange={handleChange} />;
+  return (
+    <EmojiPicker
+      onSelect={handleChange}
+      set="twitter"
+      emojiTooltip
+      title="O’clock"
+    />
+  );
 };
 
 /*
