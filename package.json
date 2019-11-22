@@ -9,7 +9,7 @@
   "license": "MIT",
   "scripts": {
     "start": "brunch watch --server",
-    "build": "brunch build --production",
+    "build": "babel src -d dist",
     "prepublish": "rm -rf dist && yarn build",
     "test": "test(){ if [ -z $1 ]; then mocha tests/.setup.js 'tests/**/*.test.js'; else mocha tests/.setup.js $1 $2; fi; }; test",
     "lint": "eslint --fix '{example,src,tests}/**/*.{js,json}'",
