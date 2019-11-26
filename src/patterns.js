@@ -63,11 +63,11 @@ export default [
 
   // Emojis
   {
-    pattern: patternSmiley,
+    pattern: patternColon,
     Component: Emoji,
   },
   {
-    pattern: patternColon,
+    pattern: patternSmiley,
     Component: Emoji,
   },
 

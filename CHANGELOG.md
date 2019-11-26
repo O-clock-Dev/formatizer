@@ -2,6 +2,15 @@
 
 **Ne pas oublier de changer le package.json**
 
+## 1.3.0 / 22-11-2019
+
+### :tada: Enhancements
+
+- Remove `Emojione`
+- Remove `Emojione-picker`
+- Add `Emoji-mart`
+
+
 ## 1.2.6 / 16-07-2018
 
 ### :tada: Enhancements
