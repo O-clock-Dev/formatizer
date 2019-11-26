@@ -16,7 +16,11 @@ import { smileyReplace, smileyStr } from './smiley';
  */
 export const smileyRegexp = new RegExp(smileyStr, 'gi');
 export const patternColon = /(?::([+a-zA-Z0-9-][^{}():,\s]+):)(?::skin-tone-(\d):)?/gi;
-export const patternSmiley = new RegExp(`${smileyStr}($|\\s)`, 'gi');
+export const patternSmiley = new RegExp(`${smileyStr}`, 'gi');
+// export const patternSmiley = new RegExp(
+//   `(\\s|^)((?:${smileyStr}\\s*)+)(?=\\s|$)`,
+//   'gi',
+// );
 
 /*
  * Components
@@ -24,23 +28,22 @@ export const patternSmiley = new RegExp(`${smileyStr}($|\\s)`, 'gi');
 // @TODO Get rid of <span> with React 16.2
 // @TODO Use Character to create <br /> ?
 const Emoji = ({ children }) => {
-  let after = '';
+  let before = '';
   let emoji = children;
 
   // Smiley ?
   const matches = patternSmiley.exec(children);
   patternSmiley.lastIndex = 0;
-
   if (matches) {
-    after = !!matches[2] && <Character>{matches[2]}</Character>;
+    before = !!matches[2] && <Character>{matches[2]}</Character>;
     emoji = matches[1]
       .replace(smileyRegexp, smileyReplace)
       .replace(/\n{2,}/g, '<br /><br />')
       .replace(/\n/g, '<br />');
   }
-
   return (
     <span>
+      {before}
       <span
         dangerouslySetInnerHTML={{
           __html: Emojimart({
@@ -53,7 +56,7 @@ const Emoji = ({ children }) => {
           }),
         }}
       />
-      {after || ' '}
+      {before}
     </span>
   );
 };

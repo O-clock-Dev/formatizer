@@ -296,9 +296,13 @@ describe('** src/components/Piece/Emoji.js **', () => {
     it('should format multiple smileys with spaces in <Emoji />', () => {
       const message = ':-) :-D\n :)\n\n\n:(';
       const wrapper = mount(<Formatizer>{message}</Formatizer>);
-
       wrapper.find(Emoji).should.have.length(4);
-      wrapper.find('br').should.have.length(4);
+    });
+
+    it('should have multiple <br> with spaces in <Emoji />', () => {
+      const message = ':-) :-D\n :)\n\n\n:(';
+      const wrapper = mount(<Formatizer>{message}</Formatizer>);
+      wrapper.find('br').should.have.length(3);
     });
 
     it('should format multiple smileys without space in <Emoji />', () => {
