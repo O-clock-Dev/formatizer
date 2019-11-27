@@ -27,8 +27,7 @@ class App extends React.Component {
   state = {
     pickerIsActive: false,
     message:
-      'test *test* _test_ ~test~\n\n> test test\n\n\n:star: test :sunglasses: :heart: test :scream: :smile: :+1::skin-tone-6: :-1::skin-tone-3: :D :test: :) 8-) :+1: \n\n```js\nconst abc = "test";\nconst def = 123;\n\nreturn abc + def;\n```\n\n test `test`\n\nhttps://github.com/O-clock/formatizer\n\n@test_mention_me @question @someone @coucou test\n\n###\ntest\n###',
-    // message: ':-) :-D\n :)\n\n\n:(',
+      'test *test* _test_ ~test~\n\n> test test\n\n\n:star: test :sunglasses: :heart: test :scream: :smile: :+1::skin-tone-6: :-1::skin-tone-3: :D :test: :) 8-) :+1: \n\n```js\nconst abc = "test";\nconst def = 123;\n\nreturn abc + def;\n```\n\n test `test`\n\nhttps://github.com/O-clock/formatizer\n\n@test_mention_me @question @someone @coucou test\n\n###\ntest\n###\n\n:-) :-D\n :)\n\n\n:(\n:p\n:panda_face:\n:disappointed:\n\n:):)',
   };
 
   /*

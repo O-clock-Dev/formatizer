@@ -15,7 +15,8 @@ import ColorFormat, { patternColor } from 'src/components/Piece/Color';
 import TextFormat, { patternTextFormat } from 'src/components/Piece/TextFormat';
 
 // Emoji
-import Emoji, { patternColon, patternSmiley } from 'src/components/Piece/Emoji';
+import Colon, { patternColon } from 'src/components/Piece/Emoji/colon';
+import Smiley, { patternSmiley } from 'src/components/Piece/Emoji/smiley';
 
 // Character
 import Character, { patternCharacter } from 'src/components/Piece/Character';
@@ -64,11 +65,11 @@ export default [
   // Emojis
   {
     pattern: patternColon,
-    Component: Emoji,
+    Component: Colon,
   },
   {
     pattern: patternSmiley,
-    Component: Emoji,
+    Component: Smiley,
   },
 
   // Character
