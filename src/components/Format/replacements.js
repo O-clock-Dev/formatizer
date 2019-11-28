@@ -22,7 +22,8 @@ import {
 } from 'src/components/Piece/TextFormat';
 
 // Emoji
-import Emoji, { patternColon, patternSmiley } from 'src/components/Piece/Emoji';
+import Colon, { patternColon } from 'src/components/Piece/Emoji/colon';
+import Smiley, { patternSmiley } from 'src/components/Piece/Emoji/smiley';
 
 // Character
 import Character, { patternCharacter } from 'src/components/Piece/Character';
@@ -88,12 +89,12 @@ export default [
 
   // Emojis
   {
-    pattern: patternSmiley,
-    Component: Emoji,
+    pattern: patternColon,
+    Component: Colon,
   },
   {
-    pattern: patternColon,
-    Component: Emoji,
+    pattern: patternSmiley,
+    Component: Smiley,
   },
 
   // Character

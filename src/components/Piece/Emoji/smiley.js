@@ -1,4 +1,20 @@
 /* eslint-disable max-len */
+
+/*
+ * Package import
+ */
+import React from 'react';
+import PropTypes from 'prop-types';
+
+/*
+ * Local import
+ */
+import Character from 'src/components/Piece/Character';
+import Emoji from './index';
+
+/*
+ * Data
+ */
 const smileyToColon = {
   '8)': ':sunglasses:',
   '8-)': ':sunglasses:',
@@ -43,7 +59,50 @@ const smileyToColon = {
   ":'(": ':cry:',
 };
 
+/**
+ * Smiley to replace
+ * @param  {String} smiley
+ * @return {String}
+ */
 export const smileyReplace = smiley => smileyToColon[smiley];
 
+/*
+ * Pattern
+ */
 export const smileyStr =
-  "(?:8-?\\)|:-?\\||:o\\)|=-?\\)|;-?\\)|:-?>|>:-?\\(|:-?\\)|:-?\\(|:-?\\/|:-?\\\\|D:|:-?d|:-?o|:-?x|:-?p|:-?\\*|:'\\()";
+  "(8-?\\)|:-?\\||:o\\)|=-?\\)|;-?\\)|:-?>|>:-?\\(|:-?\\)|:-?\\(|:-?\\/|:-?\\\\|D:|:-?d|:-?o|:-?x|:-?p|:-?\\*|:'\\()";
+export const patternSmiley = new RegExp(smileyStr, 'gi');
+
+/*
+ * Components
+ */
+const Smiley = ({ children }) => {
+  let before = '';
+  let emoji = children;
+
+  // Smiley ?
+  const matches = patternSmiley.exec(children);
+  patternSmiley.lastIndex = 0;
+
+  if (matches) {
+    before = !!matches[2] && <Character>{matches[2]}</Character>;
+    emoji = matches[1]
+      .replace(patternSmiley, smileyReplace)
+      .replace(/\n{2,}/g, '<br /><br />')
+      .replace(/\n/g, '<br />');
+  }
+
+  return <Emoji before={before}>{emoji}</Emoji>;
+};
+
+/*
+ * PropTypes
+ */
+Smiley.propTypes = {
+  children: PropTypes.string.isRequired,
+};
+
+/*
+ * Export default
+ */
+export default Smiley;

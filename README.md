@@ -1,28 +1,31 @@
 # Formatizer
 
 ## :muscle: Peer dependencies
+
 You need these packages to install **Formatizer**.
-  * React
-  * Glamor & Glamorous
+
+- React
+- Glamor & Glamorous
 
 If you don't have these, please install `yarn add react glamor glamorous`
 
-
 ## :rocket: Installation
-To install `formatizer` :
-  * With **Yarn**, `yarn add formatizer`
-  * Or, with **NPM**, `npm install formatizer`
 
+To install `formatizer` :
+
+- With **Yarn**, `yarn add formatizer`
+- Or, with **NPM**, `npm install formatizer`
 
 ## :sunny: Synopsis
+
 With this module, you can format your text more easily. For example, you can format into **bold**, _italic_ or ~~strike~~ a message, send a smiley, a code snippet or a blockquote... Let's see [API Reference](readme.md#api-reference) for more details. :smile:
 
-
 ## :gear: Options
+
 `<Formatizer>` just need a children `message` : _the string you want format._
 
-
 ## :eyes: Code Example
+
 ```js
 /*
  * Package Import
@@ -35,7 +38,6 @@ import { Formatizer } from 'formatizer';
  */
 const message = '*test*';
 
-
 /*
  * Component
  */
@@ -44,100 +46,110 @@ const App = () => (
     <Formatizer>{message}</Formatizer>
     // Output: In this example, test is formatted in bold
   </div>
-)
+);
 ```
-
 
 ## :eyes: Example
 
 You can also try this example in live :
-  * Download this repository.
-  * Install packages via `yarn` or `npm install`
-  * Launch watcher via `yarn start` or `npm start`
-  * Go http://localhost:3333/
-  * Test it ! :tada:
 
+- Download this repository.
+- Install packages via `yarn` or `npm install`
+- Launch watcher via `yarn start` or `npm start`
+- Go http://localhost:3333/
+- Test it ! :tada:
 
 ## API Reference
 
-* **bold** :   
+- **bold** :
+
 ```js
 const message = '*message*';
-<Formatizer>{message}</Formatizer>
+<Formatizer>{message}</Formatizer>;
 // Output: message in BOLD
 ```
 
-* _italic_ :   
+- _italic_ :
+
 ```js
 const message = '_message_';
-<Formatizer>{message}</Formatizer>
+<Formatizer>{message}</Formatizer>;
 // Output: message in ITALIC
 ```
 
-* ~~strike~~ :   
+- ~~strike~~ :
+
 ```js
 const message = '~message~';
-<Formatizer>{message}</Formatizer>
+<Formatizer>{message}</Formatizer>;
 // Output: message in STRIKE
 ```
 
-* Color #ee1225 :   
+- Color #ee1225 :
+
 ```js
 const message = '#ee1225 or #000';
-<Formatizer>{message}</Formatizer>
+<Formatizer>{message}</Formatizer>;
 // Output: colors red and black
 ```
 
-* <details>
+- <details>
   <summary>Spoiler</summary>
   </details>
+
 ```js
-const message = '### Hello ###';   
-<Formatizer>{message}</Formatizer>
+const message = '### Hello ###';
+<Formatizer>{message}</Formatizer>;
 // Output: A message in spoiler
 ```
 
-* Snippet Code :
-```js
-const message = '```js const a = "string"```';   
-// You can use : 'apache', 'apacheconf', 'bash', 'sh', 'zsh', 'css', 'xml', 'html', 'xhtml', 'rss', 'atom', 'xjb', 'xsd', 'xsl', 'plist', 'ini', 'json', 'javascript', 'js', 'jsx', 'less', 'markdown', 'md', 'mkdown', 'mkd', 'php', 'scss', 'sql', 'stylus', 'styl' or 'twig',
-<Formatizer>{message}</Formatizer>
-// Output: Code Snipper like here !
-```
+- Snippet Code :
 
-* `Code` :
+````js
+const message = '```js const a = "string"```';
+// You can use : 'apache', 'apacheconf', 'bash', 'sh', 'zsh', 'css', 'xml', 'html', 'xhtml', 'rss', 'atom', 'xjb', 'xsd', 'xsl', 'plist', 'ini', 'json', 'javascript', 'js', 'jsx', 'less', 'markdown', 'md', 'mkdown', 'mkd', 'php', 'scss', 'sql', 'stylus', 'styl' or 'twig',
+<Formatizer>{message}</Formatizer>;
+// Output: Code Snipper like here !
+````
+
+- `Code` :
+
 ```js
 const message = '`const a = "string"`'
 <Formatizer>{message}</Formatizer>
 // Output: Code
 ```
 
-* > Blockquote :   
+- > Blockquote :
+
 ```js
 const message = '> Message';
-<Formatizer>{message}</Formatizer>
+<Formatizer>{message}</Formatizer>;
 // Output: message in Blockquote
 ```
 
-* We can format links too.
+- We can format links too.
+
 ```js
 const message = 'https://github.com/o-clock/formatizer';
-<Formatizer>{message}</Formatizer>
+<Formatizer>{message}</Formatizer>;
 // Output: Link formatted
 ```
 
-* Emoji with colons (eg. :sunglasses:, :star:, :heart:, or other...) or with Smiley :-P :
+- Emoji with colons (eg. :sunglasses:, :star:, :heart:, or other...) or with Smiley :-P :
+
 ```js
 const message = ':star:';
-<Formatizer>{message}</Formatizer>
+<Formatizer>{message}</Formatizer>;
 // Output: An Emoji ⭐️ !
 ```
 
-* Picker :sunglasses: :
+- Picker :sunglasses: :
+
 ```js
 import { Picker } from 'formatizer';
 // onChange = return data @ emoji
-<Picker onChange={(data) => console.log(data)} />
+<Picker onChange={data => console.log(data)} />;
 ```
 
 ### Tips :bulb:
@@ -146,54 +158,30 @@ import { Picker } from 'formatizer';
 
 2. For a better experience when you use `Snippet Code` and `Code`, please install and use font `Menlo`... You can look at the `example` folder if you want an example.
 
-
-## :pick: Advanced configuration
-
-By default, Formatizer is using this emoji sprite:  
-https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/sprites/emojione.sprites.svg
-
-If you want use a local file instead of cdnjs for Emoji / Picker:  
-1. You need a emoji svg sprite, you can dowload it [here](https://github.com/emojione/emojione/blob/2.2.7/assets/sprites/emojione.sprites.svg).
-2. In your code, use `setImagePath` :
-```js
-// Import `setConfig`
-import { Formatizer, setImagePath } from 'formatizer';
-
-// Use setImagePath with the path to the file
-setImagePath('/path/to/emojione.svg');
-
-// And you're good to go!
-const Smile = () => (
-  <Formatizer>:)</Formatizer>
-);
-```
-
-
 ## :construction: Tests
+
 You can run tests with:
 
-* `yarn test`: Execute all tests, one time.
+- `yarn test`: Execute all tests, one time.
 
-* `yarn test:one`: Execute one test,
-    * Example :arrow_forward: `yarn test:one tests/components/Machin.test.js`
-
+- `yarn test:one`: Execute one test,
+  - Example :arrow_forward: `yarn test:one tests/components/Machin.test.js`
 
 ## :busts_in_silhouette: Contributors
-* [Maxime Vasse](https://github.com/webdif)
-* [Alexandre Bourdeaud'hui](https://github.com/alexandrebourdeaudhui)
 
+- [Maxime Vasse](https://github.com/webdif)
+- [Alexandre Bourdeaud'hui](https://github.com/alexandrebourdeaudhui)
 
 ## Want to contribute ?
- * All contributions are welcome !
-  * Download this repository.
-  * Install dependencies.
-  * Run `yarn start`
-  * Let's go http://localhost:3333/
-  * Let's go edit `src` folder
 
+- All contributions are welcome !
+- Download this repository.
+- Install dependencies.
+- Run `yarn start`
+- Let's go http://localhost:3333/
+- Let's go edit `src` folder
 
 This project has adopted a small [Husky](https://github.com/typicode/husky) :dog:.
-
 
 ## License
 

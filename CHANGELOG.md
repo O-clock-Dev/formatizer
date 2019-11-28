@@ -2,9 +2,27 @@
 
 **Ne pas oublier de changer le package.json**
 
-## 1.3.0 / 22-11-2019
+## 1.3.3 / 28-11-2019
 
 ### :tada: Enhancements
+
+- Update size @ Emoji (16 -> 20)
+
+## 1.3.2 / 27-11-2019
+
+### :tada: Enhancements
+
+- Update regex for Emoji and Smiley
+
+## 1.3.1 / 26-11-2019
+
+### :tada: Enhancements
+
+- Update regex for Emoji and Smiley
+
+## 1.3.0 / 22-11-2019
+
+### :boom: Breaking Changes
 
 - Remove `Emojione`
 - Remove `Emojione-picker`
