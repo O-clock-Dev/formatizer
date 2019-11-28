@@ -26,7 +26,7 @@ const Emoji = ({ before, children }) => (
           fallback: (emojiFound, props) =>
             // eslint-disable-next-line react/prop-types
             (emojiFound ? `:${emojiFound.short_names[0]}:` : props.emoji),
-          size: 16,
+          size: 20,
         }),
       }}
     />
