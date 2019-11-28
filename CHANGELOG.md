@@ -2,6 +2,12 @@
 
 **Ne pas oublier de changer le package.json**
 
+## 1.3.3 / 28-11-2019
+
+### :tada: Enhancements
+
+- Update size @ Emoji (16 -> 20)
+
 ## 1.3.2 / 27-11-2019
 
 ### :tada: Enhancements
