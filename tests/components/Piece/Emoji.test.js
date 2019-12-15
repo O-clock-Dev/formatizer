@@ -45,6 +45,16 @@ describe('** src/components/Piece/Emoji.js **', () => {
         .attribs.title.should.equal(message);
     });
 
+    it('should add a "title" HTML attribute with the smiley code', () => {
+      const message = '8)';
+      const wrapper = mount(<Formatizer>{message}</Formatizer>);
+
+      wrapper
+        .find(Smiley)
+        .render()[0]
+        .attribs.title.should.equal(`${message}  :sunglasses:`);
+    });
+
     it('should format :sunglasses: in <Colon />', () => {
       const message = ':sunglasses:';
       const wrapper = mount(<Formatizer>{message}</Formatizer>);
