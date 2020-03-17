@@ -2,6 +2,12 @@
 
 **Ne pas oublier de changer le package.json**
 
+## 1.3.4 / 17-03-2020
+
+### :bug: Fixes
+
+- [#38](https://github.com/O-clock-Dev/formatizer/issues/38) : Fix issues with `Emoji`
+
 ## 1.3.3 / 28-11-2019
 
 ### :tada: Enhancements
