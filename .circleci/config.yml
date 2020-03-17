@@ -66,8 +66,11 @@ jobs:
   release:
     <<: *defaults
     steps:
+      - checkout
       - <<: *attach_workspace
       - <<: *restore_cache
+      - <<: *install_node_modules
+      - <<: *persist_cache
       - run:
           name: Build
           command: yarn build
