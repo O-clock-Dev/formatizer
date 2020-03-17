@@ -37,7 +37,6 @@ const smileyToColon = {
   ':\\': ':confused:',
   ':-\\': ':confused:',
   ':o)': ':monkey_face:',
-  'D:': ':fearful:',
   ':d': ':grin:',
   ':-d': ':grin:',
   ':D': ':grin:',
@@ -70,7 +69,7 @@ export const smileyReplace = smiley => smileyToColon[smiley];
  * Pattern
  */
 export const smileyStr =
-  "(8-?\\)|:-?\\||:o\\)|=-?\\)|;-?\\)|:-?>|>:-?\\(|:-?\\)|:-?\\(|:-?\\/|:-?\\\\|D:|:-?d|:-?o|:-?x|:-?p|:-?\\*|:'\\()";
+  "(8-?\\)|:-?\\||:o\\)|=-?\\)|;-?\\)|:-?>|>:-?\\(|:-?\\)|:-?\\(|:-?\\/|:-?\\\\|:-?d|:-?o|:-?x|:-?p|:-?\\*|:'\\()";
 export const patternSmiley = new RegExp(smileyStr, 'gi');
 
 /*

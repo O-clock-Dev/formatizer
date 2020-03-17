@@ -35,6 +35,13 @@ describe('** src/components/Piece/Emoji.js **', () => {
         .should.be.equal(':test:');
     });
 
+    it('should format :v: in <Colon />', () => {
+      const message = ':v:';
+      const wrapper = mount(<Formatizer>{message}</Formatizer>);
+
+      wrapper.find(Colon).should.have.length(1);
+    });
+
     it('should format :sunglasses: in <Colon />', () => {
       const message = ':sunglasses:';
       const wrapper = mount(<Formatizer>{message}</Formatizer>);
@@ -77,6 +84,14 @@ describe('** src/components/Piece/Emoji.js **', () => {
   });
 
   describe('** Smileys **', () => {
+    it('should not display `undefined` if we’re trying to display `D:`', () => {
+      const message = 'bin/console d:f:l';
+      const wrapper = mount(<Formatizer>{message}</Formatizer>);
+
+      wrapper.text().should.be.equal('bin/console d:f:l');
+      wrapper.text().should.not.be.equal('bin/console undefinedf:l');
+    });
+
     // sunglasses
     it('should format smiley 8-) 😎 in <Smiley />', () => {
       // 8-)
@@ -284,13 +299,6 @@ describe('** src/components/Piece/Emoji.js **', () => {
     // Cry
     it("should format smiley :'( 😢 in <Smiley />", () => {
       const message = ":'(";
-      const wrapper = mount(<Formatizer>{message}</Formatizer>);
-      wrapper.find(Smiley).should.have.length(1);
-    });
-
-    // fearful
-    it('should format smiley D: 😧 in <Smiley />', () => {
-      const message = 'D:';
       const wrapper = mount(<Formatizer>{message}</Formatizer>);
       wrapper.find(Smiley).should.have.length(1);
     });

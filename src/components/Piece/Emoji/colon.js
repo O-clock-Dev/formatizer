@@ -12,7 +12,7 @@ import Emoji from './index';
 /*
  * Pattern
  */
-export const patternColon = /(?::([+a-zA-Z0-9-][^{}():,\s]+):)(?::skin-tone-(\d):)?/gi;
+export const patternColon = /(?::([+a-zA-Z0-9-]*[^{}():,\s]+):)(?::skin-tone-(\d):)?/gi;
 
 /*
  * Components
