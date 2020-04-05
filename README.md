@@ -5,9 +5,6 @@
 You need these packages to install **Formatizer**.
 
 - React
-- Glamor & Glamorous
-
-If you don't have these, please install `yarn add react glamor glamorous`
 
 ## :rocket: Installation
 

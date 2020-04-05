@@ -10,7 +10,6 @@ import { mount } from 'enzyme';
  */
 import { Formatizer } from 'src';
 import Mention from 'src/components/Piece/Mention';
-import { Style, StyleMention } from 'src/components/Piece/Mention/style';
 import { isMention, isMentionMe } from './utils';
 
 /*
@@ -211,7 +210,6 @@ describe('** src/components/Piece/Mention.js **', () => {
       </Formatizer>,
     );
     wrapper.find(Mention).should.have.length(1);
-    wrapper.find(Style).should.have.length(1);
   });
 
   it('Should not add a <Mention /> with props isMention', () => {
@@ -222,7 +220,6 @@ describe('** src/components/Piece/Mention.js **', () => {
       </Formatizer>,
     );
     wrapper.find(Mention).should.have.length(1);
-    wrapper.find(Style).should.have.length(1);
   });
 
   it("Should add a <Mention> with special style if we're mentionned", () => {
@@ -233,6 +230,5 @@ describe('** src/components/Piece/Mention.js **', () => {
       </Formatizer>,
     );
     wrapper.find(Mention).should.have.length(1);
-    wrapper.find(StyleMention).should.have.length(1);
   });
 });

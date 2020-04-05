@@ -69,10 +69,14 @@ class Spoil extends React.Component {
             },
           }}
           onClick={this.handleClick}
+          data-id="summary"
         >
           Spoiler
         </div>
-        <div style={{ display: !this.state.isOpen && 'none' }}>
+        <div
+          style={{ display: !this.state.isOpen && 'none' }}
+          data-id="content"
+        >
           <Format>{spoiler}</Format>
         </div>
       </div>
