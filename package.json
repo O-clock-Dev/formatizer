@@ -28,8 +28,6 @@
     "react-syntax-highlighter": "^5.7.0"
   },
   "peerDependencies": {
-    "glamor": "^2.20.40",
-    "glamorous": "^4.11.0",
     "react": "^15.4.1 || ^16.0.0"
   },
   "devDependencies": {
@@ -52,8 +50,6 @@
     "eslint-plugin-import": "^2.3.0",
     "eslint-plugin-jsx-a11y": "^5.0.3",
     "eslint-plugin-react": "^7.1.0",
-    "glamor": "^2.20.40",
-    "glamorous": "^4.11.0",
     "husky": "^0.14.3",
     "jsdom": "^11.5.1",
     "lint-staged": "^6.0.0",

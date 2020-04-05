@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 /*
  * Local Import
  */
-import { Style, StyleMention } from './style';
+import { Chunk } from '../style';
 
 /*
  * Pattern
@@ -16,6 +16,18 @@ export const patternMention = /(?:\B)(?:@[a-zÀ-ÿ0-9._!'-]+)/gi;
 
 // @TODO : Mention with Space -- WIP
 // export const patternMention = /(?:\B)@(?:[a-zÀ-ÿ0-9'._!-]+)\s?(?:[a-zÀ-ÿ0-9'._-]*)/gi
+
+/*
+ * Style
+ */
+const styleMention = {
+  ...Chunk,
+  color: '#0ac3a7',
+  padding: '0 .25em',
+};
+const style = {
+  color: '#0ac3a7',
+};
 
 /*
  * Component
@@ -36,7 +48,7 @@ const Mention = ({
    */
   if (isMentionMe(mention)) {
     onMentionMe(mention);
-    return <StyleMention>{value}</StyleMention>;
+    return <span style={styleMention}>{value}</span>;
   }
 
   /*
@@ -44,7 +56,7 @@ const Mention = ({
    */
   if (isMention(mention)) {
     onMention(mention);
-    return <Style>{value}</Style>;
+    return <span style={style}>{value}</span>;
   }
 
   return false;

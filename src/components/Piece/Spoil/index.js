@@ -8,7 +8,6 @@ import PropTypes from 'prop-types';
  * Local Import
  */
 import Format from 'src/components/Format';
-import { StyleSpoil, StyleSpoiler } from './style';
 
 /*
  * Patterns
@@ -24,7 +23,7 @@ class Spoil extends React.Component {
    * State
    */
   state = {
-    open: this.props.options.spoiler.open,
+    isOpen: this.props.options.spoiler.open,
     onClick: this.props.options.spoiler.onClick,
   };
 
@@ -32,9 +31,7 @@ class Spoil extends React.Component {
    * Handlers
    */
   handleClick = (evt) => {
-    this.setState(prevState => ({
-      open: !prevState.open,
-    }));
+    this.setState(prevState => ({ isOpen: !prevState.isOpen }));
 
     if (this.state.onClick) {
       this.state.onClick(evt);
@@ -45,11 +42,8 @@ class Spoil extends React.Component {
    * Render
    */
   render() {
-    const { children } = this.props;
-    const { open } = this.state;
-
     // Never forget to reset lastIndex after a .exec()
-    const matches = patternSpoil.exec(children);
+    const matches = patternSpoil.exec(this.props.children);
     patternSpoil.lastIndex = 0;
 
     // Capturing paren: Text + Trim it !
@@ -61,16 +55,31 @@ class Spoil extends React.Component {
      */
     return (
       <div>
-        <StyleSpoiler onClick={this.handleClick} open={open}>
+        <div
+          style={{
+            cursor: 'pointer',
+            '::before': {
+              transform: this.state.isOpen && 'rotate(90deg)',
+              content: '""',
+              display: 'inline-block',
+              borderLeft: '5px solid',
+              borderTop: '5px solid transparent',
+              borderBottom: '5px solid transparent',
+              marginRight: '10px',
+            },
+          }}
+          onClick={this.handleClick}
+        >
           Spoiler
-        </StyleSpoiler>
-        <StyleSpoil open={open}>
+        </div>
+        <div style={{ display: !this.state.isOpen && 'none' }}>
           <Format>{spoiler}</Format>
-        </StyleSpoil>
+        </div>
       </div>
     );
   }
 }
+
 /*
  * PropTypes
  */

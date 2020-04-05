@@ -4,7 +4,6 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
-import glamorous from 'glamorous';
 
 /*
  * Local Import
@@ -23,10 +22,10 @@ export const patternLink = /(?:https?|atom|ftp):\/\/(?:www\.)?(?:(?:localhost|te
 /*
  * Style
  */
-const Style = glamorous.a({
+const style = {
   textDecoration: 'underline',
   textUnderlinePosition: 'under',
-});
+};
 
 /*
  * Component
@@ -40,18 +39,18 @@ const Link = ({ children }) => {
     const link = children.slice(0, -1);
     return (
       <span>
-        <Style href={link} target="_blank" rel="noopener noreferrer">
+        <a style={style} href={link} target="_blank" rel="noopener noreferrer">
           {link}
-        </Style>
+        </a>
         {last}
       </span>
     );
   }
 
   return (
-    <Style href={children} target="_blank" rel="noopener noreferrer">
+    <a style={style} href={children} target="_blank" rel="noopener noreferrer">
       {children}
-    </Style>
+    </a>
   );
 };
 

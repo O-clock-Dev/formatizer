@@ -3,7 +3,6 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
-import glamorous from 'glamorous';
 
 /*
  * Local Import
@@ -18,7 +17,7 @@ export const patternBlockquote = /(?:^|\n.)>[^\n]+\n?/gm;
 /*
  * Style
  */
-const Style = glamorous.span({
+const style = {
   display: 'block',
   borderLeft: '3px solid rgba(255,255,255,0.2)',
   fontStyle: 'italic',
@@ -26,7 +25,7 @@ const Style = glamorous.span({
   '&:last-of-type': {
     marginBottom: '.2em',
   },
-});
+};
 
 /*
  * Component
@@ -36,9 +35,9 @@ const Blockquote = ({ children }) => {
   const value = children.slice(1);
 
   return (
-    <Style>
+    <span style={style}>
       <Format>{value}</Format>
-    </Style>
+    </span>
   );
 };
 

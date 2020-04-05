@@ -9,12 +9,30 @@ import PropTypes from 'prop-types';
  */
 import Format from 'src/components/Format';
 import Character from 'src/components/Piece/Character';
-import getStyle from './style';
 
 /*
  * Pattern
  */
 export const patternTextFormat = /(\s|^)((?:\*.+?\*|~.+?~|_.+?_))(?=\s|$)/g;
+
+/*
+ * Get style by char
+ */
+const getStyle = (char) => {
+  switch (char) {
+    case '*':
+      return { fontWeight: 700 };
+
+    case '~':
+      return { textDecoration: 'line-through' };
+
+    case '_':
+      return { fontStyle: 'italic' };
+
+    default:
+      return {};
+  }
+};
 
 /*
  * TextFormat
@@ -27,16 +45,13 @@ const TextFormat = ({ children }) => {
   const firstChar = format.slice(0, 1);
   const text = format.slice(1).slice(0, -1);
 
-  // Style
-  const Style = getStyle(firstChar);
-
   // View
   return (
     <span>
       {before && <Character>{before}</Character>}
-      <Style>
+      <span style={getStyle(firstChar)}>
         <Format>{text}</Format>
-      </Style>
+      </span>
     </span>
   );
 };
