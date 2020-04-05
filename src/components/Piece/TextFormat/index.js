@@ -47,12 +47,12 @@ const TextFormat = ({ children }) => {
 
   // View
   return (
-    <span>
+    <React.Fragment>
       {before && <Character>{before}</Character>}
       <span style={getStyle(firstChar)}>
         <Format>{text}</Format>
       </span>
-    </span>
+    </React.Fragment>
   );
 };
 

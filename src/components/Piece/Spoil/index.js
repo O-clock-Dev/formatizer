@@ -54,7 +54,7 @@ class Spoil extends React.Component {
      * View
      */
     return (
-      <div>
+      <React.Fragment>
         <div
           style={{
             cursor: 'pointer',
@@ -75,7 +75,7 @@ class Spoil extends React.Component {
         <div style={{ display: !this.state.isOpen && 'none' }}>
           <Format>{spoiler}</Format>
         </div>
-      </div>
+      </React.Fragment>
     );
   }
 }

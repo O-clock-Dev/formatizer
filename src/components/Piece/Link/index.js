@@ -38,12 +38,12 @@ const Link = ({ children }) => {
   if (last === '.' || last === ',') {
     const link = children.slice(0, -1);
     return (
-      <span>
+      <React.Fragment>
         <a style={style} href={link} target="_blank" rel="noopener noreferrer">
           {link}
         </a>
         {last}
-      </span>
+      </React.Fragment>
     );
   }
 

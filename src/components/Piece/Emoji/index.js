@@ -12,10 +12,9 @@ import { Emoji as Emojimart } from 'emoji-mart';
 /*
  * Components
  */
-// @TODO Get rid of <span> with React 16.2
 // @TODO Use Character to create <br /> ?
 const Emoji = ({ before, children }) => (
-  <span>
+  <React.Fragment>
     {before}
     <span
       dangerouslySetInnerHTML={{
@@ -30,7 +29,7 @@ const Emoji = ({ before, children }) => (
         }),
       }}
     />
-  </span>
+  </React.Fragment>
 );
 
 /*

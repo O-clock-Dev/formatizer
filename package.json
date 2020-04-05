@@ -28,7 +28,7 @@
     "react-syntax-highlighter": "^5.7.0"
   },
   "peerDependencies": {
-    "react": "^15.4.1 || ^16.0.0"
+    "react": "^16.2.0 || ^16.13.1"
   },
   "devDependencies": {
     "auto-reload-brunch": "^2.7.1",
@@ -56,9 +56,9 @@
     "mocha": "^4.0.1",
     "prettier": "^1.9.1",
     "prop-types": "^15.6.0",
-    "react": "^15.6.2",
-    "react-dom": "^15.6.2",
-    "react-test-renderer": "^15.6.2"
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-test-renderer": "^16.13.1"
   },
   "main": "dist/index.js",
   "files": [
