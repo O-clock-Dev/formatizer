@@ -20,7 +20,7 @@ import PropTypes from 'prop-types';
 export const patternLink = /(?:https?|atom|ftp):\/\/(?:www\.)?(?:(?:localhost|teletype)?(?=\/)|[-a-zA-Z0-9@:%._+~#=]{1,256}[.:][a-zA-Z0-9]{1,6}\b)(?:\/[-a-zA-Z0-9@:%_+?.,~#?&()/=]*)?/g;
 
 // Regex to match markdown links
-export const patternLinkMarkdown = /\[([^[]+)\]\(([\w\d.\\/:?=#]+)\)/g;
+export const patternLinkMarkdown = /\[([^[]+)\]\(([a-zA-Z0-9@:%_+?.,~#?&()/=-]+)\)/g;
 
 /*
  * Style
@@ -34,14 +34,11 @@ const style = {
  * Component
  */
 const Link = ({ children }) => {
-  console.log({ children });
-
   const matches = patternLinkMarkdown.exec(children);
   patternLinkMarkdown.lastIndex = 0;
 
   if (matches) {
     const [, label, link] = matches;
-    console.log({ matches });
 
     return (
       <a style={style} href={link} target="_blank" rel="noopener noreferrer">
