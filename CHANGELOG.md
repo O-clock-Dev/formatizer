@@ -2,6 +2,14 @@
 
 **Ne pas oublier de changer le package.json**
 
+## 1.4.0 / 06-04-2020
+
+### :tada: Enhancements
+
+- Update React to the latest version
+- Title attribute for emojis
+- [#22](https://github.com/O-clock-Dev/formatizer/issues/22) : Remove CSS-in-JS' library and use CSS inline instead.
+
 ## 1.3.4 / 17-03-2020
 
 ### :bug: Fixes
