@@ -12,29 +12,28 @@ import { Emoji as Emojimart } from 'emoji-mart';
 /*
  * Components
  */
-// @TODO Get rid of <span> with React 16.2
-// @TODO Use Character to create <br /> ?
 const Emoji = ({ before, children: code, altCode }) => {
-  const title = altCode ? `${altCode}  ${code}` : code;
+  const title = altCode ? `${altCode} ${code}` : code;
+
   return (
-    <span title={title}>
-      {before}
-      <span
-        dangerouslySetInnerHTML={{
-          __html: Emojimart({
-            html: true,
-            set: 'twitter',
-            emoji: code,
-            fallback: (emojiFound, props) =>
-              // eslint-disable-next-line react/prop-types
-              (emojiFound ? `:${emojiFound.short_names[0]}:` : props.emoji),
-            size: 20,
-          }),
-        }}
-      />
-    </span>
-  );
-};
+  <React.Fragment>
+    {before}
+    <span
+      title={title}
+      dangerouslySetInnerHTML={{
+        __html: Emojimart({
+          html: true,
+          set: 'twitter',
+          emoji: children,
+          fallback: (emojiFound, props) =>
+            // eslint-disable-next-line react/prop-types
+            (emojiFound ? `:${emojiFound.short_names[0]}:` : props.emoji),
+          size: 20,
+        }),
+      }}
+    />
+  </React.Fragment>
+);
 
 /*
  * PropTypes

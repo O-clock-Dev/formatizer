@@ -10,7 +10,6 @@ import { mount } from 'enzyme';
  */
 import { Formatizer } from 'src';
 import Color from 'src/components/Piece/Color';
-import { Style } from 'src/components/Piece/Color/style';
 
 /*
  * Code
@@ -54,11 +53,11 @@ describe('** src/components/Piece/Color.js **', () => {
   it('<Color /> should have a property color which be equal "ee1225"', () => {
     const message = 'Hello #ee1225';
     const wrapper = mount(<Formatizer>{message}</Formatizer>);
-    wrapper
-      .find(Color)
-      .find(Style)
+    const component = wrapper.find(Color);
+
+    component
       .props()
-      .should.have.property('color')
+      .should.have.property('children')
       .which.be.equal('#ee1225');
   });
 
