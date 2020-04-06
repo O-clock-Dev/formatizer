@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "emoji-mart": "^2.11.1",
+    "enzyme-adapter-react-16": "^1.15.2",
     "react-syntax-highlighter": "^5.7.0"
   },
   "peerDependencies": {
@@ -43,7 +44,6 @@
     "brunch": "^2.10.12",
     "chai": "^4.1.2",
     "enzyme": "^3.2.0",
-    "enzyme-adapter-react-15": "^1.0.5",
     "eslint": "^4.4.1",
     "eslint-config-airbnb": "^15.1.0",
     "eslint-import-resolver-node": "^0.3.0",

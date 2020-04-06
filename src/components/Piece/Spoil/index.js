@@ -54,7 +54,7 @@ class Spoil extends React.Component {
      * View
      */
     return (
-      <div>
+      <React.Fragment>
         <span
           style={{
             transform: this.state.isOpen && 'rotate(90deg)',
@@ -64,12 +64,10 @@ class Spoil extends React.Component {
             borderBottom: '5px solid transparent',
             marginRight: '10px',
           }}
+          data-id="arrow"
         />
         <div
-          style={{
-            cursor: 'pointer',
-            display: 'inline-block',
-          }}
+          style={{ cursor: 'pointer', display: 'inline-block' }}
           onClick={this.handleClick}
           data-id="summary"
         >
