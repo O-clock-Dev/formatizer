@@ -12,7 +12,6 @@ import { Formatizer } from 'src';
 import Format from 'src/components/Format';
 import Spoil from 'src/components/Piece/Spoil';
 import Highlight from 'src/components/Piece/Highlight';
-import { StyleSpoil, StyleSpoiler } from 'src/components/Piece/Spoil/style';
 
 /*
  * Code
@@ -27,23 +26,29 @@ describe('** src/components/Piece/Spoil.js **', () => {
     const message = 'Bonjour, ###je suis un spoiler###';
     const wrapper = mount(<Formatizer>{message}</Formatizer>);
     const component = wrapper.find(Spoil);
-
-    // Should have <Spoil />
     component.should.have.length(1);
+  });
 
-    // Should have `Style` with text `Spoiler`
-    component
-      .find(StyleSpoiler)
-      .props()
-      .should.have.property('children')
-      .which.equal('Spoiler');
+  it('Should have `Spoil` with text `Spoiler`', () => {
+    const message = 'Bonjour, ###je suis un spoiler###';
+    const wrapper = mount(<Formatizer>{message}</Formatizer>);
+    const component = wrapper.find(Spoil);
 
-    // Should have text `Je suis un spoiler`
     component
-      .find(Format)
-      .props()
-      .should.have.property('children')
-      .which.be.equal('je suis un spoiler');
+      .find('[data-id="summary"]')
+      .text()
+      .should.be.equal('Spoiler');
+  });
+
+  it('Should have text `Je suis un spoiler`', () => {
+    const message = 'Bonjour, ###je suis un spoiler###';
+    const wrapper = mount(<Formatizer>{message}</Formatizer>);
+    const component = wrapper.find(Spoil);
+
+    component
+      .find('[data-id="content"]')
+      .text()
+      .should.be.equal('je suis un spoiler');
   });
 
   it('should manage many Spoils and newlines', () => {
@@ -82,17 +87,13 @@ describe('** src/components/Piece/Spoil.js **', () => {
     component.find(Highlight).should.have.length(1);
   });
 
-  it('should have an open property false by default', () => {
+  it('should have an `isOpen` property which are `false` by default', () => {
     const message = '### coucou ###';
     const wrapper = mount(<Formatizer>{message}</Formatizer>);
     const component = wrapper.find(Spoil);
 
     // By default the spoiler should be closed
-    component
-      .find(StyleSpoil)
-      .props()
-      .should.have.property('open')
-      .which.equal(false);
+    component.state('isOpen').should.be.equal(false);
   });
 
   it('should be open when the options property is set', () => {
@@ -111,10 +112,6 @@ describe('** src/components/Piece/Spoil.js **', () => {
     const component = wrapper.find(Spoil);
 
     // You can change the display by setting the options
-    component
-      .find(StyleSpoil)
-      .props()
-      .should.have.property('open')
-      .which.equal(true);
+    component.state('isOpen').should.be.equal(true);
   });
 });

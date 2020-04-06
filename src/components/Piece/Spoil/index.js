@@ -54,25 +54,31 @@ class Spoil extends React.Component {
      * View
      */
     return (
-      <React.Fragment>
+      <div>
+        <span
+          style={{
+            transform: this.state.isOpen && 'rotate(90deg)',
+            display: 'inline-block',
+            borderLeft: '5px solid',
+            borderTop: '5px solid transparent',
+            borderBottom: '5px solid transparent',
+            marginRight: '10px',
+          }}
+        />
         <div
           style={{
             cursor: 'pointer',
-            '::before': {
-              transform: this.state.isOpen && 'rotate(90deg)',
-              content: '""',
-              display: 'inline-block',
-              borderLeft: '5px solid',
-              borderTop: '5px solid transparent',
-              borderBottom: '5px solid transparent',
-              marginRight: '10px',
-            },
+            display: 'inline-block',
           }}
           onClick={this.handleClick}
+          data-id="summary"
         >
           Spoiler
         </div>
-        <div style={{ display: !this.state.isOpen && 'none' }}>
+        <div
+          style={{ display: !this.state.isOpen && 'none' }}
+          data-id="content"
+        >
           <Format>{spoiler}</Format>
         </div>
       </React.Fragment>

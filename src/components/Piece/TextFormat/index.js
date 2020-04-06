@@ -21,13 +21,19 @@ export const patternTextFormat = /(\s|^)((?:\*.+?\*|~.+?~|_.+?_))(?=\s|$)/g;
 const getStyle = (char) => {
   switch (char) {
     case '*':
-      return { fontWeight: 700 };
+      return {
+        fontWeight: 700,
+      };
 
     case '~':
-      return { textDecoration: 'line-through' };
+      return {
+        textDecoration: 'line-through',
+      };
 
     case '_':
-      return { fontStyle: 'italic' };
+      return {
+        fontStyle: 'italic',
+      };
 
     default:
       return {};
