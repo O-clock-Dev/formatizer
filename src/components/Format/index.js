@@ -24,21 +24,21 @@ const Format = ({ children, ...props }) => {
   /*
    * View
    */
-
-  // @TODO : Delete <span> when we pass at React 16
   return (
-    <span>
+    <React.Fragment>
       {fragments.map((fragment, index) => {
         // If element is a string
         if (typeof fragment === 'string') {
-          return <span key={index}>{fragment}</span>;
+          return <React.Fragment key={index}>{fragment}</React.Fragment>;
         }
 
         // Otherwise, is a Piece of Fragment.
         // Clone element to add key
-        return React.cloneElement(fragment, { key: index });
+        return React.cloneElement(fragment, {
+          key: index,
+        });
       })}
-    </span>
+    </React.Fragment>
   );
 };
 

@@ -17,7 +17,7 @@ export const patternColor = /(?:\B)#(?:[0-9a-f]{3}){1,2}(?=\b|$)/gi;
  * Component
  */
 const Color = ({ children }) => (
-  <span>
+  <React.Fragment>
     <span
       style={{
         background: children,
@@ -32,7 +32,7 @@ const Color = ({ children }) => (
       }}
     />
     {children}
-  </span>
+  </React.Fragment>
 );
 
 /*

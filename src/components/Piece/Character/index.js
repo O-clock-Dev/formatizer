@@ -16,7 +16,6 @@ export const patternCharacter = /\n+/g;
 /*
  * Component
  */
-// @TODO, get rid of <span>s with React 16.2
 const Character = ({ children }) => {
   // Line
   if (children === '\n') {
@@ -26,15 +25,15 @@ const Character = ({ children }) => {
   // Multiline
   if (children.slice(0, 1) === '\n') {
     return (
-      <span>
+      <React.Fragment>
         <br />
         <br />
-      </span>
+      </React.Fragment>
     );
   }
 
   // Other char
-  return <span>{children}</span>;
+  return <React.Fragment>{children}</React.Fragment>;
 };
 
 /*
