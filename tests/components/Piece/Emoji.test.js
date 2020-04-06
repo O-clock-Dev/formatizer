@@ -25,7 +25,7 @@ should();
  */
 describe('** src/components/Piece/Emoji.js **', () => {
   describe('** Colons **', () => {
-    it('should doesn’t format :test: in <Emoji />', () => {
+    it('should not format :test: in <Emoji />', () => {
       const message = ':test:';
       const wrapper = mount(<Formatizer>{message}</Formatizer>);
 
@@ -35,6 +35,26 @@ describe('** src/components/Piece/Emoji.js **', () => {
         .should.be.equal(':test:');
     });
 
+    it('should add a "title" HTML attribute with the emoji code', () => {
+      const message = ':sunglasses:';
+      const wrapper = mount(<Formatizer>{message}</Formatizer>);
+
+      wrapper
+        .find(Colon)
+        .render()[0]
+        .attribs.title.should.equal(message);
+    });
+
+    it('should add a "title" HTML attribute with the smiley code', () => {
+      const message = '8)';
+      const wrapper = mount(<Formatizer>{message}</Formatizer>);
+
+      wrapper
+        .find(Smiley)
+        .render()[0]
+        .attribs.title.should.equal(`${message} :sunglasses:`);
+    });
+    
     it('should format :v: in <Colon />', () => {
       const message = ':v:';
       const wrapper = mount(<Formatizer>{message}</Formatizer>);
