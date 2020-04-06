@@ -12,11 +12,14 @@ import { Emoji as Emojimart } from 'emoji-mart';
 /*
  * Components
  */
-// @TODO Use Character to create <br /> ?
-const Emoji = ({ before, children }) => (
+const Emoji = ({ before, children: code, altCode }) => {
+  const title = altCode ? `${altCode} ${code}` : code;
+
+  return (
   <React.Fragment>
     {before}
     <span
+      title={title}
       dangerouslySetInnerHTML={{
         __html: Emojimart({
           html: true,
@@ -38,10 +41,12 @@ const Emoji = ({ before, children }) => (
 Emoji.propTypes = {
   before: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
   children: PropTypes.string.isRequired,
+  altCode: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
 };
 
 Emoji.defaultProps = {
   before: '',
+  altCode: false,
 };
 
 /*

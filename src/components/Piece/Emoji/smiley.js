@@ -75,12 +75,12 @@ export const patternSmiley = new RegExp(smileyStr, 'gi');
 /*
  * Components
  */
-const Smiley = ({ children }) => {
+const Smiley = ({ children: code }) => {
   let before = '';
-  let emoji = children;
+  let emoji = code;
 
   // Smiley ?
-  const matches = patternSmiley.exec(children);
+  const matches = patternSmiley.exec(code);
   patternSmiley.lastIndex = 0;
 
   if (matches) {
@@ -91,7 +91,11 @@ const Smiley = ({ children }) => {
       .replace(/\n/g, '<br />');
   }
 
-  return <Emoji before={before}>{emoji}</Emoji>;
+  return (
+    <Emoji before={before} altCode={emoji !== code ? code : false}>
+      {emoji}
+    </Emoji>
+  );
 };
 
 /*
