@@ -7,7 +7,10 @@ import Spoil, { patternSpoil } from 'src/components/Piece/Spoil';
 import Highlight, { patternHighlight } from 'src/components/Piece/Highlight';
 import Code, { patternCode } from 'src/components/Piece/Code';
 import Blockquote, { patternBlockquote } from 'src/components/Piece/Blockquote';
-import Link, { patternLink } from 'src/components/Piece/Link';
+import Link, {
+  patternLink,
+  patternLinkMarkdown,
+} from 'src/components/Piece/Link';
 import Mention, { patternMention } from 'src/components/Piece/Mention';
 
 // Text
@@ -41,6 +44,10 @@ export default [
   {
     pattern: patternBlockquote,
     Component: Blockquote,
+  },
+  {
+    pattern: patternLinkMarkdown,
+    Component: Link,
   },
   {
     pattern: patternLink,
