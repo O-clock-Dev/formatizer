@@ -24,15 +24,17 @@ should();
  */
 describe('** src/components/Piece/Link.js **', () => {
   describe('Link @ Basic', () => {
-    it('should add <Link /> for a Link', () => {
+    it('should add <Link /> for a https Link', () => {
       // https
-      let message = 'Bonjour, https://oclock.io';
-      let wrapper = mount(<Formatizer>{message}</Formatizer>);
+      const message = 'Bonjour, https://oclock.io';
+      const wrapper = mount(<Formatizer>{message}</Formatizer>);
       wrapper.find(Link).should.have.length(1);
+    });
 
+    it('should add <Link /> for a http Link', () => {
       // http
-      message = 'Bonjour, http://oclock.io';
-      wrapper = mount(<Formatizer>{message}</Formatizer>);
+      const message = 'Bonjour, http://oclock.io';
+      const wrapper = mount(<Formatizer>{message}</Formatizer>);
       wrapper.find(Link).should.have.length(1);
     });
 
@@ -412,5 +414,12 @@ describe('** src/components/Piece/Link.js **', () => {
         .should.have.a.property('href')
         .which.is.equal('https://checklist.oclock.io/checklist.php?id=1');
     });
+  });
+
+  it('should add links (Basic + markdown style)', () => {
+    // https
+    const message = 'Bonjour, https://oclock.io, [test](https://oclock.io)';
+    const wrapper = mount(<Formatizer>{message}</Formatizer>);
+    wrapper.find(Link).should.have.length(2);
   });
 });
