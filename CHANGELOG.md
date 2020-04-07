@@ -2,7 +2,7 @@
 
 **Ne pas oublier de changer le package.json**
 
-## 1.5.0 / 06-04-2020
+## 1.5.0 / 07-04-2020
 
 ### 📰 News
 
