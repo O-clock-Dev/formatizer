@@ -130,7 +130,13 @@ const message = '> Message';
 ```js
 const message = 'https://github.com/o-clock/formatizer';
 <Formatizer>{message}</Formatizer>;
-// Output: Link formatted
+// Output: https://github.com/o-clock/formatizer
+```
+
+```js
+const message = '[Formatizer](https://github.com/o-clock/formatizer)';
+<Formatizer>{message}</Formatizer>;
+// Output: Formatizer (https://github.com/o-clock/formatizer in the href property)
 ```
 
 - Emoji with colons (eg. :sunglasses:, :star:, :heart:, or other...) or with Smiley :-P :

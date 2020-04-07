@@ -2,9 +2,15 @@
 
 **Ne pas oublier de changer le package.json**
 
+## 1.5.0 / 06-04-2020
+
+### 📰 News
+
+- [#42](https://github.com/O-clock-Dev/formatizer/issues/42) : Now we can add a link like on markdown: `[label](link)`. We have the choice into the 2 methods. If we add a link like the markdown system, the label is now displayed, when the URL is only in the href property
+
 ## 1.4.0 / 06-04-2020
 
-### :tada: Enhancements
+### 🎉 Enhancements
 
 - Update React to the latest version
 - Title attribute for emojis
@@ -12,31 +18,31 @@
 
 ## 1.3.4 / 17-03-2020
 
-### :bug: Fixes
+### 🐛 Fixes
 
 - [#38](https://github.com/O-clock-Dev/formatizer/issues/38) : Fix issues with `Emoji`
 
 ## 1.3.3 / 28-11-2019
 
-### :tada: Enhancements
+### 🎉 Enhancements
 
 - Update size @ Emoji (16 -> 20)
 
 ## 1.3.2 / 27-11-2019
 
-### :tada: Enhancements
+### 🎉 Enhancements
 
 - Update regex for Emoji and Smiley
 
 ## 1.3.1 / 26-11-2019
 
-### :tada: Enhancements
+### 🎉 Enhancements
 
 - Update regex for Emoji and Smiley
 
 ## 1.3.0 / 22-11-2019
 
-### :boom: Breaking Changes
+### 💥 Breaking Changes
 
 - Remove `Emojione`
 - Remove `Emojione-picker`
@@ -44,66 +50,66 @@
 
 ## 1.2.6 / 16-07-2018
 
-### :tada: Enhancements
+### 🎉 Enhancements
 
 - Improvement regex `Mention`
 - Increased arrow spoiler margin
 
-### :bug: Fixes
+### 🐛 Fixes
 
 - [#15](https://github.com/O-clock-Dev/formatizer/issues/15) : Fix issues with `Mention` (Special char)
 
 ## 1.2.5
 
-### :bug: Fixes
+### 🐛 Fixes
 
 - Fix issues with scroll in `Spoiler` in the Cockpit.
 
 ## 1.2.4
 
-### :bug: Fixes
+### 🐛 Fixes
 
 - [#14](https://github.com/O-clock-Dev/formatizer/issues/14) : Fix `Mention` with dot
 - [#9](https://github.com/O-clock-Dev/formatizer/issues/9) : Fix `Mention` with apostrophe
 - Fix `Mention` with 2 accents
 - [#10](https://github.com/O-clock-Dev/formatizer/issues/10) : Fix `Link` with comma in second party of URL (path, etc...)
 
-### :tada: Enhancements
+### 🎉 Enhancements
 
 - [#11](https://github.com/O-clock-Dev/formatizer/issues/11) : Add support for `atom://teletype/...`
 - [#13](https://github.com/O-clock-Dev/formatizer/issues/13) : Add an option for open Spoiler automatically, and prepare for future options :)
 
 ## 1.2.3
 
-### :tada: Enhancements
+### 🎉 Enhancements
 
 - [#8](https://github.com/O-clock-Dev/formatizer/issues/8) : Add piece `Spoiler`
 
 ## 1.2.2
 
-### :tada: Enhancements
+### 🎉 Enhancements
 
 - [#6](https://github.com/O-clock-Dev/formatizer/issues/6) : Update Regex of `Mention` with accents
 
 ## 1.2.1
 
-### :tada: Enhancements
+### 🎉 Enhancements
 
 - Update style of `Color`
 
 ## 1.2.0
 
-### :boom: Breaking Changes
+### 💥 Breaking Changes
 
 - Add full support for `Mention`. If an user is not mentionable, his mention is not going in `Mention`you can see a complete example in `example` folder.
 
-### :tada: Enhancements
+### 🎉 Enhancements
 
 - When a HEX color is pass like param in `Formatizer`, we're displaying a little square with this color.
 
 ## 1.1.9
 
-### :tada: Enhancements
+### 🎉 Enhancements
 
 - Add comma in Regex @ `Link`
 - add `textTransform: "none"` in `CodingFront`
