@@ -6,7 +6,7 @@
 
 ### 📰 News
 
-- [#42](https://github.com/O-clock-Dev/formatizer/issues/42) : Now we can add a link like on markdown: `[label](link)`. We have the choice into the 2 methods. If we add a link like the markdown system, the label is now displayed, when the URL is only in the href property
+- [#42](https://github.com/O-clock-Dev/formatizer/issues/42) : Now we can add a link like on markdown: `[label](link)`. We have the choice between the 2 methods. If we add a link like the markdown system, the label is now displayed, when the URL is only in the href property
 
 ## 1.4.0 / 06-04-2020
 
