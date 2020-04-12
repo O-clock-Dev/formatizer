@@ -15,7 +15,7 @@ To install `formatizer` :
 
 ## :sunny: Synopsis
 
-With this module, you can format your text more easily. For example, you can format into **bold**, _italic_ or ~~strike~~ a message, send a smiley, a code snippet or a blockquote... Let's see [API Reference](readme.md#api-reference) for more details. :smile:
+With this module, you can format your text more easily. For example, you can format into **bold**, _italic_ or ~~strike~~ a message, send a smiley, a code snippet or a blockquote... Let's see [API Reference](#api-reference) for more details. :smile:
 
 ## :gear: Options
 
