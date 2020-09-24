@@ -2,6 +2,12 @@
 
 **Ne pas oublier de changer le package.json**
 
+## 1.5.1 / 24-09-2020
+
+### 🎉 Enhancements
+
+- Update `set` emoji. From `twitter`, to `apple`
+
 ## 1.5.0 / 07-04-2020
 
 ### 📰 News

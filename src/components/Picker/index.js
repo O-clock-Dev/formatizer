@@ -17,9 +17,9 @@ const Picker = ({ onChange }) => {
   return (
     <EmojiPicker
       onSelect={handleChange}
-      set="twitter"
+      set="apple"
       emojiTooltip
-      title="O’clock"
+      title=""
     />
   );
 };
