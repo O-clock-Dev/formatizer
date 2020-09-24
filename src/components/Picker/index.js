@@ -19,7 +19,7 @@ const Picker = ({ onChange }) => {
       onSelect={handleChange}
       set="apple"
       emojiTooltip
-      title="O’clock"
+      title=""
     />
   );
 };
