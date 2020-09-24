@@ -23,7 +23,7 @@ const Emoji = ({ before, children: code, altCode }) => {
         dangerouslySetInnerHTML={{
           __html: Emojimart({
             html: true,
-            set: 'twitter',
+            set: 'apple',
             emoji: code,
             fallback: (emojiFound, props) =>
               // eslint-disable-next-line react/prop-types
