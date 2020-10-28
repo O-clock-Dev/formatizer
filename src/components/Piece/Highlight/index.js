@@ -1,8 +1,9 @@
 /*
  * Package Import
  */
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { UilAngleUp, UilArrow } from '@iconscout/react-unicons';
 import Highlighter from 'react-syntax-highlighter';
 import { atomOneDark as style } from 'react-syntax-highlighter/dist/styles';
 
@@ -49,9 +50,68 @@ const Highlight = ({ children }) => {
     options.showLineNumbers = true;
     options.lineNumberContainerStyle = lineNumberContainerStyle;
   }
+  /*
+   * state
+   */
+  const [isOpen, setOpen] = useState(false);
+
+  /*
+   * Handlers
+   */
+  const handleClick = () => {
+    setOpen(!isOpen);
+  };
 
   // View
-  return <Highlighter {...options}>{code}</Highlighter>;
+  return (
+    <React.Fragment>
+      <div className="snippet-container">
+        <div
+          className="snippet-header"
+          style={{
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            padding: '8px 4px',
+          }}
+          onClick={handleClick}
+          data-id="summary"
+        >
+          <UilArrow
+            className="snippet-icon-code"
+            style={{
+              marginRight: '8px',
+              height: '1.5rem',
+              width: '1.5rem',
+            }}
+          />
+          <span
+            className="snippet-title"
+            style={{
+              marginRight: '8px',
+            }}
+          >
+            Smippet
+          </span>
+          <UilAngleUp
+            className="snippet-icon-arrow"
+            style={{
+              transform: isOpen && 'rotate(180deg)',
+              height: '1.5rem',
+              width: '1.5rem',
+            }}
+          />
+        </div>
+        <div
+          className="snippet-content"
+          style={{ display: !isOpen && 'none' }}
+          data-id="content"
+        >
+          <Highlighter {...options}>{code}</Highlighter>;
+        </div>
+      </div>
+    </React.Fragment>
+  );
 };
 
 /*

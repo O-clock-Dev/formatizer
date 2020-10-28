@@ -48,7 +48,14 @@ const Mention = ({
    */
   if (isMentionMe(mention)) {
     onMentionMe(mention);
-    return <span style={styleMention}>{value}</span>;
+    return (
+      <span
+        style={styleMention}
+        className="formatizer-mention formatizer-mention-me"
+      >
+        {value}
+      </span>
+    );
   }
 
   /*
@@ -56,7 +63,11 @@ const Mention = ({
    */
   if (isMention(mention)) {
     onMention(mention);
-    return <span style={style}>{value}</span>;
+    return (
+      <span style={style} className="formatizer-mention">
+        {value}
+      </span>
+    );
   }
 
   return false;

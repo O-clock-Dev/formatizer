@@ -2,6 +2,7 @@
  * Package Import
  */
 import React from 'react';
+import { UilAngleUp, UilEye } from '@iconscout/react-unicons';
 import PropTypes from 'prop-types';
 
 /*
@@ -55,29 +56,50 @@ class Spoil extends React.Component {
      */
     return (
       <React.Fragment>
-        <span
-          style={{
-            transform: this.state.isOpen && 'rotate(90deg)',
-            display: 'inline-block',
-            borderLeft: '5px solid',
-            borderTop: '5px solid transparent',
-            borderBottom: '5px solid transparent',
-            marginRight: '10px',
-          }}
-          data-id="arrow"
-        />
-        <div
-          style={{ cursor: 'pointer', display: 'inline-block' }}
-          onClick={this.handleClick}
-          data-id="summary"
-        >
-          Spoiler
-        </div>
-        <div
-          style={{ display: !this.state.isOpen && 'none' }}
-          data-id="content"
-        >
-          <Format>{spoiler}</Format>
+        <div className="spoiler-container">
+          <div
+            className="spoiler-header"
+            style={{
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              padding: '8px 4px',
+            }}
+            onClick={this.handleClick}
+            data-id="summary"
+          >
+            <UilEye
+              className="spoiler-icon-eye"
+              style={{
+                marginRight: '8px',
+                height: '1.5rem',
+                width: '1.5rem',
+              }}
+            />
+            <span
+              className="spoiler-title"
+              style={{
+                marginRight: '8px',
+              }}
+            >
+              Spoiler
+            </span>
+            <UilAngleUp
+              className="spoiler-icon-arrow"
+              style={{
+                transform: this.state.isOpen && 'rotate(180deg)',
+                height: '1.5rem',
+                width: '1.5rem',
+              }}
+            />
+          </div>
+          <div
+            className="spoiler-content"
+            style={{ display: !this.state.isOpen && 'none' }}
+            data-id="content"
+          >
+            <Format>{spoiler}</Format>
+          </div>
         </div>
       </React.Fragment>
     );

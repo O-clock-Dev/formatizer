@@ -24,6 +24,7 @@
     ]
   },
   "dependencies": {
+    "@iconscout/react-unicons": "^1.1.5",
     "emoji-mart": "^2.11.1",
     "enzyme-adapter-react-16": "^1.15.2",
     "react-syntax-highlighter": "^5.7.0"

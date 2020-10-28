@@ -32,7 +32,7 @@ const Blockquote = ({ children }) => {
   const value = children.slice(1);
 
   return (
-    <span style={style}>
+    <span style={style} className="formatizer-blockquote">
       <Format>{value}</Format>
     </span>
   );
