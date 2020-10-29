@@ -17,21 +17,32 @@ const Emoji = ({ before, children: code, altCode }) => {
 
   return (
     <React.Fragment>
-      {before}
       <span
-        title={title}
-        dangerouslySetInnerHTML={{
-          __html: Emojimart({
-            html: true,
-            set: 'apple',
-            emoji: code,
-            fallback: (emojiFound, props) =>
-              // eslint-disable-next-line react/prop-types
-              (emojiFound ? `:${emojiFound.short_names[0]}:` : props.emoji),
-            size: 20,
-          }),
+        className="formatizer-emoji-container"
+        style={{
+          display: 'inline-flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          verticalAlign: 'middle',
         }}
-      />
+      >
+        {before}
+        <span
+          className="formatizer-emoji"
+          title={title}
+          dangerouslySetInnerHTML={{
+            __html: Emojimart({
+              html: true,
+              set: 'apple',
+              emoji: code,
+              fallback: (emojiFound, props) =>
+                // eslint-disable-next-line react/prop-types
+                (emojiFound ? `:${emojiFound.short_names[0]}:` : props.emoji),
+              size: 20,
+            }),
+          }}
+        />
+      </span>
     </React.Fragment>
   );
 };

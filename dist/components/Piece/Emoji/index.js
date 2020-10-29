@@ -33,24 +33,37 @@ var Emoji = function Emoji(_ref) {
   return _react2.default.createElement(
     _react2.default.Fragment,
     null,
-    before,
-    _react2.default.createElement('span', {
-      title: title,
-      dangerouslySetInnerHTML: {
-        __html: (0, _emojiMart.Emoji)({
-          html: true,
-          set: 'apple',
-          emoji: code,
-          fallback: function fallback(emojiFound, props) {
-            return (
-              // eslint-disable-next-line react/prop-types
-              emojiFound ? ':' + emojiFound.short_names[0] + ':' : props.emoji
-            );
-          },
-          size: 20
-        })
-      }
-    })
+    _react2.default.createElement(
+      'span',
+      {
+        className: 'formatizer-emoji-container',
+        style: {
+          display: 'inline-flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          verticalAlign: 'middle'
+        }
+      },
+      before,
+      _react2.default.createElement('span', {
+        className: 'formatizer-emoji',
+        title: title,
+        dangerouslySetInnerHTML: {
+          __html: (0, _emojiMart.Emoji)({
+            html: true,
+            set: 'apple',
+            emoji: code,
+            fallback: function fallback(emojiFound, props) {
+              return (
+                // eslint-disable-next-line react/prop-types
+                emojiFound ? ':' + emojiFound.short_names[0] + ':' : props.emoji
+              );
+            },
+            size: 20
+          })
+        }
+      })
+    )
   );
 };
 

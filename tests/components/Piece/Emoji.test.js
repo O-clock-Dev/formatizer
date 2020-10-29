@@ -54,7 +54,7 @@ describe('** src/components/Piece/Emoji.js **', () => {
         .render()[0]
         .attribs.title.should.equal(`${message} :sunglasses:`);
     });
-    
+
     it('should format :v: in <Colon />', () => {
       const message = ':v:';
       const wrapper = mount(<Formatizer>{message}</Formatizer>);

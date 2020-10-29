@@ -5,16 +5,6 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.patternMention = undefined;
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; /*
-                                                                                                                                                                                                                                                                   * Package Import
-                                                                                                                                                                                                                                                                   */
-
-
-/*
- * Local Import
- */
-
-
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -38,10 +28,18 @@ var patternMention = exports.patternMention = /(?:\B)(?:@[a-zÀ-ÿ0-9._!'-]+)/gi
 /*
  * Style
  */
-var styleMention = _extends({}, _style.Chunk, {
+
+
+/*
+ * Local Import
+ */
+/*
+ * Package Import
+ */
+var styleMention = {
   color: '#0ac3a7',
   padding: '0 .25em'
-});
+};
 var style = {
   color: '#0ac3a7'
 };
@@ -67,7 +65,10 @@ var Mention = function Mention(_ref) {
     onMentionMe(mention);
     return _react2.default.createElement(
       'span',
-      { style: styleMention, className: 'formatizer-mention formatizer-mention-me' },
+      {
+        style: styleMention,
+        className: 'formatizer-mention formatizer-mention-me'
+      },
       value
     );
   }

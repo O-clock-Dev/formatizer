@@ -102,7 +102,13 @@ var Highlight = function Highlight(_ref) {
     null,
     _react2.default.createElement(
       'div',
-      { className: 'snippet-container' },
+      {
+        className: 'snippet-container',
+        style: {
+          border: '1px solid',
+          borderRadius: '8px'
+        }
+      },
       _react2.default.createElement(
         'div',
         {
@@ -111,35 +117,49 @@ var Highlight = function Highlight(_ref) {
             cursor: 'pointer',
             display: 'flex',
             alignItems: 'center',
-            padding: '8px 4px'
+            padding: '4px 8px'
           },
           onClick: handleClick,
           'data-id': 'summary'
         },
-        _react2.default.createElement(_reactUnicons.UilArrow, {
-          className: 'snippet-icon-code',
-          style: {
-            marginRight: '8px',
-            height: '1.5rem',
-            width: '1.5rem'
-          }
-        }),
+        _react2.default.createElement(
+          'div',
+          {
+            className: 'snippet-icon-container',
+            style: {
+              borderRadius: '24px',
+              height: '2em',
+              width: '2em',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              marginRight: '6px'
+            }
+          },
+          _react2.default.createElement(_reactUnicons.UilArrow, {
+            className: 'snippet-icon-code',
+            style: {
+              height: '1.25em',
+              width: '1.25em'
+            }
+          })
+        ),
         _react2.default.createElement(
           'span',
           {
             className: 'snippet-title',
             style: {
-              marginRight: '8px'
+              marginRight: '4px'
             }
           },
-          'Smippet'
+          'Snippet'
         ),
         _react2.default.createElement(_reactUnicons.UilAngleUp, {
           className: 'snippet-icon-arrow',
           style: {
             transform: isOpen && 'rotate(180deg)',
-            height: '1.5rem',
-            width: '1.5rem'
+            height: '1.5em',
+            width: '1.5em'
           }
         })
       ),
@@ -147,15 +167,18 @@ var Highlight = function Highlight(_ref) {
         'div',
         {
           className: 'snippet-content',
-          style: { display: !isOpen && 'none' },
+          style: {
+            display: !isOpen && 'none',
+            padding: '8px 12px',
+            borderTop: '1px solid'
+          },
           'data-id': 'content'
         },
         _react2.default.createElement(
           _reactSyntaxHighlighter2.default,
           options,
           code
-        ),
-        ';'
+        )
       )
     )
   );

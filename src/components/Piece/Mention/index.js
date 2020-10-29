@@ -5,11 +5,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 /*
- * Local Import
- */
-import { Chunk } from '../style';
-
-/*
  * Pattern
  */
 export const patternMention = /(?:\B)(?:@[a-zÀ-ÿ0-9._!'-]+)/gi;
@@ -21,7 +16,6 @@ export const patternMention = /(?:\B)(?:@[a-zÀ-ÿ0-9._!'-]+)/gi;
  * Style
  */
 const styleMention = {
-  ...Chunk,
   color: '#0ac3a7',
   padding: '0 .25em',
 };

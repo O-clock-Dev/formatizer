@@ -13,7 +13,7 @@ import Format from 'src/components/Format';
  * Component
  */
 const Formatizer = ({ children, ...props }) => (
-  <div style={{ paddingRight: '.2em' }}>
+  <div className="format">
     <Format {...props}>
       {typeof children === 'object' ? children.join('') : children}
     </Format>

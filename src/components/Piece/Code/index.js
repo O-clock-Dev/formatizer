@@ -31,7 +31,11 @@ const Code = ({ children }) => {
   // Get rid of first and last `
   const value = children.slice(1, -1).trim();
 
-  return <span style={style}>{value}</span>;
+  return (
+    <span className="formatizer-code" style={style}>
+      {value}
+    </span>
+  );
 };
 
 /*

@@ -39,7 +39,7 @@ var Formatizer = function Formatizer(_ref) {
 
   return _react2.default.createElement(
     'div',
-    { style: { paddingRight: '.2em' } },
+    { className: 'format' },
     _react2.default.createElement(
       _Format2.default,
       props,

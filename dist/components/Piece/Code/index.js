@@ -51,7 +51,7 @@ var Code = function Code(_ref) {
 
   return _react2.default.createElement(
     'span',
-    { style: style },
+    { className: 'formatizer-code', style: style },
     value
   );
 };

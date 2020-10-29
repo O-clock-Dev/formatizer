@@ -65,49 +65,71 @@ const Highlight = ({ children }) => {
   // View
   return (
     <React.Fragment>
-      <div className="snippet-container">
+      <div
+        className="snippet-container"
+        style={{
+          border: '1px solid',
+          borderRadius: '8px',
+        }}
+      >
         <div
           className="snippet-header"
           style={{
             cursor: 'pointer',
             display: 'flex',
             alignItems: 'center',
-            padding: '8px 4px',
+            padding: '4px 8px',
           }}
           onClick={handleClick}
           data-id="summary"
         >
-          <UilArrow
-            className="snippet-icon-code"
+          <div
+            className="snippet-icon-container"
             style={{
-              marginRight: '8px',
-              height: '1.5rem',
-              width: '1.5rem',
+              borderRadius: '24px',
+              height: '2em',
+              width: '2em',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              marginRight: '6px',
             }}
-          />
+          >
+            <UilArrow
+              className="snippet-icon-code"
+              style={{
+                height: '1.25em',
+                width: '1.25em',
+              }}
+            />
+          </div>
           <span
             className="snippet-title"
             style={{
-              marginRight: '8px',
+              marginRight: '4px',
             }}
           >
-            Smippet
+            Snippet
           </span>
           <UilAngleUp
             className="snippet-icon-arrow"
             style={{
               transform: isOpen && 'rotate(180deg)',
-              height: '1.5rem',
-              width: '1.5rem',
+              height: '1.5em',
+              width: '1.5em',
             }}
           />
         </div>
         <div
           className="snippet-content"
-          style={{ display: !isOpen && 'none' }}
+          style={{
+            display: !isOpen && 'none',
+            padding: '8px 12px',
+            borderTop: '1px solid',
+          }}
           data-id="content"
         >
-          <Highlighter {...options}>{code}</Highlighter>;
+          <Highlighter {...options}>{code}</Highlighter>
         </div>
       </div>
     </React.Fragment>
